@@ -644,7 +644,8 @@ input, textarea, select {
 
 .leaderboard-box ol {
   margin: 0;
-  padding-left: 18px;
+  padding-left: 0;
+  list-style: none;
   display: grid;
   gap: 10px;
   color: #4d586b;

@@ -95,6 +95,40 @@ const optionText = (question, index) => {
   return question.options[index]
 }
 
+const SCORE_COMMENTS = [
+  '0 分，你是来拆台的吗？出题人现在正在怀疑人生。',
+  '1 分，像随手点的，好在没交白卷，功德+1。',
+  '2 分，听过团名，成员脸还在加载中。',
+  '3 分，热身三分钟，正式比赛还没开始。',
+  '4 分，懂一点皮毛，距离入坑还差一张专辑。',
+  '5 分，一半一半，像在和命运猜拳。',
+  '6 分，开始像粉丝了，再追两支直拍就稳。',
+  '7 分，默契在线，出题人应该会点头。',
+  '8 分，就差那么一点，后台应援位给你留着。',
+  '9 分，几乎本命级别，就差那一个冷知识。',
+  '10 分，完美同步，对方审美已经被你拿捏。',
+]
+
+const scoreComment = (score, total) => {
+  if (total === 10 && Number.isInteger(score) && SCORE_COMMENTS[score]) {
+    return SCORE_COMMENTS[score]
+  }
+  const ratio = total ? score / total : 0
+  if (ratio === 1) return SCORE_COMMENTS[10]
+  if (ratio >= 0.9) return SCORE_COMMENTS[9]
+  if (ratio >= 0.8) return SCORE_COMMENTS[8]
+  if (ratio >= 0.7) return SCORE_COMMENTS[7]
+  if (ratio >= 0.6) return SCORE_COMMENTS[6]
+  if (ratio >= 0.5) return SCORE_COMMENTS[5]
+  if (ratio >= 0.4) return SCORE_COMMENTS[4]
+  if (ratio >= 0.3) return SCORE_COMMENTS[3]
+  if (ratio >= 0.2) return SCORE_COMMENTS[2]
+  if (ratio > 0) return SCORE_COMMENTS[1]
+  return SCORE_COMMENTS[0]
+}
+
+const rankMark = (index) => ['🥇', '🥈', '🥉'][index] || `${index + 1}`
+
 function App() {
   const invite = useMemo(() => readInvite(), [])
   const [screen, setScreen] = useState('login')
@@ -201,6 +235,29 @@ function App() {
     const loaded = normalizeQuestions(data.questions || [], true)
     if (!loaded.length) throw new Error('房间题目为空')
 
+    if (data.hostName === player) {
+      const error = new Error('nickname taken')
+      error.code = 'NICKNAME_TAKEN'
+      throw error
+    }
+
+    try {
+      const boardRes = await fetch(buildApiUrl(`/api/leaderboard?room=${encodeURIComponent(room)}`))
+      if (boardRes.ok) {
+        const rows = await boardRes.json()
+        const taken = (Array.isArray(rows) ? rows : []).some((row) => (
+          String(row.player_name || row.playerName || '') === player
+        ))
+        if (taken) {
+          const error = new Error('nickname taken')
+          error.code = 'NICKNAME_TAKEN'
+          throw error
+        }
+      }
+    } catch (error) {
+      if (error.code === 'NICKNAME_TAKEN') throw error
+    }
+
     setPlayerName(player)
     setRoomName(room)
     setHostName(data.hostName)
@@ -231,9 +288,13 @@ function App() {
       setBusy(true)
       try {
         await enterRoomToPlay(name, invite.room)
-      } catch {
-        showToast('没有找到这个房间。房间名区分大小写。', 'error')
-        setScreen('home')
+      } catch (error) {
+        if (error.code === 'NICKNAME_TAKEN') {
+          showToast('这个昵称已经有人用了，请换一个。', 'error')
+        } else {
+          showToast('没有找到这个房间。房间名区分大小写。', 'error')
+          setScreen('home')
+        }
       } finally {
         setBusy(false)
       }
@@ -462,7 +523,11 @@ function App() {
       await enterRoomToPlay(trimmedPlayer, trimmedRoom)
     } catch (error) {
       console.error(error)
-      showToast('没有找到这个房间，房间名区分大小写。', 'error')
+      if (error.code === 'NICKNAME_TAKEN') {
+        showToast('这个昵称已经有人用了，请换一个。', 'error')
+      } else {
+        showToast('没有找到这个房间，房间名区分大小写。', 'error')
+      }
     } finally {
       setBusy(false)
     }
@@ -944,19 +1009,19 @@ function App() {
 
               <div className="host-board">
                 <div className="host-board-head">
-                  <h3>答题结果</h3>
+                  <h3>排行榜</h3>
                   <span>每 4 秒自动刷新</span>
                 </div>
                 {leaderboard.length === 0 ? (
                   <p className="empty-board">还没有朋友交卷，把房间名发给他们即可。</p>
                 ) : (
                   <div className="player-result-list">
-                    {leaderboard.map((entry) => {
+                    {leaderboard.map((entry, index) => {
                       const open = selectedRecord?.playerName === entry.playerName
                       return (
                         <div key={`${entry.playerName}-${entry.createdAt}`} className="played-record">
                           <div className={['player-result-row', 'static', open ? 'active' : ''].filter(Boolean).join(' ')}>
-                            <span>{entry.playerName}</span>
+                            <span>{rankMark(index)} {entry.playerName}</span>
                             <strong>{entry.score}/{entry.total || totalQuestions}</strong>
                             <button
                               type="button"
@@ -1007,15 +1072,7 @@ function App() {
                     <span>{score}</span>
                     <small>/{totalQuestions}</small>
                   </div>
-                  <p className="result-message">
-                    {score === totalQuestions
-                      ? '完美分数，说明你真的非常懂这位 K-pop 审美。'
-                      : score >= Math.ceil(totalQuestions * 0.7)
-                        ? '表现很强，和对方的口味很接近。'
-                        : score >= Math.ceil(totalQuestions * 0.4)
-                          ? '还不错，继续用心一点，很快就能更懂彼此。'
-                          : '这轮属于热身阶段，下一轮你会更有感觉。'}
-                  </p>
+                  <p className="result-message">{scoreComment(score, totalQuestions)}</p>
                   {renderReviewList((index) => selectedAnswers[index])}
                 </div>
               </div>
@@ -1027,25 +1084,17 @@ function App() {
                 <small>/{totalQuestions}</small>
               </div>
 
-              <p className="result-message">
-                {score === totalQuestions
-                  ? '完美分数，说明你真的非常懂这位 K-pop 审美。'
-                  : score >= Math.ceil(totalQuestions * 0.7)
-                    ? '表现很强，和对方的口味很接近。'
-                    : score >= Math.ceil(totalQuestions * 0.4)
-                      ? '还不错，继续用心一点，很快就能更懂彼此。'
-                      : '这轮属于热身阶段，下一轮你会更有感觉。'}
-              </p>
+              <p className="result-message">{scoreComment(score, totalQuestions)}</p>
 
               {renderReviewList((index) => selectedAnswers[index])}
 
               {leaderboard.length > 0 && (
                 <div className="leaderboard-box">
-                  <h3>房间排行</h3>
+                  <h3>排行榜</h3>
                   <ol>
                     {leaderboard.map((entry, index) => (
                       <li key={`${entry.player_name || entry.playerName}-${index}`}>
-                        <span>{index + 1}. {entry.player_name || entry.playerName}</span>
+                        <span>{rankMark(index)} {entry.player_name || entry.playerName}</span>
                         <strong>{entry.score}/{entry.total || totalQuestions}</strong>
                       </li>
                     ))}
