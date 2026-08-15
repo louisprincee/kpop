@@ -58,7 +58,10 @@ const getAuthUser = async (req) => {
   const header = String(req.headers.authorization || '');
   const token = header.startsWith('Bearer ') ? header.slice(7).trim() : '';
   if (!token) return null;
-  return queryOne('SELECT id, nickname FROM users WHERE token = $1', [token]);
+  return queryOne(
+    'SELECT id, nickname FROM users WHERE token = $1 AND (token_expires_at IS NULL OR token_expires_at > NOW())',
+    [token]
+  );
 };
 
 const requireUser = async (req, res) => {
@@ -74,8 +77,46 @@ const asyncRoute = (handler) => (req, res, next) => {
   Promise.resolve(handler(req, res, next)).catch(next);
 };
 
-app.use(cors());
+app.set('trust proxy', 1);
+
+// Rate limiting
+const rateLimitStore = new Map();
+const rateLimit = (maxRequests = 100, windowMs = 60000) => (req, res, next) => {
+  const ip = req.ip || req.connection.remoteAddress;
+  const now = Date.now();
+  const limit = rateLimitStore.get(ip) || { count: 0, resetTime: now + windowMs };
+  if (now > limit.resetTime) {
+    limit.count = 0;
+    limit.resetTime = now + windowMs;
+  }
+  limit.count++;
+  rateLimitStore.set(ip, limit);
+  if (limit.count > maxRequests) {
+    return res.status(429).json({ error: '请求过于频繁，请稍后再试。' });
+  }
+  next();
+};
+
+// CORS config
+const allowedOrigins = [
+  'https://louisprincee.github.io',
+  'http://localhost:3000',
+  'http://localhost:5173',
+  process.env.ALLOWED_ORIGIN
+].filter(Boolean);
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin) || process.env.NODE_ENV === 'development') {
+      callback(null, true);
+      return;
+    }
+    callback(null, false);
+  },
+  credentials: true
+}));
 app.use(express.json({ limit: '1mb' }));
+app.use(rateLimit(100, 60000));
 
 const distPath = path.join(__dirname, '..', 'dist');
 const hasDist = fs.existsSync(distPath);
@@ -128,12 +169,17 @@ const initDb = async () => {
       password_salt TEXT NOT NULL,
       password_hash TEXT NOT NULL,
       token TEXT UNIQUE,
+      token_expires_at TIMESTAMPTZ,
       created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     );
 
     CREATE INDEX IF NOT EXISTS idx_users_token ON users(token);
     CREATE UNIQUE INDEX IF NOT EXISTS idx_records_room_player
       ON records(room_name, player_name);
+  `);
+
+  await pool.query(`
+    ALTER TABLE users ADD COLUMN IF NOT EXISTS token_expires_at TIMESTAMPTZ
   `);
 };
 
@@ -146,28 +192,30 @@ app.post('/api/auth', asyncRoute(async (req, res) => {
   const nickname = String(req.body?.nickname || '').trim();
   const password = String(req.body?.password || '');
 
-  if (!nickname) {
-    return res.status(400).json({ error: '请输入昵称。', code: 'NICKNAME_REQUIRED' });
+  if (!nickname || nickname.length < 1 || nickname.length > 20) {
+    return res.status(400).json({ error: '昵称长度需要1-20个字符。', code: 'NICKNAME_INVALID' });
   }
-  if (password.length < 4) {
-    return res.status(400).json({ error: '密码至少 4 位。', code: 'PASSWORD_SHORT' });
+  if (password.length < 4 || password.length > 50) {
+    return res.status(400).json({ error: '密码长度需要4-50个字符。', code: 'PASSWORD_INVALID' });
   }
 
   const existing = await queryOne('SELECT * FROM users WHERE nickname = $1', [nickname]);
   if (existing) {
     if (!verifyPassword(password, existing.password_salt, existing.password_hash)) {
-      return res.status(401).json({ error: '这个昵称已经有人用了，请换一个或输入正确密码。', code: 'NICKNAME_TAKEN' });
+      return res.status(401).json({ error: '用户名或密码错误。', code: 'AUTH_FAILED' });
     }
     const token = newToken();
-    await query('UPDATE users SET token = $1 WHERE id = $2', [token, existing.id]);
+    const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
+    await query('UPDATE users SET token = $1, token_expires_at = $2 WHERE id = $3', [token, expiresAt, existing.id]);
     return res.json({ nickname: existing.nickname, token });
   }
 
   const { salt, hash } = hashPassword(password);
   const token = newToken();
+  const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
   await query(
-    'INSERT INTO users (nickname, password_salt, password_hash, token) VALUES ($1, $2, $3, $4)',
-    [nickname, salt, hash, token]
+    'INSERT INTO users (nickname, password_salt, password_hash, token, token_expires_at) VALUES ($1, $2, $3, $4, $5)',
+    [nickname, salt, hash, token, expiresAt]
   );
 
   res.status(201).json({ nickname, token });
@@ -308,19 +356,41 @@ app.post('/api/room', asyncRoute(async (req, res) => {
   if (!trimmedRoom || !Array.isArray(questions) || questions.length === 0) {
     return res.status(400).json({ error: 'Room name, host name, and questions are required.' });
   }
+  
+  if (trimmedRoom.length > 30) {
+    return res.status(400).json({ error: '房间名最多30个字符。' });
+  }
+  
+  if (questions.length > 50) {
+    return res.status(400).json({ error: '题目数最多50题。' });
+  }
 
   const existing = await queryOne('SELECT host_name FROM rooms WHERE room_name = $1', [trimmedRoom]);
   if (existing && existing.host_name !== hostName) {
     return res.status(409).json({ error: '房间名已被占用。', code: 'ROOM_TAKEN' });
   }
 
+  // Check if room has records
+  if (existing) {
+    const hasRecords = await queryOne(
+      'SELECT id FROM records WHERE room_name = $1 LIMIT 1',
+      [trimmedRoom]
+    );
+    if (hasRecords) {
+      return res.status(409).json({ 
+        error: '房间已有人交卷，不能再修改题目。', 
+        code: 'ROOM_HAS_RECORDS' 
+      });
+    }
+  }
+
   await query(`
     INSERT INTO rooms (room_name, host_name, questions, updated_at)
     VALUES ($1, $2, $3, NOW())
     ON CONFLICT (room_name) DO UPDATE SET
-      host_name = EXCLUDED.host_name,
       questions = EXCLUDED.questions,
       updated_at = NOW()
+    WHERE host_name = $2
   `, [trimmedRoom, String(hostName).trim(), JSON.stringify(questions)]);
 
   res.status(200).json({ ok: true, roomName: trimmedRoom });

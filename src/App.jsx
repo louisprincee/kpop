@@ -39,7 +39,12 @@ const apiFetch = (path, options = {}) => {
   const headers = { ...(options.headers || {}) }
   const token = readStored(TOKEN_KEY)
   if (token) headers.Authorization = `Bearer ${token}`
-  return fetch(buildApiUrl(path), { ...options, headers })
+  
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), 25000)
+  
+  return fetch(buildApiUrl(path), { ...options, headers, signal: controller.signal })
+    .finally(() => clearTimeout(timeoutId))
 }
 
 const readInvite = () => {
@@ -342,8 +347,16 @@ function App() {
       showToast('请输入昵称后再进入。', 'error')
       return
     }
+    if (name.length > 20) {
+      showToast('昵称最多20个字符。', 'error')
+      return
+    }
     if (password.length < 4) {
       showToast('请设置至少 4 位密码，用来保护你的记录。', 'error')
+      return
+    }
+    if (password.length > 50) {
+      showToast('密码最多50个字符。', 'error')
       return
     }
 
@@ -356,10 +369,12 @@ function App() {
       })
       const data = await res.json().catch(() => ({}))
       if (!res.ok) {
-        if (data.code === 'NICKNAME_TAKEN') {
-          showToast('密码错误或者昵称已经有人用咯', 'error')
-        } else if (data.code === 'PASSWORD_SHORT') {
-          showToast('密码至少 4 位。', 'error')
+        if (data.code === 'AUTH_FAILED') {
+          showToast('用户名或密码错误。', 'error')
+        } else if (data.code === 'NICKNAME_INVALID') {
+          showToast('昵称长度需要1-20个字符。', 'error')
+        } else if (data.code === 'PASSWORD_INVALID') {
+          showToast('密码长度需要4-50个字符。', 'error')
         } else {
           showToast(data.error || '登录失败，请稍后再试。', 'error')
         }
@@ -378,7 +393,9 @@ function App() {
         setScreen('home')
       }
     } catch (error) {
-      if (error.code === 'HOST_NICKNAME') {
+      if (error.name === 'AbortError') {
+        showToast('请求超时，请检查网络连接。', 'error')
+      } else if (error.code === 'HOST_NICKNAME') {
         showToast('房主不能用同一个昵称答题。', 'error')
         setScreen('home')
       } else if (error.code === 'ALREADY_PLAYED') {
@@ -536,6 +553,16 @@ function App() {
       showToast('题目和四个选项都不能为空。', 'error')
       return
     }
+    
+    if (draftQuestion.prompt.trim().length > 500) {
+      showToast('题目最多500个字符。', 'error')
+      return
+    }
+    
+    if (cleanedOptions.some(opt => opt.length > 100)) {
+      showToast('选项最多100个字符。', 'error')
+      return
+    }
 
     const updatedQuestion = {
       ...draftQuestion,
@@ -557,6 +584,10 @@ function App() {
     const trimmedRoom = roomName.trim()
     if (!trimmedPlayer || !trimmedRoom) {
       showToast('请填写昵称和房间名。', 'error')
+      return false
+    }
+    if (trimmedRoom.length > 30) {
+      showToast('房间名最多30个字符。', 'error')
       return false
     }
 
@@ -581,7 +612,17 @@ function App() {
         }),
       })
 
-      if (!res.ok) throw new Error('房间保存失败')
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        if (data.code === 'ROOM_HAS_RECORDS') {
+          showToast('房间已有人交卷，无法修改题目。', 'error')
+        } else if (data.code === 'ROOM_TAKEN') {
+          showToast('房间名已被占用。', 'error')
+        } else {
+          showToast(data.error || '创建房间失败', 'error')
+        }
+        return false
+      }
 
       setRoomInfo({ roomName: trimmedRoom, hostName: trimmedPlayer })
       setHostName(trimmedPlayer)
@@ -590,8 +631,12 @@ function App() {
       setStatusText(`房间 ${trimmedRoom} 已生成，把房间名或链接发给朋友即可。`)
       return true
     } catch (error) {
-      console.error(error)
-      showToast('创建房间失败，请检查后端服务是否已启动。', 'error')
+      if (error.name === 'AbortError') {
+        showToast('请求超时，请检查网络连接。', 'error')
+      } else {
+        console.error(error)
+        showToast('创建房间失败，请检查后端服务是否已启动。', 'error')
+      }
       return false
     } finally {
       setBusy(false)
