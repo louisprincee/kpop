@@ -3,7 +3,11 @@ import questionBank from './data/questionBank'
 
 const STORAGE_KEY = 'kpop-quiz-state-v1'
 const PLAYER_KEY = 'kpop-player-name-v1'
-const API_BASE = import.meta.env.VITE_API_BASE || (import.meta.env.DEV ? 'http://localhost:4000' : '')
+const API_BASE = import.meta.env.VITE_API_BASE || (
+  typeof window !== 'undefined' && /github\.io/i.test(window.location.hostname)
+    ? 'https://kpop-kdc8.onrender.com'
+    : import.meta.env.DEV ? 'http://localhost:4000' : ''
+)
 
 const buildApiUrl = (path) => {
   if (!API_BASE) return path
@@ -128,7 +132,7 @@ function App() {
     return (answeredCount / questions.length) * 100
   }, [questions.length, selectedAnswers])
 
-  const saveResultToBackend = async (finalScore) => {
+  const saveResultToBackend = async (finalScore, answers = selectedAnswers) => {
     if (!roomName || !playerName) return
     try {
       await fetch(buildApiUrl('/api/records'), {
@@ -139,7 +143,7 @@ function App() {
           playerName,
           score: finalScore,
           total: totalQuestions,
-          answers: selectedAnswers,
+          answers,
         }),
       })
     } catch {
@@ -156,12 +160,40 @@ function App() {
   }
 
   const handleSelect = (optionIndex) => {
-    if (selectedAnswer !== undefined || !currentQuestion) return
+    if (!currentQuestion) return
 
-    setSelectedAnswers((prev) => ({
-      ...prev,
+    const nextAnswers = {
+      ...selectedAnswers,
       [currentIndex]: optionIndex,
-    }))
+    }
+
+    setSelectedAnswers(nextAnswers)
+
+    if (currentIndex >= questions.length - 1) {
+      window.setTimeout(() => {
+        const finalScore = questions.reduce((total, question, index) => {
+          const chosen = nextAnswers[index]
+          return total + (chosen === question.correctIndex ? 1 : 0)
+        }, 0)
+
+        setScore(finalScore)
+        setCompleted(true)
+        const roomToSave = roomName || 'solo-room'
+        if (playerName) {
+          saveResultToBackend(finalScore, nextAnswers)
+          setStatusText(`${playerName} 已完成 ${roomToSave} 房间测验`)
+        }
+      }, 180)
+      return
+    }
+
+    window.setTimeout(() => {
+      setCurrentIndex((prev) => Math.min(prev + 1, questions.length - 1))
+    }, 180)
+  }
+
+  const goBack = () => {
+    setCurrentIndex((prev) => Math.max(prev - 1, 0))
   }
 
   const goNext = () => {
@@ -177,7 +209,7 @@ function App() {
       setCompleted(true)
       const roomToSave = roomName || 'solo-room'
       if (playerName) {
-        saveResultToBackend(finalScore)
+        saveResultToBackend(finalScore, selectedAnswers)
         setStatusText(`${playerName} 已完成 ${roomToSave} 房间测验`)
       }
       return
@@ -587,6 +619,9 @@ function App() {
 
                 <div className="action-row">
                   <button className="secondary-button" onClick={resetQuiz}>重新开始</button>
+                  <button className="secondary-button" onClick={goBack} disabled={currentIndex === 0}>
+                    上一题
+                  </button>
                   {!isEditingQuestion && mode === 'host-play' && (
                     <button className="secondary-button" onClick={startEditing}>编辑题目</button>
                   )}
