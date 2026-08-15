@@ -20,7 +20,9 @@ const buildApiUrl = (path) => {
 
 const readStored = (key) => {
   try {
-    return localStorage.getItem(key) || ''
+    // Token 使用 sessionStorage（关闭浏览器就清空），昵称用 localStorage（保留输入便利）
+    const storage = key === TOKEN_KEY ? sessionStorage : localStorage
+    return storage.getItem(key) || ''
   } catch {
     return ''
   }
@@ -28,8 +30,10 @@ const readStored = (key) => {
 
 const writeStored = (key, value) => {
   try {
-    if (value) localStorage.setItem(key, value)
-    else localStorage.removeItem(key)
+    // Token 使用 sessionStorage（关闭浏览器就清空），昵称用 localStorage
+    const storage = key === TOKEN_KEY ? sessionStorage : localStorage
+    if (value) storage.setItem(key, value)
+    else storage.removeItem(key)
   } catch {
     /* ignore */
   }
@@ -41,10 +45,21 @@ const apiFetch = (path, options = {}) => {
   if (token) headers.Authorization = `Bearer ${token}`
   
   const controller = new AbortController()
-  const timeoutId = setTimeout(() => controller.abort(), 25000)
+  const timeoutId = setTimeout(() => controller.abort(), 8000)
   
   return fetch(buildApiUrl(path), { ...options, headers, signal: controller.signal })
     .finally(() => clearTimeout(timeoutId))
+}
+
+// 安全的响应处理
+const getJsonResponse = async (res) => {
+  try {
+    const text = await res.text()
+    if (!text) return {}
+    return JSON.parse(text)
+  } catch {
+    return { error: '服务器返回格式错误' }
+  }
 }
 
 const readInvite = () => {
@@ -87,6 +102,7 @@ const normalizeQuestion = (question, index = 0, keepAnswer = false) => {
 const normalizeQuestions = (items = [], keepAnswer = false, limit = null) => {
   if (!Array.isArray(items)) return []
   const normalized = items
+    .filter(item => item && typeof item === 'object')
     .map((question, index) => normalizeQuestion(question, index, keepAnswer))
     .filter((question) => Array.isArray(question.options) && question.options.length === 4)
   return limit ? normalized.slice(0, limit) : normalized
@@ -121,8 +137,9 @@ const toAnswerList = (answers, length) => {
 }
 
 const optionText = (question, index) => {
-  if (!Number.isInteger(index) || !question?.options?.[index]) return '未作答'
-  return question.options[index]
+  if (!question || !Number.isInteger(index) || !Array.isArray(question.options)) return '未作答'
+  const option = question.options?.[index]
+  return option ? String(option).trim() : '未作答'
 }
 
 const SCORE_COMMENTS = [
@@ -206,6 +223,29 @@ function App() {
     }
   }, [nicknameInput])
 
+  // 保存答题进度到 sessionStorage
+  useEffect(() => {
+    try {
+      if (screen === 'play' || screen === 'host-play') {
+        sessionStorage.setItem('quiz-progress', JSON.stringify({
+          screen,
+          playerName,
+          hostName,
+          roomName,
+          currentIndex,
+          selectedAnswers,
+          questions: questions.map(q => ({ id: q.id, prompt: q.prompt, category: q.category })),
+          roomInfo,
+          timestamp: Date.now()
+        }))
+      } else {
+        sessionStorage.removeItem('quiz-progress')
+      }
+    } catch {
+      /* ignore */
+    }
+  }, [screen, playerName, hostName, roomName, currentIndex, selectedAnswers, questions, roomInfo])
+
   useEffect(() => {
     if (!roomName || (screen !== 'result' && screen !== 'host-share')) return undefined
 
@@ -259,7 +299,13 @@ function App() {
   const enterRoomToPlay = async (player, room, expectedHost = '') => {
     const res = await fetch(buildApiUrl(`/api/room/${encodeURIComponent(room)}`))
     if (!res.ok) throw new Error('Room not found')
-    const data = await res.json()
+    const data = await res.text().then(t => {
+      try {
+        return JSON.parse(t)
+      } catch {
+        throw new Error('服务器返回格式错误')
+      }
+    })
     if (expectedHost && data.hostName !== expectedHost) throw new Error('房主昵称不匹配')
 
     const loaded = normalizeQuestions(data.questions || [], true)
@@ -303,6 +349,41 @@ function App() {
   useEffect(() => {
     let alive = true
     const restore = async () => {
+      // 先检查是否有进行中的答题进度
+      try {
+        const progressStr = sessionStorage.getItem('quiz-progress')
+        if (progressStr) {
+          const progress = JSON.parse(progressStr)
+          // 进度是否超过5分钟（防止太久的过期数据）
+          if (Date.now() - progress.timestamp < 5 * 60 * 1000 && progress.screen === 'play') {
+            if (!alive) return
+            setPlayerName(progress.playerName)
+            setHostName(progress.hostName)
+            setRoomName(progress.roomName)
+            setCurrentIndex(progress.currentIndex)
+            setSelectedAnswers(progress.selectedAnswers)
+            setRoomInfo(progress.roomInfo)
+            // 重新加载完整的questions数据
+            try {
+              const res = await fetch(buildApiUrl(`/api/room/${encodeURIComponent(progress.roomName)}`))
+              if (res.ok) {
+                const data = await res.json()
+                const loaded = normalizeQuestions(data.questions || [], true)
+                setQuestions(loaded)
+                setScreen('play')
+                showToast('已恢复你的答题进度！', 'info')
+                return
+              }
+            } catch {
+              // ignore
+            }
+          }
+        }
+      } catch {
+        // ignore
+      }
+
+      // 没有进行中的进度，走正常登录流程
       if (!readStored(TOKEN_KEY)) return
       try {
         const res = await apiFetch('/api/me')

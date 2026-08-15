@@ -403,8 +403,15 @@ if (hasDist) {
 }
 
 app.use((err, _req, res, _next) => {
-  console.error(err);
-  res.status(500).json({ error: '服务器出错了，请稍后再试。' });
+  console.error('[ERROR]', new Date().toISOString(), {
+    message: err.message,
+    stack: err.stack,
+    status: err.status || 500
+  });
+  const statusCode = err.status || 500;
+  res.status(statusCode).json({ 
+    error: statusCode === 500 ? '服务器出错了，请稍后再试。' : err.message 
+  });
 });
 
 const start = async () => {
