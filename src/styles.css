@@ -267,10 +267,15 @@ input, textarea, select {
 
 .panel-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 18px;
+}
+
+.panel-header > div {
+  min-width: 0;
+  flex: 1;
 }
 
 .panel-header h2 {
@@ -293,6 +298,13 @@ input, textarea, select {
   background: #f5f7ff;
   color: #2c3448;
   border: 1px solid rgba(111, 124, 168, 0.12);
+}
+
+.swap-btn {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  writing-mode: horizontal-tb;
+  word-break: keep-all;
 }
 
 .primary-button {
@@ -935,6 +947,17 @@ input, textarea, select {
 
   .action-row,
   .result-actions {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .action-row button,
+  .result-actions button {
+    flex: 0 0 auto;
+  }
+
+  .swap-btn {
+    padding: 0.55rem 0.8rem;
   }
 }

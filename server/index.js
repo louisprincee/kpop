@@ -6,7 +6,12 @@ const fs = require('fs');
 
 const app = express();
 const port = process.env.PORT || 4000;
-const dbPath = path.join(__dirname, 'kpop.db');
+const dbDir = process.env.DB_PATH ? path.dirname(process.env.DB_PATH) : __dirname
+const dbPath = process.env.DB_PATH || path.join(__dirname, 'kpop.db')
+
+if (!fs.existsSync(dbDir)) {
+  fs.mkdirSync(dbDir, { recursive: true })
+}
 const db = new Database(dbPath);
 
 app.use(cors());
@@ -219,4 +224,5 @@ if (hasDist) {
 
 app.listen(port, () => {
   console.log(`K-pop quiz backend listening on http://localhost:${port}`);
+  console.log(`SQLite path: ${dbPath}`);
 });

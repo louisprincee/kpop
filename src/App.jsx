@@ -658,12 +658,12 @@ function App() {
             <h2>{currentQuestion?.category || 'K-pop'}</h2>
             <p className="host-hint">
               {screen === 'host-play'
-                ? '选出你的标准答案。朋友之后会按你选的选项计分。'
+                ? '选出你的标准答案。'
                 : '选完后点下一题继续。'}
             </p>
           </div>
           {screen === 'host-play' && (
-            <button className="ghost-button" onClick={swapCurrentQuestion}>换一题</button>
+            <button className="ghost-button swap-btn" onClick={swapCurrentQuestion}>换一题</button>
           )}
         </div>
 
@@ -922,7 +922,7 @@ function App() {
             <div className="panel result-panel">
               <p className="panel-tag">房间结果</p>
               <h2>查看答题情况</h2>
-              <p className="result-message">答题信息会出现在下方。点「展示」可以看到每一题结果。</p>
+              <p className="result-message">答题信息会出现在下方。</p>
 
               <div className="share-card">
                 <div>
@@ -958,10 +958,11 @@ function App() {
                             <strong>{entry.score}/{entry.total || totalQuestions}</strong>
                             <button
                               type="button"
-                              className="ghost-button compact-toggle"
+                              className="ghost-button compact-toggle icon-toggle"
                               onClick={() => setSelectedRecord(open ? null : entry)}
+                              aria-label={open ? '收起' : '展示'}
                             >
-                              {open ? '收起' : '展示'}
+                              {open ? '➖' : '➕'}
                             </button>
                           </div>
                           {open && (
