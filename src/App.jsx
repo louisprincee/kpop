@@ -122,7 +122,6 @@ function App() {
   const [busy, setBusy] = useState(false)
   const [selectedRecord, setSelectedRecord] = useState(null)
   const [sharing, setSharing] = useState(false)
-  const [detailsOpen, setDetailsOpen] = useState(false)
   const [myHosted, setMyHosted] = useState([])
   const [myPlayed, setMyPlayed] = useState([])
   const [expandedPlayed, setExpandedPlayed] = useState(null)
@@ -302,7 +301,6 @@ function App() {
     setDraftQuestion(null)
     setLeaderboard([])
     setSelectedRecord(null)
-    setDetailsOpen(false)
     setExpandedPlayed(null)
   }
 
@@ -324,7 +322,6 @@ function App() {
     setDraftQuestion(null)
     setLeaderboard([])
     setSelectedRecord(null)
-    setDetailsOpen(false)
     setExpandedPlayed(null)
     setMyHosted([])
     setMyPlayed([])
@@ -519,7 +516,6 @@ function App() {
     setSelectedAnswers(applyRecordAnswers(played.answers, loaded.length))
     setScore(Number(played.score) || 0)
     setLeaderboard([])
-    setDetailsOpen(false)
     setScreen('result')
     setStatusText(`${playerName} 在 ${played.roomName} 的答题记录`)
   }
@@ -663,7 +659,7 @@ function App() {
             <p className="host-hint">
               {screen === 'host-play'
                 ? '选出你的标准答案。朋友之后会按你选的选项计分。'
-                : '题目由出题人定好，选完后点下一题继续。'}
+                : '选完后点下一题继续。'}
             </p>
           </div>
           {screen === 'host-play' && (
@@ -801,7 +797,7 @@ function App() {
               <h3>玩法说明</h3>
               <ul>
                 <li>出题人选出每题的标准答案，生成房间发给朋友</li>
-                <li>答题人输入房间名和房主昵称后进行作答</li>
+                <li>答题人输入房间名后进行作答</li>
                 <li>答题完毕后揭晓答案和分数</li>
                 <li>出题时可以自由编辑题目和选项</li>
               </ul>
@@ -884,10 +880,11 @@ function App() {
                             <strong>{entry.score}/{entry.total}</strong>
                             <button
                               type="button"
-                              className="ghost-button compact-toggle"
+                              className="ghost-button compact-toggle icon-toggle"
                               onClick={() => setExpandedPlayed(open ? null : entry.roomName)}
+                              aria-label={open ? '收起' : '展示'}
                             >
-                              {open ? '收起' : '展示'}
+                              {open ? '➖' : '➕'}
                             </button>
                           </div>
                           {open && (
@@ -924,8 +921,8 @@ function App() {
           {screen === 'host-share' && roomInfo && (
             <div className="panel result-panel">
               <p className="panel-tag">房间结果</p>
-              <h2>查看这间房的答题情况</h2>
-              <p className="result-message">朋友交卷后会出现在下方。点「展示」就能看到每一题的对比。</p>
+              <h2>查看答题情况</h2>
+              <p className="result-message">答题信息会出现在下方。点「展示」可以看到每一题结果。</p>
 
               <div className="share-card">
                 <div>
@@ -1037,13 +1034,7 @@ function App() {
                       : '这轮属于热身阶段，下一轮你会更有感觉。'}
               </p>
 
-              <div className="details-toggle-row">
-                <button className="ghost-button" onClick={() => setDetailsOpen((open) => !open)}>
-                  {detailsOpen ? '收起' : '展示'}
-                </button>
-              </div>
-
-              {detailsOpen && renderReviewList((index) => selectedAnswers[index])}
+              {renderReviewList((index) => selectedAnswers[index])}
 
               {leaderboard.length > 0 && (
                 <div className="leaderboard-box">

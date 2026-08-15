@@ -792,6 +792,13 @@ input, textarea, select {
   font-size: 0.85rem;
 }
 
+.icon-toggle {
+  min-width: 38px;
+  padding: 0.35rem 0.5rem;
+  font-size: 1rem;
+  line-height: 1;
+}
+
 .details-toggle-row {
   margin: 18px 0 4px;
 }
