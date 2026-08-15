@@ -1,13 +1,11 @@
+# yaml-language-server: $schema=https://render.com/schema/render.yaml.json
 services:
   - type: web
     name: kpop-miyagi-quiz
-    env: node
+    runtime: node
     plan: free
     buildCommand: npm install && npm run build
     startCommand: npm start
-    rootDir: .
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 10000
