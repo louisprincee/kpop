@@ -765,10 +765,10 @@ function App() {
           <div className="login-card">
             <div className="brand-mark">K</div>
             <p className="eyebrow">K-POP 默契挑战</p>
-            <h1>Kpop Challenge</h1>
+            <h1>K-POP Challenge</h1>
             {screen === 'login' ? (
               <>
-                <p className="login-copy">先输入昵称并确定，再开始出题或答题。昵称区分大小写。</p>
+                <p className="login-copy">输入昵称后开始出题或答题</p>
                 <div className="login-form stacked">
                   <input
                     value={nicknameInput}
