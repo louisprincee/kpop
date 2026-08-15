@@ -1,44 +1,53 @@
-# K-pop 默契挑戰
+# K-pop 默契挑战
 
-這是一個 K-pop 主題的默契問答網站，適合你把連結發給朋友，讓對方登入暱稱後回答題目並看看分數。
+这是一个以 K-pop 为主题的“出题 / 回答 / 对战”网页。你可以先作为房主创建自己的房间，把题目和选项设置好，然后把房间名分享给朋友；朋友输入你的昵称和房间名后即可开始答题，系统在最后统一统计分数。
 
-## 功能
+## 功能介绍
 
-- K-pop 題庫：內建四代 / 五代 / 六代 / 專輯 / 成員偏愛題目
-- 換一題：隨機重排題目列表
-- 自訂題目：使用者可新增自己的題目與選項
-- 登入暱稱：每位玩家可輸入暱稱後進行挑戰
-- 分數計算：每題答對 +1，結束後顯示總分與評語
-- GitHub Pages 相容：以 Vite 靜態站點方式部署
+- 以“团”为单位的题库结构
+- 支持房主创建房间并发布题目
+- 支持朋友通过房间名 + 房主昵称进入答题
+- 登录后才展示题目
+- 支持直接在前端编辑题目内容
+- 回答后不立刻揭晓正确答案，最后统一统计分数
+- 支持 SQLite 数据库储存答题记录和排行榜
+- 适合静态站点部署到 GitHub Pages
 
-## 本地開發
+## 本地开发
 
 ```bash
 npm install
-npm run dev
+cd server && npm install && cd ..
+npm run dev:all
 ```
 
-開啟 http://localhost:3000/
+- 前端地址： http://localhost:5173/
+- 后端地址： http://localhost:4000/api/health
 
-## GitHub Pages 部署
+## 生产部署
 
-1. 將這個專案推到你的 GitHub repository。
-2. 在 GitHub repo 設定中開啟 Pages，選擇 `Deploy from a branch`，分支選 `gh-pages`。
-3. 在本機執行：
+前端可以直接部署到 GitHub Pages，例如：
 
 ```bash
 npm run deploy
 ```
 
-若你有自己的 GitHub Pages 網址，請在 `package.json` 補上 `homepage` 欄位，例如：
+后端需要部署到支持 Node.js 的环境，例如 Render、Railway、Fly.io 或你自己的服务器；前端默认访问 `http://localhost:4000`，如果需要远程部署，请在项目中配置 `VITE_API_BASE` 环境变量。
 
-```json
-"homepage": "https://你的帳號.github.io/你的repo名"
-```
+## 关键文件
 
-## 主要檔案
+- `src/App.jsx`：主页面与房间 / 答题逻辑
+- `src/data/questions.js`：基础题库
+- `src/data/expandedQuestions.js`：扩展题库
+- `src/styles.css`：视觉样式
+- `server/index.js`：数据库与接口
 
-- `src/App.jsx`：主頁面與遊戲邏輯
-- `src/data/questions.js`：題庫資料
-- `src/styles.css`：主題樣式
+## 使用方式
+
+1. 打开网页，选择“我来出题”。
+2. 输入你的昵称和房间名，创建房间。 
+3. 复制房间名和房主昵称，发给朋友。 
+4. 朋友选择“我来答题”，输入房间名和你的昵称进入题目。 
+5. 全部答题完毕后，系统统一显示分数和答案回顾。
+
 

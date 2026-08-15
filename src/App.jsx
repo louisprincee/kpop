@@ -1,9 +1,19 @@
 import { useEffect, useMemo, useState } from 'react'
-import { defaultQuestions } from './data/questions'
+import questionBank from './data/questionBank'
 
 const STORAGE_KEY = 'kpop-quiz-state-v1'
 const PLAYER_KEY = 'kpop-player-name-v1'
-const LEADERBOARD_KEY = 'kpop-leaderboard-v1'
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:4000'
+
+const getStarterQuestions = () => {
+  // 从所有题库中随机选取20道题
+  if (!questionBank || questionBank.length === 0) return []
+  const shuffled = [...questionBank].sort(() => Math.random() - 0.5)
+  return shuffled.slice(0, 20).map((question, index) => ({
+    ...question,
+    id: question.id || `q-${index + 1}`,
+  }))
+}
 
 function App() {
   const [playerName, setPlayerName] = useState(() => {
@@ -20,37 +30,32 @@ function App() {
       return ''
     }
   })
+  const [mode, setMode] = useState('entry')
   const [questions, setQuestions] = useState(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY)
-      if (!saved) return defaultQuestions
-
+      if (!saved) return getStarterQuestions()
       const parsed = JSON.parse(saved)
-      return Array.isArray(parsed) && parsed.length ? parsed : defaultQuestions
+      return Array.isArray(parsed) && parsed.length ? parsed : getStarterQuestions()
     } catch {
-      return defaultQuestions
+      return getStarterQuestions()
     }
   })
-  const [leaderboard, setLeaderboard] = useState(() => {
-    try {
-      const saved = localStorage.getItem(LEADERBOARD_KEY)
-      const parsed = JSON.parse(saved || '[]')
-      return Array.isArray(parsed) ? parsed : []
-    } catch {
-      return []
-    }
-  })
-
+  const [roomName, setRoomName] = useState('')
+  const [hostName, setHostName] = useState('')
+  const [leaderboard, setLeaderboard] = useState([])
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [selectedAnswer, setSelectedAnswer] = useState(null)
+  const [selectedAnswers, setSelectedAnswers] = useState({})
   const [score, setScore] = useState(0)
   const [completed, setCompleted] = useState(false)
-  const [showAnswer, setShowAnswer] = useState(false)
   const [isEditingQuestion, setIsEditingQuestion] = useState(false)
   const [draftQuestion, setDraftQuestion] = useState(null)
   const [shareNotice, setShareNotice] = useState('')
+  const [statusText, setStatusText] = useState('')
+  const [roomInfo, setRoomInfo] = useState(null)
 
   const currentQuestion = questions[currentIndex] || null
+  const selectedAnswer = selectedAnswers[currentIndex]
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(questions))
@@ -61,78 +66,115 @@ function App() {
   }, [playerName])
 
   useEffect(() => {
-    localStorage.setItem(LEADERBOARD_KEY, JSON.stringify(leaderboard))
-  }, [leaderboard])
+    if (!roomName) return
+    const loadBoard = async () => {
+      try {
+        const res = await fetch(`${API_BASE}/api/leaderboard?room=${encodeURIComponent(roomName)}`)
+        if (!res.ok) return
+        const data = await res.json()
+        setLeaderboard(Array.isArray(data) ? data : [])
+      } catch {
+        setLeaderboard([])
+      }
+    }
+    loadBoard()
+  }, [roomName, completed])
 
   useEffect(() => {
     if (!currentQuestion) return
-    setSelectedAnswer(null)
-    setShowAnswer(false)
     setIsEditingQuestion(false)
     setDraftQuestion(null)
   }, [currentIndex, currentQuestion])
 
+  const totalQuestions = questions.length
+  const groupNames = [...new Set(questions.map((q) => q.category))]
+
   const progress = useMemo(() => {
     if (!questions.length) return 0
-    return ((currentIndex + (completed ? 1 : 0)) / questions.length) * 100
-  }, [completed, currentIndex, questions.length])
+    const answeredCount = Object.keys(selectedAnswers).length
+    return (answeredCount / questions.length) * 100
+  }, [questions.length, selectedAnswers])
 
-  const handleSelect = (optionIndex) => {
-    if (selectedAnswer !== null || !currentQuestion) return
-
-    setSelectedAnswer(optionIndex)
-    if (optionIndex === currentQuestion.correctIndex) {
-      setScore((prev) => prev + 1)
+  const saveResultToBackend = async (finalScore) => {
+    if (!roomName || !playerName) return
+    try {
+      await fetch(`${API_BASE}/api/records`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          roomName,
+          playerName,
+          score: finalScore,
+          total: totalQuestions,
+          answers: selectedAnswers,
+        }),
+      })
+    } catch {
+      console.warn('Failed to submit result to backend')
     }
-    setShowAnswer(true)
-  }
-
-  const handleLogin = () => {
-    const trimmed = nicknameInput.trim()
-    if (!trimmed) {
-      alert('请输入你的昵称后再开始挑战。')
-      return
-    }
-
-    setPlayerName(trimmed)
-  }
-
-  const handleLogout = () => {
-    setPlayerName('')
-    setNicknameInput('')
   }
 
   const resetQuiz = () => {
     setCurrentIndex(0)
-    setSelectedAnswer(null)
-    setShowAnswer(false)
-    setCompleted(false)
+    setSelectedAnswers({})
     setScore(0)
+    setCompleted(false)
+    setStatusText('')
+  }
+
+  const handleSelect = (optionIndex) => {
+    if (selectedAnswer !== undefined || !currentQuestion) return
+
+    setSelectedAnswers((prev) => ({
+      ...prev,
+      [currentIndex]: optionIndex,
+    }))
   }
 
   const goNext = () => {
     if (!currentQuestion) return
 
-    if (currentIndex === questions.length - 1) {
-      setCompleted(true)
-      setLeaderboard((prev) => {
-        const updated = [
-          ...prev,
-          {
-            name: playerName,
-            score,
-            createdAt: new Date().toISOString(),
-          },
-        ]
-          .sort((a, b) => b.score - a.score)
-          .slice(0, 5)
+    if (currentIndex >= questions.length - 1) {
+      const finalScore = questions.reduce((total, question, index) => {
+        const chosen = selectedAnswers[index]
+        return total + (chosen === question.correctIndex ? 1 : 0)
+      }, 0)
 
-        return updated
-      })
+      setScore(finalScore)
+      setCompleted(true)
+      const roomToSave = roomName || 'solo-room'
+      if (playerName) {
+        saveResultToBackend(finalScore)
+        setStatusText(`${playerName} 已完成 ${roomToSave} 房间测验`)
+      }
       return
     }
 
     setCurrentIndex((prev) => prev + 1)
+  }
+
+  const handleLogin = () => {
+    const trimmed = nicknameInput.trim()
+    if (!trimmed) {
+      alert('请输入昵称后再开始。')
+      return
+    }
+
+    setPlayerName(trimmed)
+    setMode('entry')
+  }
+
+  const handleLogout = () => {
+    setPlayerName('')
+    setNicknameInput('')
+    setMode('entry')
+    setRoomName('')
+    setHostName('')
+    setRoomInfo(null)
+    setCompleted(false)
+    setCurrentIndex(0)
+    setSelectedAnswers({})
+    setScore(0)
   }
 
   const shuffleQuestion = () => {
@@ -147,7 +189,6 @@ function App() {
 
   const startEditing = () => {
     if (!currentQuestion) return
-
     setDraftQuestion({
       ...currentQuestion,
       options: [...currentQuestion.options],
@@ -171,7 +212,7 @@ function App() {
 
     const cleanedOptions = draftQuestion.options.map((option) => option.trim()).filter(Boolean)
     if (!draftQuestion.prompt.trim() || cleanedOptions.length < 2) {
-      alert('题目和至少两个选项不能为空。')
+      alert('题目和至少两个选项都不能为空。')
       return
     }
 
@@ -195,12 +236,78 @@ function App() {
     setDraftQuestion(null)
   }
 
-  const totalQuestions = questions.length
-  const groupNames = [...new Set(questions.map((question) => question.category))]
+  const createRoom = async () => {
+    const trimmedPlayer = playerName.trim()
+    const trimmedRoom = roomName.trim()
+    if (!trimmedPlayer || !trimmedRoom) {
+      alert('请输入你的昵称和房间名。')
+      return
+    }
+
+    try {
+      const res = await fetch(`${API_BASE}/api/room`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          roomName: trimmedRoom,
+          hostName: trimmedPlayer,
+          questions,
+        }),
+      })
+
+      if (!res.ok) {
+        throw new Error('房间保存失败')
+      }
+
+      setRoomInfo({ roomName: trimmedRoom, hostName: trimmedPlayer })
+      setHostName(trimmedPlayer)
+      setMode('host')
+      setStatusText(`房间 ${trimmedRoom} 已创建，分享给好友来答题吧。`)
+      setLeaderboard([])
+    } catch (error) {
+      console.error(error)
+      alert('创建房间失败，请检查后端服务是否已启动。')
+    }
+  }
+
+  const joinRoom = async () => {
+    const trimmedPlayer = nicknameInput.trim()
+    const trimmedRoom = roomName.trim()
+    const trimmedHost = hostName.trim()
+
+    if (!trimmedPlayer || !trimmedRoom || !trimmedHost) {
+      alert('昵称、房间名和房主名字都需要填写。')
+      return
+    }
+
+    try {
+      const res = await fetch(`${API_BASE}/api/room/${encodeURIComponent(trimmedRoom)}`)
+      if (!res.ok) {
+        throw new Error('Room not found')
+      }
+
+      const data = await res.json()
+      if (data.hostName !== trimmedHost) {
+        throw new Error('房主昵称不匹配')
+      }
+
+      setPlayerName(trimmedPlayer)
+      setRoomInfo({ roomName: trimmedRoom, hostName: trimmedHost })
+      setQuestions(data.questions || [])
+      setCurrentIndex(0)
+      setSelectedAnswers({})
+      setCompleted(false)
+      setScore(0)
+      setMode('challenge')
+      setStatusText(`已进入 ${trimmedRoom}，准备开始答题。`)
+    } catch (error) {
+      console.error(error)
+      alert('没有找到这个房间，或房主昵称输入不正确。')
+    }
+  }
 
   const handleShareResult = async () => {
-    const summary = `我刚刚在 K-pop 默契挑战里拿了 ${score}/${totalQuestions} 分，${playerName}真的很懂我的 K-pop 口味！`
-
+    const summary = `${playerName} 在 K-pop 默契挑战中拿到 ${score}/${totalQuestions} 分，房间：${roomName || 'solo-room'}。`
     try {
       if (navigator.clipboard) {
         await navigator.clipboard.writeText(summary)
@@ -209,9 +316,10 @@ function App() {
     } catch {
       setShareNotice('复制失败，可手动复制结果')
     }
-
     window.setTimeout(() => setShareNotice(''), 1800)
   }
+
+  const showResultReview = completed && questions.length > 0
 
   return (
     <div className="app-shell">
@@ -220,25 +328,49 @@ function App() {
           <div className="login-card">
             <div className="brand-mark">K</div>
             <p className="eyebrow">K-pop 默契挑战</p>
-            <h1>和朋友来一场 K-pop 默契测试</h1>
-            <p className="login-copy">输入昵称后开始答题，看看你和朋友是不是真的很了解彼此的 K-pop 口味。</p>
+            <h1>出题人和答题人都能轻松开始</h1>
+            <p className="login-copy">先写下你的昵称，再选择你要做的是“我来出题”还是“我来答题”。</p>
 
-            <div className="login-form">
+            <div className="login-form stacked">
               <input
                 value={nicknameInput}
                 onChange={(e) => setNicknameInput(e.target.value)}
-                placeholder="请输入昵称"
+                placeholder="请输入你的昵称"
               />
-              <button className="primary-button" onClick={handleLogin}>开始挑战</button>
+            </div>
+
+            <div className="mode-grid">
+              <button className="primary-button" onClick={() => {
+                const trimmed = nicknameInput.trim()
+                if (!trimmed) {
+                  alert('请输入昵称后再继续。')
+                  return
+                }
+                setPlayerName(trimmed)
+                setMode('host')
+              }}>
+                我来出题
+              </button>
+              <button className="secondary-button" onClick={() => {
+                const trimmed = nicknameInput.trim()
+                if (!trimmed) {
+                  alert('请输入昵称后再继续。')
+                  return
+                }
+                setPlayerName(trimmed)
+                setMode('challenge')
+              }}>
+                我来答题
+              </button>
             </div>
 
             <div className="rules-box">
               <h3>玩法说明</h3>
               <ul>
-                <li>一共 10 道题，全部围绕你最爱的 K-pop 团体和音乐偏好</li>
-                <li>登录后才会显示题目，适合朋友之间互相发链接挑战</li>
-                <li>答对一题得 1 分，最后计算总分</li>
-                <li>题目可以直接在页面里编辑，方便你随时换成自己的口味</li>
+                <li>房主先创建房间，朋友输入房间名与房主昵称后进入</li>
+                <li>所有题目都以团为单位，按你和朋友的 K-pop 口味来设计</li>
+                <li>答完后系统统一计分，不会一题一揭答案</li>
+                <li>题目可以直接在页面里编辑，适合自定义和换题</li>
               </ul>
             </div>
           </div>
@@ -250,7 +382,7 @@ function App() {
               <div className="brand-mark">K</div>
               <div>
                 <p className="eyebrow">K-pop 默契挑战</p>
-                <h1>Mutual Love Quiz</h1>
+                <h1>Room Challenge</h1>
               </div>
             </div>
 
@@ -260,208 +392,277 @@ function App() {
                 <button onClick={handleLogout}>切换账号</button>
               </div>
               <div className="score-chip">
-                <span>目前分数</span>
+                <span>当前分数</span>
                 <strong>{score}</strong>
               </div>
             </div>
           </header>
 
-          <main className="layout">
-            <section className="panel quiz-panel">
+          {mode === 'host' && !completed ? (
+            <div className="panel create-room-panel">
               <div className="panel-header">
                 <div>
-                  <p className="panel-tag">题库</p>
-                  <h2>{completed ? '测试结果' : currentQuestion?.category || '题目'}</h2>
+                  <p className="panel-tag">房主入口</p>
+                  <h2>创建你的 K-pop 房间</h2>
                 </div>
-                <button className="ghost-button" onClick={shuffleQuestion}>换一题</button>
               </div>
 
-              {!completed && currentQuestion ? (
-                <>
-                  <div className="progress-wrap">
-                    <div className="progress-bar">
-                      <span style={{ width: `${progress}%` }} />
-                    </div>
-                    <p>{currentIndex + 1}/{totalQuestions}</p>
-                  </div>
+              <div className="form-grid">
+                <label>
+                  你的昵称
+                  <input value={playerName} onChange={(e) => setPlayerName(e.target.value)} />
+                </label>
+                <label>
+                  房间名
+                  <input value={roomName} onChange={(e) => setRoomName(e.target.value)} placeholder="例如: louis-room" />
+                </label>
+              </div>
 
-                  {isEditingQuestion && draftQuestion ? (
-                    <div className="edit-card">
-                      <label>
-                        团名
-                        <input
-                          value={draftQuestion.category}
-                          onChange={(e) => updateDraftQuestion('category', e.target.value)}
-                        />
-                      </label>
+              <div className="action-row host-actions">
+                <button className="primary-button" onClick={createRoom}>保存并发布房间</button>
+                <button className="secondary-button" onClick={shuffleQuestion}>随机换题</button>
+              </div>
 
-                      <label>
-                        题目
-                        <textarea
-                          value={draftQuestion.prompt}
-                          onChange={(e) => updateDraftQuestion('prompt', e.target.value)}
-                        />
-                      </label>
+              {statusText && <div className="status-box">{statusText}</div>}
 
-                      {draftQuestion.options.map((option, index) => (
-                        <label key={`edit-option-${index}`}>
-                          选项 {index + 1}
-                          <input
-                            value={option}
-                            onChange={(e) => updateDraftOption(index, e.target.value)}
-                          />
-                        </label>
-                      ))}
-
-                      <label>
-                        正确答案
-                        <select
-                          value={draftQuestion.correctIndex}
-                          onChange={(e) => updateDraftQuestion('correctIndex', Number(e.target.value))}
-                        >
-                          {draftQuestion.options.map((_, index) => (
-                            <option key={`answer-${index}`} value={index}>选项 {index + 1}</option>
-                          ))}
-                        </select>
-                      </label>
-
-                      <div className="action-row editing">
-                        <button className="secondary-button" onClick={() => setIsEditingQuestion(false)}>
-                          取消
-                        </button>
-                        <button className="primary-button" onClick={saveQuestionEdit}>
-                          保存修改
-                        </button>
-                      </div>
-                    </div>
-                  ) : (
-                    <>
-                      <div className="question-card">
-                        <p className="question-label">题目</p>
-                        <h3>{currentQuestion.prompt}</h3>
-                      </div>
-
-                      <div className="options-grid">
-                        {currentQuestion.options.map((option, index) => {
-                          const isCorrect = index === currentQuestion.correctIndex
-                          const isSelected = selectedAnswer === index
-                          const showCorrect = showAnswer && isCorrect
-                          const showWrong = showAnswer && isSelected && !isCorrect
-
-                          return (
-                            <button
-                              key={`${option}-${index}`}
-                              className={[
-                                'option-button',
-                                isSelected ? 'selected' : '',
-                                showCorrect ? 'correct' : '',
-                                showWrong ? 'wrong' : '',
-                              ]
-                                .filter(Boolean)
-                                .join(' ')}
-                              onClick={() => handleSelect(index)}
-                            >
-                              <span>{String.fromCharCode(65 + index)}</span>
-                              <p>{option}</p>
-                            </button>
-                          )
-                        })}
-                      </div>
-
-                      {showAnswer && (
-                        <div className="answer-box">
-                          <strong>{selectedAnswer === currentQuestion.correctIndex ? '答对了！' : '答错了！'}</strong>
-                          <p>{currentQuestion.fact}</p>
-                        </div>
-                      )}
-                    </>
-                  )}
-
-                  <div className="action-row">
-                    <button className="secondary-button" onClick={resetQuiz}>重新开始</button>
-                    {!isEditingQuestion && (
-                      <button className="secondary-button" onClick={startEditing}>编辑题目</button>
-                    )}
-                    {showAnswer && (
-                      <button className="primary-button" onClick={goNext}>
-                        {currentIndex === questions.length - 1 ? '看结果' : '下一题'}
-                      </button>
-                    )}
-                  </div>
-                </>
-              ) : (
-                <div className="result-card">
-                  <p className="panel-tag">测试结束</p>
-                  <h3>
-                    你答对了 <span>{score}</span> / {totalQuestions} 题
-                  </h3>
-                  <p>
-                    {playerName ? `${playerName}，` : ''}
-                    {score === totalQuestions
-                      ? '完美分数！你和我简直就是 K-pop 断层版默契天花板。'
-                      : score >= Math.ceil(totalQuestions * 0.7)
-                        ? '很强，说明你真的很了解我的 K-pop 口味。'
-                        : score >= Math.ceil(totalQuestions * 0.4)
-                          ? '还不错，继续玩就会越来越懂我。'
-                          : '这轮先当热身，下一轮一定会更准。'}
-                  </p>
-
-                  <div className="result-actions">
-                    <button className="primary-button" onClick={handleShareResult}>分享结果</button>
-                    <button className="secondary-button" onClick={resetQuiz}>再玩一次</button>
-                  </div>
-
-                  {shareNotice && <div className="share-notice">{shareNotice}</div>}
+              {roomInfo && (
+                <div className="room-info-box">
+                  <p>房间：<strong>{roomInfo.roomName}</strong></p>
+                  <p>房主：<strong>{roomInfo.hostName}</strong></p>
                 </div>
               )}
-            </section>
 
-            <aside className="panel sidebar-panel">
-              <div className="panel-header compact">
+              <div className="question-list-edit">
+                {questions.map((question, index) => (
+                  <div key={question.id || `${question.category}-${index}`} className="mini-question-card">
+                    <div className="mini-card-head">
+                      <span>{question.category}</span>
+                      <button type="button" onClick={() => {
+                        setCurrentIndex(index)
+                        setMode('host-play')
+                      }}>编辑</button>
+                    </div>
+                    <p>{question.prompt}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : null}
+
+          {mode === 'challenge' && !completed ? (
+            <div className="panel create-room-panel">
+              <div className="panel-header">
                 <div>
-                  <p className="panel-tag">题库列表</p>
-                  <h2>按团分区</h2>
+                  <p className="panel-tag">答题入口</p>
+                  <h2>输入房间与房主姓名</h2>
                 </div>
               </div>
 
-              <div className="group-list">
-                {groupNames.map((groupName) => (
-                  <button
-                    key={groupName}
-                    className={`group-pill ${currentQuestion?.category === groupName ? 'active' : ''}`}
-                    onClick={() => {
-                      const index = questions.findIndex((question) => question.category === groupName)
-                      if (index >= 0) setCurrentIndex(index)
-                    }}
-                  >
-                    {groupName}
-                  </button>
-                ))}
+              <div className="form-grid">
+                <label>
+                  你的昵称
+                  <input value={nicknameInput} onChange={(e) => setNicknameInput(e.target.value)} />
+                </label>
+                <label>
+                  房间名
+                  <input value={roomName} onChange={(e) => setRoomName(e.target.value)} placeholder="例如: louis-room" />
+                </label>
+                <label>
+                  房主昵称
+                  <input value={hostName} onChange={(e) => setHostName(e.target.value)} placeholder="例如: Louis" />
+                </label>
               </div>
 
-              <div className="mini-summary">
-                <p>当前题目</p>
-                <strong>{currentQuestion?.category || '暂无'}</strong>
-                <span>共 {totalQuestions} 道题</span>
+              <div className="action-row host-actions">
+                <button className="primary-button" onClick={joinRoom}>进入房间</button>
               </div>
 
-              <div className="leaderboard-box">
-                <h3>排行榜</h3>
-                {leaderboard.length ? (
-                  <ol>
-                    {leaderboard.map((entry, index) => (
-                      <li key={`${entry.name}-${index}`}>
-                        <span>{index + 1}. {entry.name}</span>
-                        <strong>{entry.score}/{totalQuestions}</strong>
-                      </li>
+              {statusText && <div className="status-box">{statusText}</div>}
+            </div>
+          ) : null}
+
+          {(mode === 'host-play' || mode === 'challenge-play') && !completed ? (
+            <main className="layout">
+              <section className="panel quiz-panel">
+                <div className="panel-header">
+                  <div>
+                    <p className="panel-tag">题库</p>
+                    <h2>{currentQuestion?.category || '题目'}</h2>
+                  </div>
+                  <button className="ghost-button" onClick={shuffleQuestion}>换一题</button>
+                </div>
+
+                <div className="progress-wrap">
+                  <div className="progress-bar">
+                    <span style={{ width: `${((currentIndex + 1) / totalQuestions) * 100}%` }} />
+                  </div>
+                  <p>{currentIndex + 1}/{totalQuestions}</p>
+                </div>
+
+                {isEditingQuestion && draftQuestion ? (
+                  <div className="edit-card">
+                    <label>
+                      团名
+                      <input value={draftQuestion.category} onChange={(e) => updateDraftQuestion('category', e.target.value)} />
+                    </label>
+                    <label>
+                      题目
+                      <textarea value={draftQuestion.prompt} onChange={(e) => updateDraftQuestion('prompt', e.target.value)} />
+                    </label>
+                    {draftQuestion.options.map((option, index) => (
+                      <label key={`${question.id || index}-${index}`}>
+                        选项 {index + 1}
+                        <input value={option} onChange={(e) => updateDraftOption(index, e.target.value)} />
+                      </label>
                     ))}
-                  </ol>
+                    <label>
+                      正确答案
+                      <select value={draftQuestion.correctIndex} onChange={(e) => updateDraftQuestion('correctIndex', Number(e.target.value))}>
+                        {draftQuestion.options.map((_, index) => (
+                          <option key={`answer-${index}`} value={index}>选项 {index + 1}</option>
+                        ))}
+                      </select>
+                    </label>
+                    <div className="action-row editing">
+                      <button className="secondary-button" onClick={() => setIsEditingQuestion(false)}>取消</button>
+                      <button className="primary-button" onClick={saveQuestionEdit}>保存修改</button>
+                    </div>
+                  </div>
                 ) : (
-                  <p>目前还没有记录，先来一局吧！</p>
+                  <>
+                    <div className="question-card">
+                      <p className="question-label">题目</p>
+                      <h3>{currentQuestion?.prompt}</h3>
+                    </div>
+
+                    <div className="options-grid">
+                      {currentQuestion?.options.map((option, index) => (
+                        <button
+                          key={`${currentQuestion.id || currentQuestion.category}-${index}`}
+                          className={[
+                            'option-button',
+                            selectedAnswer === index ? 'selected' : '',
+                          ].filter(Boolean).join(' ')}
+                          onClick={() => handleSelect(index)}
+                        >
+                          <span>{String.fromCharCode(65 + index)}</span>
+                          <p>{option}</p>
+                        </button>
+                      ))}
+                    </div>
+
+                    {selectedAnswer !== undefined && (
+                      <div className="answer-box">
+                        <strong>已选答案</strong>
+                        <p>你已经完成当前题目的选择，下一题前不会立刻揭晓答案。等全部题目结束后，系统统一统计分数。</p>
+                      </div>
+                    )}
+                  </>
                 )}
+
+                <div className="action-row">
+                  <button className="secondary-button" onClick={resetQuiz}>重新开始</button>
+                  {!isEditingQuestion && mode === 'host-play' && (
+                    <button className="secondary-button" onClick={startEditing}>编辑题目</button>
+                  )}
+                  {selectedAnswer !== undefined && (
+                    <button className="primary-button" onClick={goNext}>
+                      {currentIndex === questions.length - 1 ? '查看结果' : '下一题'}
+                    </button>
+                  )}
+                </div>
+              </section>
+
+              <aside className="panel sidebar-panel">
+                <div className="panel-header compact">
+                  <div>
+                    <p className="panel-tag">团名单</p>
+                    <h2>按团分组</h2>
+                  </div>
+                </div>
+
+                <div className="group-list">
+                  {groupNames.map((groupName) => (
+                    <button
+                      key={groupName}
+                      className={`group-pill ${currentQuestion?.category === groupName ? 'active' : ''}`}
+                      onClick={() => setCurrentIndex(questions.findIndex((question) => question.category === groupName))}
+                    >
+                      {groupName}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="mini-summary">
+                  <p>当前题目</p>
+                  <strong>{currentQuestion?.category || '暂无'}</strong>
+                  <span>共 {totalQuestions} 道题</span>
+                </div>
+
+                <div className="leaderboard-box">
+                  <h3>房间排行</h3>
+                  {leaderboard.length ? (
+                    <ol>
+                      {leaderboard.map((entry, index) => (
+                        <li key={`${entry.player_name}-${index}`}>
+                          <span>{index + 1}. {entry.player_name}</span>
+                          <strong>{entry.score}/{totalQuestions}</strong>
+                        </li>
+                      ))}
+                    </ol>
+                  ) : (
+                    <p>房间里目前还没有答题记录。</p>
+                  )}
+                </div>
+              </aside>
+            </main>
+          ) : null}
+
+          {completed && (
+            <div className="panel result-panel">
+              <p className="panel-tag">测试结束</p>
+              <h2>{playerName} 的最终结果</h2>
+              <div className="result-score">
+                <span>{score}</span>
+                <small>/{totalQuestions}</small>
               </div>
-            </aside>
-          </main>
+
+              <p className="result-message">
+                {score === totalQuestions
+                  ? '完美分数，说明你真的非常懂这位 K-pop 审美。'
+                  : score >= Math.ceil(totalQuestions * 0.7)
+                    ? '表现很强，和对方的口味很接近。'
+                    : score >= Math.ceil(totalQuestions * 0.4)
+                      ? '还不错，继续用心一点，很快就能更懂彼此。'
+                      : '这轮属于热身阶段，下一轮你会更有感觉。'}
+              </p>
+
+              <div className="review-list">
+                {questions.map((question, index) => {
+                  const userChoice = selectedAnswers[index]
+                  const isCorrect = userChoice === question.correctIndex
+                  return (
+                    <div key={`${question.id || question.category}-${index}`} className={`review-item ${isCorrect ? 'correct' : 'wrong'}`}>
+                      <p className="review-tag">{question.category}</p>
+                      <h4>{question.prompt}</h4>
+                      <div className="review-meta">
+                        <span>你的答案：{userChoice !== undefined ? question.options[userChoice] : '未作答'}</span>
+                        <span>正确答案：{question.options[question.correctIndex]}</span>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+
+              <div className="result-actions">
+                <button className="primary-button" onClick={handleShareResult}>分享结果</button>
+                <button className="secondary-button" onClick={resetQuiz}>再玩一次</button>
+              </div>
+
+              {shareNotice && <div className="share-notice">{shareNotice}</div>}
+              {statusText && <div className="status-box">{statusText}</div>}
+            </div>
+          )}
         </>
       )}
     </div>
