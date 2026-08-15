@@ -3,6 +3,7 @@ import { toPng } from 'html-to-image'
 import questionBank from './data/questionBank'
 
 const NICKNAME_KEY = 'kpop-nickname-v2'
+const TOKEN_KEY = 'kpop-token-v1'
 const API_BASE = import.meta.env.VITE_API_BASE || (
   typeof window !== 'undefined' && /github\.io/i.test(window.location.hostname)
     ? 'https://kpop-kdc8.onrender.com'
@@ -15,6 +16,30 @@ const QUIZ_SIZE = 10
 const buildApiUrl = (path) => {
   if (!API_BASE) return path
   return `${API_BASE.replace(/\/$/, '')}${path}`
+}
+
+const readStored = (key) => {
+  try {
+    return localStorage.getItem(key) || ''
+  } catch {
+    return ''
+  }
+}
+
+const writeStored = (key, value) => {
+  try {
+    if (value) localStorage.setItem(key, value)
+    else localStorage.removeItem(key)
+  } catch {
+    /* ignore */
+  }
+}
+
+const apiFetch = (path, options = {}) => {
+  const headers = { ...(options.headers || {}) }
+  const token = readStored(TOKEN_KEY)
+  if (token) headers.Authorization = `Bearer ${token}`
+  return fetch(buildApiUrl(path), { ...options, headers })
 }
 
 const readInvite = () => {
@@ -96,21 +121,21 @@ const optionText = (question, index) => {
 }
 
 const SCORE_COMMENTS = [
-  '0 分，你是来拆台的吗？出题人现在正在怀疑人生。',
-  '1 分，像随手点的，好在没交白卷，功德+1。',
-  '2 分，听过团名，成员脸还在加载中。',
-  '3 分，热身三分钟，正式比赛还没开始。',
-  '4 分，懂一点皮毛，距离入坑还差一张专辑。',
-  '5 分，一半一半，像在和命运猜拳。',
-  '6 分，开始像粉丝了，再追两支直拍就稳。',
-  '7 分，默契在线，出题人应该会点头。',
-  '8 分，就差那么一点，后台应援位给你留着。',
-  '9 分，几乎本命级别，就差那一个冷知识。',
-  '10 分，完美同步，对方审美已经被你拿捏。',
+  '0 分，零默契现场。你们刚才是在各答各的吗？',
+  '1 分，擦肩而过的懂，整体还是各说各的。',
+  '2 分，电波刚开机，对方心思还在缓冲。',
+  '3 分，对上了零星信号，还没连成一句悄悄话。',
+  '4 分，有那么一点懂，但还经常猜错对方的心。',
+  '5 分，半懂半懵，心电感应还在练手。',
+  '6 分，默契开始上线，对方想法你能摸到边了。',
+  '7 分，挺懂的，好多题都像你们私下对过暗号。',
+  '8 分，很懂彼此，只差几处小心思没猜中。',
+  '9 分，几乎读心术，对方审美被你看穿了。',
+  '10 分，满分默契。你们是不是提前对过答案？',
 ]
 
 const scoreComment = (score, total) => {
-  if (total === 10 && Number.isInteger(score) && SCORE_COMMENTS[score]) {
+  if (total === 10 && Number.isInteger(score) && score >= 0 && score < SCORE_COMMENTS.length) {
     return SCORE_COMMENTS[score]
   }
   const ratio = total ? score / total : 0
@@ -129,16 +154,15 @@ const scoreComment = (score, total) => {
 
 const rankMark = (index) => ['🥇', '🥈', '🥉'][index] || `${index + 1}`
 
+const RankSlot = ({ index }) => (
+  <span className={index < 3 ? 'rank-mark' : 'rank-mark is-num'}>{rankMark(index)}</span>
+)
+
 function App() {
   const invite = useMemo(() => readInvite(), [])
   const [screen, setScreen] = useState('login')
-  const [nicknameInput, setNicknameInput] = useState(() => {
-    try {
-      return localStorage.getItem(NICKNAME_KEY) || ''
-    } catch {
-      return ''
-    }
-  })
+  const [nicknameInput, setNicknameInput] = useState(() => readStored(NICKNAME_KEY))
+  const [passwordInput, setPasswordInput] = useState('')
   const [playerName, setPlayerName] = useState('')
   const [questions, setQuestions] = useState([])
   const [roomName, setRoomName] = useState(invite.room)
@@ -236,8 +260,8 @@ function App() {
     if (!loaded.length) throw new Error('房间题目为空')
 
     if (data.hostName === player) {
-      const error = new Error('nickname taken')
-      error.code = 'NICKNAME_TAKEN'
+      const error = new Error('host nickname')
+      error.code = 'HOST_NICKNAME'
       throw error
     }
 
@@ -249,13 +273,13 @@ function App() {
           String(row.player_name || row.playerName || '') === player
         ))
         if (taken) {
-          const error = new Error('nickname taken')
-          error.code = 'NICKNAME_TAKEN'
+          const error = new Error('already played')
+          error.code = 'ALREADY_PLAYED'
           throw error
         }
       }
     } catch (error) {
-      if (error.code === 'NICKNAME_TAKEN') throw error
+      if (error.code === 'ALREADY_PLAYED') throw error
     }
 
     setPlayerName(player)
@@ -270,38 +294,101 @@ function App() {
     setStatusText(`已进入 ${room}，按出题人设好的题目作答。`)
   }
 
+  useEffect(() => {
+    let alive = true
+    const restore = async () => {
+      if (!readStored(TOKEN_KEY)) return
+      try {
+        const res = await apiFetch('/api/me')
+        if (!res.ok) throw new Error('expired')
+        const data = await res.json()
+        if (!alive) return
+        const nickname = data.nickname || readStored(NICKNAME_KEY)
+        if (!nickname) return
+        setPlayerName(nickname)
+        setNicknameInput(nickname)
+        if (invite.room) {
+          try {
+            await enterRoomToPlay(nickname, invite.room)
+          } catch (error) {
+            if (!alive) return
+            if (error.code === 'HOST_NICKNAME') {
+              showToast('房主不能用同一个昵称答题。', 'error')
+            } else if (error.code === 'ALREADY_PLAYED') {
+              showToast('你已经答过这间房了，请去查看结果。', 'error')
+            } else {
+              showToast('没有找到这个房间。房间名区分大小写。', 'error')
+            }
+            setScreen('home')
+          }
+        } else {
+          setScreen('home')
+        }
+      } catch {
+        writeStored(TOKEN_KEY, '')
+      }
+    }
+    restore()
+    return () => {
+      alive = false
+    }
+  }, [])
+
   const handleLogin = async () => {
     const name = nicknameInput.trim()
+    const password = passwordInput
     if (!name) {
       showToast('请输入昵称后再进入。', 'error')
       return
     }
-
-    setPlayerName(name)
-    try {
-      localStorage.setItem(NICKNAME_KEY, name)
-    } catch {
-      /* ignore */
-    }
-
-    if (invite.room) {
-      setBusy(true)
-      try {
-        await enterRoomToPlay(name, invite.room)
-      } catch (error) {
-        if (error.code === 'NICKNAME_TAKEN') {
-          showToast('这个昵称已经有人用了，请换一个。', 'error')
-        } else {
-          showToast('没有找到这个房间。房间名区分大小写。', 'error')
-          setScreen('home')
-        }
-      } finally {
-        setBusy(false)
-      }
+    if (password.length < 4) {
+      showToast('请设置至少 4 位密码，用来保护你的记录。', 'error')
       return
     }
 
-    setScreen('home')
+    setBusy(true)
+    try {
+      const res = await fetch(buildApiUrl('/api/auth'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nickname: name, password }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) {
+        if (data.code === 'NICKNAME_TAKEN') {
+          showToast('这个昵称已经有人用了，请换一个或输入正确密码。', 'error')
+        } else if (data.code === 'PASSWORD_SHORT') {
+          showToast('密码至少 4 位。', 'error')
+        } else {
+          showToast(data.error || '登录失败，请稍后再试。', 'error')
+        }
+        return
+      }
+
+      writeStored(TOKEN_KEY, data.token)
+      writeStored(NICKNAME_KEY, data.nickname)
+      setPlayerName(data.nickname)
+      setNicknameInput(data.nickname)
+      setPasswordInput('')
+
+      if (invite.room) {
+        await enterRoomToPlay(data.nickname, invite.room)
+      } else {
+        setScreen('home')
+      }
+    } catch (error) {
+      if (error.code === 'HOST_NICKNAME') {
+        showToast('房主不能用同一个昵称答题。', 'error')
+        setScreen('home')
+      } else if (error.code === 'ALREADY_PLAYED') {
+        showToast('你已经答过这间房了，请去查看结果。', 'error')
+        setScreen('home')
+      } else {
+        showToast('登录失败，请稍后再试。', 'error')
+      }
+    } finally {
+      setBusy(false)
+    }
   }
 
   const startHost = () => {
@@ -337,9 +424,13 @@ function App() {
     setExpandedPlayed(null)
     setBusy(true)
     try {
-      const res = await fetch(buildApiUrl(`/api/me?name=${encodeURIComponent(name)}`))
+      const res = await apiFetch('/api/me')
       if (!res.ok) throw new Error('load failed')
       const data = await res.json()
+      if (data.nickname) {
+        setPlayerName(data.nickname)
+        setNicknameInput(data.nickname)
+      }
       setMyHosted(Array.isArray(data.hosted) ? data.hosted : [])
       setMyPlayed(Array.isArray(data.played) ? data.played : [])
       setScreen('lookup')
@@ -368,11 +459,9 @@ function App() {
   const logout = () => {
     setPlayerName('')
     setNicknameInput('')
-    try {
-      localStorage.removeItem(NICKNAME_KEY)
-    } catch {
-      /* ignore */
-    }
+    setPasswordInput('')
+    writeStored(NICKNAME_KEY, '')
+    writeStored(TOKEN_KEY, '')
     setQuestions([])
     setCurrentIndex(0)
     setSelectedAnswers({})
@@ -482,12 +571,11 @@ function App() {
 
     setBusy(true)
     try {
-      const res = await fetch(buildApiUrl('/api/room'), {
+      const res = await apiFetch('/api/room', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           roomName: trimmedRoom,
-          hostName: trimmedPlayer,
           questions: payloadQuestions,
         }),
       })
@@ -523,8 +611,10 @@ function App() {
       await enterRoomToPlay(trimmedPlayer, trimmedRoom)
     } catch (error) {
       console.error(error)
-      if (error.code === 'NICKNAME_TAKEN') {
-        showToast('这个昵称已经有人用了，请换一个。', 'error')
+      if (error.code === 'HOST_NICKNAME') {
+        showToast('房主不能用同一个昵称答题。', 'error')
+      } else if (error.code === 'ALREADY_PLAYED') {
+        showToast('你已经答过这间房了，请去查看结果。', 'error')
       } else {
         showToast('没有找到这个房间，房间名区分大小写。', 'error')
       }
@@ -600,17 +690,17 @@ function App() {
 
     if (!roomName || !playerName) return
     try {
-      await fetch(buildApiUrl('/api/records'), {
+      const res = await apiFetch('/api/records', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           roomName,
-          playerName,
           score: finalScore,
           total: questions.length,
           answers: packedAnswers,
         }),
       })
+      if (!res.ok) throw new Error('sync failed')
       setStatusText(`${playerName} 已完成 ${roomName} 房间测验`)
     } catch {
       setStatusText('分数已算出，但排行榜暂时没有同步成功。')
@@ -831,7 +921,7 @@ function App() {
             <h1>K-POP Challenge</h1>
             {screen === 'login' ? (
               <>
-                <p className="login-copy">输入昵称后开始出题或答题</p>
+                <p className="login-copy">输入昵称和密码后开始出题或答题。新昵称会自动创建账号。</p>
                 <div className="login-form stacked">
                   <input
                     value={nicknameInput}
@@ -840,11 +930,23 @@ function App() {
                       if (e.key === 'Enter') handleLogin()
                     }}
                     placeholder="请输入你的昵称"
+                    autoComplete="username"
+                  />
+                  <input
+                    type="password"
+                    value={passwordInput}
+                    onChange={(e) => setPasswordInput(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') handleLogin()
+                    }}
+                    placeholder="设置或输入密码（至少 4 位）"
+                    autoComplete="current-password"
                   />
                   <button className="primary-button" onClick={handleLogin} disabled={busy}>
                     {busy ? '进入中...' : '确定'}
                   </button>
                 </div>
+                <p className="login-hint">昵称全站唯一。设个只有自己知道的密码，别人就不能进你的记录。</p>
               </>
             ) : (
               <>
@@ -1020,9 +1122,10 @@ function App() {
                       const open = selectedRecord?.playerName === entry.playerName
                       return (
                         <div key={`${entry.playerName}-${entry.createdAt}`} className="played-record">
-                          <div className={['player-result-row', 'static', open ? 'active' : ''].filter(Boolean).join(' ')}>
-                            <span>{rankMark(index)} {entry.playerName}</span>
-                            <strong>{entry.score}/{entry.total || totalQuestions}</strong>
+                          <div className={['player-result-row', 'static', 'ranked', open ? 'active' : ''].filter(Boolean).join(' ')}>
+                            <RankSlot index={index} />
+                            <span className="rank-name">{entry.playerName}</span>
+                            <strong className="rank-score">{entry.score}/{entry.total || totalQuestions}</strong>
                             <button
                               type="button"
                               className="ghost-button compact-toggle icon-toggle"
@@ -1094,8 +1197,9 @@ function App() {
                   <ol>
                     {leaderboard.map((entry, index) => (
                       <li key={`${entry.player_name || entry.playerName}-${index}`}>
-                        <span>{rankMark(index)} {entry.player_name || entry.playerName}</span>
-                        <strong>{entry.score}/{entry.total || totalQuestions}</strong>
+                        <RankSlot index={index} />
+                        <span className="rank-name">{entry.player_name || entry.playerName}</span>
+                        <strong className="rank-score">{entry.score}/{entry.total || totalQuestions}</strong>
                       </li>
                     ))}
                   </ol>
