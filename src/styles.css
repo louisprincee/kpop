@@ -90,7 +90,12 @@ input, textarea, select {
 }
 
 .login-form.stacked {
-  display: block;
+  display: grid;
+  gap: 12px;
+}
+
+.login-form.stacked .primary-button {
+  width: 100%;
 }
 
 .login-form input,
@@ -456,6 +461,8 @@ input, textarea, select {
 .result-panel {
   max-width: 960px;
   margin: 0 auto;
+  background: #ffffff;
+  padding: 32px 28px 36px;
 }
 
 .result-score {
@@ -756,8 +763,60 @@ input, textarea, select {
   font-size: 0.9rem;
 }
 
+.record-section {
+  margin-top: 22px;
+  text-align: left;
+}
+
+.record-section h3 {
+  margin: 0 0 12px;
+  color: #1a1d26;
+  font-size: 1rem;
+}
+
+.played-record {
+  display: grid;
+  gap: 10px;
+}
+
+.player-result-row.static {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  cursor: default;
+}
+
+.compact-toggle {
+  flex-shrink: 0;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+.details-toggle-row {
+  margin: 18px 0 4px;
+}
+
+.result-capture-offscreen {
+  position: fixed;
+  left: -10000px;
+  top: 0;
+  width: 720px;
+  pointer-events: none;
+}
+
 .result-capture {
-  padding: 8px 4px 18px;
+  background: #ffffff;
+  padding: 48px 44px 56px;
+  color: #171b22;
+}
+
+.result-capture .review-list {
+  margin-top: 28px;
+  gap: 14px;
+}
+
+.result-capture .review-item {
+  padding: 16px 18px;
 }
 
 .host-board {

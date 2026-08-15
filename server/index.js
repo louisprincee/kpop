@@ -67,6 +67,55 @@ app.get('/api/health', (req, res) => {
   res.json({ ok: true, message: 'K-pop quiz backend is running.' });
 });
 
+app.get('/api/me', (req, res) => {
+  const name = String(req.query.name || '').trim();
+  if (!name) {
+    return res.status(400).json({ error: 'Name is required.' });
+  }
+
+  const hosted = db.prepare(`
+    SELECT room_name, host_name, updated_at,
+      (SELECT COUNT(*) FROM records WHERE records.room_name = rooms.room_name) AS player_count
+    FROM rooms
+    WHERE host_name = ?
+    ORDER BY updated_at DESC
+  `).all(name);
+
+  const played = db.prepare(`
+    SELECT r.room_name, rooms.host_name, r.score, r.total, r.answers, r.created_at, rooms.questions
+    FROM records r
+    JOIN rooms ON rooms.room_name = r.room_name
+    WHERE r.player_name = ?
+    ORDER BY r.created_at DESC
+  `).all(name);
+
+  res.json({
+    hosted: hosted.map((row) => ({
+      roomName: row.room_name,
+      hostName: row.host_name,
+      updatedAt: row.updated_at,
+      playerCount: row.player_count,
+    })),
+    played: played.map((row) => {
+      let questions = [];
+      try {
+        questions = JSON.parse(row.questions || '[]');
+      } catch {
+        questions = [];
+      }
+      return {
+        roomName: row.room_name,
+        hostName: row.host_name,
+        score: row.score,
+        total: row.total,
+        answers: parseAnswers(row.answers),
+        questions,
+        createdAt: row.created_at,
+      };
+    }),
+  });
+});
+
 app.get('/api/leaderboard', (req, res) => {
   const roomName = (req.query.room || '').trim();
   const rows = roomName

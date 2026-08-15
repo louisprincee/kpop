@@ -27,7 +27,7 @@ const readInvite = () => {
 }
 
 const makeRoomCode = (name = '') => {
-  const slug = String(name).toLowerCase().replace(/[^a-z0-9\u4e00-\u9fff]+/g, '').slice(0, 8) || 'room'
+  const slug = String(name).replace(/[^a-zA-Z0-9\u4e00-\u9fff]+/g, '').slice(0, 8) || 'room'
   return `${slug}-${Math.random().toString(36).slice(2, 6)}`
 }
 
@@ -97,7 +97,7 @@ const optionText = (question, index) => {
 
 function App() {
   const invite = useMemo(() => readInvite(), [])
-  const [screen, setScreen] = useState('home')
+  const [screen, setScreen] = useState('login')
   const [nicknameInput, setNicknameInput] = useState(() => {
     try {
       return localStorage.getItem(NICKNAME_KEY) || ''
@@ -122,6 +122,10 @@ function App() {
   const [busy, setBusy] = useState(false)
   const [selectedRecord, setSelectedRecord] = useState(null)
   const [sharing, setSharing] = useState(false)
+  const [detailsOpen, setDetailsOpen] = useState(false)
+  const [myHosted, setMyHosted] = useState([])
+  const [myPlayed, setMyPlayed] = useState([])
+  const [expandedPlayed, setExpandedPlayed] = useState(null)
   const captureRef = useRef(null)
 
   const currentQuestion = questions[currentIndex] || null
@@ -181,12 +185,63 @@ function App() {
   }
 
   const requireNickname = () => {
-    const trimmed = nicknameInput.trim()
+    const trimmed = playerName.trim() || nicknameInput.trim()
     if (!trimmed) {
-      showToast('请输入昵称后再继续。', 'error')
+      showToast('请先登录昵称。', 'error')
       return ''
     }
     return trimmed
+  }
+
+  const enterRoomToPlay = async (player, room, expectedHost = '') => {
+    const res = await fetch(buildApiUrl(`/api/room/${encodeURIComponent(room)}`))
+    if (!res.ok) throw new Error('Room not found')
+    const data = await res.json()
+    if (expectedHost && data.hostName !== expectedHost) throw new Error('房主昵称不匹配')
+
+    const loaded = normalizeQuestions(data.questions || [], true)
+    if (!loaded.length) throw new Error('房间题目为空')
+
+    setPlayerName(player)
+    setRoomName(room)
+    setHostName(data.hostName)
+    setRoomInfo({ roomName: room, hostName: data.hostName })
+    setQuestions(loaded)
+    setCurrentIndex(0)
+    setSelectedAnswers({})
+    setScore(0)
+    setScreen('play')
+    setStatusText(`已进入 ${room}，按出题人设好的题目作答。`)
+  }
+
+  const handleLogin = async () => {
+    const name = nicknameInput.trim()
+    if (!name) {
+      showToast('请输入昵称后再进入。', 'error')
+      return
+    }
+
+    setPlayerName(name)
+    try {
+      localStorage.setItem(NICKNAME_KEY, name)
+    } catch {
+      /* ignore */
+    }
+
+    if (invite.room) {
+      setBusy(true)
+      try {
+        await enterRoomToPlay(name, invite.room)
+      } catch {
+        showToast('没有找到这个房间。房间名区分大小写。', 'error')
+        setScreen('home')
+      } finally {
+        setBusy(false)
+      }
+      return
+    }
+
+    setScreen('home')
   }
 
   const startHost = () => {
@@ -201,33 +256,42 @@ function App() {
     setScore(0)
     setRoomInfo(null)
     setStatusText('')
-    setScreen('host-setup')
+    setScreen('host-play')
   }
 
   const startJoin = () => {
     const name = requireNickname()
     if (!name) return
     setPlayerName(name)
-    if (invite.room) setRoomName(invite.room)
-    if (invite.host) setHostName(invite.host)
+    setRoomName(invite.room || '')
+    setHostName('')
     setStatusText('')
     setScreen('join')
   }
 
-  const startLookup = () => {
+  const startLookup = async () => {
     const name = requireNickname()
     if (!name) return
     setPlayerName(name)
-    if (invite.room) setRoomName(invite.room)
-    if (invite.host) setHostName(invite.host)
-    setStatusText('')
     setSelectedRecord(null)
-    setScreen('lookup')
+    setExpandedPlayed(null)
+    setBusy(true)
+    try {
+      const res = await fetch(buildApiUrl(`/api/me?name=${encodeURIComponent(name)}`))
+      if (!res.ok) throw new Error('load failed')
+      const data = await res.json()
+      setMyHosted(Array.isArray(data.hosted) ? data.hosted : [])
+      setMyPlayed(Array.isArray(data.played) ? data.played : [])
+      setScreen('lookup')
+    } catch {
+      showToast('暂时没法读取记录，请稍后再试。', 'error')
+    } finally {
+      setBusy(false)
+    }
   }
 
   const goHome = () => {
     setScreen('home')
-    setPlayerName('')
     setQuestions([])
     setCurrentIndex(0)
     setSelectedAnswers({})
@@ -238,6 +302,33 @@ function App() {
     setDraftQuestion(null)
     setLeaderboard([])
     setSelectedRecord(null)
+    setDetailsOpen(false)
+    setExpandedPlayed(null)
+  }
+
+  const logout = () => {
+    setPlayerName('')
+    setNicknameInput('')
+    try {
+      localStorage.removeItem(NICKNAME_KEY)
+    } catch {
+      /* ignore */
+    }
+    setQuestions([])
+    setCurrentIndex(0)
+    setSelectedAnswers({})
+    setScore(0)
+    setRoomInfo(null)
+    setStatusText('')
+    setIsEditingQuestion(false)
+    setDraftQuestion(null)
+    setLeaderboard([])
+    setSelectedRecord(null)
+    setDetailsOpen(false)
+    setExpandedPlayed(null)
+    setMyHosted([])
+    setMyPlayed([])
+    setScreen('login')
   }
 
   const handleSelect = (optionIndex) => {
@@ -360,118 +451,77 @@ function App() {
     }
   }
 
-  const beginHostPlay = () => {
+  const joinRoom = async () => {
     const trimmedPlayer = playerName.trim()
     const trimmedRoom = roomName.trim()
+
     if (!trimmedPlayer || !trimmedRoom) {
-      showToast('请输入你的昵称和房间名。', 'error')
-      return
-    }
-    setPlayerName(trimmedPlayer)
-    setHostName(trimmedPlayer)
-    if (!questions.length) setQuestions(getStarterQuestions())
-    setCurrentIndex(0)
-    setSelectedAnswers({})
-    setScreen('host-play')
-  }
-
-  const joinRoom = async () => {
-    const trimmedPlayer = nicknameInput.trim()
-    const trimmedRoom = roomName.trim()
-    const trimmedHost = hostName.trim()
-
-    if (!trimmedPlayer || !trimmedRoom || !trimmedHost) {
-      showToast('昵称、房间名和房主名字都需要填写。', 'error')
+      showToast('请输入房间名。', 'error')
       return
     }
 
     setBusy(true)
     try {
-      const res = await fetch(buildApiUrl(`/api/room/${encodeURIComponent(trimmedRoom)}`))
-      if (!res.ok) throw new Error('Room not found')
-
-      const data = await res.json()
-      if (data.hostName.trim().toLowerCase() !== trimmedHost.toLowerCase()) throw new Error('房主昵称不匹配')
-
-      const loaded = normalizeQuestions(data.questions || [], true)
-      if (!loaded.length) throw new Error('房间题目为空')
-
-      setPlayerName(trimmedPlayer)
-      setRoomInfo({ roomName: trimmedRoom, hostName: trimmedHost })
-      setQuestions(loaded)
-      setCurrentIndex(0)
-      setSelectedAnswers({})
-      setScore(0)
-      setScreen('play')
-      setStatusText(`已进入 ${trimmedRoom}，按出题人设好的题目作答。`)
+      await enterRoomToPlay(trimmedPlayer, trimmedRoom)
     } catch (error) {
       console.error(error)
-      showToast('没有找到这个房间，或房主昵称输入不正确。', 'error')
+      showToast('没有找到这个房间，房间名区分大小写。', 'error')
     } finally {
       setBusy(false)
     }
   }
 
-  const lookupResults = async () => {
-    const trimmedPlayer = (nicknameInput.trim() || playerName.trim())
-    const trimmedRoom = roomName.trim()
-    const trimmedHost = hostName.trim()
+  const applyRecordAnswers = (answers, length) => {
+    const packed = toAnswerList(answers, length)
+    const mapped = {}
+    packed.forEach((value, index) => {
+      if (Number.isInteger(value)) mapped[index] = value
+    })
+    return mapped
+  }
 
-    if (!trimmedPlayer || !trimmedRoom || !trimmedHost) {
-      showToast('昵称、房间名和房主名字都需要填写。', 'error')
-      return
-    }
-
+  const openHostedRoom = async (hosted) => {
     setBusy(true)
     try {
-      const res = await fetch(buildApiUrl(`/api/room/${encodeURIComponent(trimmedRoom)}/results`))
+      const res = await fetch(buildApiUrl(`/api/room/${encodeURIComponent(hosted.roomName)}/results`))
       if (!res.ok) throw new Error('Room not found')
-
       const data = await res.json()
-      if (String(data.hostName || '').trim().toLowerCase() !== trimmedHost.toLowerCase()) {
-        throw new Error('房主昵称不匹配')
-      }
-
       const loaded = normalizeQuestions(data.questions || [], true)
       if (!loaded.length) throw new Error('房间题目为空')
 
-      const records = Array.isArray(data.records) ? data.records : []
-      setPlayerName(trimmedPlayer)
-      setRoomName(trimmedRoom)
+      setRoomName(hosted.roomName)
       setHostName(data.hostName)
-      setRoomInfo({ roomName: trimmedRoom, hostName: data.hostName })
+      setRoomInfo({ roomName: hosted.roomName, hostName: data.hostName })
       setQuestions(loaded)
-      setLeaderboard(records)
-
-      const isHost = trimmedPlayer.toLowerCase() === String(data.hostName).trim().toLowerCase()
-      if (isHost) {
-        setSelectedRecord(null)
-        setScreen('host-share')
-        setStatusText('正在查看这个房间里所有人的答题结果。')
-        return
-      }
-
-      const mine = records.find((entry) => String(entry.playerName || '').trim().toLowerCase() === trimmedPlayer.toLowerCase())
-      if (!mine) {
-        showToast('还没有你的交卷记录，确认昵称是否和答题时一致。', 'error')
-        return
-      }
-
-      const packed = toAnswerList(mine.answers, loaded.length)
-      const mapped = {}
-      packed.forEach((value, index) => {
-        if (Number.isInteger(value)) mapped[index] = value
-      })
-      setSelectedAnswers(mapped)
-      setScore(Number(mine.score) || 0)
-      setScreen('result')
-      setStatusText(`${trimmedPlayer} 在 ${trimmedRoom} 的答题记录`)
+      setLeaderboard(Array.isArray(data.records) ? data.records : [])
+      setSelectedRecord(null)
+      setScreen('host-share')
+      setStatusText('正在查看这个房间里所有人的答题结果。')
     } catch (error) {
       console.error(error)
-      showToast('没有找到这个房间，或房主昵称输入不正确。', 'error')
+      showToast('暂时没法打开这间房的结果。', 'error')
     } finally {
       setBusy(false)
     }
+  }
+
+  const openPlayedRecord = (played) => {
+    const loaded = normalizeQuestions(played.questions || [], true)
+    if (!loaded.length) {
+      showToast('这轮记录里没有题目。', 'error')
+      return
+    }
+
+    setRoomName(played.roomName)
+    setHostName(played.hostName)
+    setRoomInfo({ roomName: played.roomName, hostName: played.hostName })
+    setQuestions(loaded)
+    setSelectedAnswers(applyRecordAnswers(played.answers, loaded.length))
+    setScore(Number(played.score) || 0)
+    setLeaderboard([])
+    setDetailsOpen(false)
+    setScreen('result')
+    setStatusText(`${playerName} 在 ${played.roomName} 的答题记录`)
   }
 
   const finishQuiz = async (answers = selectedAnswers) => {
@@ -541,7 +591,7 @@ function App() {
       const dataUrl = await toPng(captureRef.current, {
         pixelRatio: 2,
         cacheBust: true,
-        backgroundColor: '#f7f8ff',
+        backgroundColor: '#ffffff',
       })
       const link = document.createElement('a')
       link.download = `kpop-challenge-${playerName || 'result'}.png`
@@ -575,21 +625,22 @@ function App() {
         <div className="brand-mark">K</div>
         <div>
           <p className="eyebrow">K-POP 默契挑战</p>
-          <h1>Kpop Challenge</h1>
+          <h1>K-POP Challenge</h1>
         </div>
       </div>
 
       <div className="topbar-actions">
         <div className="login-box">
-          <span>{playerName || nicknameInput || '未登录'}</span>
+          <span>{playerName || '未登录'}</span>
           <button onClick={goHome}>返回首页</button>
+          <button onClick={logout}>切换账号</button>
         </div>
         {screen === 'play' || screen === 'result' ? (
           <div className="score-chip">
             <span>当前分数</span>
             <strong>{score}</strong>
           </div>
-        ) : (
+        ) : screen === 'host-play' || screen === 'host-share' ? (
           <div className="score-chip">
             <span>{screen === 'host-share' ? '已交卷' : '已设标准答案'}</span>
             <strong>
@@ -598,7 +649,7 @@ function App() {
                 : `${answeredCount}/${totalQuestions || QUIZ_SIZE}`}
             </strong>
           </div>
-        )}
+        ) : null}
       </div>
     </header>
   )
@@ -689,29 +740,62 @@ function App() {
     </main>
   )
 
+  const renderReviewList = (choiceOf, labels = { user: '你的答案', host: '出题人答案' }) => (
+    <div className="review-list">
+      {questions.map((question, index) => {
+        const userChoice = choiceOf(index)
+        const isCorrect = userChoice === question.correctIndex
+        return (
+          <div key={`${question.id || question.category}-${index}`} className={`review-item ${isCorrect ? 'correct' : 'wrong'}`}>
+            <h4>{index + 1}. {question.prompt}</h4>
+            <div className="review-meta">
+              <span>{labels.user}：{optionText(question, userChoice)}</span>
+              <span>{labels.host}：{optionText(question, question.correctIndex)}</span>
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+
   return (
     <div className="app-shell">
-      {screen === 'home' ? (
+      {screen === 'login' || screen === 'home' ? (
         <div className="login-screen">
           <div className="login-card">
             <div className="brand-mark">K</div>
             <p className="eyebrow">K-POP 默契挑战</p>
             <h1>Kpop Challenge</h1>
-            <p className="login-copy">先写下你的昵称，再选出题、答题或查看结果。</p>
-
-            <div className="login-form stacked">
-              <input
-                value={nicknameInput}
-                onChange={(e) => setNicknameInput(e.target.value)}
-                placeholder="请输入你的昵称"
-              />
-            </div>
-
-            <div className="mode-grid">
-              <button className="primary-button" onClick={startHost}>我来出题</button>
-              <button className="secondary-button" onClick={startJoin}>我来答题</button>
-            </div>
-            <button className="ghost-button view-results-btn" onClick={startLookup}>查看结果</button>
+            {screen === 'login' ? (
+              <>
+                <p className="login-copy">先输入昵称并确定，再开始出题或答题。昵称区分大小写。</p>
+                <div className="login-form stacked">
+                  <input
+                    value={nicknameInput}
+                    onChange={(e) => setNicknameInput(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') handleLogin()
+                    }}
+                    placeholder="请输入你的昵称"
+                  />
+                  <button className="primary-button" onClick={handleLogin} disabled={busy}>
+                    {busy ? '进入中...' : '确定'}
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="login-copy">当前用户：{playerName}。选择我要出题、我要答题或查看结果。</p>
+                <div className="mode-grid">
+                  <button className="primary-button" onClick={startHost}>我要出题</button>
+                  <button className="secondary-button" onClick={startJoin}>我要答题</button>
+                </div>
+                <button className="ghost-button view-results-btn" onClick={startLookup} disabled={busy}>
+                  {busy ? '读取中...' : '查看结果'}
+                </button>
+                <button className="ghost-button view-results-btn" onClick={logout}>切换账号</button>
+              </>
+            )}
 
             <div className="rules-box">
               <h3>玩法说明</h3>
@@ -728,57 +812,19 @@ function App() {
         <>
           {renderTopbar()}
 
-          {screen === 'host-setup' && (
-            <div className="panel create-room-panel">
-              <div className="panel-header">
-                <div>
-                  <p className="panel-tag">房主入口</p>
-                  <h2>创建你的 K-pop 房间</h2>
-                </div>
-              </div>
-
-              <div className="form-grid">
-                <label>
-                  你的昵称
-                  <input value={playerName} onChange={(e) => setPlayerName(e.target.value)} />
-                </label>
-                <label>
-                  房间名
-                  <input value={roomName} onChange={(e) => setRoomName(e.target.value)} />
-                </label>
-              </div>
-
-              <div className="action-row host-actions">
-                <button className="primary-button" onClick={beginHostPlay}>开始出题</button>
-              </div>
-
-              <div className="status-box">
-                接下来请逐题选出你的标准答案。全部完成后会生成房间，把房间名或链接发给朋友即可。
-              </div>
-            </div>
-          )}
-
           {screen === 'join' && (
             <div className="panel create-room-panel">
               <div className="panel-header">
                 <div>
                   <p className="panel-tag">答题入口</p>
-                  <h2>输入房间与房主姓名</h2>
+                  <h2>输入房间号开始答题</h2>
                 </div>
               </div>
 
               <div className="form-grid">
                 <label>
-                  你的昵称
-                  <input value={nicknameInput} onChange={(e) => setNicknameInput(e.target.value)} />
-                </label>
-                <label>
                   房间名
-                  <input value={roomName} onChange={(e) => setRoomName(e.target.value)} />
-                </label>
-                <label>
-                  房主昵称
-                  <input value={hostName} onChange={(e) => setHostName(e.target.value)} />
+                  <input value={roomName} onChange={(e) => setRoomName(e.target.value)} placeholder="区分大小写" />
                 </label>
               </div>
 
@@ -797,33 +843,78 @@ function App() {
               <div className="panel-header">
                 <div>
                   <p className="panel-tag">查看结果</p>
-                  <h2>用房间信息找回成绩</h2>
+                  <h2>你的出题和答题记录</h2>
                 </div>
               </div>
 
-              <div className="form-grid">
-                <label>
-                  你的昵称
-                  <input value={nicknameInput} onChange={(e) => setNicknameInput(e.target.value)} />
-                </label>
-                <label>
-                  房间名
-                  <input value={roomName} onChange={(e) => setRoomName(e.target.value)} />
-                </label>
-                <label>
-                  房主昵称
-                  <input value={hostName} onChange={(e) => setHostName(e.target.value)} />
-                </label>
+              <div className="record-section">
+                <h3>我出过的题</h3>
+                {myHosted.length === 0 ? (
+                  <p className="empty-board">还没有生成过房间。</p>
+                ) : (
+                  <div className="player-result-list">
+                    {myHosted.map((entry) => (
+                      <button
+                        key={entry.roomName}
+                        className="player-result-row"
+                        onClick={() => openHostedRoom(entry)}
+                      >
+                        <span>{entry.roomName}</span>
+                        <strong>{entry.playerCount || 0} 人交卷</strong>
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
 
-              <div className="action-row host-actions">
-                <button className="primary-button" onClick={lookupResults} disabled={busy}>
-                  {busy ? '查询中...' : '查看结果'}
-                </button>
-              </div>
-
-              <div className="status-box">
-                房主输入自己的昵称，可以看到所有人的答题详情；答题人输入当时用的昵称，可以找回自己的成绩和长图。
+              <div className="record-section">
+                <h3>我答过的题</h3>
+                {myPlayed.length === 0 ? (
+                  <p className="empty-board">还没有交过卷。</p>
+                ) : (
+                  <div className="player-result-list">
+                    {myPlayed.map((entry) => {
+                      const open = expandedPlayed === entry.roomName
+                      const loaded = normalizeQuestions(entry.questions || [], true)
+                      const answers = toAnswerList(entry.answers, loaded.length)
+                      return (
+                        <div key={entry.roomName} className="played-record">
+                          <div className="player-result-row static">
+                            <span>{entry.roomName} · 房主 {entry.hostName}</span>
+                            <strong>{entry.score}/{entry.total}</strong>
+                            <button
+                              type="button"
+                              className="ghost-button compact-toggle"
+                              onClick={() => setExpandedPlayed(open ? null : entry.roomName)}
+                            >
+                              {open ? '收起' : '展示'}
+                            </button>
+                          </div>
+                          {open && (
+                            <div className="review-list host-review">
+                              {loaded.map((question, index) => {
+                                const userChoice = answers[index]
+                                const isCorrect = userChoice === question.correctIndex
+                                return (
+                                  <div key={`${question.id || question.category}-${index}`} className={`review-item ${isCorrect ? 'correct' : 'wrong'}`}>
+                                    <h4>{index + 1}. {question.prompt}</h4>
+                                    <div className="review-meta">
+                                      <span>你的答案：{optionText(question, userChoice)}</span>
+                                      <span>出题人答案：{optionText(question, question.correctIndex)}</span>
+                                    </div>
+                                  </div>
+                                )
+                              })}
+                              <button className="secondary-button" onClick={() => openPlayedRecord(entry)}>
+                                打开完整结果
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      )
+                    })}
+                  </div>
+                )}
               </div>
             </div>
           )}
@@ -834,7 +925,7 @@ function App() {
             <div className="panel result-panel">
               <p className="panel-tag">房间结果</p>
               <h2>查看这间房的答题情况</h2>
-              <p className="result-message">朋友交卷后会出现在下方。点名字就能看到每一题的对比。</p>
+              <p className="result-message">朋友交卷后会出现在下方。点「展示」就能看到每一题的对比。</p>
 
               <div className="share-card">
                 <div>
@@ -861,33 +952,39 @@ function App() {
                   <p className="empty-board">还没有朋友交卷，把房间名发给他们即可。</p>
                 ) : (
                   <div className="player-result-list">
-                    {leaderboard.map((entry) => (
-                      <button
-                        key={`${entry.playerName}-${entry.createdAt}`}
-                        className={['player-result-row', selectedRecord?.playerName === entry.playerName ? 'active' : ''].filter(Boolean).join(' ')}
-                        onClick={() => setSelectedRecord(entry)}
-                      >
-                        <span>{entry.playerName}</span>
-                        <strong>{entry.score}/{entry.total || totalQuestions}</strong>
-                      </button>
-                    ))}
-                  </div>
-                )}
-
-                {selectedRecord && (
-                  <div className="review-list host-review">
-                    <h4>{selectedRecord.playerName} 的答题详情</h4>
-                    {questions.map((question, index) => {
-                      const answers = toAnswerList(selectedRecord.answers, questions.length)
-                      const userChoice = answers[index]
-                      const isCorrect = userChoice === question.correctIndex
+                    {leaderboard.map((entry) => {
+                      const open = selectedRecord?.playerName === entry.playerName
                       return (
-                        <div key={`${question.id || question.category}-${index}`} className={`review-item ${isCorrect ? 'correct' : 'wrong'}`}>
-                          <h4>{question.prompt}</h4>
-                          <div className="review-meta">
-                            <span>TA 的答案：{optionText(question, userChoice)}</span>
-                            <span>你的标准答案：{optionText(question, question.correctIndex)}</span>
+                        <div key={`${entry.playerName}-${entry.createdAt}`} className="played-record">
+                          <div className={['player-result-row', 'static', open ? 'active' : ''].filter(Boolean).join(' ')}>
+                            <span>{entry.playerName}</span>
+                            <strong>{entry.score}/{entry.total || totalQuestions}</strong>
+                            <button
+                              type="button"
+                              className="ghost-button compact-toggle"
+                              onClick={() => setSelectedRecord(open ? null : entry)}
+                            >
+                              {open ? '收起' : '展示'}
+                            </button>
                           </div>
+                          {open && (
+                            <div className="review-list host-review">
+                              {questions.map((question, index) => {
+                                const answers = toAnswerList(entry.answers, questions.length)
+                                const userChoice = answers[index]
+                                const isCorrect = userChoice === question.correctIndex
+                                return (
+                                  <div key={`${question.id || question.category}-${index}`} className={`review-item ${isCorrect ? 'correct' : 'wrong'}`}>
+                                    <h4>{index + 1}. {question.prompt}</h4>
+                                    <div className="review-meta">
+                                      <span>TA 的答案：{optionText(question, userChoice)}</span>
+                                      <span>你的标准答案：{optionText(question, question.correctIndex)}</span>
+                                    </div>
+                                  </div>
+                                )
+                              })}
+                            </div>
+                          )}
                         </div>
                       )
                     })}
@@ -902,40 +999,51 @@ function App() {
 
           {screen === 'result' && (
             <div className="panel result-panel">
-              <div className="result-capture" ref={captureRef}>
-                <p className="panel-tag">测试结束</p>
-                <h2>{playerName} 的最终结果</h2>
-                <div className="result-score">
-                  <span>{score}</span>
-                  <small>/{totalQuestions}</small>
-                </div>
-
-                <p className="result-message">
-                  {score === totalQuestions
-                    ? '完美分数，说明你真的非常懂这位 K-pop 审美。'
-                    : score >= Math.ceil(totalQuestions * 0.7)
-                      ? '表现很强，和对方的口味很接近。'
-                      : score >= Math.ceil(totalQuestions * 0.4)
-                        ? '还不错，继续用心一点，很快就能更懂彼此。'
-                        : '这轮属于热身阶段，下一轮你会更有感觉。'}
-                </p>
-
-                <div className="review-list">
-                  {questions.map((question, index) => {
-                    const userChoice = selectedAnswers[index]
-                    const isCorrect = userChoice === question.correctIndex
-                    return (
-                      <div key={`${question.id || question.category}-${index}`} className={`review-item ${isCorrect ? 'correct' : 'wrong'}`}>
-                        <h4>{index + 1}. {question.prompt}</h4>
-                        <div className="review-meta">
-                          <span>你的答案：{optionText(question, userChoice)}</span>
-                          <span>出题人答案：{optionText(question, question.correctIndex)}</span>
-                        </div>
-                      </div>
-                    )
-                  })}
+              <div className="result-capture-offscreen" aria-hidden="true">
+                <div className="result-capture" ref={captureRef}>
+                  <p className="panel-tag">测试结果</p>
+                  <h2>{playerName} 的最终结果</h2>
+                  <div className="result-score">
+                    <span>{score}</span>
+                    <small>/{totalQuestions}</small>
+                  </div>
+                  <p className="result-message">
+                    {score === totalQuestions
+                      ? '完美分数，说明你真的非常懂这位 K-pop 审美。'
+                      : score >= Math.ceil(totalQuestions * 0.7)
+                        ? '表现很强，和对方的口味很接近。'
+                        : score >= Math.ceil(totalQuestions * 0.4)
+                          ? '还不错，继续用心一点，很快就能更懂彼此。'
+                          : '这轮属于热身阶段，下一轮你会更有感觉。'}
+                  </p>
+                  {renderReviewList((index) => selectedAnswers[index])}
                 </div>
               </div>
+
+              <p className="panel-tag">测试结束</p>
+              <h2>{playerName} 的最终结果</h2>
+              <div className="result-score">
+                <span>{score}</span>
+                <small>/{totalQuestions}</small>
+              </div>
+
+              <p className="result-message">
+                {score === totalQuestions
+                  ? '完美分数，说明你真的非常懂这位 K-pop 审美。'
+                  : score >= Math.ceil(totalQuestions * 0.7)
+                    ? '表现很强，和对方的口味很接近。'
+                    : score >= Math.ceil(totalQuestions * 0.4)
+                      ? '还不错，继续用心一点，很快就能更懂彼此。'
+                      : '这轮属于热身阶段，下一轮你会更有感觉。'}
+              </p>
+
+              <div className="details-toggle-row">
+                <button className="ghost-button" onClick={() => setDetailsOpen((open) => !open)}>
+                  {detailsOpen ? '收起' : '展示'}
+                </button>
+              </div>
+
+              {detailsOpen && renderReviewList((index) => selectedAnswers[index])}
 
               {leaderboard.length > 0 && (
                 <div className="leaderboard-box">
