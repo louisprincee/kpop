@@ -10,13 +10,41 @@ const buildApiUrl = (path) => {
   return `${API_BASE.replace(/\/$/, '')}${path}`
 }
 
+const normalizeQuestion = (question, index = 0) => {
+  const safeOptions = Array.isArray(question.options)
+    ? question.options.slice(0, 4).map((option) => String(option || '').trim()).filter(Boolean)
+    : []
+
+  const safeOptionsList = safeOptions.length >= 4
+    ? safeOptions.slice(0, 4)
+    : [...safeOptions, ...Array.from({ length: Math.max(0, 4 - safeOptions.length) }, (_, offset) => `选项 ${offset + 1}`)]
+
+  const safeCorrectIndex = Number.isInteger(question.correctIndex)
+    ? Math.min(Math.max(question.correctIndex, 0), 3)
+    : 0
+
+  return {
+    ...question,
+    id: question.id || `q-${index + 1}`,
+    category: question.category || 'K-pop',
+    prompt: String(question.prompt || '').trim() || `题目 ${index + 1}`,
+    options: safeOptionsList.slice(0, 4),
+    correctIndex: safeCorrectIndex,
+  }
+}
+
+const normalizeQuestions = (items = []) => {
+  if (!Array.isArray(items)) return []
+  return items
+    .map((question, index) => normalizeQuestion(question, index))
+    .filter((question) => Array.isArray(question.options) && question.options.length === 4)
+    .slice(0, 20)
+}
+
 const getStarterQuestions = () => {
   if (!questionBank || questionBank.length === 0) return []
   const shuffled = [...questionBank].sort(() => Math.random() - 0.5)
-  return shuffled.slice(0, 20).map((question, index) => ({
-    ...question,
-    id: question.id || `q-${index + 1}`,
-  }))
+  return normalizeQuestions(shuffled).slice(0, 20)
 }
 
 function App() {
@@ -48,6 +76,7 @@ function App() {
   const [shareNotice, setShareNotice] = useState('')
   const [statusText, setStatusText] = useState('')
   const [roomInfo, setRoomInfo] = useState(null)
+  const [toast, setToast] = useState(null)
 
   const currentQuestion = questions[currentIndex] || null
   const selectedAnswer = selectedAnswers[currentIndex]
@@ -86,6 +115,12 @@ function App() {
   }, [currentIndex, currentQuestion])
 
   const totalQuestions = questions.length
+
+  const showToast = (message, kind = 'info') => {
+    setToast({ message, kind })
+    window.clearTimeout(showToast.timer)
+    showToast.timer = window.setTimeout(() => setToast(null), 2200)
+  }
 
   const progress = useMemo(() => {
     if (!questions.length) return 0
@@ -154,7 +189,7 @@ function App() {
   const handleLogin = () => {
     const trimmed = nicknameInput.trim()
     if (!trimmed) {
-      alert('请输入昵称后再开始。')
+      showToast('请输入昵称后再开始。', 'error')
       return
     }
 
@@ -176,11 +211,7 @@ function App() {
   }
 
   const shuffleQuestion = () => {
-    const cloned = [...questions]
-    for (let i = cloned.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1))
-      ;[cloned[i], cloned[j]] = [cloned[j], cloned[i]]
-    }
+    const cloned = normalizeQuestions([...questions].sort(() => Math.random() - 0.5))
     setQuestions(cloned)
     resetQuiz()
   }
@@ -210,25 +241,27 @@ function App() {
 
     const cleanedOptions = draftQuestion.options.map((option) => option.trim()).filter(Boolean)
     if (!draftQuestion.prompt.trim() || cleanedOptions.length < 2) {
-      alert('题目和至少两个选项都不能为空。')
+      showToast('题目和至少两个选项都不能为空。', 'error')
       return
     }
 
     const safeIndex = Math.min(
       Math.max(Number(draftQuestion.correctIndex) || 0, 0),
-      cleanedOptions.length - 1,
+      Math.min(cleanedOptions.length - 1, 3),
     )
 
     const updatedQuestion = {
       ...draftQuestion,
       category: draftQuestion.category.trim() || 'K-pop',
       prompt: draftQuestion.prompt.trim(),
-      options: cleanedOptions,
+      options: cleanedOptions.slice(0, 4),
       correctIndex: safeIndex,
     }
 
     setQuestions((prev) =>
-      prev.map((question, index) => (index === currentIndex ? updatedQuestion : question)),
+      normalizeQuestions(
+        prev.map((question, index) => (index === currentIndex ? updatedQuestion : question)),
+      ),
     )
     setIsEditingQuestion(false)
     setDraftQuestion(null)
@@ -238,18 +271,19 @@ function App() {
     const trimmedPlayer = playerName.trim()
     const trimmedRoom = roomName.trim()
     if (!trimmedPlayer || !trimmedRoom) {
-      alert('请输入你的昵称和房间名。')
+      showToast('请输入你的昵称和房间名。', 'error')
       return
     }
 
     try {
+      const payloadQuestions = normalizeQuestions(questions.length ? questions : getStarterQuestions())
       const res = await fetch(buildApiUrl('/api/room'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           roomName: trimmedRoom,
           hostName: trimmedPlayer,
-          questions: questions.length ? questions : getStarterQuestions(),
+          questions: payloadQuestions,
         }),
       })
 
@@ -259,12 +293,16 @@ function App() {
 
       setRoomInfo({ roomName: trimmedRoom, hostName: trimmedPlayer })
       setHostName(trimmedPlayer)
-      setMode('host')
+      setMode('host-play')
+      setCurrentIndex(0)
+      setSelectedAnswers({})
+      setScore(0)
+      setCompleted(false)
       setStatusText(`房间 ${trimmedRoom} 已创建，分享给好友来答题吧。`)
       setLeaderboard([])
     } catch (error) {
       console.error(error)
-      alert('创建房间失败，请检查后端服务是否已启动。')
+      showToast('创建房间失败，请检查后端服务是否已启动。', 'error')
     }
   }
 
@@ -274,7 +312,7 @@ function App() {
     const trimmedHost = hostName.trim()
 
     if (!trimmedPlayer || !trimmedRoom || !trimmedHost) {
-      alert('昵称、房间名和房主名字都需要填写。')
+      showToast('昵称、房间名和房主名字都需要填写。', 'error')
       return
     }
 
@@ -291,16 +329,16 @@ function App() {
 
       setPlayerName(trimmedPlayer)
       setRoomInfo({ roomName: trimmedRoom, hostName: trimmedHost })
-      setQuestions(data.questions || [])
+      setQuestions(normalizeQuestions(data.questions || []))
       setCurrentIndex(0)
       setSelectedAnswers({})
       setCompleted(false)
       setScore(0)
-      setMode('challenge')
+      setMode('challenge-play')
       setStatusText(`已进入 ${trimmedRoom}，准备开始答题。`)
     } catch (error) {
       console.error(error)
-      alert('没有找到这个房间，或房主昵称输入不正确。')
+      showToast('没有找到这个房间，或房主昵称输入不正确。', 'error')
     }
   }
 
@@ -341,7 +379,7 @@ function App() {
               <button className="primary-button" onClick={() => {
                 const trimmed = nicknameInput.trim()
                 if (!trimmed) {
-                  alert('请输入昵称后再继续。')
+                  showToast('请输入昵称后再继续。', 'error')
                   return
                 }
                 setPlayerName(trimmed)
@@ -352,7 +390,7 @@ function App() {
               <button className="secondary-button" onClick={() => {
                 const trimmed = nicknameInput.trim()
                 if (!trimmed) {
-                  alert('请输入昵称后再继续。')
+                  showToast('请输入昵称后再继续。', 'error')
                   return
                 }
                 setPlayerName(trimmed)
@@ -430,18 +468,8 @@ function App() {
                 </div>
               )}
 
-              <div className="question-list-edit">
-                {questions.map((question, index) => (
-                  <div key={question.id || `question-${index}`} className="mini-question-card">
-                    <div className="mini-card-head">
-                      <button type="button" onClick={() => {
-                        setCurrentIndex(index)
-                        setMode('host-play')
-                      }}>编辑</button>
-                    </div>
-                    <p>{question.prompt}</p>
-                  </div>
-                ))}
+              <div className="status-box">
+                题库会在创建房间后按单题顺序展示，答案选完后点击“下一题”继续。
               </div>
             </div>
           ) : null}
@@ -483,8 +511,8 @@ function App() {
               <section className="panel quiz-panel">
                 <div className="panel-header">
                   <div>
-                    <p className="panel-tag">题库</p>
-                    <h2>题目</h2>
+                    <p className="panel-tag">团名</p>
+                    <h2>{currentQuestion?.category || '团名'}</h2>
                   </div>
                   <button className="ghost-button" onClick={shuffleQuestion}>换一题</button>
                 </div>
@@ -570,10 +598,10 @@ function App() {
                 </div>
               </section>
 
-              <aside className="panel sidebar-panel">
+              <aside className="panel sidebar-panel" style={{ display: 'none' }}>
                 <div className="mini-summary">
                   <p>当前题目</p>
-                  <strong>随机题库</strong>
+                  <strong>{currentQuestion?.category || '团名'}</strong>
                   <span>共 {totalQuestions} 道题</span>
                 </div>
 
@@ -642,6 +670,14 @@ function App() {
           )}
         </>
       )}
+
+      <div className="toast-stack">
+        {toast && (
+          <div className={`toast ${toast.kind}`}>
+            {toast.message}
+          </div>
+        )}
+      </div>
     </div>
   )
 }
