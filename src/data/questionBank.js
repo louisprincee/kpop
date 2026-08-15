@@ -1,641 +1,4184 @@
 export const questionBank = [
-  // BLACKPINK (20 questions)
-  { id: 'blackpink-1', category: 'BLACKPINK', prompt: '我最爱的 BLACKPINK 成员是？', options: ['Jisoo', 'Jennie', 'Rosé', 'Lisa'], correctIndex: 0 },
-  { id: 'blackpink-2', category: 'BLACKPINK', prompt: '我心目中最强的 BLACKPINK 舞者是？', options: ['Jisoo', 'Jennie', 'Rosé', 'Lisa'], correctIndex: 3 },
-  { id: 'blackpink-3', category: 'BLACKPINK', prompt: '我最爱的 BLACKPINK 歌曲是？', options: ['Boombayah', 'DDU-DU DDU-DU', 'Kill This Love', 'Lovesick Girls'], correctIndex: 1 },
-  { id: 'blackpink-4', category: 'BLACKPINK', prompt: '我最想听 BLACKPINK 谁唱主歌？', options: ['Jisoo', 'Jennie', 'Rosé', 'Lisa'], correctIndex: 2 },
-  { id: 'blackpink-5', category: 'BLACKPINK', prompt: '我认为 BLACKPINK 最完美的专辑是？', options: ['Square One', 'Square Two', 'The Album', 'Born Pink'], correctIndex: 3 },
-  { id: 'blackpink-6', category: 'BLACKPINK', prompt: '我最喜欢 BLACKPINK 哪个时期的气质？', options: ['早期出道期', 'DDU-DU时代', 'Kill This Love时代', '最近'], correctIndex: 1 },
-  { id: 'blackpink-7', category: 'BLACKPINK', prompt: '我心中 BLACKPINK 最有气场的成员是？', options: ['Jisoo', 'Jennie', 'Rosé', 'Lisa'], correctIndex: 1 },
-  { id: 'blackpink-8', category: 'BLACKPINK', prompt: '我最想穿的是哪位 BLACKPINK 成员的风格？', options: ['Jisoo的甜美感', 'Jennie的率性感', 'Rosé的高级感', 'Lisa的街头感'], correctIndex: 2 },
-  { id: 'blackpink-9', category: 'BLACKPINK', prompt: '我认为 BLACKPINK 最难忘的回忆杀是？', options: ['Ice Cream', 'Pink Venom', 'Shut Down', 'Typa Girl'], correctIndex: 2 },
-  { id: 'blackpink-10', category: 'BLACKPINK', prompt: '我最希望 BLACKPINK 回归什么风格？', options: ['甜美少女', '成熟女王', '酷炫杀手', '复古摇滚'], correctIndex: 1 },
-  { id: 'blackpink-11', category: 'BLACKPINK', prompt: '我想和 BLACKPINK 谁一起出去逛街？', options: ['Jisoo', 'Jennie', 'Rosé', 'Lisa'], correctIndex: 3 },
-  { id: 'blackpink-12', category: 'BLACKPINK', prompt: '我最爱的 BLACKPINK 舞蹈镜头是？', options: ['Boombayah舞蹈', 'Kill This Love舞蹈', 'How You Like That舞蹈', 'Pink Venom舞蹈'], correctIndex: 2 },
-  { id: 'blackpink-13', category: 'BLACKPINK', prompt: '我最想拥有 BLACKPINK 谁的嗓音？', options: ['Jisoo', 'Jennie', 'Rosé', 'Lisa'], correctIndex: 2 },
-  { id: 'blackpink-14', category: 'BLACKPINK', prompt: '我认为 BLACKPINK 谁是最强rapper？', options: ['Jisoo', 'Jennie', 'Rosé', 'Lisa'], correctIndex: 1 },
-  { id: 'blackpink-15', category: 'BLACKPINK', prompt: '我心中 BLACKPINK 最有魅力的舞台是？', options: ['BORN PINK演唱会', '2023 MMA表演', '2024 Paris show', 'Coachella'], correctIndex: 0 },
-  { id: 'blackpink-16', category: 'BLACKPINK', prompt: '我最被 BLACKPINK 哪首歌的歌词打动过？', options: ['Playing with Fire', 'Stay', 'Tally', 'Hard to Love'], correctIndex: 1 },
-  { id: 'blackpink-17', category: 'BLACKPINK', prompt: '我最想成为 BLACKPINK 哪个分队成员？', options: ['全能型', 'Rap分队', 'Vocal分队', '舞蹈分队'], correctIndex: 0 },
-  { id: 'blackpink-18', category: 'BLACKPINK', prompt: '我觉得 BLACKPINK 最应该拿的大奖是？', options: ['Grammy Award', 'Billboard Music Award', 'MAMA大奖', 'Golden Disk Awards'], correctIndex: 0 },
-  { id: 'blackpink-19', category: 'BLACKPINK', prompt: '我最想看 BLACKPINK 的哪个个人作品？', options: ['Jisoo电视剧', 'Jennie综艺节目', 'Rosé音乐作品', 'Lisa个人歌曲'], correctIndex: 3 },
-  { id: 'blackpink-20', category: 'BLACKPINK', prompt: '我心目中 BLACKPINK 的本命CP是？', options: ['JenSoo', 'JenRo', 'RoLi', '她们都好'], correctIndex: 3 },
-
-  // BTS (20 questions)
-  { id: 'bts-1', category: 'BTS', prompt: '我最爱的 BTS 成员是？', options: ['RM', '金硕珍', 'SUGA', 'J-Hope', '지민', 'V', '정국'], correctIndex: 6 },
-  { id: 'bts-2', category: 'BTS', prompt: '我最喜欢的 BTS 时代是？', options: ['花样年华', 'Wings', 'Love Yourself', 'Map of the Soul', 'BE'], correctIndex: 2 },
-  { id: 'bts-3', category: 'BTS', prompt: '我最治愈的 BTS 歌曲是？', options: ['Spring Day', 'Mikrokosmos', '보조개', '내 것을 찾아서'], correctIndex: 0 },
-  { id: 'bts-4', category: 'BTS', prompt: '我最期待听 BTS 谁的Rap？', options: ['RM', 'SUGA', 'j-hope', 'V'], correctIndex: 1 },
-  { id: 'bts-5', category: 'BTS', prompt: '我认为 BTS 最伟大的成就是？', options: ['Billboard #1', 'Grammy提名', 'UN演讲', '美国巡演'], correctIndex: 2 },
-  { id: 'bts-6', category: 'BTS', prompt: '我心中 BTS 最有艺术性的歌曲是？', options: ['Fake Love', 'Black Swan', 'Boy With Luv', 'Dynamite'], correctIndex: 1 },
-  { id: 'bts-7', category: 'BTS', prompt: '我想和 BTS 谁一起看电影？', options: ['RM', '金硕珍', 'SUGA', 'J-Hope', '지민', 'V', '정국'], correctIndex: 4 },
-  { id: 'bts-8', category: 'BTS', prompt: '我最喜欢的 BTS 舞蹈是？', options: ['DNA舞蹈', 'Fake Love舞蹈', 'Butter舞蹈', 'Permission to Dance舞蹈'], correctIndex: 1 },
-  { id: 'bts-9', category: 'BTS', prompt: '我最被 BTS 哪首歌的主题打动？', options: ['希望与梦想', '爱与关系', '自我认知', '社会责任'], correctIndex: 0 },
-  { id: 'bts-10', category: 'BTS', prompt: '我心目中 BTS 最强的主唱是？', options: ['Jin', 'Jungkook', 'V', 'Jimin'], correctIndex: 1 },
-  { id: 'bts-11', category: 'BTS', prompt: '我最想听 BTS 哪个时期的Mixtape？', options: ['RM 2014', 'SUGA 2016', 'j-hope 2018', '都想听'], correctIndex: 3 },
-  { id: 'bts-12', category: 'BTS', prompt: '我认为 BTS 最有趣的综艺是？', options: ['Run BTS', 'BTS Bon Voyage', 'In The Soop', 'Dynamite MV制作'],  correctIndex: 0 },
-  { id: 'bts-13', category: 'BTS', prompt: '我最想见面的 BTS 成员是？', options: ['RM', '金硕珍', 'SUGA', 'J-Hope', '지민', 'V', '정국'], correctIndex: 0 },
-  { id: 'bts-14', category: 'BTS', prompt: '我心中 BTS 最有天赋的作曲家是？', options: ['RM', 'SUGA', 'j-hope', 'Jungkook'], correctIndex: 1 },
-  { id: 'bts-15', category: 'BTS', prompt: '我最喜欢 BTS 的哪个专辑封面？', options: ['Wings', 'Love Yourself: Tear', 'Map of the Soul: Persona', '都好看'], correctIndex: 1 },
-  { id: 'bts-16', category: 'BTS', prompt: '我最想和 BTS 参加的活动是？', options: ['音乐节', '体育赛事', '慈善活动', '文化交流'], correctIndex: 2 },
-  { id: 'bts-17', category: 'BTS', prompt: '我心目中 BTS 的本命CP是？', options: ['RM x SUGA', 'Jimin x Jungkook', 'Jin x V', '都很配'], correctIndex: 1 },
-  { id: 'bts-18', category: 'BTS', prompt: '我最想看 BTS 成员的哪个作品？', options: ['RM的播客', 'SUGA的黑天鹅映画', 'V的摄影作品', 'Jungkook的画'], correctIndex: 2 },
-  { id: 'bts-19', category: 'BTS', prompt: '我认为 BTS 最需要休息的时期是？', options: ['2013-2014', '2017-2018', '2021-2022', '现在'], correctIndex: 2 },
-  { id: 'bts-20', category: 'BTS', prompt: '我最期待 BTS 未来的是？', options: ['新专辑', '全员完整回归', '个人作品', '世界巡演'], correctIndex: 1 },
-
-  // TWICE (20 questions)
-  { id: 'twice-1', category: 'TWICE', prompt: '我最爱的 TWICE 成员是？', options: ['Nayeon', 'Jeongyeon', 'Momo', 'Sana', 'Jihyo', 'Mina', 'Dahyun', 'Chaeyoung', 'Tzuyu'], correctIndex: 8 },
-  { id: 'twice-2', category: 'TWICE', prompt: '我最喜欢的 TWICE 歌曲是？', options: ['TT', 'Cheer Up', 'Likey', 'Fancy', 'Alcohol-Free'], correctIndex: 3 },
-  { id: 'twice-3', category: 'TWICE', prompt: '我认为 TWICE 最完美的舞蹈是？', options: ['Cheer Up', 'Likey', 'Feel Special', 'Fancy'], correctIndex: 1 },
-  { id: 'twice-4', category: 'TWICE', prompt: '我最想听 TWICE 谁唱主歌？', options: ['Nayeon', 'Jihyo', 'Mina', 'Tzuyu'], correctIndex: 1 },
-  { id: 'twice-5', category: 'TWICE', prompt: '我心中 TWICE 最有存在感的成员是？', options: ['Nayeon', 'Jihyo', 'Mina', 'Tzuyu'], correctIndex: 1 },
-  { id: 'twice-6', category: 'TWICE', prompt: '我最爱的 TWICE 时代是？', options: ['TT时代', 'Likey时代', 'Fancy时代', 'Alcohol-Free时代'], correctIndex: 2 },
-  { id: 'twice-7', category: 'TWICE', prompt: '我想穿的是 TWICE 谁的风格？', options: ['Nayeon的甜美', 'Jeongyeon的帅气', 'Momo的活力', 'Sana的清纯', 'Jihyo的女王', 'Mina的冷感', 'Dahyun的率性', 'Chaeyoung的个性', 'Tzuyu的高贵'], correctIndex: 8 },
-  { id: 'twice-8', category: 'TWICE', prompt: '我最被 TWICE 哪首歌打动过？', options: ['Heart Shaker', 'Signal', 'Knock Knock', 'Yes or Yes'], correctIndex: 2 },
-  { id: 'twice-9', category: 'TWICE', prompt: '我最想和 TWICE 谁交朋友？', options: ['Nayeon', 'Jeongyeon', 'Momo', 'Sana', 'Jihyo', 'Mina', 'Dahyun', 'Chaeyoung', 'Tzuyu'], correctIndex: 3 },
-  { id: 'twice-10', category: 'TWICE', prompt: '我认为 TWICE 最有趣的综艺是？', options: ['TWICE Idol Room', 'TWICE Game to Change', 'Twice Dorm Diaries', '都很好笑'], correctIndex: 0 },
-  { id: 'twice-11', category: 'TWICE', prompt: '我最喜欢 TWICE 的哪个舞台概念？', options: ['可爱少女', '成熟魅力', '青春活力', '复古感'], correctIndex: 1 },
-  { id: 'twice-12', category: 'TWICE', prompt: '我心中 TWICE 最强舞者是？', options: ['Momo', 'Chaeyoung', 'Dahyun', 'Jihyo'], correctIndex: 0 },
-  { id: 'twice-13', category: 'TWICE', prompt: '我最想看 TWICE 的哪个个人作品？', options: ['Nayeon的电视剧', 'Jihyo的综艺', 'Momo的舞蹈', 'Tzuyu的画报'], correctIndex: 1 },
-  { id: 'twice-14', category: 'TWICE', prompt: '我认为 TWICE 最需要尝试的音乐风格是？', options: ['摇滚', '爵士', '民族音乐', '继续现有风格'], correctIndex: 3 },
-  { id: 'twice-15', category: 'TWICE', prompt: '我最爱的 TWICE 专辑是？', options: ['Twicetagram', 'Feel Special', 'Eyes Wide Open', 'Formula of Love'], correctIndex: 3 },
-  { id: 'twice-16', category: 'TWICE', prompt: '我心目中 TWICE 的本命CP是？', options: ['NaMo', 'SaiDa', 'JiHyo x Mina', 'ChaDa'], correctIndex: 0 },
-  { id: 'twice-17', category: 'TWICE', prompt: '我最被 TWICE 哪个舞蹈细节吸引？', options: ['Fancy的指尖舞', 'Likey的转身', 'Signal的手势', 'TT的甩头'], correctIndex: 0 },
-  { id: 'twice-18', category: 'TWICE', prompt: '我认为 TWICE 最有才华的成员是？', options: ['Nayeon', 'Jihyo', 'Momo', 'Chaeyoung'], correctIndex: 3 },
-  { id: 'twice-19', category: 'TWICE', prompt: '我最想和 TWICE 一起去旅游的地方是？', options: ['日本', '泰国', '欧洲', '美国'], correctIndex: 2 },
-  { id: 'twice-20', category: 'TWICE', prompt: '我最期待 TWICE 未来的是？', options: ['新的音乐风格', '完整十人再聚首', '世界巡演', '个人发展'], correctIndex: 1 },
-
-  // SEVENTEEN (20 questions)
-  { id: 'seventeen-1', category: 'SEVENTEEN', prompt: '我最爱的 SEVENTEEN 成员是？', options: ['Scoups', 'Jeonghan', 'Joshua', 'Jun', 'Hoshi', 'Wonwoo', 'Woozi', 'DK', 'Mingyu', 'The8', '승관', 'Vernon', 'Dino'], correctIndex: 4 },
-  { id: 'seventeen-2', category: 'SEVENTEEN', prompt: '我最喜欢的 SEVENTEEN 歌曲是？', options: ['God\'s Menu', 'Hot', 'Super', 'Home', 'Rock With You'], correctIndex: 4 },
-  { id: 'seventeen-3', category: 'SEVENTEEN', prompt: '我心中 SEVENTEEN 最有leader气质的是？', options: ['Scoups', 'Jeonghan', 'Hoshi', '都很强'], correctIndex: 0 },
-  { id: 'seventeen-4', category: 'SEVENTEEN', prompt: '我最想看 SEVENTEEN 的哪个分队表演？', options: ['Hip-Hop分队', '演唱会分队', 'Vocal分队', '单独舞蹈'], correctIndex: 0 },
-  { id: 'seventeen-5', category: 'SEVENTEEN', prompt: '我认为 SEVENTEEN 最绝的舞蹈是？', options: ['Boom Boom舞蹈', 'God\'s Menu舞蹈', 'Super舞蹈', 'Hot舞蹈'], correctIndex: 1 },
-  { id: 'seventeen-6', category: 'SEVENTEEN', prompt: '我最爱的 SEVENTEEN 时代是？', options: ['花样年华时代', 'Love&Letter时代', 'Going Seventeen时代', '最近'], correctIndex: 3 },
-  { id: 'seventeen-7', category: 'SEVENTEEN', prompt: '我想和 SEVENTEEN 谁一起去高级餐厅？', options: ['Joshua', 'Jeonghan', 'DK', 'Vernon'], correctIndex: 0 },
-  { id: 'seventeen-8', category: 'SEVENTEEN', prompt: '我心中 SEVENTEEN 最有天赋的作曲家是？', options: ['Woozi', 'BUMZU', 'The8', 'Jun'], correctIndex: 0 },
-  { id: 'seventeen-9', category: 'SEVENTEEN', prompt: '我认为 SEVENTEEN 最值得关注的成员是？', options: ['Scoups', 'Jun', 'The8', 'Dino'], correctIndex: 1 },
-  { id: 'seventeen-10', category: 'SEVENTEEN', prompt: '我最爱的 SEVENTEEN 专辑是？', options: ['You Make My Day', 'Hug', 'Going Seventeen', 'Attacca'], correctIndex: 3 },
-  { id: 'seventeen-11', category: 'SEVENTEEN', prompt: '我最想听 SEVENTEEN 谁唱主歌？', options: ['DK', 'Jeonghan', 'Joshua', 'Seungkwan'], correctIndex: 1 },
-  { id: 'seventeen-12', category: 'SEVENTEEN', prompt: '我心目中 SEVENTEEN 最强舞者是？', options: ['Hoshi', 'Jun', 'The8', 'Dino'], correctIndex: 0 },
-  { id: 'seventeen-13', category: 'SEVENTEEN', prompt: '我最被 SEVENTEEN 哪首歌的歌词感动？', options: ['Ideal Cut', 'God\'s Menu', 'Thanks', 'Darling'], correctIndex: 2 },
-  { id: 'seventeen-14', category: 'SEVENTEEN', prompt: '我认为 SEVENTEEN 最需要发展的是？', options: ['海外市场', '音乐风格', '单人作品', '都很好'], correctIndex: 3 },
-  { id: 'seventeen-15', category: 'SEVENTEEN', prompt: '我心目中 SEVENTEEN 的本命CP是？', options: ['Jeonghan x Joshua', 'Jun x The8', 'Hoshi x Woozi', 'DK x Vernon'], correctIndex: 1 },
-  { id: 'seventeen-16', category: 'SEVENTEEN', prompt: '我最爱 SEVENTEEN 哪个视觉概念？', options: ['青春少年', '成熟魅力', '复古风格', '未来感'], correctIndex: 0 },
-  { id: 'seventeen-17', category: 'SEVENTEEN', prompt: '我最想和 SEVENTEEN 一起参加的活动是？', options: ['音乐节', '真人秀', '慈善活动', '艺术展览'], correctIndex: 1 },
-  { id: 'seventeen-18', category: 'SEVENTEEN', prompt: '我最被 SEVENTEEN 哪个舞蹈细节吸引？', options: ['God\'s Menu的转身', 'Hot的节奏', 'Super的队形变化', 'Home的温柔感'], correctIndex: 0 },
-  { id: 'seventeen-19', category: 'SEVENTEEN', prompt: '我认为 SEVENTEEN 最应该尝试的风格是？', options: ['摇滚', '爵士', '电子', '民族音乐'], correctIndex: 1 },
-  { id: 'seventeen-20', category: 'SEVENTEEN', prompt: '我最期待 SEVENTEEN 的是？', options: ['新的音乐专辑', '完整演唱会', '国际合作', '个人作品展'], correctIndex: 0 },
-
-  // aespa (20 questions)
-  { id: 'aespa-1', category: 'aespa', prompt: '我最爱的 aespa 成员是？', options: ['Karina', 'Giselle', 'Winter', 'Ningning'], correctIndex: 2 },
-  { id: 'aespa-2', category: 'aespa', prompt: '我最喜欢的 aespa 歌曲是？', options: ['Black Mamba', 'Next Level', 'Savage', 'Spicy'], correctIndex: 2 },
-  { id: 'aespa-3', category: 'aespa', prompt: '我认为 aespa 最完美的舞蹈是？', options: ['Black Mamba舞蹈', 'Next Level舞蹈', 'Savage舞蹈', 'Spicy舞蹈'], correctIndex: 2 },
-  { id: 'aespa-4', category: 'aespa', prompt: '我心中 aespa 最有气场的成员是？', options: ['Karina', 'Giselle', 'Winter', 'Ningning'], correctIndex: 0 },
-  { id: 'aespa-5', category: 'aespa', prompt: '我最爱的 aespa 时代是？', options: ['Savage时代', 'Next Level时代', '最近', 'Black Mamba时代'], correctIndex: 0 },
-  { id: 'aespa-6', category: 'aespa', prompt: '我想穿的是 aespa 谁的风格？', options: ['Karina的女王范', 'Giselle的温柔', 'Winter的高冷', 'Ningning的时尚'], correctIndex: 3 },
-  { id: 'aespa-7', category: 'aespa', prompt: '我最被 aespa 的世界观设定吸引？', options: ['Black Mamba背景', '虚拟分身概念', '未来科技感', 'SMCU框架'], correctIndex: 3 },
-  { id: 'aespa-8', category: 'aespa', prompt: '我最想和 aespa 谁一起看电影？', options: ['Karina', 'Giselle', 'Winter', 'Ningning'], correctIndex: 1 },
-  { id: 'aespa-9', category: 'aespa', prompt: '我心中 aespa 最有音乐天赋的是？', options: ['Giselle', 'Ningning', 'Winter', 'Karina'], correctIndex: 0 },
-  { id: 'aespa-10', category: 'aespa', prompt: '我认为 aespa 最需要尝试的音乐风格是？', options: ['摇滚', '爵士', '民族音乐', '继续现有'], correctIndex: 3 },
-  { id: 'aespa-11', category: 'aespa', prompt: '我最爱的 aespa 专辑是？', options: ['Savage', 'Spicy', 'Armageddon', 'Supernova'], correctIndex: 3 },
-  { id: 'aespa-12', category: 'aespa', prompt: '我最想听 aespa 谁唱主歌？', options: ['Karina', 'Giselle', 'Winter', 'Ningning'], correctIndex: 2 },
-  { id: 'aespa-13', category: 'aespa', prompt: '我认为 aespa 最强的舞者是？', options: ['Karina', 'Giselle', 'Winter', 'Ningning'], correctIndex: 0 },
-  { id: 'aespa-14', category: 'aespa', prompt: '我最被 aespa 哪个MV设定打动？', options: ['Black Mamba', 'Savage', 'Next Level', 'Spicy'], correctIndex: 0 },
-  { id: 'aespa-15', category: 'aespa', prompt: '我心目中 aespa 的本命CP是？', options: ['Karina x Winter', 'Giselle x Ningning', 'Karina x Ningning', '都很配'], correctIndex: 1 },
-  { id: 'aespa-16', category: 'aespa', prompt: '我最想看 aespa 的哪个个人作品？', options: ['Karina的电视剧', 'Giselle的综艺', 'Winter的音乐', 'Ningning的舞蹈'], correctIndex: 1 },
-  { id: 'aespa-17', category: 'aespa', prompt: '我最爱 aespa 哪个视觉概念？', options: ['Black Mamba风格', '高科技未来感', '成熟女神感', '复古摇滚'], correctIndex: 1 },
-  { id: 'aespa-18', category: 'aespa', prompt: '我认为 aespa 最厉害的是？', options: ['舞蹈', '唱功', '舞台气场', '整体完成度'], correctIndex: 3 },
-  { id: 'aespa-19', category: 'aespa', prompt: '我最想和 aespa 一起去的地方是？', options: ['首尔', '东京', '巴黎', '纽约'], correctIndex: 1 },
-  { id: 'aespa-20', category: 'aespa', prompt: '我最期待 aespa 未来的是？', options: ['新专辑', '世界巡演', '个人发展', 'SMCU扩展'], correctIndex: 0 },
-
-  // IVE (20 questions)
-  { id: 'ive-1', category: 'IVE', prompt: '我最爱的 IVE 成员是？', options: ['Wonyoung', 'Liz', 'Leeseo', 'Yujin', 'Rei'], correctIndex: 0 },
-  { id: 'ive-2', category: 'IVE', prompt: '我最喜欢的 IVE 歌曲是？', options: ['Eleven', 'Love Dive', 'Either Or', 'I AM'], correctIndex: 1 },
-  { id: 'ive-3', category: 'IVE', prompt: '我认为 IVE 最完美的舞蹈是？', options: ['Eleven舞蹈', 'Love Dive舞蹈', 'Either Or舞蹈', 'I AM舞蹈'], correctIndex: 1 },
-  { id: 'ive-4', category: 'IVE', prompt: '我心中 IVE 最有时尚感的成员是？', options: ['Wonyoung', 'Yujin', 'Liz', 'Leeseo', 'Rei'], correctIndex: 0 },
-  { id: 'ive-5', category: 'IVE', prompt: '我最爱的 IVE 时代是？', options: ['Eleven时代', 'Love Dive时代', 'I AM时代', 'Kitsch时代'], correctIndex: 1 },
-  { id: 'ive-6', category: 'IVE', prompt: '我想穿的是 IVE 谁的风格？', options: ['Wonyoung的优雅', 'Yujin的帅气', 'Liz的温柔', 'Leeseo的可爱', 'Rei的高级'], correctIndex: 4 },
-  { id: 'ive-7', category: 'IVE', prompt: '我最想和 IVE 谁做朋友？', options: ['Wonyoung', 'Yujin', 'Liz', 'Leeseo', 'Rei'], correctIndex: 4 },
-  { id: 'ive-8', category: 'IVE', prompt: '我最被 IVE 哪首歌的旋律吸引？', options: ['Eleven', 'I', 'Kitsch', 'Accendio'], correctIndex: 1 },
-  { id: 'ive-9', category: 'IVE', prompt: '我认为 IVE 最有潜力发展的方向是？', options: ['国际市场', '演技作品', '个人专业', '新音乐风格'], correctIndex: 1 },
-  { id: 'ive-10', category: 'IVE', prompt: '我最爱的 IVE 专辑是？', options: ['Either Or', 'I AM', 'Kitsch', 'Accendio'], correctIndex: 1 },
-  { id: 'ive-11', category: 'IVE', prompt: '我最想听 IVE 谁唱主歌？', options: ['Wonyoung', 'Yujin', 'Liz', 'Leeseo'], correctIndex: 2 },
-  { id: 'ive-12', category: 'IVE', prompt: '我认为 IVE 最强的舞者是？', options: ['Yujin', 'Liz', 'Leeseo', 'Rei'], correctIndex: 0 },
-  { id: 'ive-13', category: 'IVE', prompt: '我心目中 IVE 的本命CP是？', options: ['Won-Yu', 'Liz-Leeseo', 'Wony-Rei', '都很配'], correctIndex: 3 },
-  { id: 'ive-14', category: 'IVE', prompt: '我最被 IVE 哪个MV的美学打动？', options: ['Love Dive', 'I', 'Kitsch', 'I AM'], correctIndex: 0 },
-  { id: 'ive-15', category: 'IVE', prompt: '我最想看 IVE 的哪个个人作品？', options: ['Wonyoung的电视剧', 'Yujin的综艺', 'Liz的音乐', 'Leeseo的舞蹈'], correctIndex: 0 },
-  { id: 'ive-16', category: 'IVE', prompt: '我最爱 IVE 哪个视觉概念？', options: ['Love Dive清爽风', 'Eleven高级感', 'Kitsch趣味感', 'I AM夏日风'], correctIndex: 0 },
-  { id: 'ive-17', category: 'IVE', prompt: '我认为 IVE 最应该尝试的是？', options: ['摇滚风格', '深沉主题', '高端时装', '继续现有'], correctIndex: 3 },
-  { id: 'ive-18', category: 'IVE', prompt: '我最想和 IVE 一起去逛街的地点是？', options: ['首尔Gangnam', '东京原宿', '巴黎', 'NYC'], correctIndex: 0 },
-  { id: 'ive-19', category: 'IVE', prompt: '我认为 IVE 最值得关注的是？', options: ['舞蹈感', '视觉效果', '歌曲质量', '整体品味'], correctIndex: 3 },
-  { id: 'ive-20', category: 'IVE', prompt: '我最期待 IVE 的是？', options: ['新的音乐专辑', '演唱会扩展', '国际合作', '个人发展'], correctIndex: 0 },
-
-  // NewJeans (20 questions)
-  { id: 'newjeans-1', category: 'NewJeans', prompt: '我最爱的 NewJeans 成员是？', options: ['Minji', 'Hanni', 'Danielle', 'Haerin', 'Hyein'], correctIndex: 3 },
-  { id: 'newjeans-2', category: 'NewJeans', prompt: '我最喜欢的 NewJeans 歌曲是？', options: ['Attention', 'Cookie', 'Hype Boy', 'Ditto'], correctIndex: 3 },
-  { id: 'newjeans-3', category: 'NewJeans', prompt: '我认为 NewJeans 最完美的舞蹈是？', options: ['Hype Boy舞蹈', 'Attention舞蹈', 'Ditto舞蹈', 'Super Shy舞蹈'], correctIndex: 0 },
-  { id: 'newjeans-4', category: 'NewJeans', prompt: '我心中 NewJeans 最有气质的成员是？', options: ['Minji', 'Hanni', 'Danielle', 'Haerin', 'Hyein'], correctIndex: 0 },
-  { id: 'newjeans-5', category: 'NewJeans', prompt: '我最爱的 NewJeans 时代是？', options: ['出道时代', 'Hype Boy时代', 'Super Shy时代', '最近'], correctIndex: 3 },
-  { id: 'newjeans-6', category: 'NewJeans', prompt: '我最被 NewJeans 的审美吸引？', options: ['简洁风格', '自然清新', '高级质感', '整体设计'], correctIndex: 3 },
-  { id: 'newjeans-7', category: 'NewJeans', prompt: '我想穿的是 NewJeans 谁的风格？', options: ['Minji的高冷', 'Hanni的活泼', 'Danielle的温柔', 'Haerin的神秘', 'Hyein的个性'], correctIndex: 4 },
-  { id: 'newjeans-8', category: 'NewJeans', prompt: '我最想和 NewJeans 谁喝下午茶？', options: ['Minji', 'Hanni', 'Danielle', 'Haerin', 'Hyein'], correctIndex: 2 },
-  { id: 'newjeans-9', category: 'NewJeans', prompt: '我认为 NewJeans 最强的舞者是？', options: ['Minji', 'Hanni', 'Danielle', 'Haerin', 'Hyein'], correctIndex: 0 },
-  { id: 'newjeans-10', category: 'NewJeans', prompt: '我最爱的 NewJeans 专辑是？', options: ['Get Up', 'NewJeans 2', 'Supernatural', 'Super Shy'], correctIndex: 3 },
-  { id: 'newjeans-11', category: 'NewJeans', prompt: '我最想听 NewJeans 谁唱主歌？', options: ['Minji', 'Danielle', 'Hanni', 'Hyein'], correctIndex: 1 },
-  { id: 'newjeans-12', category: 'NewJeans', prompt: '我心目中 NewJeans 的本命CP是？', options: ['Minji x Hanni', 'Danielle x Haerin', 'Hanni x Hyein', '都很配'], correctIndex: 0 },
-  { id: 'newjeans-13', category: 'NewJeans', prompt: '我最被 NewJeans 哪个MV的美学打动？', options: ['Hype Boy', 'Attention', 'Ditto', 'Super Shy'], correctIndex: 0 },
-  { id: 'newjeans-14', category: 'NewJeans', prompt: '我认为 NewJeans 最应该尝试的是？', options: ['酷炫风格', '深沉主题', '保持现有风格', '国际合作'], correctIndex: 2 },
-  { id: 'newjeans-15', category: 'NewJeans', prompt: '我最爱 NewJeans 的设计理念是？', options: ['Y2K复古', '极简主义', '高级感', '混搭风'], correctIndex: 1 },
-  { id: 'newjeans-16', category: 'NewJeans', prompt: '我最想看 NewJeans 的哪个个人作品？', options: ['Minji的电视剧', 'Hanni的音乐', 'Danielle的综艺', 'Haerin的摄影'], correctIndex: 0 },
-  { id: 'newjeans-17', category: 'NewJeans', prompt: '我最想和 NewJeans 一起去的地点是？', options: ['首尔', '东京', '巴黎', '伦敦'], correctIndex: 3 },
-  { id: 'newjeans-18', category: 'NewJeans', prompt: '我认为 NewJeans 最特别的地方是？', options: ['歌曲质量', '视觉审美', '舞蹈风格', '整体风格'], correctIndex: 1 },
-  { id: 'newjeans-19', category: 'NewJeans', prompt: '我最期待 NewJeans 的是？', options: ['新的音乐方向', '演唱会扩展', '国际发展', '个人作品'], correctIndex: 1 },
-  { id: 'newjeans-20', category: 'NewJeans', prompt: '我想看 NewJeans 挑战什么风格？', options: ['复古摇滚', '现代爵士', '电子实验', '保持极简'], correctIndex: 3 },
-
-  // Stray Kids (20 questions)
-  { id: 'stray-kids-1', category: 'Stray Kids', prompt: '我最爱的 Stray Kids 成员是？', options: ['Bang Chan', 'Lee Know', 'Changbin', 'Hyunjin', 'Han', 'Felix', 'Seungmin', 'I.N'], correctIndex: 5 },
-  { id: 'stray-kids-2', category: 'Stray Kids', prompt: '我最喜欢的 Stray Kids 歌曲是？', options: ['God\'s Menu', 'Thunderous', 'Maniac', 'Case 143'], correctIndex: 2 },
-  { id: 'stray-kids-3', category: 'Stray Kids', prompt: '我认为 Stray Kids 最强大的舞蹈是？', options: ['God\'s Menu舞蹈', 'Thunderous舞蹈', 'Maniac舞蹈', 'Case 143舞蹈'], correctIndex: 1 },
-  { id: 'stray-kids-4', category: 'Stray Kids', prompt: '我心中 Stray Kids 最有魅力的成员是？', options: ['Bang Chan', 'Hyunjin', 'Han', 'Felix'], correctIndex: 1 },
-  { id: 'stray-kids-5', category: 'Stray Kids', prompt: '我最爱的 Stray Kids 时代是？', options: ['Levanter时代', 'God\'s Menu时代', 'Maniac时代', '最近'], correctIndex: 2 },
-  { id: 'stray-kids-6', category: 'Stray Kids', prompt: '我想和 Stray Kids 谁玩电子游戏？', options: ['Bang Chan', 'Lee Know', 'Han', 'Felix', 'I.N'], correctIndex: 4 },
-  { id: 'stray-kids-7', category: 'Stray Kids', prompt: '我最想听 Stray Kids 谁的Rap？', options: ['Bang Chan', 'Changbin', 'Han', '都很强'], correctIndex: 1 },
-  { id: 'stray-kids-8', category: 'Stray Kids', prompt: '我认为 Stray Kids 最厉害的作曲家是？', options: ['Bang Chan', 'Han', 'Changbin', 'Hyunjin'], correctIndex: 1 },
-  { id: 'stray-kids-9', category: 'Stray Kids', prompt: '我最被 Stray Kids 的故事背景吸引？', options: ['出道故事', '音乐演进', '成员互动', '舞台表现'], correctIndex: 1 },
-  { id: 'stray-kids-10', category: 'Stray Kids', prompt: '我最爱的 Stray Kids 专辑是？', options: ['GO生 季節', 'Noeasy', 'Oddinary', 'Maxident'], correctIndex: 3 },
-  { id: 'stray-kids-11', category: 'Stray Kids', prompt: '我最想听 Stray Kids 谁唱主歌？', options: ['Bang Chan', 'Seungmin', 'I.N', 'Felix'], correctIndex: 1 },
-  { id: 'stray-kids-12', category: 'Stray Kids', prompt: '我认为 Stray Kids 最强的舞者是？', options: ['Lee Know', 'Hyunjin', 'Felix', 'I.N'], correctIndex: 1 },
-  { id: 'stray-kids-13', category: 'Stray Kids', prompt: '我心目中 Stray Kids 的本命CP是？', options: ['Chan x Han', 'Hyunjin x Felix', 'Changbin x Seungmin', 'Lee Know x I.N'], correctIndex: 0 },
-  { id: 'stray-kids-14', category: 'Stray Kids', prompt: '我最被 Stray Kids 哪个舞蹈细节吸引？', options: ['Thunderous的气势', 'God\'s Menu的转身', 'Maniac的队形', 'Case 143的同步'], correctIndex: 0 },
-  { id: 'stray-kids-15', category: 'Stray Kids', prompt: '我最想看 Stray Kids 的哪个个人作品？', options: ['Bang Chan的制作', 'Hyunjin的艺术', 'Han的音乐', 'Felix的舞蹈'], correctIndex: 2 },
-  { id: 'stray-kids-16', category: 'Stray Kids', prompt: '我最爱 Stray Kids 哪个视觉概念？', options: ['God\'s Menu风格', 'Thunderous风格', 'Maniac风格', 'Maxident风格'], correctIndex: 2 },
-  { id: 'stray-kids-17', category: 'Stray Kids', prompt: '我认为 Stray Kids 最应该尝试的是？', options: ['摇滚风格', '爵士风格', '保持现有强度', '柔和风格'], correctIndex: 0 },
-  { id: 'stray-kids-18', category: 'Stray Kids', prompt: '我最想和 Stray Kids 一起去的地点是？', options: ['首尔', '悉尼', '伦敦', 'LA'], correctIndex: 3 },
-  { id: 'stray-kids-19', category: 'Stray Kids', prompt: '我认为 Stray Kids 最强的是？', options: ['舞蹈', '说唱', '编排', '整体实力'], correctIndex: 3 },
-  { id: 'stray-kids-20', category: 'Stray Kids', prompt: '我最期待 Stray Kids 的是？', options: ['新的音乐风格', '世界巡演扩展', '个人作品', '新成员整合'], correctIndex: 1 },
-
-  // EXO (20 questions)
-  { id: 'exo-1', category: 'EXO', prompt: '我最爱的 EXO 成员是？', options: ['Suho', 'Xiumin', 'Luhan', 'Kris', 'Lay', 'Baekhyun', 'Chen', 'Chanyeol', 'Kyungsoo', 'Jongin', 'Sehun'], correctIndex: 9 },
-  { id: 'exo-2', category: 'EXO', prompt: '我最喜欢的 EXO 歌曲是？', options: ['Growl', 'Call Me Baby', 'Love Shot', 'Tempo'], correctIndex: 2 },
-  { id: 'exo-3', category: 'EXO', prompt: '我认为 EXO 最强大的舞蹈是？', options: ['Growl舞蹈', 'Call Me Baby舞蹈', 'Love Shot舞蹈', 'Tempo舞蹈'], correctIndex: 0 },
-  { id: 'exo-4', category: 'EXO', prompt: '我心中 EXO 最有魅力的成员是？', options: ['Baekhyun', 'Chanyeol', 'Kyungsoo', 'Jongin'], correctIndex: 3 },
-  { id: 'exo-5', category: 'EXO', prompt: '我最爱的 EXO 时代是？', options: ['Growl时代', 'Call Me Baby时代', 'Love Shot时代', 'Tempo时代'], correctIndex: 0 },
-  { id: 'exo-6', category: 'EXO', prompt: '我想和 EXO 谁打篮球？', options: ['Suho', 'Baekhyun', 'Chanyeol', 'Jongin'], correctIndex: 3 },
-  { id: 'exo-7', category: 'EXO', prompt: '我最想听 EXO 谁的Rap？', options: ['Lay', 'Baekhyun', 'Chanyeol', 'Xiumin'], correctIndex: 2 },
-  { id: 'exo-8', category: 'EXO', prompt: '我认为 EXO 最厉害的是？', options: ['舞蹈同步', '声乐实力', '舞台魅力', '整体完成度'], correctIndex: 3 },
-  { id: 'exo-9', category: 'EXO', prompt: '我最被 EXO 的概念设定吸引？', options: ['超能力设定', '复古风格', '未来感', 'EXO宇宙观'], correctIndex: 3 },
-  { id: 'exo-10', category: 'EXO', prompt: '我最爱的 EXO 专辑是？', options: ['XOXO', 'Overdose', 'Exodus', 'For Life'], correctIndex: 2 },
-  { id: 'exo-11', category: 'EXO', prompt: '我最想听 EXO 谁唱主歌？', options: ['Suho', 'Baekhyun', 'Chen', 'Jongin'], correctIndex: 1 },
-  { id: 'exo-12', category: 'EXO', prompt: '我认为 EXO 最强的舞者是？', options: ['Lay', 'Jongin', 'Sehun', 'Chanyeol'], correctIndex: 1 },
-  { id: 'exo-13', category: 'EXO', prompt: '我心目中 EXO 的本命CP是？', options: ['Baekhyun x Chanyeol', 'Kyungsoo x Jongin', 'Suho x Xiumin', 'Chen x Sehun'], correctIndex: 0 },
-  { id: 'exo-14', category: 'EXO', prompt: '我最被 EXO 哪个舞蹈细节吸引？', options: ['Growl的转身', 'Call Me Baby的气势', 'Love Shot的同步', 'Tempo的节奏'], correctIndex: 2 },
-  { id: 'exo-15', category: 'EXO', prompt: '我最想看 EXO 的哪个个人作品？', options: ['Lay的作曲', 'Baekhyun的音乐', 'Jongin的舞蹈', 'Kyungsoo的演技'], correctIndex: 3 },
-  { id: 'exo-16', category: 'EXO', prompt: '我最爱 EXO 哪个视觉概念？', options: ['Growl风格', 'Call Me Baby风格', 'Love Shot风格', 'Tempo风格'], correctIndex: 2 },
-  { id: 'exo-17', category: 'EXO', prompt: '我认为 EXO 最应该尝试的是？', options: ['复古摇滚', '爵士融合', '电子实验', '保持经典'], correctIndex: 3 },
-  { id: 'exo-18', category: 'EXO', prompt: '我最想和 EXO 一起去的地点是？', options: ['首尔', '东京', '北京', 'LA'], correctIndex: 3 },
-  { id: 'exo-19', category: 'EXO', prompt: '我认为 EXO 最伟大的成就是？', options: ['音乐销量', '奖项获奖', '国际影响力', '粉丝基数'], correctIndex: 2 },
-  { id: 'exo-20', category: 'EXO', prompt: '我最期待 EXO 回归的是？', options: ['新的音乐概念', '全员聚首', '世界巡演', '个人作品合集'], correctIndex: 1 },
-
-  // Red Velvet (20 questions)
-  { id: 'red-velvet-1', category: 'Red Velvet', prompt: '我最爱的 Red Velvet 成员是？', options: ['Irene', 'Seulgi', 'Wendy', 'Joy', 'Yeri'], correctIndex: 1 },
-  { id: 'red-velvet-2', category: 'Red Velvet', prompt: '我最喜欢的 Red Velvet 歌曲是？', options: ['Psycho', 'Red Flavor', 'Bad Boy', 'Automatic'], correctIndex: 0 },
-  { id: 'red-velvet-3', category: 'Red Velvet', prompt: '我认为 Red Velvet 最完美的舞蹈是？', options: ['Red Flavor舞蹈', 'Psycho舞蹈', 'Bad Boy舞蹈', 'Automatic舞蹈'], correctIndex: 1 },
-  { id: 'red-velvet-4', category: 'Red Velvet', prompt: '我心中 Red Velvet 最有气场的成员是？', options: ['Irene', 'Seulgi', 'Wendy', 'Joy'], correctIndex: 0 },
-  { id: 'red-velvet-5', category: 'Red Velvet', prompt: '我最爱的 Red Velvet 时代是？', options: ['Red Flavor时代', 'Psycho时代', 'Irene & Seulgi分队时代', '最近'], correctIndex: 1 },
-  { id: 'red-velvet-6', category: 'Red Velvet', prompt: '我想穿的是 Red Velvet 谁的风格？', options: ['Irene的优雅', 'Seulgi的率性', 'Wendy的温柔', 'Joy的活力', 'Yeri的个性'], correctIndex: 4 },
-  { id: 'red-velvet-7', category: 'Red Velvet', prompt: '我最想和 Red Velvet 谁看电影？', options: ['Irene', 'Seulgi', 'Wendy', 'Joy', 'Yeri'], correctIndex: 2 },
-  { id: 'red-velvet-8', category: 'Red Velvet', prompt: '我认为 Red Velvet 最强的舞者是？', options: ['Irene', 'Seulgi', 'Joy', 'Yeri'], correctIndex: 1 },
-  { id: 'red-velvet-9', category: 'Red Velvet', prompt: '我最被 Red Velvet 的概念吸引？', options: ['Red vs Velvet对比', '神秘感', '高级质感', '完整世界观'], correctIndex: 3 },
-  { id: 'red-velvet-10', category: 'Red Velvet', prompt: '我最爱的 Red Velvet 专辑是？', options: ['Ice Cream Cake', 'Russian Roulette', 'Perfect Velvet', 'The ReVe Festival'], correctIndex: 3 },
-  { id: 'red-velvet-11', category: 'Red Velvet', prompt: '我最想听 Red Velvet 谁唱主歌？', options: ['Irene', 'Seulgi', 'Wendy', 'Joy'], correctIndex: 2 },
-  { id: 'red-velvet-12', category: 'Red Velvet', prompt: '我认为 Red Velvet 最有趣的项目是？', options: ['Irene & Seulgi单曲', 'Wendy的音乐作品', 'Joy的戏剧作品', '全团回归'], correctIndex: 0 },
-  { id: 'red-velvet-13', category: 'Red Velvet', prompt: '我心目中 Red Velvet 的本命CP是？', options: ['Irene x Seulgi', 'Wendy x Joy', 'Seulgi x Yeri', '都很配'], correctIndex: 0 },
-  { id: 'red-velvet-14', category: 'Red Velvet', prompt: '我最被 Red Velvet 哪个舞蹈细节吸引？', options: ['Psycho的冷感', 'Red Flavor的热度', 'Bad Boy的气势', 'Zimzalabim的复杂性'], correctIndex: 0 },
-  { id: 'red-velvet-15', category: 'Red Velvet', prompt: '我最想看 Red Velvet 的哪个个人作品？', options: ['Irene的电视剧', 'Seulgi的专辑', 'Wendy的音乐', 'Joy的舞蹈'], correctIndex: 3 },
-  { id: 'red-velvet-16', category: 'Red Velvet', prompt: '我最爱 Red Velvet 哪个视觉概念？', options: ['Red Flavor风格', 'Psycho风格', 'The ReVe Festival风格', '女王风格'], correctIndex: 1 },
-  { id: 'red-velvet-17', category: 'Red Velvet', prompt: '我认为 Red Velvet 最应该尝试的是？', options: ['摇滚风格', '爵士融合', '保持现有高度', '实验电子'], correctIndex: 2 },
-  { id: 'red-velvet-18', category: 'Red Velvet', prompt: '我最想和 Red Velvet 一起去的地点是？', options: ['首尔', '巴黎', '米兰', '纽约'], correctIndex: 1 },
-  { id: 'red-velvet-19', category: 'Red Velvet', prompt: '我认为 Red Velvet 最特别的是？', options: ['舞蹈力', '声乐质量', '视觉品味', '整体艺术性'], correctIndex: 3 },
-  { id: 'red-velvet-20', category: 'Red Velvet', prompt: '我最期待 Red Velvet 的是？', options: ['全员回归', '新的音乐概念', '国际合作', '个人作品集'], correctIndex: 0 },
-
-  // GIRLS' GENERATION (SNSD) (20 questions)
-  { id: 'snsd-1', category: '少女时代', prompt: '我最爱的少女时代成员是？', options: ['Taeyeon', 'Jessica', 'Sunny', 'Tiffany', 'Hyoyeon', 'Yuri', 'Sooyoung', 'Yoona', 'Seohyun'], correctIndex: 3 },
-  { id: 'snsd-2', category: '少女时代', prompt: '我最喜欢的少女时代歌曲是？', options: ['Gee', 'Genie', 'Oh!', 'Lion Heart'], correctIndex: 3 },
-  { id: 'snsd-3', category: '少女时代', prompt: '我认为少女时代最经典的舞蹈是？', options: ['Gee舞蹈', 'Genie舞蹈', 'Oh!舞蹈', 'Mr. Taxi舞蹈'], correctIndex: 0 },
-  { id: 'snsd-4', category: '少女时代', prompt: '我心中少女时代最有气场的成员是？', options: ['Taeyeon', 'Yoona', 'Hyoyeon', 'Seohyun'], correctIndex: 0 },
-  { id: 'snsd-5', category: '少女时代', prompt: '我最爱的少女时代时代是？', options: ['Gee时代', 'Genie时代', 'The Boys时代', 'Lion Heart时代'], correctIndex: 3 },
-  { id: 'snsd-6', category: '少女时代', prompt: '我想和少女时代谁一起旅游？', options: ['Taeyeon', 'Tiffany', 'Yuri', 'Yoona', 'Seohyun'], correctIndex: 3 },
-  { id: 'snsd-7', category: '少女时代', prompt: '我最想听少女时代谁唱主歌？', options: ['Taeyeon', 'Jessica', 'Seohyun', 'Tiffany'], correctIndex: 0 },
-  { id: 'snsd-8', category: '少女时代', prompt: '我认为少女时代最强的舞者是？', options: ['Hyoyeon', 'Yuri', 'Sunny', 'Yoona'], correctIndex: 0 },
-  { id: 'snsd-9', category: '少女时代', prompt: '我最被少女时代哪个舞蹈细节吸引？', options: ['Gee的手部舞蹈', 'Oh!的队形', 'Mr. Taxi的节奏', 'Lion Heart的优雅'], correctIndex: 3 },
-  { id: 'snsd-10', category: '少女时代', prompt: '我最爱的少女时代专辑是？', options: ['Genie', 'Hoot', 'Mr. Mr.', 'Holiday Night'], correctIndex: 1 },
-  { id: 'snsd-11', category: '少女时代', prompt: '我认为少女时代最伟大的成就是？', options: ['音乐成就', '国际影响', '代代相传的影响力', '总体贡献'], correctIndex: 3 },
-  { id: 'snsd-12', category: '少女时代', prompt: '我最想看少女时代的哪个个人作品？', options: ['Taeyeon的音乐', 'Yoona的电视剧', 'Seohyun的电影', 'Tiffany的演艺'], correctIndex: 1 },
-  { id: 'snsd-13', category: '少女时代', prompt: '我心目中少女时代的本命CP是？', options: ['Taeyeon x Tiffany', 'Yuri x Sooyoung', 'Yoona x Seohyun', '都很配'], correctIndex: 0 },
-  { id: 'snsd-14', category: '少女时代', prompt: '我最爱少女时代哪个视觉概念？', options: ['Gee风格', 'Genie风格', 'The Boys风格', 'Lion Heart风格'], correctIndex: 3 },
-  { id: 'snsd-15', category: '少女时代', prompt: '我最被少女时代的歌词打动过？', options: ['Into the New World', 'Twinkle', 'Sailing', 'Through the Night'], correctIndex: 0 },
-  { id: 'snsd-16', category: '少女时代', prompt: '我认为少女时代最应该做的是？', options: ['更多分队活动', '全员回归', '个人发展', '都好'], correctIndex: 1 },
-  { id: 'snsd-17', category: '少女时代', prompt: '我最想和少女时代一起去的地点是？', options: ['首尔', '东京', '巴黎', '伦敦'], correctIndex: 0 },
-  { id: 'snsd-18', category: '少女时代', prompt: '我最想少女时代做的是？', options: ['新的音乐专辑', '纪录片', '综艺节目', '再聚首演唱会'], correctIndex: 3 },
-  { id: 'snsd-19', category: '少女时代', prompt: '我认为少女时代对 K-pop 的影响是？', options: ['开创女团时代', '国际化代表', '音乐品质标杆', '以上都是'], correctIndex: 3 },
-  { id: 'snsd-20', category: '少女时代', prompt: '我最期待少女时代的是？', options: ['完整回归', '更多单人作品', '合作企划', '享受退休生活'], correctIndex: 0 },
-
-  // IU (20 questions - 新增solo歌手)
-  { id: 'iu-1', category: 'IU', prompt: '我最喜欢的 IU 歌曲是？', options: ['좋은 날', 'Through the Night', 'Blueming', 'Love Poem'], correctIndex: 3 },
-  { id: 'iu-2', category: 'IU', prompt: '我认为 IU 最治愈的歌是？', options: ['좋은 날', 'Palette', '난 헌법을 읽었고', 'Through the Night'], correctIndex: 0 },
-  { id: 'iu-3', category: 'IU', prompt: '我最爱的 IU 音乐风格是？', options: ['民谣感性', '电子流行', '摇滚实验', '民族融合'], correctIndex: 1 },
-  { id: 'iu-4', category: 'IU', prompt: '我认为 IU 最伟大的成就是？', options: ['音乐创作', '电视剧演技', '国际影响力', '整体艺术性'], correctIndex: 3 },
-  { id: 'iu-5', category: 'IU', prompt: '我最想听 IU 哪个时期的作品？', options: ['早期民谣风', '流行过渡期', '成熟高产期', '实验阶段'], correctIndex: 2 },
-  { id: 'iu-6', category: 'IU', prompt: '我最被 IU 哪首歌的歌词打动？', options: ['Through the Night', 'Palette', 'Celebrity', 'Blueming'], correctIndex: 0 },
-  { id: 'iu-7', category: 'IU', prompt: '我认为 IU 最应该尝试的是？', options: ['摇滚风格', '爵士融合', '保持现有高度', '探索新音乐'], correctIndex: 3 },
-  { id: 'iu-8', category: 'IU', prompt: '我心中 IU 最完美的专辑是？', options: ['Palette', 'Love poem', 'Lilac', 'I\'ve iu'], correctIndex: 1 },
-  { id: 'iu-9', category: 'IU', prompt: '我最想看 IU 的哪个作品？', options: ['新电视剧', '演唱会纪录片', '音乐纪录片', '综艺节目'], correctIndex: 1 },
-  { id: 'iu-10', category: 'IU', prompt: '我最爱 IU 哪个时期的美学？', options: ['清纯少女', '成熟女性', '艺术风格', '现在'], correctIndex: 3 },
-  { id: 'iu-11', category: 'IU', prompt: '我认为 IU 的音乐主题最常见的是？', options: ['爱情故事', '人生哲学', '社会关怀', '自我认知'], correctIndex: 1 },
-  { id: 'iu-12', category: 'IU', prompt: '我最想和 IU 一起去的地点是？', options: ['首尔', '巴黎', '东京', '伦敦'], correctIndex: 2 },
-  { id: 'iu-13', category: 'IU', prompt: '我最被 IU 哪个 MV 的美学打动？', options: ['Through the Night', 'Palette', 'Blueming', 'Love Poem'], correctIndex: 1 },
-  { id: 'iu-14', category: 'IU', prompt: '我认为 IU 最特别的是？', options: ['歌唱实力', '创作能力', '演技', '整体气质'], correctIndex: 3 },
-  { id: 'iu-15', category: 'IU', prompt: '我最爱 IU 的哪个合作？', options: ['Palette x Epik High', 'Through the Night原创', '戏剧配乐', 'Celebrity合作'], correctIndex: 0 },
-  { id: 'iu-16', category: 'IU', prompt: '我认为 IU 最应该获得的奖是？', options: ['Grammy Award', '新人奖', '年度大奖', '终身成就奖'], correctIndex: 3 },
-  { id: 'iu-17', category: 'IU', prompt: '我最想听 IU 的哪种风格？', options: ['民族音乐融合', '爵士改编', '摇滚版本', '原声现场'], correctIndex: 3 },
-  { id: 'iu-18', category: 'IU', prompt: '我心目中 IU 最有魅力的时期是？', options: ['2008-2010', '2012-2014', '2016-2018', '现在'], correctIndex: 3 },
-  { id: 'iu-19', category: 'IU', prompt: '我最期待 IU 的是？', options: ['新专辑', '演唱会巡演', '新的电视剧', '写真集'], correctIndex: 0 },
-  { id: 'iu-20', category: 'IU', prompt: '我认为 IU 对 K-pop 的影响是？', options: ['创意范本', '品质标杆', '艺术启蒙', '以上都是'], correctIndex: 3 },
-
-  // ENHYPEN (20 questions)
-  { id: 'enhypen-1', category: 'ENHYPEN', prompt: '我最爱的 ENHYPEN 成员是？', options: ['Heeseung', 'Jay', 'Jake', 'Sunghoon', 'Sunoo', 'Jungwon', 'Ni-ki'], correctIndex: 6 },
-  { id: 'enhypen-2', category: 'ENHYPEN', prompt: '我最喜欢的 ENHYPEN 歌曲是？', options: ['Given-Taken', 'Drunk-Dazed', 'Tamed-Dashed', 'Polaroid Love'], correctIndex: 3 },
-  { id: 'enhypen-3', category: 'ENHYPEN', prompt: '我认为 ENHYPEN 最强的舞蹈是？', options: ['Given-Taken舞蹈', 'Drunk-Dazed舞蹈', 'Tamed-Dashed舞蹈', 'Polaroid Love舞蹈'], correctIndex: 1 },
-  { id: 'enhypen-4', category: 'ENHYPEN', prompt: '我心中 ENHYPEN 最有魅力的成员是？', options: ['Heeseung', 'Sunghoon', 'Jungwon', 'Ni-ki'], correctIndex: 0 },
-  { id: 'enhypen-5', category: 'ENHYPEN', prompt: '我最爱的 ENHYPEN 时代是？', options: ['出道时代', 'Drunk-Dazed时代', 'Tamed-Dashed时代', '最近'], correctIndex: 3 },
-  { id: 'enhypen-6', category: 'ENHYPEN', prompt: '我想和 ENHYPEN 谁一起看电影？', options: ['Heeseung', 'Jay', 'Sunghoon', 'Sunoo'], correctIndex: 3 },
-  { id: 'enhypen-7', category: 'ENHYPEN', prompt: '我最想听 ENHYPEN 谁的Rap？', options: ['Heeseung', 'Jay', 'Jake', 'Jungwon'], correctIndex: 1 },
-  { id: 'enhypen-8', category: 'ENHYPEN', prompt: '我认为 ENHYPEN 最厉害的是？', options: ['舞蹈', '编舞', '整体实力', '潜力'], correctIndex: 3 },
-  { id: 'enhypen-9', category: 'ENHYPEN', prompt: '我最被 ENHYPEN 的舞蹈视觉打动？', options: ['Drunk-Dazed的黑暗感', 'Tamed-Dashed的力量感', 'Polaroid Love的甜蜜感', '都很强'], correctIndex: 3 },
-  { id: 'enhypen-10', category: 'ENHYPEN', prompt: '我最爱的 ENHYPEN 专辑是？', options: ['Dimension: Dilemma', 'Manifesto: Day 1', 'Engene', 'Dimension: Melting'], correctIndex: 3 },
-  { id: 'enhypen-11', category: 'ENHYPEN', prompt: '我最想听 ENHYPEN 谁唱主歌？', options: ['Heeseung', 'Sunoo', 'Jay', 'Sunghoon'], correctIndex: 1 },
-  { id: 'enhypen-12', category: 'ENHYPEN', prompt: '我认为 ENHYPEN 最强的舞者是？', options: ['Jake', 'Sunghoon', 'Ni-ki', 'Jungwon'], correctIndex: 2 },
-  { id: 'enhypen-13', category: 'ENHYPEN', prompt: '我心目中 ENHYPEN 的本命CP是？', options: ['Heeseung x Sunghoon', 'Jay x Jake', 'Sunoo x Ni-ki', 'Jungwon x Ni-ki'], correctIndex: 1 },
-  { id: 'enhypen-14', category: 'ENHYPEN', prompt: '我最被 ENHYPEN 哪个舞蹈细节吸引？', options: ['Given-Taken的冷感', 'Drunk-Dazed的气势', 'Tamed-Dashed的复杂性', 'Polaroid Love的温柔'], correctIndex: 1 },
-  { id: 'enhypen-15', category: 'ENHYPEN', prompt: '我最想看 ENHYPEN 的哪个个人作品？', options: ['Heeseung的音乐', 'Jay的创意', 'Ni-ki的舞蹈', 'Sunoo的综艺'], correctIndex: 2 },
-  { id: 'enhypen-16', category: 'ENHYPEN', prompt: '我最爱 ENHYPEN 哪个视觉概念？', options: ['Given-Taken风格', 'Drunk-Dazed风格', 'Tamed-Dashed风格', '最新概念'], correctIndex: 3 },
-  { id: 'enhypen-17', category: 'ENHYPEN', prompt: '我认为 ENHYPEN 最应该尝试的是？', options: ['摇滚风格', '爵士风格', '抒情歌曲', '保持现有'], correctIndex: 3 },
-  { id: 'enhypen-18', category: 'ENHYPEN', prompt: '我最想和 ENHYPEN 一起去的地点是？', options: ['首尔', '纽约', '伦敦', '东京'], correctIndex: 1 },
-  { id: 'enhypen-19', category: 'ENHYPEN', prompt: '我认为 ENHYPEN 最强的是？', options: ['舞蹈同步', '声乐实力', '编舞创意', '整体品味'], correctIndex: 3 },
-  { id: 'enhypen-20', category: 'ENHYPEN', prompt: '我最期待 ENHYPEN 的是？', options: ['新的音乐风格', '世界巡演', '个人作品', '完整专辑'], correctIndex: 1 },
-
-  // TXT (20 questions)
-  { id: 'txt-1', category: 'TXT', prompt: '我最爱的 TXT 成员是？', options: ['Yeonjun', 'Soobin', 'Beomgyu', 'Taehyun', 'Kai'], correctIndex: 3 },
-  { id: 'txt-2', category: 'TXT', prompt: '我最喜欢的 TXT 歌曲是？', options: ['Cat & Dog', 'Run Away', 'Antifragile', 'Sugar Rush Ride'], correctIndex: 2 },
-  { id: 'txt-3', category: 'TXT', prompt: '我认为 TXT 最强的舞蹈是？', options: ['Run Away舞蹈', 'Crown舞蹈', 'Antifragile舞蹈', 'Sugar Rush Ride舞蹈'], correctIndex: 2 },
-  { id: 'txt-4', category: 'TXT', prompt: '我心中 TXT 最有魅力的成员是？', options: ['Yeonjun', 'Soobin', 'Taehyun', 'Kai'], correctIndex: 0 },
-  { id: 'txt-5', category: 'TXT', prompt: '我最爱的 TXT 时代是？', options: ['The Dream Chapter时代', 'Chaos Chapter时代', 'Minisode时代', '最近'], correctIndex: 3 },
-  { id: 'txt-6', category: 'TXT', prompt: '我想和 TXT 谁一起玩游戏？', options: ['Yeonjun', 'Soobin', 'Beomgyu', 'Kai'], correctIndex: 3 },
-  { id: 'txt-7', category: 'TXT', prompt: '我最想听 TXT 谁的Rap？', options: ['Yeonjun', 'Soobin', 'Beomgyu', 'Kai'], correctIndex: 0 },
-  { id: 'txt-8', category: 'TXT', prompt: '我认为 TXT 最厉害的是？', options: ['舞蹈', '音乐制作', '视觉概念', '整体实力'], correctIndex: 3 },
-  { id: 'txt-9', category: 'TXT', prompt: '我最被 TXT 的青春氛围吸引？', options: ['梦幻感', '冒险感', '成长感', '都喜欢'], correctIndex: 3 },
-  { id: 'txt-10', category: 'TXT', prompt: '我最爱的 TXT 专辑是？', options: ['The Dream Chapter: MAGIC', 'Chaos Chapter: FREEZE', 'Minisode 2', 'The Name Chapter'], correctIndex: 3 },
-  { id: 'txt-11', category: 'TXT', prompt: '我最想听 TXT 谁唱主歌？', options: ['Soobin', 'Taehyun', 'Kai', 'Beomgyu'], correctIndex: 1 },
-  { id: 'txt-12', category: 'TXT', prompt: '我认为 TXT 最强的舞者是？', options: ['Yeonjun', 'Beomgyu', 'Taehyun', 'Kai'], correctIndex: 0 },
-  { id: 'txt-13', category: 'TXT', prompt: '我心目中 TXT 的本命CP是？', options: ['Yeonjun x Taehyun', 'Soobin x Beomgyu', 'Beomgyu x Kai', 'Taehyun x Kai'], correctIndex: 1 },
-  { id: 'txt-14', category: 'TXT', prompt: '我最被 TXT 哪个舞蹈细节吸引？', options: ['Run Away的梦幻感', 'Antifragile的力量感', 'Sugar Rush的节奏感', 'Chasing That Moment'], correctIndex: 1 },
-  { id: 'txt-15', category: 'TXT', prompt: '我最想看 TXT 的哪个个人作品？', options: ['Yeonjun的音乐', 'Soobin的主持', 'Taehyun的创意', 'Kai的舞蹈'], correctIndex: 3 },
-  { id: 'txt-16', category: 'TXT', prompt: '我最爱 TXT 哪个视觉概念？', options: ['梦幻少年', '青春活力', '复古风格', '最新概念'], correctIndex: 3 },
-  { id: 'txt-17', category: 'TXT', prompt: '我认为 TXT 最应该尝试的是？', options: ['摇滚风格', '深沉主题', '保持青春', '爵士融合'], correctIndex: 2 },
-  { id: 'txt-18', category: 'TXT', prompt: '我最想和 TXT 一起去的地点是？', options: ['首尔', '伦敦', '东京', 'NYC'], correctIndex: 2 },
-  { id: 'txt-19', category: 'TXT', prompt: '我认为 TXT 最强的是？', options: ['音乐制作', '视觉表现', '整体完成度', '粉丝基数'], correctIndex: 2 },
-  { id: 'txt-20', category: 'TXT', prompt: '我最期待 TXT 的是？', options: ['新的音乐风格', '成熟转变', '世界巡演', '个人专业发展'], correctIndex: 1 },
-
-  // SHINee (20 questions)
-  { id: 'shinee-1', category: 'SHINee', prompt: '我最爱的 SHINee 成员是？', options: ['Onew', 'Jonghyun', 'Key', 'Minho', 'Taemin'], correctIndex: 4 },
-  { id: 'shinee-2', category: 'SHINee', prompt: '我最喜欢的 SHINee 歌曲是？', options: ['Replay', 'Sherlock', 'View', 'Everybody'], correctIndex: 2 },
-  { id: 'shinee-3', category: 'SHINee', prompt: '我认为 SHINee 最完美的舞蹈是？', options: ['Replay舞蹈', 'Sherlock舞蹈', 'View舞蹈', 'Everybody舞蹈'], correctIndex: 1 },
-  { id: 'shinee-4', category: 'SHINee', prompt: '我心中 SHINee 最有气场的成员是？', options: ['Onew', 'Key', 'Minho', 'Taemin'], correctIndex: 3 },
-  { id: 'shinee-5', category: 'SHINee', prompt: '我最爱的 SHINee 时代是？', options: ['Replay时代', 'Sherlock时代', 'View时代', 'Odd时代'], correctIndex: 2 },
-  { id: 'shinee-6', category: 'SHINee', prompt: '我想和 SHINee 谁一起吃饭？', options: ['Onew', 'Key', 'Minho', 'Taemin'], correctIndex: 0 },
-  { id: 'shinee-7', category: 'SHINee', prompt: '我最想听 SHINee 谁的Rap？', options: ['Jonghyun', 'Key', 'Minho', '都很强'], correctIndex: 2 },
-  { id: 'shinee-8', category: 'SHINee', prompt: '我认为 SHINee 最特别的是？', options: ['舞蹈创新', '音乐风格', '视觉概念', '整体影响'], correctIndex: 3 },
-  { id: 'shinee-9', category: 'SHINee', prompt: '我最被 SHINee 的舞蹈艺术性打动？', options: ['Replay的青春感', 'Sherlock的复杂性', 'View的优雅感', 'Everybody的创意'], correctIndex: 2 },
-  { id: 'shinee-10', category: 'SHINee', prompt: '我最爱的 SHINee 专辑是？', options: ['The Story of Light', 'Odd', 'HARD', 'Sherlock'], correctIndex: 0 },
-  { id: 'shinee-11', category: 'SHINee', prompt: '我最想听 SHINee 谁唱主歌？', options: ['Onew', 'Jonghyun', 'Key', 'Taemin'], correctIndex: 0 },
-  { id: 'shinee-12', category: 'SHINee', prompt: '我认为 SHINee 最强的舞者是？', options: ['Minho', 'Taemin', 'Key', 'Onew'], correctIndex: 1 },
-  { id: 'shinee-13', category: 'SHINee', prompt: '我心目中 SHINee 的本命CP是？', options: ['Onew x Key', 'Minho x Taemin', 'Jonghyun x Key', '都很配'], correctIndex: 1 },
-  { id: 'shinee-14', category: 'SHINee', prompt: '我最被 SHINee 哪个舞蹈细节吸引？', options: ['Sherlock的转身', 'View的同步', 'Everybody的队形', 'Odd的节奏'], correctIndex: 1 },
-  { id: 'shinee-15', category: 'SHINee', prompt: '我最想看 SHINee 的哪个个人作品？', options: ['Taemin的舞蹈', 'Key的综艺', 'Minho的演技', 'Onew的音乐'], correctIndex: 0 },
-  { id: 'shinee-16', category: 'SHINee', prompt: '我最爱 SHINee 哪个视觉概念？', options: ['Replay风格', 'Sherlock风格', 'View风格', 'Odd风格'], correctIndex: 2 },
-  { id: 'shinee-17', category: 'SHINee', prompt: '我认为 SHINee 最应该被纪念的是？', options: ['舞蹈贡献', '音乐成就', '国际影响', '以上都是'], correctIndex: 3 },
-  { id: 'shinee-18', category: 'SHINee', prompt: '我最想和 SHINee 一起去的地点是？', options: ['首尔', '东京', '曼谷', '伦敦'], correctIndex: 2 },
-  { id: 'shinee-19', category: 'SHINee', prompt: '我认为 SHINee 最伟大的是？', options: ['音乐品质', '舞蹈创新', '整体艺术性', '代代影响'], correctIndex: 3 },
-  { id: 'shinee-20', category: 'SHINee', prompt: '我最期待 SHINee 的是？', options: ['完整回归', '新专辑', '纪录片', '巡演'], correctIndex: 0 },
-
-  // NCT (20 questions)
-  { id: 'nct-1', category: 'NCT', prompt: '我最爱的 NCT 成员是？', options: ['Taeyong', 'Mark', 'Haechan', 'Jungwoo', 'Johnny', 'Jaehyun', 'Jeno', 'Chenle', 'Jisung'], correctIndex: 5 },
-  { id: 'nct-2', category: 'NCT', prompt: '我最喜欢的 NCT 歌曲是？', options: ['Kick It', 'Cherry Bomb', 'Sticker', 'Superhuman'], correctIndex: 1 },
-  { id: 'nct-3', category: 'NCT', prompt: '我认为 NCT 最强的舞蹈是？', options: ['Kick It舞蹈', 'Cherry Bomb舞蹈', 'Sticker舞蹈', 'Superhuman舞蹈'], correctIndex: 0 },
-  { id: 'nct-4', category: 'NCT', prompt: '我心中 NCT 最有魅力的成员是？', options: ['Taeyong', 'Jaehyun', 'Mark', 'Johnny'], correctIndex: 1 },
-  { id: 'nct-5', category: 'NCT', prompt: '我最爱的 NCT 时代是？', options: ['127时代', 'Dream时代', 'WayV时代', '最近'], correctIndex: 3 },
-  { id: 'nct-6', category: 'NCT', prompt: '我想和 NCT 谁一起旅游？', options: ['Mark', 'Haechan', 'Jeno', 'Johnny'], correctIndex: 3 },
-  { id: 'nct-7', category: 'NCT', prompt: '我最想听 NCT 谁的Rap？', options: ['Mark', 'Taeyong', 'Johnny', '都很强'], correctIndex: 0 },
-  { id: 'nct-8', category: 'NCT', prompt: '我认为 NCT 最厉害的是？', options: ['舞蹈', '编舞', '整体规模', '创意概念'], correctIndex: 3 },
-  { id: 'nct-9', category: 'NCT', prompt: '我最被 NCT 的分队制度吸引？', options: ['127的气势', 'Dream的活力', 'WayV的东方感', '都喜欢'], correctIndex: 3 },
-  { id: 'nct-10', category: 'NCT', prompt: '我最爱的 NCT 子团是？', options: ['NCT 127', 'NCT Dream', 'WayV', '都爱'], correctIndex: 3 },
-  { id: 'nct-11', category: 'NCT', prompt: '我最想听 NCT 谁唱主歌？', options: ['Taeyong', 'Haechan', 'Jaehyun', 'Jungwoo'], correctIndex: 1 },
-  { id: 'nct-12', category: 'NCT', prompt: '我认为 NCT 最强的舞者是？', options: ['Taeyong', 'Jeno', 'Johnny', 'Jisung'], correctIndex: 0 },
-  { id: 'nct-13', category: 'NCT', prompt: '我心目中 NCT 的本命CP是？', options: ['Mark x Haechan', 'Jaehyun x Johnny', 'Jeno x Chenle', 'Taeyong x Jaehyun'], correctIndex: 0 },
-  { id: 'nct-14', category: 'NCT', prompt: '我最被 NCT 哪个舞蹈细节吸引？', options: ['Kick It的气势', 'Cherry Bomb的复杂性', 'Sticker的创意', 'Superhuman的力量'], correctIndex: 0 },
-  { id: 'nct-15', category: 'NCT', prompt: '我最想看 NCT 的哪个个人作品？', options: ['Mark的音乐', 'Haechan的综艺', 'Jaehyun的演技', 'Taeyong的制作'], correctIndex: 1 },
-  { id: 'nct-16', category: 'NCT', prompt: '我最爱 NCT 哪个视觉概念？', options: ['Cherry Bomb风格', 'Kick It风格', 'Sticker风格', '最新概念'], correctIndex: 3 },
-  { id: 'nct-17', category: 'NCT', prompt: '我认为 NCT 最应该尝试的是？', options: ['摇滚风格', '抒情作品', '保持创新', '民族融合'], correctIndex: 2 },
-  { id: 'nct-18', category: 'NCT', prompt: '我最想和 NCT 一起去的地点是？', options: ['首尔', '北京', '曼谷', '伦敦'], correctIndex: 1 },
-  { id: 'nct-19', category: 'NCT', prompt: '我认为 NCT 最强的是？', options: ['舞蹈水准', '音乐制作', '整体规模', '创意概念'], correctIndex: 3 },
-  { id: 'nct-20', category: 'NCT', prompt: '我最期待 NCT 的是？', options: ['全员回归', '新的音乐风格', '国际合作', '个人专业'], correctIndex: 0 },
-
-  // ASTRO (20 questions)
-  { id: 'astro-1', category: 'ASTRO', prompt: '我最爱的 ASTRO 成员是？', options: ['MJ', 'JinJin', 'The8-wait 这里是ASTRO', 'Moonbin', 'Rocky', 'Sanha'], correctIndex: 3 },
-  { id: 'astro-2', category: 'ASTRO', prompt: '我最喜欢的 ASTRO 歌曲是？', options: ['Hide&Seek', 'Baby', 'Crazy Sexy Cool', 'All Night'], correctIndex: 2 },
-  { id: 'astro-3', category: 'ASTRO', prompt: '我认为 ASTRO 最强的舞蹈是？', options: ['Hide&Seek舞蹈', 'Baby舞蹈', 'Crazy Sexy Cool舞蹈', 'All Night舞蹈'], correctIndex: 2 },
-  { id: 'astro-4', category: 'ASTRO', prompt: '我心中 ASTRO 最有魅力的成员是？', options: ['Moonbin', 'MJ', 'Rocky', 'Sanha'], correctIndex: 0 },
-  { id: 'astro-5', category: 'ASTRO', prompt: '我最爱的 ASTRO 时代是？', options: ['出道时代', 'Crazy Sexy Cool时代', 'Knock时代', '最近'], correctIndex: 3 },
-  { id: 'astro-6', category: 'ASTRO', prompt: '我想和 ASTRO 谁一起做运动？', options: ['MJ', 'JinJin', 'Moonbin', 'Rocky'], correctIndex: 2 },
-  { id: 'astro-7', category: 'ASTRO', prompt: '我最想听 ASTRO 谁的Rap？', options: ['MJ', 'JinJin', 'Rocky', '都很强'], correctIndex: 0 },
-  { id: 'astro-8', category: 'ASTRO', prompt: '我认为 ASTRO 最特别的是？', options: ['舞蹈', '综艺笑点', '音乐品质', '团员亲密度'], correctIndex: 3 },
-  { id: 'astro-9', category: 'ASTRO', prompt: '我最被 ASTRO 的亲近感吸引？', options: ['成员互动', '粉丝互动', '音乐风格', '都喜欢'], correctIndex: 3 },
-  { id: 'astro-10', category: 'ASTRO', prompt: '我最爱的 ASTRO 专辑是？', options: ['All Light', 'Switch On', 'Green For Go', '都好'], correctIndex: 1 },
-  { id: 'astro-11', category: 'ASTRO', prompt: '我最想听 ASTRO 谁唱主歌？', options: ['MJ', 'JinJin', 'Moonbin', 'Sanha'], correctIndex: 2 },
-  { id: 'astro-12', category: 'ASTRO', prompt: '我认为 ASTRO 最强的舞者是？', options: ['Moonbin', 'Rocky', 'MJ', 'Sanha'], correctIndex: 0 },
-  { id: 'astro-13', category: 'ASTRO', prompt: '我心目中 ASTRO 的本命CP是？', options: ['Moonbin x Rocky', 'MJ x JinJin', 'JinJin x Sanha', '都很配'], correctIndex: 0 },
-  { id: 'astro-14', category: 'ASTRO', prompt: '我最被 ASTRO 哪个舞蹈细节吸引？', options: ['Hide&Seek的活力', 'Baby的可爱', 'Crazy Sexy Cool的酷感', 'All Night的温柔'], correctIndex: 2 },
-  { id: 'astro-15', category: 'ASTRO', prompt: '我最想看 ASTRO 的哪个个人作品？', options: ['Moonbin的演技', 'Rocky的音乐', 'MJ的舞蹈', 'Sanha的综艺'], correctIndex: 1 },
-  { id: 'astro-16', category: 'ASTRO', prompt: '我最爱 ASTRO 哪个视觉概念？', options: ['Hide&Seek风格', 'Baby风格', 'Crazy Sexy Cool风格', '最新风格'], correctIndex: 2 },
-  { id: 'astro-17', category: 'ASTRO', prompt: '我认为 ASTRO 最应该做的是？', options: ['尝试摇滚', '保持温暖感', '增加国际活动', '个人发展'], correctIndex: 2 },
-  { id: 'astro-18', category: 'ASTRO', prompt: '我最想和 ASTRO 一起去的地点是？', options: ['首尔', '东京', '巴黎', '曼谷'], correctIndex: 1 },
-  { id: 'astro-19', category: 'ASTRO', prompt: '我认为 ASTRO 最强的是？', options: ['舞蹈', '综艺感', '亲近感', '整体实力'], correctIndex: 3 },
-  { id: 'astro-20', category: 'ASTRO', prompt: '我最期待 ASTRO 的是？', options: ['新的音乐方向', '演唱会扩展', '个人作品', '全员活动'], correctIndex: 1 },
-
-  // LE SSERAFIM (20 questions)
-  { id: 'le-sserafim-1', category: 'LE SSERAFIM', prompt: '我最爱的 LE SSERAFIM 成员是？', options: ['Kim Chaewon', 'Sakura', 'Huh Yunjin', 'Kazuha', 'Hong Eunchae'], correctIndex: 4 },
-  { id: 'le-sserafim-2', category: 'LE SSERAFIM', prompt: '我最喜欢的 LE SSERAFIM 歌曲是？', options: ['Sour Grapes', 'Fearless', 'Antifragile', 'Eve, Psyche & The Bluebeard\'s wife'], correctIndex: 2 },
-  { id: 'le-sserafim-3', category: 'LE SSERAFIM', prompt: '我认为 LE SSERAFIM 最强的舞蹈是？', options: ['Fearless舞蹈', 'Antifragile舞蹈', 'Good Bones舞蹈', 'Smart舞蹈'], correctIndex: 1 },
-  { id: 'le-sserafim-4', category: 'LE SSERAFIM', prompt: '我心中 LE SSERAFIM 最有气场的成员是？', options: ['Chaewon', 'Sakura', 'Yunjin', 'Hynx'], correctIndex: 1 },
-  { id: 'le-sserafim-5', category: 'LE SSERAFIM', prompt: '我最爱的 LE SSERAFIM 时代是？', options: ['Fearless时代', 'Antifragile时代', 'Yontarashi时代', '最近'], correctIndex: 1 },
-  { id: 'le-sserafim-6', category: 'LE SSERAFIM', prompt: '我想和 LE SSERAFIM 谁一起看古典音乐会？', options: ['Chaewon', 'Sakura', 'Yunjin', 'Kazuha'], correctIndex: 3 },
-  { id: 'le-sserafim-7', category: 'LE SSERAFIM', prompt: '我最想听 LE SSERAFIM 谁的Rap？', options: ['Yunjin', 'Chaewon', 'Sakura', '都很强'], correctIndex: 0 },
-  { id: 'le-sserafim-8', category: 'LE SSERAFIM', prompt: '我认为 LE SSERAFIM 最特别的是？', options: ['舞蹈艺术性', '音乐深度', '国际成员', '整体质感'], correctIndex: 3 },
-  { id: 'le-sserafim-9', category: 'LE SSERAFIM', prompt: '我最被 LE SSERAFIM 的世界观吸引？', options: ['希腊神话', '古典美学', '女性力量', '都喜欢'], correctIndex: 3 },
-  { id: 'le-sserafim-10', category: 'LE SSERAFIM', prompt: '我最爱的 LE SSERAFIM 专辑是？', options: ['Fearless', 'Unforgiven', 'Yontarashi', 'Seasonal Box'], correctIndex: 0 },
-  { id: 'le-sserafim-11', category: 'LE SSERAFIM', prompt: '我最想听 LE SSERAFIM 谁唱主歌？', options: ['Chaewon', 'Sakura', 'Yunjin', 'Eunchae'], correctIndex: 2 },
-  { id: 'le-sserafim-12', category: 'LE SSERAFIM', prompt: '我认为 LE SSERAFIM 最强的舞者是？', options: ['Sakura', 'Kazuha', 'Yunjin', 'Eunchae'], correctIndex: 1 },
-  { id: 'le-sserafim-13', category: 'LE SSERAFIM', prompt: '我心目中 LE SSERAFIM 的本命CP是？', options: ['Chaewon x Sakura', 'Yunjin x Kazuha', 'Sakura x Eunchae', '都很配'], correctIndex: 0 },
-  { id: 'le-sserafim-14', category: 'LE SSERAFIM', prompt: '我最被 LE SSERAFIM 哪个舞蹈细节吸引？', options: ['Fearless的气势', 'Antifragile的复杂性', 'Good Bones的优雅', 'Smart的精致'], correctIndex: 1 },
-  { id: 'le-sserafim-15', category: 'LE SSERAFIM', prompt: '我最想看 LE SSERAFIM 的哪个个人作品？', options: ['Chaewon的音乐', 'Yunjin的创意', 'Kazuha的艺术', 'Sakura的综艺'], correctIndex: 3 },
-  { id: 'le-sserafim-16', category: 'LE SSERAFIM', prompt: '我最爱 LE SSERAFIM 哪个视觉概念？', options: ['Fearless风格', 'Antifragile风格', 'Yontarashi风格', '最新概念'], correctIndex: 1 },
-  { id: 'le-sserafim-17', category: 'LE SSERAFIM', prompt: '我认为 LE SSERAFIM 最应该尝试的是？', options: ['摇滚风格', '民族融合', '保持高度', '爵士风格'], correctIndex: 2 },
-  { id: 'le-sserafim-18', category: 'LE SSERAFIM', prompt: '我最想和 LE SSERAFIM 一起去的地点是？', options: ['首尔', '东京', '巴黎', '伦敦'], correctIndex: 3 },
-  { id: 'le-sserafim-19', category: 'LE SSERAFIM', prompt: '我认为 LE SSERAFIM 最强的是？', options: ['舞蹈艺术性', '音乐深度', '国际影响', '整体质感'], correctIndex: 3 },
-  { id: 'le-sserafim-20', category: 'LE SSERAFIM', prompt: '我最期待 LE SSERAFIM 的是？', options: ['新的音乐方向', '世界巡演', '国际合作', '个人作品'], correctIndex: 1 },
-
-  // GOT7 (20 questions)
-  { id: 'got7-1', category: 'GOT7', prompt: '我最爱的 GOT7 成员是？', options: ['JB', 'Mark', 'Jackson', 'Jinyoung', 'Youngjae', 'BamBam', 'Yugyeom'], correctIndex: 2 },
-  { id: 'got7-2', category: 'GOT7', prompt: '我最喜欢的 GOT7 歌曲是？', options: ['Just Right', 'Hard Carry', 'If You Do', 'Never Ever'], correctIndex: 3 },
-  { id: 'got7-3', category: 'GOT7', prompt: '我认为 GOT7 最强的舞蹈是？', options: ['Just Right舞蹈', 'If You Do舞蹈', 'Hard Carry舞蹈', 'Never Ever舞蹈'], correctIndex: 3 },
-  { id: 'got7-4', category: 'GOT7', prompt: '我心中 GOT7 最有魅力的成员是？', options: ['JB', 'Mark', 'Jackson', 'BamBam'], correctIndex: 2 },
-  { id: 'got7-5', category: 'GOT7', prompt: '我最爱的 GOT7 时代是？', options: ['Just Right时代', 'If You Do时代', 'Hard Carry时代', 'Eyes On You时代'], correctIndex: 2 },
-  { id: 'got7-6', category: 'GOT7', prompt: '我想和 GOT7 谁一起去旅游？', options: ['Mark', 'Jackson', 'BamBam', 'Yugyeom'], correctIndex: 2 },
-  { id: 'got7-7', category: 'GOT7', prompt: '我最想听 GOT7 谁的Rap？', options: ['Mark', 'Jackson', 'BamBam', '都很强'], correctIndex: 1 },
-  { id: 'got7-8', category: 'GOT7', prompt: '我认为 GOT7 最厉害的是？', options: ['舞蹈同步', '国际成员', '音乐品质', '整体亲密度'], correctIndex: 3 },
-  { id: 'got7-9', category: 'GOT7', prompt: '我最被 GOT7 的团结力吸引？', options: ['成员互动', '回归承诺', '粉丝互动', '都喜欢'], correctIndex: 3 },
-  { id: 'got7-10', category: 'GOT7', prompt: '我最爱的 GOT7 专辑是？', options: ['Got Love', 'Eyes On You', 'Spinning Top', 'Dye'],  correctIndex: 2 },
-  { id: 'got7-11', category: 'GOT7', prompt: '我最想听 GOT7 谁唱主歌？', options: ['JB', 'Jinyoung', 'Youngjae', 'Mark'], correctIndex: 0 },
-  { id: 'got7-12', category: 'GOT7', prompt: '我认为 GOT7 最强的舞者是？', options: ['JB', 'Mark', 'BamBam', 'Yugyeom'], correctIndex: 2 },
-  { id: 'got7-13', category: 'GOT7', prompt: '我心目中 GOT7 的本命CP是？', options: ['Mark x Jackson', 'JB x Jinyoung', 'BamBam x Yugyeom', 'Jackson x BamBam'], correctIndex: 0 },
-  { id: 'got7-14', category: 'GOT7', prompt: '我最被 GOT7 哪个舞蹈细节吸引？', options: ['Just Right的可爱', 'If You Do的气势', 'Hard Carry的个性', 'Never Ever的霸气'], correctIndex: 1 },
-  { id: 'got7-15', category: 'GOT7', prompt: '我最想看 GOT7 的哪个个人作品？', options: ['Mark的音乐', 'Jackson的综艺', 'Yugyeom的舞蹈', 'JB的作曲'], correctIndex: 1 },
-  { id: 'got7-16', category: 'GOT7', prompt: '我最爱 GOT7 哪个视觉概念？', options: ['Just Right风格', 'If You Do风格', 'Hard Carry风格', 'Never Ever风格'], correctIndex: 3 },
-  { id: 'got7-17', category: 'GOT7', prompt: '我认为 GOT7 最伟大的是？', options: ['舞蹈创新', '国际化', '粉丝忠诚', '音乐质量'], correctIndex: 3 },
-  { id: 'got7-18', category: 'GOT7', prompt: '我最想和 GOT7 一起去的地点是？', options: ['首尔', '曼谷', '上海', 'LA'], correctIndex: 2 },
-  { id: 'got7-19', category: 'GOT7', prompt: '我认为 GOT7 最值得回忆的是？', options: ['初心', '团结', '音乐成就', '都是'], correctIndex: 3 },
-  { id: 'got7-20', category: 'GOT7', prompt: '我最期待 GOT7 的是？', options: ['全员回归', '新的音乐', '单人作品', '都想看'], correctIndex: 3 },
-
-  // MONSTA X (20 questions)
-  { id: 'monsta-x-1', category: 'MONSTA X', prompt: '我最爱的 MONSTA X 成员是？', options: ['Shownu', 'Wonho', 'Minhyuk', 'Kihyun', 'Hyungwon', 'Jooheon', 'I.M'], correctIndex: 6 },
-  { id: 'monsta-x-2', category: 'MONSTA X', prompt: '我最喜欢的 MONSTA X 歌曲是？', options: ['Trespass', 'Beautiful', 'Dramarama', 'Shoot Out'], correctIndex: 2 },
-  { id: 'monsta-x-3', category: 'MONSTA X', prompt: '我认为 MONSTA X 最强的舞蹈是？', options: ['Trespass舞蹈', 'Beautiful舞蹈', 'Dramarama舞蹈', 'Shoot Out舞蹈'], correctIndex: 1 },
-  { id: 'monsta-x-4', category: 'MONSTA X', prompt: '我心中 MONSTA X 最有魅力的成员是？', options: ['Shownu', 'Wonho', 'Hyungwon', 'I.M'], correctIndex: 1 },
-  { id: 'monsta-x-5', category: 'MONSTA X', prompt: '我最爱的 MONSTA X 时代是？', options: ['Trespass时代', 'Beautiful时代', 'Dramarama时代', '最近'], correctIndex: 3 },
-  { id: 'monsta-x-6', category: 'MONSTA X', prompt: '我想和 MONSTA X 谁一起健身？', options: ['Shownu', 'Kihyun', 'Jooheon', 'I.M'], correctIndex: 0 },
-  { id: 'monsta-x-7', category: 'MONSTA X', prompt: '我最想听 MONSTA X 谁的Rap？', options: ['Jooheon', 'I.M', 'Minhyuk', '都很强'], correctIndex: 0 },
-  { id: 'monsta-x-8', category: 'MONSTA X', prompt: '我认为 MONSTA X 最特别的是？', options: ['舞蹈力', '国际成员', '音乐风格', '粉丝互动'], correctIndex: 3 },
-  { id: 'monsta-x-9', category: 'MONSTA X', prompt: '我最被 MONSTA X 的气势吸引？', options: ['Dramarama的高能', '歌曲编排', '舞蹈气场', '都喜欢'], correctIndex: 3 },
-  { id: 'monsta-x-10', category: 'MONSTA X', prompt: '我最爱的 MONSTA X 专辑是？', options: ['The Code', 'Take.2 We Are Here', 'One Of A Kind', 'Love Killa'], correctIndex: 3 },
-  { id: 'monsta-x-11', category: 'MONSTA X', prompt: '我最想听 MONSTA X 谁唱主歌？', options: ['Shownu', 'Kihyun', 'Minhyuk', 'Jooheon'], correctIndex: 1 },
-  { id: 'monsta-x-12', category: 'MONSTA X', prompt: '我认为 MONSTA X 最强的舞者是？', options: ['Shownu', 'Kihyun', 'Hyungwon', 'I.M'], correctIndex: 0 },
-  { id: 'monsta-x-13', category: 'MONSTA X', prompt: '我心目中 MONSTA X 的本命CP是？', options: ['Shownu x Wonho', 'Kihyun x Hyungwon', 'Jooheon x I.M', 'Minhyuk x Wonho'], correctIndex: 0 },
-  { id: 'monsta-x-14', category: 'MONSTA X', prompt: '我最被 MONSTA X 哪个舞蹈细节吸引？', options: ['Beautiful的优雅', 'Dramarama的张力', 'Shoot Out的节奏', 'Trespass的气势'], correctIndex: 1 },
-  { id: 'monsta-x-15', category: 'MONSTA X', prompt: '我最想看 MONSTA X 的哪个个人作品？', options: ['Shownu的音乐', 'Wonho的创意', 'I.M的制作', 'Kihyun的综艺'], correctIndex: 2 },
-  { id: 'monsta-x-16', category: 'MONSTA X', prompt: '我最爱 MONSTA X 哪个视觉概念？', options: ['Dramarama风格', 'Beautiful风格', 'Trespass风格', '最新风格'], correctIndex: 1 },
-  { id: 'monsta-x-17', category: 'MONSTA X', prompt: '我认为 MONSTA X 最应该做的是？', options: ['尝试摇滚', '保持气势', '发展国际', '音乐实验'], correctIndex: 1 },
-  { id: 'monsta-x-18', category: 'MONSTA X', prompt: '我最想和 MONSTA X 一起去的地点是？', options: ['首尔', '曼谷', 'NYC', 'LA'], correctIndex: 1 },
-  { id: 'monsta-x-19', category: 'MONSTA X', prompt: '我认为 MONSTA X 最强的是？', options: ['舞蹈能力', '音乐制作', '整体气场', '粉丝信任'], correctIndex: 3 },
-  { id: 'monsta-x-20', category: 'MONSTA X', prompt: '我最期待 MONSTA X 的是？', options: ['新的音乐方向', '完整回归', '世界巡演', '个人专业'], correctIndex: 0 },
-
-  // The Boyz (20 questions)
-  { id: 'the-boyz-1', category: 'The Boyz', prompt: '我最爱的 The Boyz 成员是？', options: ['Sangyeon', 'Jacob', 'Younghoon', 'Hyunjae', 'Juyeon', 'Kevin', 'New', 'Q', 'Sunwoo', 'Haknyeon', 'Changmin'], correctIndex: 7 },
-  { id: 'the-boyz-2', category: 'The Boyz', prompt: '我最喜欢的 The Boyz 歌曲是？', options: ['Boy', 'Reveal', 'Bloom Bloom', 'Thrill Ride'], correctIndex: 0 },
-  { id: 'the-boyz-3', category: 'The Boyz', prompt: '我认为 The Boyz 最强的舞蹈是？', options: ['Boy舞蹈', 'Reveal舞蹈', 'Bloom Bloom舞蹈', 'Thrill Ride舞蹈'], correctIndex: 1 },
-  { id: 'the-boyz-4', category: 'The Boyz', prompt: '我心中 The Boyz 最有魅力的成员是？', options: ['Sangyeon', 'Hyunjae', 'Juyeon', 'Kevin'], correctIndex: 2 },
-  { id: 'the-boyz-5', category: 'The Boyz', prompt: '我最爱的 The Boyz 时代是？', options: ['Reveal时代', 'Thrill Ride时代', 'Bloom Bloom时代', '最近'], correctIndex: 3 },
-  { id: 'the-boyz-6', category: 'The Boyz', prompt: '我想和 The Boyz 谁一起打篮球？', options: ['Sangyeon', 'Hyunjae', 'Kevin', 'Sunwoo'], correctIndex: 0 },
-  { id: 'the-boyz-7', category: 'The Boyz', prompt: '我最想听 The Boyz 谁的Rap？', options: ['Q', 'Sunwoo', 'Kevin', '都很强'], correctIndex: 0 },
-  { id: 'the-boyz-8', category: 'The Boyz', prompt: '我认为 The Boyz 最厉害的是？', options: ['舞蹈复杂度', '成员人数', '音乐多样性', '整体完成度'], correctIndex: 3 },
-  { id: 'the-boyz-9', category: 'The Boyz', prompt: '我最被 The Boyz 的编排吸引？', options: ['Boy的节奏', 'Reveal的转变', 'Bloom Bloom的温度', 'Thrill Ride的张力'], correctIndex: 3 },
-  { id: 'the-boyz-10', category: 'The Boyz', prompt: '我最爱的 The Boyz 专辑是？', options: ['The First', 'Chase', 'Maverick', 'Hallowen'], correctIndex: 1 },
-  { id: 'the-boyz-11', category: 'The Boyz', prompt: '我最想听 The Boyz 谁唱主歌？', options: ['Sangyeon', 'Younghoon', 'Haknyeon', 'Changmin'], correctIndex: 1 },
-  { id: 'the-boyz-12', category: 'The Boyz', prompt: '我认为 The Boyz 最强的舞者是？', options: ['Sangyeon', 'Juyeon', 'Sunwoo', 'Kevin'], correctIndex: 1 },
-  { id: 'the-boyz-13', category: 'The Boyz', prompt: '我心目中 The Boyz 的本命CP是？', options: ['Sangyeon x Younghoon', 'Hyunjae x Juyeon', 'Kevin x New', 'Q x Sunwoo'], correctIndex: 3 },
-  { id: 'the-boyz-14', category: 'The Boyz', prompt: '我最被 The Boyz 哪个舞蹈细节吸引？', options: ['Boy的整体感', 'Reveal的复杂性', 'Bloom Bloom的柔和', 'Thrill Ride的刺激'], correctIndex: 1 },
-  { id: 'the-boyz-15', category: 'The Boyz', prompt: '我最想看 The Boyz 的哪个个人作品？', options: ['Sangyeon的领导', 'Juyeon的舞蹈', 'Kevin的音乐', 'Sunwoo的创意'], correctIndex: 2 },
-  { id: 'the-boyz-16', category: 'The Boyz', prompt: '我最爱 The Boyz 哪个视觉概念？', options: ['Boy风格', 'Reveal风格', 'Bloom Bloom风格', '最新风格'], correctIndex: 2 },
-  { id: 'the-boyz-17', category: 'The Boyz', prompt: '我认为 The Boyz 最应该尝试的是？', options: ['摇滚编舞', '深沉主题', '保持多样', '电子风格'], correctIndex: 2 },
-  { id: 'the-boyz-18', category: 'The Boyz', prompt: '我最想和 The Boyz 一起去的地点是？', options: ['首尔', '曼谷', '伦敦', 'NYC'], correctIndex: 3 },
-  { id: 'the-boyz-19', category: 'The Boyz', prompt: '我认为 The Boyz 最强的是？', options: ['舞蹈同步', '成员配合', '音乐质量', '整体潜力'], correctIndex: 3 },
-  { id: 'the-boyz-20', category: 'The Boyz', prompt: '我最期待 The Boyz 的是？', options: ['新的音乐概念', '世界巡演', '国际拓展', '成员个人发展'], correctIndex: 1 },
-
-  // ATEEZ (20 questions)
-  { id: 'ateez-1', category: 'ATEEZ', prompt: '我最爱的 ATEEZ 成员是？', options: ['Hongjoong', 'Seonghwa', 'Yunho', 'Yeosang', 'San', 'Mingi', 'Wooyoung', 'Jongho'], correctIndex: 4 },
-  { id: 'ateez-2', category: 'ATEEZ', prompt: '我最喜欢的 ATEEZ 歌曲是？', options: ['Inception', 'The Real', 'Wonderland', 'The Awakening'], correctIndex: 1 },
-  { id: 'ateez-3', category: 'ATEEZ', prompt: '我认为 ATEEZ 最强的舞蹈是？', options: ['Inception舞蹈', 'The Real舞蹈', 'Wonderland舞蹈', 'The Awakening舞蹈'], correctIndex: 0 },
-  { id: 'ateez-4', category: 'ATEEZ', prompt: '我心中 ATEEZ 最有魅力的成员是？', options: ['Hongjoong', 'Seonghwa', 'San', 'Jongho'], correctIndex: 2 },
-  { id: 'ateez-5', category: 'ATEEZ', prompt: '我最爱的 ATEEZ 时代是？', options: ['Inception时代', 'The Real时代', 'The World时代', '最近'], correctIndex: 3 },
-  { id: 'ateez-6', category: 'ATEEZ', prompt: '我想和 ATEEZ 谁一起参加冒险活动？', options: ['Hongjoong', 'Yunho', 'San', 'Wooyoung'], correctIndex: 2 },
-  { id: 'ateez-7', category: 'ATEEZ', prompt: '我最想听 ATEEZ 谁的Rap？', options: ['Hongjoong', 'Mingi', 'Yunho', '都很强'], correctIndex: 0 },
-  { id: 'ateez-8', category: 'ATEEZ', prompt: '我认为 ATEEZ 最特别的是？', options: ['舞蹈冲击力', '音乐概念', '国际影响', '粉丝互动'], correctIndex: 3 },
-  { id: 'ateez-9', category: 'ATEEZ', prompt: '我最被 ATEEZ 的故事性吸引？', options: ['Inception的开启', 'The Real的现实', 'Wonderland的幻想', 'Zero to One的成长'], correctIndex: 3 },
-  { id: 'ateez-10', category: 'ATEEZ', prompt: '我最爱的 ATEEZ 专辑是？', options: ['Treasure EP.1', 'All To Zero', 'The World Ep.1', 'The Fractal'], correctIndex: 2 },
-  { id: 'ateez-11', category: 'ATEEZ', prompt: '我最想听 ATEEZ 谁唱主歌？', options: ['Seonghwa', 'Yeosang', 'Jongho', 'Wooyoung'], correctIndex: 2 },
-  { id: 'ateez-12', category: 'ATEEZ', prompt: '我认为 ATEEZ 最强的舞者是？', options: ['Hongjoong', 'Yunho', 'San', 'Wooyoung'], correctIndex: 2 },
-  { id: 'ateez-13', category: 'ATEEZ', prompt: '我心目中 ATEEZ 的本命CP是？', options: ['Hongjoong x Seonghwa', 'San x Wooyoung', 'Yunho x Mingi', 'Yeosang x Jongho'], correctIndex: 1 },
-  { id: 'ateez-14', category: 'ATEEZ', prompt: '我最被 ATEEZ 哪个舞蹈细节吸引？', options: ['Inception的气势', 'The Real的精准', 'Wonderland的创意', 'Eternal Sunshine的柔和'], correctIndex: 1 },
-  { id: 'ateez-15', category: 'ATEEZ', prompt: '我最想看 ATEEZ 的哪个个人作品？', options: ['Hongjoong的制作', 'San的舞蹈', 'Jongho的声乐', 'Mingi的创作'], correctIndex: 0 },
-  { id: 'ateez-16', category: 'ATEEZ', prompt: '我最爱 ATEEZ 哪个视觉概念？', options: ['Inception风格', 'The Real风格', 'The World风格', '最新风格'], correctIndex: 2 },
-  { id: 'ateez-17', category: 'ATEEZ', prompt: '我认为 ATEEZ 最应该尝试的是？', options: ['民族融合', '深沉主题', '保持冲击力', '抒情路线'], correctIndex: 2 },
-  { id: 'ateez-18', category: 'ATEEZ', prompt: '我最想和 ATEEZ 一起去的地点是？', options: ['首尔', '泰国', '日本', '欧洲'], correctIndex: 3 },
-  { id: 'ateez-19', category: 'ATEEZ', prompt: '我认为 ATEEZ 最强的是？', options: ['舞蹈冲击', '音乐制作', '故事呈现', '整体实力'], correctIndex: 3 },
-  { id: 'ateez-20', category: 'ATEEZ', prompt: '我最期待 ATEEZ 的是？', options: ['新的音乐篇章', '世界巡演', '国际合作', '完整艺术展现'], correctIndex: 0 },
-
-  // ITZY (20 questions)
-  { id: 'itzy-1', category: 'ITZY', prompt: '我最爱的 ITZY 成员是？', options: ['Yeji', 'Lia', 'Ryujin', 'Chaeryeong', 'Yuna'], correctIndex: 4 },
-  { id: 'itzy-2', category: 'ITZY', prompt: '我最喜欢的 ITZY 歌曲是？', options: ['Dalla Dalla', 'Not Shy', 'Crazy in Love', 'Kill My Doubt'], correctIndex: 1 },
-  { id: 'itzy-3', category: 'ITZY', prompt: '我认为 ITZY 最强的舞蹈是？', options: ['Dalla Dalla舞蹈', 'Not Shy舞蹈', 'Crazy in Love舞蹈', 'Voltage舞蹈'], correctIndex: 1 },
-  { id: 'itzy-4', category: 'ITZY', prompt: '我心中 ITZY 最有魅力的成员是？', options: ['Yeji', 'Ryujin', 'Chaeryeong', 'Yuna'], correctIndex: 1 },
-  { id: 'itzy-5', category: 'ITZY', prompt: '我最爱的 ITZY 时代是？', options: ['Not Shy时代', 'Crazy in Love时代', 'Kill My Doubt时代', '最近'], correctIndex: 3 },
-  { id: 'itzy-6', category: 'ITZY', prompt: '我想和 ITZY 谁一起跳舞？', options: ['Yeji', 'Ryujin', 'Chaeryeong', 'Yuna'], correctIndex: 1 },
-  { id: 'itzy-7', category: 'ITZY', prompt: '我最想听 ITZY 谁的Rap？', options: ['Yeji', 'Ryujin', 'Chaeryeong', '都很强'], correctIndex: 1 },
-  { id: 'itzy-8', category: 'ITZY', prompt: '我认为 ITZY 最特别的是？', options: ['舞蹈个性', '音乐风格', '视觉概念', '整体活力'], correctIndex: 3 },
-  { id: 'itzy-9', category: 'ITZY', prompt: '我最被 ITZY 的青春活力吸引？', options: ['舞蹈风格', '歌曲编排', '成员互动', '都喜欢'], correctIndex: 3 },
-  { id: 'itzy-10', category: 'ITZY', prompt: '我最爱的 ITZY 专辑是？', options: ['It\'z Different', 'Checkmate', 'Kill My Doubt', '都好'], correctIndex: 2 },
-  { id: 'itzy-11', category: 'ITZY', prompt: '我最想听 ITZY 谁唱主歌？', options: ['Yeji', 'Lia', 'Chaeryeong', 'Yuna'], correctIndex: 3 },
-  { id: 'itzy-12', category: 'ITZY', prompt: '我认为 ITZY 最强的舞者是？', options: ['Yeji', 'Ryujin', 'Chaeryeong', 'Yuna'], correctIndex: 1 },
-  { id: 'itzy-13', category: 'ITZY', prompt: '我心目中 ITZY 的本命CP是？', options: ['Yeji x Lia', 'Ryujin x Chaeryeong', 'Chaeryeong x Yuna', 'Ryujin x Yuna'], correctIndex: 3 },
-  { id: 'itzy-14', category: 'ITZY', prompt: '我最被 ITZY 哪个舞蹈细节吸引？', options: ['Not Shy的气势', 'Crazy in Love的节奏', 'Kill My Doubt的强度', 'Voltage的创意'], correctIndex: 1 },
-  { id: 'itzy-15', category: 'ITZY', prompt: '我最想看 ITZY 的哪个个人作品？', options: ['Yeji的领导', 'Ryujin的舞蹈', 'Chaeryeong的音乐', 'Yuna的综艺'], correctIndex: 3 },
-  { id: 'itzy-16', category: 'ITZY', prompt: '我最爱 ITZY 哪个视觉概念？', options: ['Not Shy风格', 'Crazy in Love风格', 'Kill My Doubt风格', '最新风格'], correctIndex: 2 },
-  { id: 'itzy-17', category: 'ITZY', prompt: '我认为 ITZY 最应该做的是？', options: ['尝试摇滚', '保持活力', '发展国际', '个人专业'], correctIndex: 1 },
-  { id: 'itzy-18', category: 'ITZY', prompt: '我最想和 ITZY 一起去的地点是？', options: ['首尔', '东京', '曼谷', 'NYC'], correctIndex: 1 },
-  { id: 'itzy-19', category: 'ITZY', prompt: '我认为 ITZY 最强的是？', options: ['舞蹈感', '歌曲质量', '整体活力', '粉丝互动'], correctIndex: 2 },
-  { id: 'itzy-20', category: 'ITZY', prompt: '我最期待 ITZY 的是？', options: ['新的音乐方向', '世界巡演', '个人作品', '成长转变'], correctIndex: 3 },
-
-  // (G)I-DLE (20 questions)
-  { id: 'gidle-1', category: '(G)I-DLE', prompt: '我最爱的 (G)I-DLE 成员是？', options: ['Soyeon', 'Huh Yunjin', 'Miyeon', 'Minnie', 'Yuqi'], correctIndex: 4 },
-  { id: 'gidle-2', category: '(G)I-DLE', prompt: '我最喜欢的 (G)I-DLE 歌曲是？', options: ['Latata', 'Senorita', 'DumDi DumDi', 'Tomboy'], correctIndex: 3 },
-  { id: 'gidle-3', category: '(G)I-DLE', prompt: '我认为 (G)I-DLE 最强的舞蹈是？', options: ['Latata舞蹈', 'Senorita舞蹈', 'DumDi DumDi舞蹈', 'Tomboy舞蹈'], correctIndex: 3 },
-  { id: 'gidle-4', category: '(G)I-DLE', prompt: '我心中 (G)I-DLE 最有魅力的成员是？', options: ['Soyeon', 'Miyeon', 'Minnie', 'Yuqi'], correctIndex: 0 },
-  { id: 'gidle-5', category: '(G)I-DLE', prompt: '我最爱的 (G)I-DLE 时代是？', options: ['Senorita时代', 'DumDi DumDi时代', 'Tomboy时代', '最近'], correctIndex: 3 },
-  { id: 'gidle-6', category: '(G)I-DLE', prompt: '我想和 (G)I-DLE 谁一起录节目？', options: ['Soyeon', 'Miyeon', 'Minnie', 'Yuqi'], correctIndex: 1 },
-  { id: 'gidle-7', category: '(G)I-DLE', prompt: '我最想听 (G)I-DLE 谁的Rap？', options: ['Soyeon', 'Yuqi', 'Miyeon', '都很强'], correctIndex: 0 },
-  { id: 'gidle-8', category: '(G)I-DLE', prompt: '我认为 (G)I-DLE 最特别的是？', options: ['音乐自主性', '舞蹈创意', '国际成员', '整体个性'], correctIndex: 3 },
-  { id: 'gidle-9', category: '(G)I-DLE', prompt: '我最被 (G)I-DLE 的概念吸引？', options: ['独立女性', '音乐实验', '视觉独特', '都喜欢'], correctIndex: 3 },
-  { id: 'gidle-10', category: '(G)I-DLE', prompt: '我最爱的 (G)I-DLE 专辑是？', options: ['I Trust', 'Ior', 'I am', 'I Never Die'], correctIndex: 2 },
-  { id: 'gidle-11', category: '(G)I-DLE', prompt: '我最想听 (G)I-DLE 谁唱主歌？', options: ['Soyeon', 'Miyeon', 'Minnie', 'Yuqi'], correctIndex: 1 },
-  { id: 'gidle-12', category: '(G)I-DLE', prompt: '我认为 (G)I-DLE 最强的舞者是？', options: ['Soyeon', 'Miyeon', 'Minnie', 'Yuqi'], correctIndex: 0 },
-  { id: 'gidle-13', category: '(G)I-DLE', prompt: '我心目中 (G)I-DLE 的本命CP是？', options: ['Soyeon x Yuqi', 'Miyeon x Minnie', 'Soyeon x Miyeon', 'Minnie x Yuqi'], correctIndex: 1 },
-  { id: 'gidle-14', category: '(G)I-DLE', prompt: '我最被 (G)I-DLE 哪个舞蹈细节吸引？', options: ['Latata的复杂性', 'Senorita的性感', 'DumDi DumDi的可爱', 'Tomboy的酷感'], correctIndex: 3 },
-  { id: 'gidle-15', category: '(G)I-DLE', prompt: '我最想看 (G)I-DLE 的哪个个人作品？', options: ['Soyeon的制作', 'Miyeon的演技', 'Minnie的音乐', 'Yuqi的艺术'], correctIndex: 0 },
-  { id: 'gidle-16', category: '(G)I-DLE', prompt: '我最爱 (G)I-DLE 哪个视觉概念？', options: ['Latata风格', 'Senorita风格', 'Tomboy风格', '最新风格'], correctIndex: 2 },
-  { id: 'gidle-17', category: '(G)I-DLE', prompt: '我认为 (G)I-DLE 最应该尝试的是？', options: ['民族融合', '摇滚实验', '保持个性', '爵士风格'], correctIndex: 2 },
-  { id: 'gidle-18', category: '(G)I-DLE', prompt: '我最想和 (G)I-DLE 一起去的地点是？', options: ['首尔', '上海', '曼谷', '伦敦'], correctIndex: 1 },
-  { id: 'gidle-19', category: '(G)I-DLE', prompt: '我认为 (G)I-DLE 最强的是？', options: ['音乐制作', '个性表达', '舞蹈创意', '整体独特性'], correctIndex: 3 },
-  { id: 'gidle-20', category: '(G)I-DLE', prompt: '我最期待 (G)I-DLE 的是？', options: ['新的音乐方向', '完整回归', '国际合作', '个人专业发展'], correctIndex: 2 },
-
-  // Everglow (20 questions)
-  { id: 'everglow-1', category: 'Everglow', prompt: '我最爱的 Everglow 成员是？', options: ['Sihyeon', 'Mia', 'Hani', 'Onda', 'Aisha'], correctIndex: 0 },
-  { id: 'everglow-2', category: 'Everglow', prompt: '我最喜欢的 Everglow 歌曲是？', options: ['Bon Bon Chocolat', 'Dun Dun', 'Adios', 'Return'], correctIndex: 0 },
-  { id: 'everglow-3', category: 'Everglow', prompt: '我认为 Everglow 最强的舞蹈是？', options: ['Bon Bon Chocolat舞蹈', 'Dun Dun舞蹈', 'Adios舞蹈', 'Return舞蹈'], correctIndex: 0 },
-  { id: 'everglow-4', category: 'Everglow', prompt: '我心中 Everglow 最有魅力的成员是？', options: ['Sihyeon', 'Mia', 'Hani', 'Aisha'], correctIndex: 0 },
-  { id: 'everglow-5', category: 'Everglow', prompt: '我最爱的 Everglow 时代是？', options: ['Dun Dun时代', 'Adios时代', 'Return时代', '最近'], correctIndex: 2 },
-  { id: 'everglow-6', category: 'Everglow', prompt: '我想和 Everglow 谁一起运动？', options: ['Sihyeon', 'Mia', 'Hani', 'Aisha'], correctIndex: 3 },
-  { id: 'everglow-7', category: 'Everglow', prompt: '我最想听 Everglow 谁的Rap？', options: ['Mia', 'Hani', 'Onda', '都很强'], correctIndex: 1 },
-  { id: 'everglow-8', category: 'Everglow', prompt: '我认为 Everglow 最特别的是？', options: ['舞蹈气势', '个性风格', '国际成员', '整体实力'], correctIndex: 3 },
-  { id: 'everglow-9', category: 'Everglow', prompt: '我最被 Everglow 的冷酷气质吸引？', options: ['舞蹈风格', '音乐质感', '视觉设计', '都喜欢'], correctIndex: 3 },
-  { id: 'everglow-10', category: 'Everglow', prompt: '我最爱的 Everglow 专辑是？', options: ['Reminiscence', 'Hush', 'Ransomware', '都好'], correctIndex: 1 },
-  { id: 'everglow-11', category: 'Everglow', prompt: '我最想听 Everglow 谁唱主歌？', options: ['Sihyeon', 'Mia', 'Aisha', 'Hani'], correctIndex: 0 },
-  { id: 'everglow-12', category: 'Everglow', prompt: '我认为 Everglow 最强的舞者是？', options: ['Sihyeon', 'Mia', 'Hani', 'Onda'], correctIndex: 1 },
-  { id: 'everglow-13', category: 'Everglow', prompt: '我心目中 Everglow 的本命CP是？', options: ['Sihyeon x Mia', 'Hani x Onda', 'Mia x Aisha', 'Sihyeon x Aisha'], correctIndex: 0 },
-  { id: 'everglow-14', category: 'Everglow', prompt: '我最被 Everglow 哪个舞蹈细节吸引？', options: ['Bon Bon Chocolat的可爱', 'Dun Dun的冷感', 'Adios的优雅', 'Return的力量'], correctIndex: 1 },
-  { id: 'everglow-15', category: 'Everglow', prompt: '我最想看 Everglow 的哪个个人作品？', options: ['Sihyeon的领导', 'Mia的舞蹈', 'Hani的音乐', 'Aisha的艺术'], correctIndex: 1 },
-  { id: 'everglow-16', category: 'Everglow', prompt: '我最爱 Everglow 哪个视觉概念？', options: ['Bon Bon Chocolat风格', 'Dun Dun风格', 'Adios风格', '最新风格'], correctIndex: 1 },
-  { id: 'everglow-17', category: 'Everglow', prompt: '我认为 Everglow 最应该尝试的是？', options: ['温柔风格', '保持气势', '民族融合', '电子实验'], correctIndex: 1 },
-  { id: 'everglow-18', category: 'Everglow', prompt: '我最想和 Everglow 一起去的地点是？', options: ['首尔', '中国', '泰国', 'NYC'], correctIndex: 1 },
-  { id: 'everglow-19', category: 'Everglow', prompt: '我认为 Everglow 最强的是？', options: ['舞蹈气势', '音乐质感', '视觉风格', '整体气场'], correctIndex: 3 },
-  { id: 'everglow-20', category: 'Everglow', prompt: '我最期待 Everglow 的是？', options: ['新的音乐方向', '演唱会回归', '国际拓展', '完整专辑'], correctIndex: 0 },
-
-  // RIIZE (20 questions - 新生代男团)
-  { id: 'riize-1', category: 'RIIZE', prompt: '我最爱的 RIIZE 成员是？', options: ['Shotaro', 'Eunseok', 'Sungchan', 'Wonbin', 'Seunghan', 'Sohee', 'Anton'], correctIndex: 3 },
-  { id: 'riize-2', category: 'RIIZE', prompt: '我最喜欢的 RIIZE 歌曲是？', options: ['Get A Guitar', 'Impossible', 'Boom Boom Beat', 'Happy'], correctIndex: 0 },
-  { id: 'riize-3', category: 'RIIZE', prompt: '我认为 RIIZE 最强的舞蹈是？', options: ['Get A Guitar舞蹈', 'Impossible舞蹈', 'Boom Boom Beat舞蹈', 'Happy舞蹈'], correctIndex: 0 },
-  { id: 'riize-4', category: 'RIIZE', prompt: '我心中 RIIZE 最有潜力的成员是？', options: ['Shotaro', 'Wonbin', 'Sungchan', 'Anton'], correctIndex: 1 },
-  { id: 'riize-5', category: 'RIIZE', prompt: '我最爱的 RIIZE 时代是？', options: ['Get A Guitar时代', 'Impossible时代', 'Happy时代', '最近'], correctIndex: 3 },
-  { id: 'riize-6', category: 'RIIZE', prompt: '我想和 RIIZE 谁一起学吉他？', options: ['Shotaro', 'Sungchan', 'Wonbin', 'Anton'], correctIndex: 1 },
-  { id: 'riize-7', category: 'RIIZE', prompt: '我最想听 RIIZE 谁的Rap？', options: ['Eunseok', 'Anton', 'Sohee', '都很强'], correctIndex: 0 },
-  { id: 'riize-8', category: 'RIIZE', prompt: '我认为 RIIZE 最特别的是？', options: ['乐器编排', '新鲜感', '国际成员', '整体活力'], correctIndex: 3 },
-  { id: 'riize-9', category: 'RIIZE', prompt: '我最被 RIIZE 的青春感吸引？', options: ['舞蹈风格', '歌曲编排', '成员互动', '都喜欢'], correctIndex: 3 },
-  { id: 'riize-10', category: 'RIIZE', prompt: '我最爱的 RIIZE 专辑是？', options: ['The Beginning', '都期待'], correctIndex: 1 },
-  { id: 'riize-11', category: 'RIIZE', prompt: '我最想听 RIIZE 谁唱主歌？', options: ['Shotaro', 'Sungchan', 'Seunghan', 'Sohee'], correctIndex: 2 },
-  { id: 'riize-12', category: 'RIIZE', prompt: '我认为 RIIZE 最强的舞者是？', options: ['Shotaro', 'Sungchan', 'Anton', 'Wonbin'], correctIndex: 0 },
-  { id: 'riize-13', category: 'RIIZE', prompt: '我心目中 RIIZE 的本命CP是？', options: ['Wonbin x Sungchan', 'Shotaro x Eunseok', 'Seunghan x Sohee', 'Anton x Sohee'], correctIndex: 0 },
-  { id: 'riize-14', category: 'RIIZE', prompt: '我最被 RIIZE 哪个舞蹈细节吸引？', options: ['Get A Guitar的吉他感', 'Impossible的气势', 'Boom Boom Beat的节奏', 'Happy的轻快'], correctIndex: 3 },
-  { id: 'riize-15', category: 'RIIZE', prompt: '我最想看 RIIZE 的哪个个人作品？', options: ['Shotaro的舞蹈', 'Wonbin的音乐', 'Eunseok的创意', 'Anton的综艺'], correctIndex: 1 },
-  { id: 'riize-16', category: 'RIIZE', prompt: '我最爱 RIIZE 哪个视觉概念？', options: ['Get A Guitar风格', 'Impossible风格', 'Happy风格', '最新风格'], correctIndex: 3 },
-  { id: 'riize-17', category: 'RIIZE', prompt: '我认为 RIIZE 最应该做的是？', options: ['维持新鲜', '增加复杂度', '保持活力', '国际化'], correctIndex: 2 },
-  { id: 'riize-18', category: 'RIIZE', prompt: '我最想和 RIIZE 一起去的地点是？', options: ['首尔', '东京', '伦敦', 'NYC'], correctIndex: 3 },
-  { id: 'riize-19', category: 'RIIZE', prompt: '我认为 RIIZE 最强的是？', options: ['舞蹈潜力', '音乐新鲜度', '整体前景', '粉丝热度'], correctIndex: 2 },
-  { id: 'riize-20', category: 'RIIZE', prompt: '我最期待 RIIZE 的是？', options: ['新的音乐方向', '实力展现', '国际知名度', '成长历程'], correctIndex: 3 },
-
-  // BOYNEXTDOOR (20 questions)
-  { id: 'boynextdoor-1', category: 'BOYNEXTDOOR', prompt: '我最爱的 BOYNEXTDOOR 成员是？', options: ['Sungho', 'Riwoo', 'Jaehyun', 'Taesan', 'Leehan', 'Woonhak'], correctIndex: 3 },
-  { id: 'boynextdoor-2', category: 'BOYNEXTDOOR', prompt: '我最喜欢的 BOYNEXTDOOR 歌曲是？', options: ['Boy', 'Salty', 'Lovers Or Enemies', 'Book C章'], correctIndex: 0 },
-  { id: 'boynextdoor-3', category: 'BOYNEXTDOOR', prompt: '我认为 BOYNEXTDOOR 最强的舞蹈是？', options: ['Boy舞蹈', 'Salty舞蹈', 'Lovers Or Enemies舞蹈', 'Stand Out舞蹈'], correctIndex: 0 },
-  { id: 'boynextdoor-4', category: 'BOYNEXTDOOR', prompt: '我心中 BOYNEXTDOOR 最有潜力的成员是？', options: ['Sungho', 'Jaehyun', 'Taesan', 'Leehan'], correctIndex: 2 },
-  { id: 'boynextdoor-5', category: 'BOYNEXTDOOR', prompt: '我最爱的 BOYNEXTDOOR 时代是？', options: ['Boy时代', 'Salty时代', 'Stand Out时代', '最近'], correctIndex: 3 },
-  { id: 'boynextdoor-6', category: 'BOYNEXTDOOR', prompt: '我想和 BOYNEXTDOOR 谁一起闲逛？', options: ['Sungho', 'Riwoo', 'Jaehyun', 'Woonhak'], correctIndex: 0 },
-  { id: 'boynextdoor-7', category: 'BOYNEXTDOOR', prompt: '我最想听 BOYNEXTDOOR 谁的Rap？', options: ['Jaehyun', 'Taesan', 'Leehan', '都很强'], correctIndex: 1 },
-  { id: 'boynextdoor-8', category: 'BOYNEXTDOOR', prompt: '我认为 BOYNEXTDOOR 最特别的是？', options: ['舞蹈风格', '音乐感', '成员化学', '整体潜力'], correctIndex: 3 },
-  { id: 'boynextdoor-9', category: 'BOYNEXTDOOR', prompt: '我最被 BOYNEXTDOOR 的温暖气质吸引？', options: ['音乐风格', '成员互动', '视觉表现', '都喜欢'], correctIndex: 3 },
-  { id: 'boynextdoor-10', category: 'BOYNEXTDOOR', prompt: '我最爱的 BOYNEXTDOOR 专辑是？', options: ['Youth In Promise', 'Wear', '都期待'], correctIndex: 2 },
-  { id: 'boynextdoor-11', category: 'BOYNEXTDOOR', prompt: '我最想听 BOYNEXTDOOR 谁唱主歌？', options: ['Sungho', 'Riwoo', 'Leehan', 'Woonhak'], correctIndex: 1 },
-  { id: 'boynextdoor-12', category: 'BOYNEXTDOOR', prompt: '我认为 BOYNEXTDOOR 最强的舞者是？', options: ['Sungho', 'Jaehyun', 'Taesan', 'Leehan'], correctIndex: 0 },
-  { id: 'boynextdoor-13', category: 'BOYNEXTDOOR', prompt: '我心目中 BOYNEXTDOOR 的本命CP是？', options: ['Sungho x Riwoo', 'Jaehyun x Taesan', 'Leehan x Woonhak', 'Riwoo x Woonhak'], correctIndex: 0 },
-  { id: 'boynextdoor-14', category: 'BOYNEXTDOOR', prompt: '我最被 BOYNEXTDOOR 哪个舞蹈细节吸引？', options: ['Boy的简洁感', 'Salty的节奏', 'Lovers Or Enemies的感情', 'Stand Out的个性'], correctIndex: 1 },
-  { id: 'boynextdoor-15', category: 'BOYNEXTDOOR', prompt: '我最想看 BOYNEXTDOOR 的哪个个人作品？', options: ['Sungho的领导', 'Riwoo的音乐', 'Taesan的创作', 'Leehan的综艺'], correctIndex: 2 },
-  { id: 'boynextdoor-16', category: 'BOYNEXTDOOR', prompt: '我最爱 BOYNEXTDOOR 哪个视觉概念？', options: ['Boy风格', 'Salty风格', 'Stand Out风格', '最新风格'], correctIndex: 3 },
-  { id: 'boynextdoor-17', category: 'BOYNEXTDOOR', prompt: '我认为 BOYNEXTDOOR 最应该做的是？', options: ['增加复杂度', '保持温暖', '国际化', '音乐实验'], correctIndex: 1 },
-  { id: 'boynextdoor-18', category: 'BOYNEXTDOOR', prompt: '我最想和 BOYNEXTDOOR 一起去的地点是？', options: ['首尔', '东京', '伦敦', 'LA'], correctIndex: 1 },
-  { id: 'boynextdoor-19', category: 'BOYNEXTDOOR', prompt: '我认为 BOYNEXTDOOR 最强的是？', options: ['舞蹈潜力', '音乐风格', '整体气质', '成长空间'], correctIndex: 3 },
-  { id: 'boynextdoor-20', category: 'BOYNEXTDOOR', prompt: '我最期待 BOYNEXTDOOR 的是？', options: ['新的音乐', '实力展现', '国际突破', '完整蜕变'], correctIndex: 3 },
-
-  // Apink (20 questions)
-  { id: 'apink-1', category: 'Apink', prompt: '我最爱的 Apink 成员是？', options: ['Park Cho-rong', 'Yoon Bo-ra', 'Jung Eun-ji', 'Son Na-eun', 'Oh Ha-young'], correctIndex: 2 },
-  { id: 'apink-2', category: 'Apink', prompt: '我最喜欢的 Apink 歌曲是？', options: ['LUV', 'Hush', '5', 'Dumhdurum'], correctIndex: 2 },
-  { id: 'apink-3', category: 'Apink', prompt: '我认为 Apink 最治愈的歌是？', options: ['LUV', 'Hush', '5', 'Only One'], correctIndex: 3 },
-  { id: 'apink-4', category: 'Apink', prompt: '我心中 Apink 最有气质的成员是？', options: ['Cho-rong', 'Eun-ji', 'Na-eun', 'Ha-young'], correctIndex: 2 },
-  { id: 'apink-5', category: 'Apink', prompt: '我最爱的 Apink 时代是？', options: ['Hush时代', '5时代', 'Dumhdurum时代', '最近'], correctIndex: 2 },
-  { id: 'apink-6', category: 'Apink', prompt: '我想和 Apink 谁一起看电影？', options: ['Eun-ji', 'Na-eun', 'Bo-ra', 'Ha-young'], correctIndex: 0 },
-  { id: 'apink-7', category: 'Apink', prompt: '我最想听 Apink 谁唱主歌？', options: ['Cho-rong', 'Eun-ji', 'Bo-ra', 'Ha-young'], correctIndex: 1 },
-  { id: 'apink-8', category: 'Apink', prompt: '我认为 Apink 最特别的是？', options: ['治愈感', '长期稳定', '成员互动', '音乐风格'], correctIndex: 3 },
-  { id: 'apink-9', category: 'Apink', prompt: '我最被 Apink 的温柔吸引？', options: ['歌曲风格', '舞蹈感', '成员气质', '都喜欢'], correctIndex: 3 },
-  { id: 'apink-10', category: 'Apink', prompt: '我最爱的 Apink 专辑是？', options: ['Pink Blossom', 'Percent', 'Look', 'Pink Revolution'], correctIndex: 0 },
-  { id: 'apink-11', category: 'Apink', prompt: '我最想听 Apink 谁的Rap？', options: ['Bo-ra', 'Ha-young', 'Na-eun', '都很强'], correctIndex: 0 },
-  { id: 'apink-12', category: 'Apink', prompt: '我认为 Apink 最强的舞者是？', options: ['Cho-rong', 'Bo-ra', 'Na-eun', 'Ha-young'], correctIndex: 2 },
-  { id: 'apink-13', category: 'Apink', prompt: '我心目中 Apink 的本命CP是？', options: ['Eun-ji x Na-eun', 'Bo-ra x Ha-young', 'Cho-rong x Eun-ji', '都很配'], correctIndex: 0 },
-  { id: 'apink-14', category: 'Apink', prompt: '我最被 Apink 哪个舞蹈细节吸引？', options: ['LUV的可爱', 'Hush的优雅', '5的简洁', 'Dumhdurum的活力'], correctIndex: 3 },
-  { id: 'apink-15', category: 'Apink', prompt: '我最想看 Apink 的哪个个人作品？', options: ['Eun-ji的演技', 'Na-eun的模特', 'Bo-ra的综艺', 'Ha-young的音乐'], correctIndex: 0 },
-  { id: 'apink-16', category: 'Apink', prompt: '我最爱 Apink 哪个视觉概念？', options: ['LUV风格', 'Hush风格', '5风格', '最新风格'], correctIndex: 1 },
-  { id: 'apink-17', category: 'Apink', prompt: '我认为 Apink 最伟大的是？', options: ['音乐品质', '长期坚持', '成员忠诚', '整体贡献'], correctIndex: 3 },
-  { id: 'apink-18', category: 'Apink', prompt: '我最想和 Apink 一起去的地点是？', options: ['首尔', '东京', '巴黎', '伦敦'], correctIndex: 0 },
-  { id: 'apink-19', category: 'Apink', prompt: '我认为 Apink 最值得感谢的是？', options: ['音乐陪伴', '舞蹈教学', '综艺欢乐', '都是'], correctIndex: 3 },
-  { id: 'apink-20', category: 'Apink', prompt: '我最期待 Apink 的是？', options: ['新的音乐', '演唱会', '个人作品', '十周年回归'], correctIndex: 3 },
-
-  // fromis_9 (20 questions)
-  { id: 'fromis9-1', category: 'fromis_9', prompt: '我最爱的 fromis_9 成员是？', options: ['Lee Sae-rom', 'Park Ji-won', 'Lee Chae-yeon', 'Roh Ji-sun', 'Lee Seo-yeon', 'Lee Na-kyung', 'Jang Gyu-ri', 'Baek Ji-heon', 'Song Ha-young'], correctIndex: 2 },
-  { id: 'fromis9-2', category: 'fromis_9', prompt: '我最喜欢的 fromis_9 歌曲是？', options: ['To Heart', 'Love Bomb', 'We Go', 'Copacabana'], correctIndex: 1 },
-  { id: 'fromis9-3', category: 'fromis_9', prompt: '我认为 fromis_9 最强的舞蹈是？', options: ['To Heart舞蹈', 'Love Bomb舞蹈', 'We Go舞蹈', 'Copacabana舞蹈'], correctIndex: 1 },
-  { id: 'fromis9-4', category: 'fromis_9', prompt: '我心中 fromis_9 最有魅力的成员是？', options: ['Ji-won', 'Chae-yeon', 'Seo-yeon', 'Gyu-ri'], correctIndex: 3 },
-  { id: 'fromis9-5', category: 'fromis_9', prompt: '我最爱的 fromis_9 时代是？', options: ['Love Bomb时代', 'We Go时代', 'My Little Society时代', '最近'], correctIndex: 3 },
-  { id: 'fromis9-6', category: 'fromis_9', prompt: '我想和 fromis_9 谁一起参加综艺？', options: ['Ji-won', 'Chae-yeon', 'Gyu-ri', 'Ha-young'], correctIndex: 0 },
-  { id: 'fromis9-7', category: 'fromis_9', prompt: '我最想听 fromis_9 谁的Rap？', options: ['Sae-rom', 'Chae-yeon', 'Gyu-ri', '都很强'], correctIndex: 2 },
-  { id: 'fromis9-8', category: 'fromis_9', prompt: '我认为 fromis_9 最特别的是？', options: ['舞蹈创意', '成员人数', '音乐风格', '整体亲近感'], correctIndex: 3 },
-  { id: 'fromis9-9', category: 'fromis_9', prompt: '我最被 fromis_9 的可爱吸引？', options: ['Love Bomb设定', '舞蹈风格', '成员互动', '都喜欢'], correctIndex: 3 },
-  { id: 'fromis9-10', category: 'fromis_9', prompt: '我最爱的 fromis_9 专辑是？', options: ['To Heart', 'Fun Factory', 'Midnight Guest', 'My Little Society'], correctIndex: 3 },
-  { id: 'fromis9-11', category: 'fromis_9', prompt: '我最想听 fromis_9 谁唱主歌？', options: ['Sae-rom', 'Ji-won', 'Chae-yeon', 'Seo-yeon'], correctIndex: 1 },
-  { id: 'fromis9-12', category: 'fromis_9', prompt: '我认为 fromis_9 最强的舞者是？', options: ['Chae-yeon', 'Seo-yeon', 'Gyu-ri', 'Jae-yun'], correctIndex: 0 },
-  { id: 'fromis9-13', category: 'fromis_9', prompt: '我心目中 fromis_9 的本命CP是？', options: ['Ji-won x Chae-yeon', 'Seo-yeon x Gyu-ri', 'Sae-rom x Na-kyung', 'Chae-yeon x Ha-young'], correctIndex: 0 },
-  { id: 'fromis9-14', category: 'fromis_9', prompt: '我最被 fromis_9 哪个舞蹈细节吸引？', options: ['Love Bomb的可爱手势', 'We Go的转身', 'Copacabana的节奏', 'Feel Good舞蹈'], correctIndex: 0 },
-  { id: 'fromis9-15', category: 'fromis_9', prompt: '我最想看 fromis_9 的哪个个人作品？', options: ['Ji-won的领导', 'Chae-yeon的舞蹈', 'Gyu-ri的演技', 'Sae-rom的综艺'], correctIndex: 2 },
-  { id: 'fromis9-16', category: 'fromis_9', prompt: '我最爱 fromis_9 哪个视觉概念？', options: ['To Heart风格', 'Love Bomb风格', 'We Go风格', '最新风格'], correctIndex: 1 },
-  { id: 'fromis9-17', category: 'fromis_9', prompt: '我认为 fromis_9 最应该尝试的是？', options: ['摇滚风格', '保持可爱', '成熟转变', '国际化'], correctIndex: 2 },
-  { id: 'fromis9-18', category: 'fromis_9', prompt: '我最想和 fromis_9 一起去的地点是？', options: ['首尔', '东京', '曼谷', 'Paris'], correctIndex: 1 },
-  { id: 'fromis9-19', category: 'fromis_9', prompt: '我认为 fromis_9 最强的是？', options: ['舞蹈完成度', '歌曲质量', '整体亲近感', '粉丝互动'], correctIndex: 2 },
-  { id: 'fromis9-20', category: 'fromis_9', prompt: '我最期待 fromis_9 的是？', options: ['新的音乐方向', '成熟蜕变', '世界巡演', '完整发展'], correctIndex: 1 },
+  {
+    "id": "blackpink-1",
+    "category": "BLACKPINK",
+    "prompt": "我最爱的 BLACKPINK 成员是？",
+    "options": [
+      "Jisoo",
+      "Jennie",
+      "Rosé",
+      "Lisa"
+    ]
+  },
+  {
+    "id": "blackpink-2",
+    "category": "BLACKPINK",
+    "prompt": "我最喜欢的 BLACKPINK 歌曲是？",
+    "options": [
+      "Boombayah",
+      "DDU-DU DDU-DU",
+      "Kill This Love",
+      "How You Like That"
+    ]
+  },
+  {
+    "id": "blackpink-3",
+    "category": "BLACKPINK",
+    "prompt": "我心中 BLACKPINK 最有气场的成员是？",
+    "options": [
+      "Jisoo",
+      "Jennie",
+      "Rosé",
+      "Lisa"
+    ]
+  },
+  {
+    "id": "blackpink-4",
+    "category": "BLACKPINK",
+    "prompt": "我最爱的 BLACKPINK 专辑是？",
+    "options": [
+      "Square Up",
+      "Kill This Love",
+      "The Album",
+      "Born Pink"
+    ]
+  },
+  {
+    "id": "blackpink-5",
+    "category": "BLACKPINK",
+    "prompt": "我最想听 BLACKPINK 谁唱主歌？",
+    "options": [
+      "Jisoo",
+      "Jennie",
+      "Rosé",
+      "Lisa"
+    ]
+  },
+  {
+    "id": "blackpink-6",
+    "category": "BLACKPINK",
+    "prompt": "我认为 BLACKPINK 最有记忆点的舞台是？",
+    "options": [
+      "DDU-DU DDU-DU 舞台",
+      "Kill This Love 舞台",
+      "How You Like That 舞台",
+      "Lovesick Girls 舞台"
+    ]
+  },
+  {
+    "id": "blackpink-7",
+    "category": "BLACKPINK",
+    "prompt": "我最想和 BLACKPINK 谁做朋友？",
+    "options": [
+      "Jisoo",
+      "Jennie",
+      "Rosé",
+      "Lisa"
+    ]
+  },
+  {
+    "id": "blackpink-8",
+    "category": "BLACKPINK",
+    "prompt": "我最被 BLACKPINK 哪首歌打动？",
+    "options": [
+      "Kill This Love",
+      "How You Like That",
+      "Lovesick Girls",
+      "Pink Venom"
+    ]
+  },
+  {
+    "id": "blackpink-9",
+    "category": "BLACKPINK",
+    "prompt": "我认为 BLACKPINK 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "blackpink-10",
+    "category": "BLACKPINK",
+    "prompt": "我最期待 BLACKPINK 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "bts-1",
+    "category": "BTS",
+    "prompt": "我最爱的 BTS 成员是？",
+    "options": [
+      "RM",
+      "Jin",
+      "SUGA",
+      "j-hope"
+    ]
+  },
+  {
+    "id": "bts-2",
+    "category": "BTS",
+    "prompt": "我最喜欢的 BTS 歌曲是？",
+    "options": [
+      "Spring Day",
+      "DNA",
+      "Fake Love",
+      "Boy With Luv"
+    ]
+  },
+  {
+    "id": "bts-3",
+    "category": "BTS",
+    "prompt": "我心中 BTS 最有气场的成员是？",
+    "options": [
+      "Jin",
+      "SUGA",
+      "j-hope",
+      "Jimin"
+    ]
+  },
+  {
+    "id": "bts-4",
+    "category": "BTS",
+    "prompt": "我最爱的 BTS 专辑是？",
+    "options": [
+      "Wings",
+      "Love Yourself: Tear",
+      "Map of the Soul: 7",
+      "BE"
+    ]
+  },
+  {
+    "id": "bts-5",
+    "category": "BTS",
+    "prompt": "我最想听 BTS 谁唱主歌？",
+    "options": [
+      "SUGA",
+      "j-hope",
+      "Jimin",
+      "V"
+    ]
+  },
+  {
+    "id": "bts-6",
+    "category": "BTS",
+    "prompt": "我认为 BTS 最有记忆点的舞台是？",
+    "options": [
+      "DNA 舞台",
+      "Fake Love 舞台",
+      "Boy With Luv 舞台",
+      "Dynamite 舞台"
+    ]
+  },
+  {
+    "id": "bts-7",
+    "category": "BTS",
+    "prompt": "我最想和 BTS 谁做朋友？",
+    "options": [
+      "j-hope",
+      "Jimin",
+      "V",
+      "Jungkook"
+    ]
+  },
+  {
+    "id": "bts-8",
+    "category": "BTS",
+    "prompt": "我最被 BTS 哪首歌打动？",
+    "options": [
+      "Fake Love",
+      "Boy With Luv",
+      "Dynamite",
+      "Butter"
+    ]
+  },
+  {
+    "id": "bts-9",
+    "category": "BTS",
+    "prompt": "我认为 BTS 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "bts-10",
+    "category": "BTS",
+    "prompt": "我最期待 BTS 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "twice-1",
+    "category": "TWICE",
+    "prompt": "我最爱的 TWICE 成员是？",
+    "options": [
+      "Nayeon",
+      "Jeongyeon",
+      "Momo",
+      "Sana"
+    ]
+  },
+  {
+    "id": "twice-2",
+    "category": "TWICE",
+    "prompt": "我最喜欢的 TWICE 歌曲是？",
+    "options": [
+      "Cheer Up",
+      "TT",
+      "Likey",
+      "What is Love?"
+    ]
+  },
+  {
+    "id": "twice-3",
+    "category": "TWICE",
+    "prompt": "我心中 TWICE 最有气场的成员是？",
+    "options": [
+      "Jeongyeon",
+      "Momo",
+      "Sana",
+      "Jihyo"
+    ]
+  },
+  {
+    "id": "twice-4",
+    "category": "TWICE",
+    "prompt": "我最爱的 TWICE 专辑是？",
+    "options": [
+      "Twicetagram",
+      "Feel Special",
+      "Eyes Wide Open",
+      "Formula of Love: O+T=<3"
+    ]
+  },
+  {
+    "id": "twice-5",
+    "category": "TWICE",
+    "prompt": "我最想听 TWICE 谁唱主歌？",
+    "options": [
+      "Momo",
+      "Sana",
+      "Jihyo",
+      "Mina"
+    ]
+  },
+  {
+    "id": "twice-6",
+    "category": "TWICE",
+    "prompt": "我认为 TWICE 最有记忆点的舞台是？",
+    "options": [
+      "TT 舞台",
+      "Likey 舞台",
+      "What is Love? 舞台",
+      "FANCY 舞台"
+    ]
+  },
+  {
+    "id": "twice-7",
+    "category": "TWICE",
+    "prompt": "我最想和 TWICE 谁做朋友？",
+    "options": [
+      "Sana",
+      "Jihyo",
+      "Mina",
+      "Dahyun"
+    ]
+  },
+  {
+    "id": "twice-8",
+    "category": "TWICE",
+    "prompt": "我最被 TWICE 哪首歌打动？",
+    "options": [
+      "Likey",
+      "What is Love?",
+      "FANCY",
+      "Feel Special"
+    ]
+  },
+  {
+    "id": "twice-9",
+    "category": "TWICE",
+    "prompt": "我认为 TWICE 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "twice-10",
+    "category": "TWICE",
+    "prompt": "我最期待 TWICE 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "seventeen-1",
+    "category": "SEVENTEEN",
+    "prompt": "我最爱的 SEVENTEEN 成员是？",
+    "options": [
+      "S.Coups",
+      "Jeonghan",
+      "Joshua",
+      "Jun"
+    ]
+  },
+  {
+    "id": "seventeen-2",
+    "category": "SEVENTEEN",
+    "prompt": "我最喜欢的 SEVENTEEN 歌曲是？",
+    "options": [
+      "Don't Wanna Cry",
+      "Thanks",
+      "Home",
+      "God's Menu"
+    ]
+  },
+  {
+    "id": "seventeen-3",
+    "category": "SEVENTEEN",
+    "prompt": "我心中 SEVENTEEN 最有气场的成员是？",
+    "options": [
+      "Jeonghan",
+      "Joshua",
+      "Jun",
+      "Hoshi"
+    ]
+  },
+  {
+    "id": "seventeen-4",
+    "category": "SEVENTEEN",
+    "prompt": "我最爱的 SEVENTEEN 专辑是？",
+    "options": [
+      "You Make My Day",
+      "An Ode",
+      "Attacca",
+      "FML"
+    ]
+  },
+  {
+    "id": "seventeen-5",
+    "category": "SEVENTEEN",
+    "prompt": "我最想听 SEVENTEEN 谁唱主歌？",
+    "options": [
+      "Joshua",
+      "Jun",
+      "Hoshi",
+      "Wonwoo"
+    ]
+  },
+  {
+    "id": "seventeen-6",
+    "category": "SEVENTEEN",
+    "prompt": "我认为 SEVENTEEN 最有记忆点的舞台是？",
+    "options": [
+      "Thanks 舞台",
+      "Home 舞台",
+      "God's Menu 舞台",
+      "Hot 舞台"
+    ]
+  },
+  {
+    "id": "seventeen-7",
+    "category": "SEVENTEEN",
+    "prompt": "我最想和 SEVENTEEN 谁做朋友？",
+    "options": [
+      "Jun",
+      "Hoshi",
+      "Wonwoo",
+      "Woozi"
+    ]
+  },
+  {
+    "id": "seventeen-8",
+    "category": "SEVENTEEN",
+    "prompt": "我最被 SEVENTEEN 哪首歌打动？",
+    "options": [
+      "Home",
+      "God's Menu",
+      "Hot",
+      "Super"
+    ]
+  },
+  {
+    "id": "seventeen-9",
+    "category": "SEVENTEEN",
+    "prompt": "我认为 SEVENTEEN 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "seventeen-10",
+    "category": "SEVENTEEN",
+    "prompt": "我最期待 SEVENTEEN 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "aespa-1",
+    "category": "aespa",
+    "prompt": "我最爱的 aespa 成员是？",
+    "options": [
+      "Karina",
+      "Giselle",
+      "Winter",
+      "Ningning"
+    ]
+  },
+  {
+    "id": "aespa-2",
+    "category": "aespa",
+    "prompt": "我最喜欢的 aespa 歌曲是？",
+    "options": [
+      "Black Mamba",
+      "Next Level",
+      "Savage",
+      "Spicy"
+    ]
+  },
+  {
+    "id": "aespa-3",
+    "category": "aespa",
+    "prompt": "我心中 aespa 最有气场的成员是？",
+    "options": [
+      "Karina",
+      "Giselle",
+      "Winter",
+      "Ningning"
+    ]
+  },
+  {
+    "id": "aespa-4",
+    "category": "aespa",
+    "prompt": "我最爱的 aespa 专辑是？",
+    "options": [
+      "Savage",
+      "Girls",
+      "My World",
+      "Armageddon"
+    ]
+  },
+  {
+    "id": "aespa-5",
+    "category": "aespa",
+    "prompt": "我最想听 aespa 谁唱主歌？",
+    "options": [
+      "Karina",
+      "Giselle",
+      "Winter",
+      "Ningning"
+    ]
+  },
+  {
+    "id": "aespa-6",
+    "category": "aespa",
+    "prompt": "我认为 aespa 最有记忆点的舞台是？",
+    "options": [
+      "Next Level 舞台",
+      "Savage 舞台",
+      "Spicy 舞台",
+      "Drama 舞台"
+    ]
+  },
+  {
+    "id": "aespa-7",
+    "category": "aespa",
+    "prompt": "我最想和 aespa 谁做朋友？",
+    "options": [
+      "Karina",
+      "Giselle",
+      "Winter",
+      "Ningning"
+    ]
+  },
+  {
+    "id": "aespa-8",
+    "category": "aespa",
+    "prompt": "我最被 aespa 哪首歌打动？",
+    "options": [
+      "Savage",
+      "Spicy",
+      "Drama",
+      "Supernova"
+    ]
+  },
+  {
+    "id": "aespa-9",
+    "category": "aespa",
+    "prompt": "我认为 aespa 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "aespa-10",
+    "category": "aespa",
+    "prompt": "我最期待 aespa 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "ive-1",
+    "category": "IVE",
+    "prompt": "我最爱的 IVE 成员是？",
+    "options": [
+      "Yujin",
+      "Gaeul",
+      "Rei",
+      "Wonyoung"
+    ]
+  },
+  {
+    "id": "ive-2",
+    "category": "IVE",
+    "prompt": "我最喜欢的 IVE 歌曲是？",
+    "options": [
+      "ELEVEN",
+      "LOVE DIVE",
+      "After LIKE",
+      "I AM"
+    ]
+  },
+  {
+    "id": "ive-3",
+    "category": "IVE",
+    "prompt": "我心中 IVE 最有气场的成员是？",
+    "options": [
+      "Gaeul",
+      "Rei",
+      "Wonyoung",
+      "Liz"
+    ]
+  },
+  {
+    "id": "ive-4",
+    "category": "IVE",
+    "prompt": "我最爱的 IVE 专辑是？",
+    "options": [
+      "I've IVE",
+      "I've Mine",
+      "IVE SWITCH",
+      "IVE EMPATHY"
+    ]
+  },
+  {
+    "id": "ive-5",
+    "category": "IVE",
+    "prompt": "我最想听 IVE 谁唱主歌？",
+    "options": [
+      "Rei",
+      "Wonyoung",
+      "Liz",
+      "Leeseo"
+    ]
+  },
+  {
+    "id": "ive-6",
+    "category": "IVE",
+    "prompt": "我认为 IVE 最有记忆点的舞台是？",
+    "options": [
+      "LOVE DIVE 舞台",
+      "After LIKE 舞台",
+      "I AM 舞台",
+      "Either Way 舞台"
+    ]
+  },
+  {
+    "id": "ive-7",
+    "category": "IVE",
+    "prompt": "我最想和 IVE 谁做朋友？",
+    "options": [
+      "Wonyoung",
+      "Liz",
+      "Leeseo",
+      "Yujin"
+    ]
+  },
+  {
+    "id": "ive-8",
+    "category": "IVE",
+    "prompt": "我最被 IVE 哪首歌打动？",
+    "options": [
+      "After LIKE",
+      "I AM",
+      "Either Way",
+      "HEYA"
+    ]
+  },
+  {
+    "id": "ive-9",
+    "category": "IVE",
+    "prompt": "我认为 IVE 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "ive-10",
+    "category": "IVE",
+    "prompt": "我最期待 IVE 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "newjeans-1",
+    "category": "NewJeans",
+    "prompt": "我最爱的 NewJeans 成员是？",
+    "options": [
+      "Minji",
+      "Hanni",
+      "Danielle",
+      "Haerin"
+    ]
+  },
+  {
+    "id": "newjeans-2",
+    "category": "NewJeans",
+    "prompt": "我最喜欢的 NewJeans 歌曲是？",
+    "options": [
+      "Attention",
+      "Hype Boy",
+      "Ditto",
+      "OMG"
+    ]
+  },
+  {
+    "id": "newjeans-3",
+    "category": "NewJeans",
+    "prompt": "我心中 NewJeans 最有气场的成员是？",
+    "options": [
+      "Hanni",
+      "Danielle",
+      "Haerin",
+      "Hyein"
+    ]
+  },
+  {
+    "id": "newjeans-4",
+    "category": "NewJeans",
+    "prompt": "我最爱的 NewJeans 专辑是？",
+    "options": [
+      "New Jeans",
+      "Get Up",
+      "How Sweet",
+      "Supernatural"
+    ]
+  },
+  {
+    "id": "newjeans-5",
+    "category": "NewJeans",
+    "prompt": "我最想听 NewJeans 谁唱主歌？",
+    "options": [
+      "Danielle",
+      "Haerin",
+      "Hyein",
+      "Minji"
+    ]
+  },
+  {
+    "id": "newjeans-6",
+    "category": "NewJeans",
+    "prompt": "我认为 NewJeans 最有记忆点的舞台是？",
+    "options": [
+      "Hype Boy 舞台",
+      "Ditto 舞台",
+      "OMG 舞台",
+      "Super Shy 舞台"
+    ]
+  },
+  {
+    "id": "newjeans-7",
+    "category": "NewJeans",
+    "prompt": "我最想和 NewJeans 谁做朋友？",
+    "options": [
+      "Haerin",
+      "Hyein",
+      "Minji",
+      "Hanni"
+    ]
+  },
+  {
+    "id": "newjeans-8",
+    "category": "NewJeans",
+    "prompt": "我最被 NewJeans 哪首歌打动？",
+    "options": [
+      "Ditto",
+      "OMG",
+      "Super Shy",
+      "How Sweet"
+    ]
+  },
+  {
+    "id": "newjeans-9",
+    "category": "NewJeans",
+    "prompt": "我认为 NewJeans 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "newjeans-10",
+    "category": "NewJeans",
+    "prompt": "我最期待 NewJeans 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "straykids-1",
+    "category": "Stray Kids",
+    "prompt": "我最爱的 Stray Kids 成员是？",
+    "options": [
+      "Bang Chan",
+      "Lee Know",
+      "Changbin",
+      "Hyunjin"
+    ]
+  },
+  {
+    "id": "straykids-2",
+    "category": "Stray Kids",
+    "prompt": "我最喜欢的 Stray Kids 歌曲是？",
+    "options": [
+      "MIROH",
+      "Back Door",
+      "Thunderous",
+      "MANIAC"
+    ]
+  },
+  {
+    "id": "straykids-3",
+    "category": "Stray Kids",
+    "prompt": "我心中 Stray Kids 最有气场的成员是？",
+    "options": [
+      "Lee Know",
+      "Changbin",
+      "Hyunjin",
+      "HAN"
+    ]
+  },
+  {
+    "id": "straykids-4",
+    "category": "Stray Kids",
+    "prompt": "我最爱的 Stray Kids 专辑是？",
+    "options": [
+      "GO生",
+      "NOEASY",
+      "ODDINARY",
+      "★★★★★ 5-STAR"
+    ]
+  },
+  {
+    "id": "straykids-5",
+    "category": "Stray Kids",
+    "prompt": "我最想听 Stray Kids 谁唱主歌？",
+    "options": [
+      "Changbin",
+      "Hyunjin",
+      "HAN",
+      "Felix"
+    ]
+  },
+  {
+    "id": "straykids-6",
+    "category": "Stray Kids",
+    "prompt": "我认为 Stray Kids 最有记忆点的舞台是？",
+    "options": [
+      "Back Door 舞台",
+      "Thunderous 舞台",
+      "MANIAC 舞台",
+      "CASE 143 舞台"
+    ]
+  },
+  {
+    "id": "straykids-7",
+    "category": "Stray Kids",
+    "prompt": "我最想和 Stray Kids 谁做朋友？",
+    "options": [
+      "Hyunjin",
+      "HAN",
+      "Felix",
+      "Seungmin"
+    ]
+  },
+  {
+    "id": "straykids-8",
+    "category": "Stray Kids",
+    "prompt": "我最被 Stray Kids 哪首歌打动？",
+    "options": [
+      "Thunderous",
+      "MANIAC",
+      "CASE 143",
+      "S-Class"
+    ]
+  },
+  {
+    "id": "straykids-9",
+    "category": "Stray Kids",
+    "prompt": "我认为 Stray Kids 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "straykids-10",
+    "category": "Stray Kids",
+    "prompt": "我最期待 Stray Kids 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "exo-1",
+    "category": "EXO",
+    "prompt": "我最爱的 EXO 成员是？",
+    "options": [
+      "Suho",
+      "Xiumin",
+      "Lay",
+      "Baekhyun"
+    ]
+  },
+  {
+    "id": "exo-2",
+    "category": "EXO",
+    "prompt": "我最喜欢的 EXO 歌曲是？",
+    "options": [
+      "Growl",
+      "Call Me Baby",
+      "Love Shot",
+      "Tempo"
+    ]
+  },
+  {
+    "id": "exo-3",
+    "category": "EXO",
+    "prompt": "我心中 EXO 最有气场的成员是？",
+    "options": [
+      "Xiumin",
+      "Lay",
+      "Baekhyun",
+      "Chen"
+    ]
+  },
+  {
+    "id": "exo-4",
+    "category": "EXO",
+    "prompt": "我最爱的 EXO 专辑是？",
+    "options": [
+      "XOXO",
+      "EXODUS",
+      "THE WAR",
+      "EXIST"
+    ]
+  },
+  {
+    "id": "exo-5",
+    "category": "EXO",
+    "prompt": "我最想听 EXO 谁唱主歌？",
+    "options": [
+      "Lay",
+      "Baekhyun",
+      "Chen",
+      "Chanyeol"
+    ]
+  },
+  {
+    "id": "exo-6",
+    "category": "EXO",
+    "prompt": "我认为 EXO 最有记忆点的舞台是？",
+    "options": [
+      "Call Me Baby 舞台",
+      "Love Shot 舞台",
+      "Tempo 舞台",
+      "Ko Ko Bop 舞台"
+    ]
+  },
+  {
+    "id": "exo-7",
+    "category": "EXO",
+    "prompt": "我最想和 EXO 谁做朋友？",
+    "options": [
+      "Baekhyun",
+      "Chen",
+      "Chanyeol",
+      "D.O."
+    ]
+  },
+  {
+    "id": "exo-8",
+    "category": "EXO",
+    "prompt": "我最被 EXO 哪首歌打动？",
+    "options": [
+      "Love Shot",
+      "Tempo",
+      "Ko Ko Bop",
+      "Obsession"
+    ]
+  },
+  {
+    "id": "exo-9",
+    "category": "EXO",
+    "prompt": "我认为 EXO 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "exo-10",
+    "category": "EXO",
+    "prompt": "我最期待 EXO 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "redvelvet-1",
+    "category": "Red Velvet",
+    "prompt": "我最爱的 Red Velvet 成员是？",
+    "options": [
+      "Irene",
+      "Seulgi",
+      "Wendy",
+      "Joy"
+    ]
+  },
+  {
+    "id": "redvelvet-2",
+    "category": "Red Velvet",
+    "prompt": "我最喜欢的 Red Velvet 歌曲是？",
+    "options": [
+      "Red Flavor",
+      "Peek-A-Boo",
+      "Bad Boy",
+      "Psycho"
+    ]
+  },
+  {
+    "id": "redvelvet-3",
+    "category": "Red Velvet",
+    "prompt": "我心中 Red Velvet 最有气场的成员是？",
+    "options": [
+      "Seulgi",
+      "Wendy",
+      "Joy",
+      "Yeri"
+    ]
+  },
+  {
+    "id": "redvelvet-4",
+    "category": "Red Velvet",
+    "prompt": "我最爱的 Red Velvet 专辑是？",
+    "options": [
+      "The Red",
+      "Perfect Velvet",
+      "The ReVe Festival",
+      "Cosmic"
+    ]
+  },
+  {
+    "id": "redvelvet-5",
+    "category": "Red Velvet",
+    "prompt": "我最想听 Red Velvet 谁唱主歌？",
+    "options": [
+      "Wendy",
+      "Joy",
+      "Yeri",
+      "Irene"
+    ]
+  },
+  {
+    "id": "redvelvet-6",
+    "category": "Red Velvet",
+    "prompt": "我认为 Red Velvet 最有记忆点的舞台是？",
+    "options": [
+      "Peek-A-Boo 舞台",
+      "Bad Boy 舞台",
+      "Psycho 舞台",
+      "Queendom 舞台"
+    ]
+  },
+  {
+    "id": "redvelvet-7",
+    "category": "Red Velvet",
+    "prompt": "我最想和 Red Velvet 谁做朋友？",
+    "options": [
+      "Joy",
+      "Yeri",
+      "Irene",
+      "Seulgi"
+    ]
+  },
+  {
+    "id": "redvelvet-8",
+    "category": "Red Velvet",
+    "prompt": "我最被 Red Velvet 哪首歌打动？",
+    "options": [
+      "Bad Boy",
+      "Psycho",
+      "Queendom",
+      "Feel My Rhythm"
+    ]
+  },
+  {
+    "id": "redvelvet-9",
+    "category": "Red Velvet",
+    "prompt": "我认为 Red Velvet 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "redvelvet-10",
+    "category": "Red Velvet",
+    "prompt": "我最期待 Red Velvet 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "-1",
+    "category": "少女时代",
+    "prompt": "我最爱的 少女时代 成员是？",
+    "options": [
+      "Taeyeon",
+      "Sunny",
+      "Tiffany",
+      "Hyoyeon"
+    ]
+  },
+  {
+    "id": "-2",
+    "category": "少女时代",
+    "prompt": "我最喜欢的 少女时代 歌曲是？",
+    "options": [
+      "Into the New World",
+      "Gee",
+      "Genie",
+      "Oh!"
+    ]
+  },
+  {
+    "id": "-3",
+    "category": "少女时代",
+    "prompt": "我心中 少女时代 最有气场的成员是？",
+    "options": [
+      "Sunny",
+      "Tiffany",
+      "Hyoyeon",
+      "Yuri"
+    ]
+  },
+  {
+    "id": "-4",
+    "category": "少女时代",
+    "prompt": "我最爱的 少女时代 专辑是？",
+    "options": [
+      "Gee",
+      "The Boys",
+      "I Got a Boy",
+      "Holiday Night"
+    ]
+  },
+  {
+    "id": "-5",
+    "category": "少女时代",
+    "prompt": "我最想听 少女时代 谁唱主歌？",
+    "options": [
+      "Tiffany",
+      "Hyoyeon",
+      "Yuri",
+      "Sooyoung"
+    ]
+  },
+  {
+    "id": "-6",
+    "category": "少女时代",
+    "prompt": "我认为 少女时代 最有记忆点的舞台是？",
+    "options": [
+      "Gee 舞台",
+      "Genie 舞台",
+      "Oh! 舞台",
+      "The Boys 舞台"
+    ]
+  },
+  {
+    "id": "-7",
+    "category": "少女时代",
+    "prompt": "我最想和 少女时代 谁做朋友？",
+    "options": [
+      "Hyoyeon",
+      "Yuri",
+      "Sooyoung",
+      "Yoona"
+    ]
+  },
+  {
+    "id": "-8",
+    "category": "少女时代",
+    "prompt": "我最被 少女时代 哪首歌打动？",
+    "options": [
+      "Genie",
+      "Oh!",
+      "The Boys",
+      "I Got a Boy"
+    ]
+  },
+  {
+    "id": "-9",
+    "category": "少女时代",
+    "prompt": "我认为 少女时代 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "-10",
+    "category": "少女时代",
+    "prompt": "我最期待 少女时代 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "iu-1",
+    "category": "IU",
+    "prompt": "我最喜欢的 IU 歌曲是？",
+    "options": [
+      "Good Day",
+      "Through the Night",
+      "Palette",
+      "Blueming"
+    ]
+  },
+  {
+    "id": "iu-2",
+    "category": "IU",
+    "prompt": "我认为 IU 最治愈的歌是？",
+    "options": [
+      "Through the Night",
+      "Palette",
+      "Blueming",
+      "Celebrity"
+    ]
+  },
+  {
+    "id": "iu-3",
+    "category": "IU",
+    "prompt": "我最爱的 IU 专辑是？",
+    "options": [
+      "Last Fantasy",
+      "Modern Times",
+      "Palette",
+      "Lilac"
+    ]
+  },
+  {
+    "id": "iu-4",
+    "category": "IU",
+    "prompt": "我最被 IU 哪首歌的旋律打动？",
+    "options": [
+      "Palette",
+      "Blueming",
+      "Celebrity",
+      "Lilac"
+    ]
+  },
+  {
+    "id": "iu-5",
+    "category": "IU",
+    "prompt": "我最想循环的 IU 作品是？",
+    "options": [
+      "Blueming",
+      "Celebrity",
+      "Lilac",
+      "Love Wins All"
+    ]
+  },
+  {
+    "id": "iu-6",
+    "category": "IU",
+    "prompt": "我认为 IU 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "iu-7",
+    "category": "IU",
+    "prompt": "我最期待 IU 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "iu-8",
+    "category": "IU",
+    "prompt": "我最喜欢 IU 哪个时期的气质？",
+    "options": [
+      "出道期",
+      "转型期",
+      "成熟期",
+      "最近"
+    ]
+  },
+  {
+    "id": "iu-9",
+    "category": "IU",
+    "prompt": "我最想听现场的 IU 歌曲是？",
+    "options": [
+      "Celebrity",
+      "Lilac",
+      "Love Wins All",
+      "Good Day"
+    ]
+  },
+  {
+    "id": "iu-10",
+    "category": "IU",
+    "prompt": "我认为 IU 最适合深夜听的是？",
+    "options": [
+      "Lilac",
+      "Love Wins All",
+      "Good Day",
+      "Through the Night"
+    ]
+  },
+  {
+    "id": "enhypen-1",
+    "category": "ENHYPEN",
+    "prompt": "我最爱的 ENHYPEN 成员是？",
+    "options": [
+      "Heeseung",
+      "Jay",
+      "Jake",
+      "Sunghoon"
+    ]
+  },
+  {
+    "id": "enhypen-2",
+    "category": "ENHYPEN",
+    "prompt": "我最喜欢的 ENHYPEN 歌曲是？",
+    "options": [
+      "Given-Taken",
+      "Drunk-Dazed",
+      "Tamed-Dashed",
+      "Polaroid Love"
+    ]
+  },
+  {
+    "id": "enhypen-3",
+    "category": "ENHYPEN",
+    "prompt": "我心中 ENHYPEN 最有气场的成员是？",
+    "options": [
+      "Jay",
+      "Jake",
+      "Sunghoon",
+      "Sunoo"
+    ]
+  },
+  {
+    "id": "enhypen-4",
+    "category": "ENHYPEN",
+    "prompt": "我最爱的 ENHYPEN 专辑是？",
+    "options": [
+      "BORDER : DAY ONE",
+      "DIMENSION : DILEMMA",
+      "MANIFESTO : DAY 1",
+      "ROMANCE : UNTOLD"
+    ]
+  },
+  {
+    "id": "enhypen-5",
+    "category": "ENHYPEN",
+    "prompt": "我最想听 ENHYPEN 谁唱主歌？",
+    "options": [
+      "Jake",
+      "Sunghoon",
+      "Sunoo",
+      "Jungwon"
+    ]
+  },
+  {
+    "id": "enhypen-6",
+    "category": "ENHYPEN",
+    "prompt": "我认为 ENHYPEN 最有记忆点的舞台是？",
+    "options": [
+      "Drunk-Dazed 舞台",
+      "Tamed-Dashed 舞台",
+      "Polaroid Love 舞台",
+      "Bite Me 舞台"
+    ]
+  },
+  {
+    "id": "enhypen-7",
+    "category": "ENHYPEN",
+    "prompt": "我最想和 ENHYPEN 谁做朋友？",
+    "options": [
+      "Sunghoon",
+      "Sunoo",
+      "Jungwon",
+      "Ni-ki"
+    ]
+  },
+  {
+    "id": "enhypen-8",
+    "category": "ENHYPEN",
+    "prompt": "我最被 ENHYPEN 哪首歌打动？",
+    "options": [
+      "Tamed-Dashed",
+      "Polaroid Love",
+      "Bite Me",
+      "Sweet Venom"
+    ]
+  },
+  {
+    "id": "enhypen-9",
+    "category": "ENHYPEN",
+    "prompt": "我认为 ENHYPEN 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "enhypen-10",
+    "category": "ENHYPEN",
+    "prompt": "我最期待 ENHYPEN 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "txt-1",
+    "category": "TXT",
+    "prompt": "我最爱的 TXT 成员是？",
+    "options": [
+      "Yeonjun",
+      "Soobin",
+      "Beomgyu",
+      "Taehyun"
+    ]
+  },
+  {
+    "id": "txt-2",
+    "category": "TXT",
+    "prompt": "我最喜欢的 TXT 歌曲是？",
+    "options": [
+      "CROWN",
+      "9 and Three Quarters (Run Away)",
+      "0X1=LOVESONG",
+      "Good Boy Gone Bad"
+    ]
+  },
+  {
+    "id": "txt-3",
+    "category": "TXT",
+    "prompt": "我心中 TXT 最有气场的成员是？",
+    "options": [
+      "Soobin",
+      "Beomgyu",
+      "Taehyun",
+      "Huening Kai"
+    ]
+  },
+  {
+    "id": "txt-4",
+    "category": "TXT",
+    "prompt": "我最爱的 TXT 专辑是？",
+    "options": [
+      "The Dream Chapter: MAGIC",
+      "The Chaos Chapter: FREEZE",
+      "minisode 2: Thursday's Child",
+      "The Name Chapter: TEMPTATION"
+    ]
+  },
+  {
+    "id": "txt-5",
+    "category": "TXT",
+    "prompt": "我最想听 TXT 谁唱主歌？",
+    "options": [
+      "Beomgyu",
+      "Taehyun",
+      "Huening Kai",
+      "Yeonjun"
+    ]
+  },
+  {
+    "id": "txt-6",
+    "category": "TXT",
+    "prompt": "我认为 TXT 最有记忆点的舞台是？",
+    "options": [
+      "9 and Three Quarters (Run Away) 舞台",
+      "0X1=LOVESONG 舞台",
+      "Good Boy Gone Bad 舞台",
+      "Sugar Rush Ride 舞台"
+    ]
+  },
+  {
+    "id": "txt-7",
+    "category": "TXT",
+    "prompt": "我最想和 TXT 谁做朋友？",
+    "options": [
+      "Taehyun",
+      "Huening Kai",
+      "Yeonjun",
+      "Soobin"
+    ]
+  },
+  {
+    "id": "txt-8",
+    "category": "TXT",
+    "prompt": "我最被 TXT 哪首歌打动？",
+    "options": [
+      "0X1=LOVESONG",
+      "Good Boy Gone Bad",
+      "Sugar Rush Ride",
+      "Chasing That Feeling"
+    ]
+  },
+  {
+    "id": "txt-9",
+    "category": "TXT",
+    "prompt": "我认为 TXT 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "txt-10",
+    "category": "TXT",
+    "prompt": "我最期待 TXT 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "shinee-1",
+    "category": "SHINee",
+    "prompt": "我最爱的 SHINee 成员是？",
+    "options": [
+      "Onew",
+      "Jonghyun",
+      "Key",
+      "Minho"
+    ]
+  },
+  {
+    "id": "shinee-2",
+    "category": "SHINee",
+    "prompt": "我最喜欢的 SHINee 歌曲是？",
+    "options": [
+      "Replay",
+      "Lucifer",
+      "Sherlock",
+      "Dream Girl"
+    ]
+  },
+  {
+    "id": "shinee-3",
+    "category": "SHINee",
+    "prompt": "我心中 SHINee 最有气场的成员是？",
+    "options": [
+      "Jonghyun",
+      "Key",
+      "Minho",
+      "Taemin"
+    ]
+  },
+  {
+    "id": "shinee-4",
+    "category": "SHINee",
+    "prompt": "我最爱的 SHINee 专辑是？",
+    "options": [
+      "The SHINee World",
+      "Odd",
+      "The Story of Light",
+      "HARD"
+    ]
+  },
+  {
+    "id": "shinee-5",
+    "category": "SHINee",
+    "prompt": "我最想听 SHINee 谁唱主歌？",
+    "options": [
+      "Key",
+      "Minho",
+      "Taemin",
+      "Onew"
+    ]
+  },
+  {
+    "id": "shinee-6",
+    "category": "SHINee",
+    "prompt": "我认为 SHINee 最有记忆点的舞台是？",
+    "options": [
+      "Lucifer 舞台",
+      "Sherlock 舞台",
+      "Dream Girl 舞台",
+      "View 舞台"
+    ]
+  },
+  {
+    "id": "shinee-7",
+    "category": "SHINee",
+    "prompt": "我最想和 SHINee 谁做朋友？",
+    "options": [
+      "Minho",
+      "Taemin",
+      "Onew",
+      "Jonghyun"
+    ]
+  },
+  {
+    "id": "shinee-8",
+    "category": "SHINee",
+    "prompt": "我最被 SHINee 哪首歌打动？",
+    "options": [
+      "Sherlock",
+      "Dream Girl",
+      "View",
+      "Everybody"
+    ]
+  },
+  {
+    "id": "shinee-9",
+    "category": "SHINee",
+    "prompt": "我认为 SHINee 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "shinee-10",
+    "category": "SHINee",
+    "prompt": "我最期待 SHINee 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "nct127-1",
+    "category": "NCT 127",
+    "prompt": "我最爱的 NCT 127 成员是？",
+    "options": [
+      "Johnny",
+      "Taeyong",
+      "Yuta",
+      "Doyoung"
+    ]
+  },
+  {
+    "id": "nct127-2",
+    "category": "NCT 127",
+    "prompt": "我最喜欢的 NCT 127 歌曲是？",
+    "options": [
+      "Cherry Bomb",
+      "Regular",
+      "Kick It",
+      "Sticker"
+    ]
+  },
+  {
+    "id": "nct127-3",
+    "category": "NCT 127",
+    "prompt": "我心中 NCT 127 最有气场的成员是？",
+    "options": [
+      "Taeyong",
+      "Yuta",
+      "Doyoung",
+      "Jaehyun"
+    ]
+  },
+  {
+    "id": "nct127-4",
+    "category": "NCT 127",
+    "prompt": "我最爱的 NCT 127 专辑是？",
+    "options": [
+      "Regular-Irregular",
+      "Neo Zone",
+      "Sticker",
+      "Fact Check"
+    ]
+  },
+  {
+    "id": "nct127-5",
+    "category": "NCT 127",
+    "prompt": "我最想听 NCT 127 谁唱主歌？",
+    "options": [
+      "Yuta",
+      "Doyoung",
+      "Jaehyun",
+      "Jungwoo"
+    ]
+  },
+  {
+    "id": "nct127-6",
+    "category": "NCT 127",
+    "prompt": "我认为 NCT 127 最有记忆点的舞台是？",
+    "options": [
+      "Regular 舞台",
+      "Kick It 舞台",
+      "Sticker 舞台",
+      "2 Baddies 舞台"
+    ]
+  },
+  {
+    "id": "nct127-7",
+    "category": "NCT 127",
+    "prompt": "我最想和 NCT 127 谁做朋友？",
+    "options": [
+      "Doyoung",
+      "Jaehyun",
+      "Jungwoo",
+      "Mark"
+    ]
+  },
+  {
+    "id": "nct127-8",
+    "category": "NCT 127",
+    "prompt": "我最被 NCT 127 哪首歌打动？",
+    "options": [
+      "Kick It",
+      "Sticker",
+      "2 Baddies",
+      "Fact Check"
+    ]
+  },
+  {
+    "id": "nct127-9",
+    "category": "NCT 127",
+    "prompt": "我认为 NCT 127 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "nct127-10",
+    "category": "NCT 127",
+    "prompt": "我最期待 NCT 127 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "nctdream-1",
+    "category": "NCT DREAM",
+    "prompt": "我最爱的 NCT DREAM 成员是？",
+    "options": [
+      "Mark",
+      "Renjun",
+      "Jeno",
+      "Haechan"
+    ]
+  },
+  {
+    "id": "nctdream-2",
+    "category": "NCT DREAM",
+    "prompt": "我最喜欢的 NCT DREAM 歌曲是？",
+    "options": [
+      "Chewing Gum",
+      "We Young",
+      "BOOM",
+      "Hot Sauce"
+    ]
+  },
+  {
+    "id": "nctdream-3",
+    "category": "NCT DREAM",
+    "prompt": "我心中 NCT DREAM 最有气场的成员是？",
+    "options": [
+      "Renjun",
+      "Jeno",
+      "Haechan",
+      "Jaemin"
+    ]
+  },
+  {
+    "id": "nctdream-4",
+    "category": "NCT DREAM",
+    "prompt": "我最爱的 NCT DREAM 专辑是？",
+    "options": [
+      "Hot Sauce",
+      "Glitch Mode",
+      "ISTJ",
+      "DREAMSCAPE"
+    ]
+  },
+  {
+    "id": "nctdream-5",
+    "category": "NCT DREAM",
+    "prompt": "我最想听 NCT DREAM 谁唱主歌？",
+    "options": [
+      "Jeno",
+      "Haechan",
+      "Jaemin",
+      "Chenle"
+    ]
+  },
+  {
+    "id": "nctdream-6",
+    "category": "NCT DREAM",
+    "prompt": "我认为 NCT DREAM 最有记忆点的舞台是？",
+    "options": [
+      "We Young 舞台",
+      "BOOM 舞台",
+      "Hot Sauce 舞台",
+      "Hello Future 舞台"
+    ]
+  },
+  {
+    "id": "nctdream-7",
+    "category": "NCT DREAM",
+    "prompt": "我最想和 NCT DREAM 谁做朋友？",
+    "options": [
+      "Haechan",
+      "Jaemin",
+      "Chenle",
+      "Jisung"
+    ]
+  },
+  {
+    "id": "nctdream-8",
+    "category": "NCT DREAM",
+    "prompt": "我最被 NCT DREAM 哪首歌打动？",
+    "options": [
+      "BOOM",
+      "Hot Sauce",
+      "Hello Future",
+      "Candy"
+    ]
+  },
+  {
+    "id": "nctdream-9",
+    "category": "NCT DREAM",
+    "prompt": "我认为 NCT DREAM 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "nctdream-10",
+    "category": "NCT DREAM",
+    "prompt": "我最期待 NCT DREAM 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "astro-1",
+    "category": "ASTRO",
+    "prompt": "我最爱的 ASTRO 成员是？",
+    "options": [
+      "MJ",
+      "Jinjin",
+      "Cha Eunwoo",
+      "Moonbin"
+    ]
+  },
+  {
+    "id": "astro-2",
+    "category": "ASTRO",
+    "prompt": "我最喜欢的 ASTRO 歌曲是？",
+    "options": [
+      "Hide & Seek",
+      "Breathless",
+      "Baby",
+      "Crazy Sexy Cool"
+    ]
+  },
+  {
+    "id": "astro-3",
+    "category": "ASTRO",
+    "prompt": "我心中 ASTRO 最有气场的成员是？",
+    "options": [
+      "Jinjin",
+      "Cha Eunwoo",
+      "Moonbin",
+      "Rocky"
+    ]
+  },
+  {
+    "id": "astro-4",
+    "category": "ASTRO",
+    "prompt": "我最爱的 ASTRO 专辑是？",
+    "options": [
+      "Spring Up",
+      "All Light",
+      "Blue Flame",
+      "Switch On"
+    ]
+  },
+  {
+    "id": "astro-5",
+    "category": "ASTRO",
+    "prompt": "我最想听 ASTRO 谁唱主歌？",
+    "options": [
+      "Cha Eunwoo",
+      "Moonbin",
+      "Rocky",
+      "Sanha"
+    ]
+  },
+  {
+    "id": "astro-6",
+    "category": "ASTRO",
+    "prompt": "我认为 ASTRO 最有记忆点的舞台是？",
+    "options": [
+      "Breathless 舞台",
+      "Baby 舞台",
+      "Crazy Sexy Cool 舞台",
+      "All Night 舞台"
+    ]
+  },
+  {
+    "id": "astro-7",
+    "category": "ASTRO",
+    "prompt": "我最想和 ASTRO 谁做朋友？",
+    "options": [
+      "Moonbin",
+      "Rocky",
+      "Sanha",
+      "MJ"
+    ]
+  },
+  {
+    "id": "astro-8",
+    "category": "ASTRO",
+    "prompt": "我最被 ASTRO 哪首歌打动？",
+    "options": [
+      "Baby",
+      "Crazy Sexy Cool",
+      "All Night",
+      "Blue Flame"
+    ]
+  },
+  {
+    "id": "astro-9",
+    "category": "ASTRO",
+    "prompt": "我认为 ASTRO 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "astro-10",
+    "category": "ASTRO",
+    "prompt": "我最期待 ASTRO 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "lesserafim-1",
+    "category": "LE SSERAFIM",
+    "prompt": "我最爱的 LE SSERAFIM 成员是？",
+    "options": [
+      "Chaewon",
+      "Sakura",
+      "Yunjin",
+      "Kazuha"
+    ]
+  },
+  {
+    "id": "lesserafim-2",
+    "category": "LE SSERAFIM",
+    "prompt": "我最喜欢的 LE SSERAFIM 歌曲是？",
+    "options": [
+      "FEARLESS",
+      "ANTIFRAGILE",
+      "UNFORGIVEN",
+      "EASY"
+    ]
+  },
+  {
+    "id": "lesserafim-3",
+    "category": "LE SSERAFIM",
+    "prompt": "我心中 LE SSERAFIM 最有气场的成员是？",
+    "options": [
+      "Sakura",
+      "Yunjin",
+      "Kazuha",
+      "Eunchae"
+    ]
+  },
+  {
+    "id": "lesserafim-4",
+    "category": "LE SSERAFIM",
+    "prompt": "我最爱的 LE SSERAFIM 专辑是？",
+    "options": [
+      "FEARLESS",
+      "ANTIFRAGILE",
+      "UNFORGIVEN",
+      "EASY"
+    ]
+  },
+  {
+    "id": "lesserafim-5",
+    "category": "LE SSERAFIM",
+    "prompt": "我最想听 LE SSERAFIM 谁唱主歌？",
+    "options": [
+      "Yunjin",
+      "Kazuha",
+      "Eunchae",
+      "Chaewon"
+    ]
+  },
+  {
+    "id": "lesserafim-6",
+    "category": "LE SSERAFIM",
+    "prompt": "我认为 LE SSERAFIM 最有记忆点的舞台是？",
+    "options": [
+      "ANTIFRAGILE 舞台",
+      "UNFORGIVEN 舞台",
+      "EASY 舞台",
+      "Smart 舞台"
+    ]
+  },
+  {
+    "id": "lesserafim-7",
+    "category": "LE SSERAFIM",
+    "prompt": "我最想和 LE SSERAFIM 谁做朋友？",
+    "options": [
+      "Kazuha",
+      "Eunchae",
+      "Chaewon",
+      "Sakura"
+    ]
+  },
+  {
+    "id": "lesserafim-8",
+    "category": "LE SSERAFIM",
+    "prompt": "我最被 LE SSERAFIM 哪首歌打动？",
+    "options": [
+      "UNFORGIVEN",
+      "EASY",
+      "Smart",
+      "CRAZY"
+    ]
+  },
+  {
+    "id": "lesserafim-9",
+    "category": "LE SSERAFIM",
+    "prompt": "我认为 LE SSERAFIM 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "lesserafim-10",
+    "category": "LE SSERAFIM",
+    "prompt": "我最期待 LE SSERAFIM 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "got7-1",
+    "category": "GOT7",
+    "prompt": "我最爱的 GOT7 成员是？",
+    "options": [
+      "JB",
+      "Mark",
+      "Jackson",
+      "Jinyoung"
+    ]
+  },
+  {
+    "id": "got7-2",
+    "category": "GOT7",
+    "prompt": "我最喜欢的 GOT7 歌曲是？",
+    "options": [
+      "Just Right",
+      "If You Do",
+      "Hard Carry",
+      "Never Ever"
+    ]
+  },
+  {
+    "id": "got7-3",
+    "category": "GOT7",
+    "prompt": "我心中 GOT7 最有气场的成员是？",
+    "options": [
+      "Mark",
+      "Jackson",
+      "Jinyoung",
+      "Youngjae"
+    ]
+  },
+  {
+    "id": "got7-4",
+    "category": "GOT7",
+    "prompt": "我最爱的 GOT7 专辑是？",
+    "options": [
+      "Got It?",
+      "Flight Log: Turbulence",
+      "Eyes On You",
+      "Dye"
+    ]
+  },
+  {
+    "id": "got7-5",
+    "category": "GOT7",
+    "prompt": "我最想听 GOT7 谁唱主歌？",
+    "options": [
+      "Jackson",
+      "Jinyoung",
+      "Youngjae",
+      "BamBam"
+    ]
+  },
+  {
+    "id": "got7-6",
+    "category": "GOT7",
+    "prompt": "我认为 GOT7 最有记忆点的舞台是？",
+    "options": [
+      "If You Do 舞台",
+      "Hard Carry 舞台",
+      "Never Ever 舞台",
+      "Lullaby 舞台"
+    ]
+  },
+  {
+    "id": "got7-7",
+    "category": "GOT7",
+    "prompt": "我最想和 GOT7 谁做朋友？",
+    "options": [
+      "Jinyoung",
+      "Youngjae",
+      "BamBam",
+      "Yugyeom"
+    ]
+  },
+  {
+    "id": "got7-8",
+    "category": "GOT7",
+    "prompt": "我最被 GOT7 哪首歌打动？",
+    "options": [
+      "Hard Carry",
+      "Never Ever",
+      "Lullaby",
+      "You Calling My Name"
+    ]
+  },
+  {
+    "id": "got7-9",
+    "category": "GOT7",
+    "prompt": "我认为 GOT7 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "got7-10",
+    "category": "GOT7",
+    "prompt": "我最期待 GOT7 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "monstax-1",
+    "category": "MONSTA X",
+    "prompt": "我最爱的 MONSTA X 成员是？",
+    "options": [
+      "Shownu",
+      "Minhyuk",
+      "Kihyun",
+      "Hyungwon"
+    ]
+  },
+  {
+    "id": "monstax-2",
+    "category": "MONSTA X",
+    "prompt": "我最喜欢的 MONSTA X 歌曲是？",
+    "options": [
+      "Trespass",
+      "Beautiful",
+      "Dramarama",
+      "Shoot Out"
+    ]
+  },
+  {
+    "id": "monstax-3",
+    "category": "MONSTA X",
+    "prompt": "我心中 MONSTA X 最有气场的成员是？",
+    "options": [
+      "Minhyuk",
+      "Kihyun",
+      "Hyungwon",
+      "Jooheon"
+    ]
+  },
+  {
+    "id": "monstax-4",
+    "category": "MONSTA X",
+    "prompt": "我最爱的 MONSTA X 专辑是？",
+    "options": [
+      "The Clan Pt. 2.5",
+      "Take.1 Are You There?",
+      "Fatal Love",
+      "REASON"
+    ]
+  },
+  {
+    "id": "monstax-5",
+    "category": "MONSTA X",
+    "prompt": "我最想听 MONSTA X 谁唱主歌？",
+    "options": [
+      "Kihyun",
+      "Hyungwon",
+      "Jooheon",
+      "I.M"
+    ]
+  },
+  {
+    "id": "monstax-6",
+    "category": "MONSTA X",
+    "prompt": "我认为 MONSTA X 最有记忆点的舞台是？",
+    "options": [
+      "Beautiful 舞台",
+      "Dramarama 舞台",
+      "Shoot Out 舞台",
+      "Alligator 舞台"
+    ]
+  },
+  {
+    "id": "monstax-7",
+    "category": "MONSTA X",
+    "prompt": "我最想和 MONSTA X 谁做朋友？",
+    "options": [
+      "Hyungwon",
+      "Jooheon",
+      "I.M",
+      "Shownu"
+    ]
+  },
+  {
+    "id": "monstax-8",
+    "category": "MONSTA X",
+    "prompt": "我最被 MONSTA X 哪首歌打动？",
+    "options": [
+      "Dramarama",
+      "Shoot Out",
+      "Alligator",
+      "Love Killa"
+    ]
+  },
+  {
+    "id": "monstax-9",
+    "category": "MONSTA X",
+    "prompt": "我认为 MONSTA X 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "monstax-10",
+    "category": "MONSTA X",
+    "prompt": "我最期待 MONSTA X 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "theboyz-1",
+    "category": "THE BOYZ",
+    "prompt": "我最爱的 THE BOYZ 成员是？",
+    "options": [
+      "Sangyeon",
+      "Jacob",
+      "Younghoon",
+      "Hyunjae"
+    ]
+  },
+  {
+    "id": "theboyz-2",
+    "category": "THE BOYZ",
+    "prompt": "我最喜欢的 THE BOYZ 歌曲是？",
+    "options": [
+      "Boy",
+      "No Air",
+      "Bloom Bloom",
+      "The Stealer"
+    ]
+  },
+  {
+    "id": "theboyz-3",
+    "category": "THE BOYZ",
+    "prompt": "我心中 THE BOYZ 最有气场的成员是？",
+    "options": [
+      "Jacob",
+      "Younghoon",
+      "Hyunjae",
+      "Juyeon"
+    ]
+  },
+  {
+    "id": "theboyz-4",
+    "category": "THE BOYZ",
+    "prompt": "我最爱的 THE BOYZ 专辑是？",
+    "options": [
+      "The Start",
+      "Reveal",
+      "THRILL-ING",
+      "PHANTASY"
+    ]
+  },
+  {
+    "id": "theboyz-5",
+    "category": "THE BOYZ",
+    "prompt": "我最想听 THE BOYZ 谁唱主歌？",
+    "options": [
+      "Younghoon",
+      "Hyunjae",
+      "Juyeon",
+      "Kevin"
+    ]
+  },
+  {
+    "id": "theboyz-6",
+    "category": "THE BOYZ",
+    "prompt": "我认为 THE BOYZ 最有记忆点的舞台是？",
+    "options": [
+      "No Air 舞台",
+      "Bloom Bloom 舞台",
+      "The Stealer 舞台",
+      "Maverick 舞台"
+    ]
+  },
+  {
+    "id": "theboyz-7",
+    "category": "THE BOYZ",
+    "prompt": "我最想和 THE BOYZ 谁做朋友？",
+    "options": [
+      "Hyunjae",
+      "Juyeon",
+      "Kevin",
+      "New"
+    ]
+  },
+  {
+    "id": "theboyz-8",
+    "category": "THE BOYZ",
+    "prompt": "我最被 THE BOYZ 哪首歌打动？",
+    "options": [
+      "Bloom Bloom",
+      "The Stealer",
+      "Maverick",
+      "ROAR"
+    ]
+  },
+  {
+    "id": "theboyz-9",
+    "category": "THE BOYZ",
+    "prompt": "我认为 THE BOYZ 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "theboyz-10",
+    "category": "THE BOYZ",
+    "prompt": "我最期待 THE BOYZ 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "ateez-1",
+    "category": "ATEEZ",
+    "prompt": "我最爱的 ATEEZ 成员是？",
+    "options": [
+      "Hongjoong",
+      "Seonghwa",
+      "Yunho",
+      "Yeosang"
+    ]
+  },
+  {
+    "id": "ateez-2",
+    "category": "ATEEZ",
+    "prompt": "我最喜欢的 ATEEZ 歌曲是？",
+    "options": [
+      "Pirate King",
+      "WAVE",
+      "Answer",
+      "Fireworks (I'm The One)"
+    ]
+  },
+  {
+    "id": "ateez-3",
+    "category": "ATEEZ",
+    "prompt": "我心中 ATEEZ 最有气场的成员是？",
+    "options": [
+      "Seonghwa",
+      "Yunho",
+      "Yeosang",
+      "San"
+    ]
+  },
+  {
+    "id": "ateez-4",
+    "category": "ATEEZ",
+    "prompt": "我最爱的 ATEEZ 专辑是？",
+    "options": [
+      "Treasure EP.1",
+      "ZERO : FEVER Part.1",
+      "THE WORLD EP.FIN : WILL",
+      "GOLDEN HOUR : Part.1"
+    ]
+  },
+  {
+    "id": "ateez-5",
+    "category": "ATEEZ",
+    "prompt": "我最想听 ATEEZ 谁唱主歌？",
+    "options": [
+      "Yunho",
+      "Yeosang",
+      "San",
+      "Mingi"
+    ]
+  },
+  {
+    "id": "ateez-6",
+    "category": "ATEEZ",
+    "prompt": "我认为 ATEEZ 最有记忆点的舞台是？",
+    "options": [
+      "WAVE 舞台",
+      "Answer 舞台",
+      "Fireworks (I'm The One) 舞台",
+      "Guerrilla 舞台"
+    ]
+  },
+  {
+    "id": "ateez-7",
+    "category": "ATEEZ",
+    "prompt": "我最想和 ATEEZ 谁做朋友？",
+    "options": [
+      "Yeosang",
+      "San",
+      "Mingi",
+      "Wooyoung"
+    ]
+  },
+  {
+    "id": "ateez-8",
+    "category": "ATEEZ",
+    "prompt": "我最被 ATEEZ 哪首歌打动？",
+    "options": [
+      "Answer",
+      "Fireworks (I'm The One)",
+      "Guerrilla",
+      "BOUNCY"
+    ]
+  },
+  {
+    "id": "ateez-9",
+    "category": "ATEEZ",
+    "prompt": "我认为 ATEEZ 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "ateez-10",
+    "category": "ATEEZ",
+    "prompt": "我最期待 ATEEZ 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "itzy-1",
+    "category": "ITZY",
+    "prompt": "我最爱的 ITZY 成员是？",
+    "options": [
+      "Yeji",
+      "Lia",
+      "Ryujin",
+      "Chaeryeong"
+    ]
+  },
+  {
+    "id": "itzy-2",
+    "category": "ITZY",
+    "prompt": "我最喜欢的 ITZY 歌曲是？",
+    "options": [
+      "DALLA DALLA",
+      "WANNABE",
+      "Not Shy",
+      "In the morning"
+    ]
+  },
+  {
+    "id": "itzy-3",
+    "category": "ITZY",
+    "prompt": "我心中 ITZY 最有气场的成员是？",
+    "options": [
+      "Lia",
+      "Ryujin",
+      "Chaeryeong",
+      "Yuna"
+    ]
+  },
+  {
+    "id": "itzy-4",
+    "category": "ITZY",
+    "prompt": "我最爱的 ITZY 专辑是？",
+    "options": [
+      "IT'z ICY",
+      "GUESS WHO",
+      "CHECKMATE",
+      "KILL MY DOUBT"
+    ]
+  },
+  {
+    "id": "itzy-5",
+    "category": "ITZY",
+    "prompt": "我最想听 ITZY 谁唱主歌？",
+    "options": [
+      "Ryujin",
+      "Chaeryeong",
+      "Yuna",
+      "Yeji"
+    ]
+  },
+  {
+    "id": "itzy-6",
+    "category": "ITZY",
+    "prompt": "我认为 ITZY 最有记忆点的舞台是？",
+    "options": [
+      "WANNABE 舞台",
+      "Not Shy 舞台",
+      "In the morning 舞台",
+      "LOCO 舞台"
+    ]
+  },
+  {
+    "id": "itzy-7",
+    "category": "ITZY",
+    "prompt": "我最想和 ITZY 谁做朋友？",
+    "options": [
+      "Chaeryeong",
+      "Yuna",
+      "Yeji",
+      "Lia"
+    ]
+  },
+  {
+    "id": "itzy-8",
+    "category": "ITZY",
+    "prompt": "我最被 ITZY 哪首歌打动？",
+    "options": [
+      "Not Shy",
+      "In the morning",
+      "LOCO",
+      "SNEAKERS"
+    ]
+  },
+  {
+    "id": "itzy-9",
+    "category": "ITZY",
+    "prompt": "我认为 ITZY 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "itzy-10",
+    "category": "ITZY",
+    "prompt": "我最期待 ITZY 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "gidle-1",
+    "category": "(G)I-DLE",
+    "prompt": "我最爱的 (G)I-DLE 成员是？",
+    "options": [
+      "Miyeon",
+      "Minnie",
+      "Soyeon",
+      "Yuqi"
+    ]
+  },
+  {
+    "id": "gidle-2",
+    "category": "(G)I-DLE",
+    "prompt": "我最喜欢的 (G)I-DLE 歌曲是？",
+    "options": [
+      "LATATA",
+      "Oh my god",
+      "Tomboy",
+      "Nxde"
+    ]
+  },
+  {
+    "id": "gidle-3",
+    "category": "(G)I-DLE",
+    "prompt": "我心中 (G)I-DLE 最有气场的成员是？",
+    "options": [
+      "Minnie",
+      "Soyeon",
+      "Yuqi",
+      "Shuhua"
+    ]
+  },
+  {
+    "id": "gidle-4",
+    "category": "(G)I-DLE",
+    "prompt": "我最爱的 (G)I-DLE 专辑是？",
+    "options": [
+      "I am",
+      "I Trust",
+      "I Never Die",
+      "2"
+    ]
+  },
+  {
+    "id": "gidle-5",
+    "category": "(G)I-DLE",
+    "prompt": "我最想听 (G)I-DLE 谁唱主歌？",
+    "options": [
+      "Soyeon",
+      "Yuqi",
+      "Shuhua",
+      "Miyeon"
+    ]
+  },
+  {
+    "id": "gidle-6",
+    "category": "(G)I-DLE",
+    "prompt": "我认为 (G)I-DLE 最有记忆点的舞台是？",
+    "options": [
+      "Oh my god 舞台",
+      "Tomboy 舞台",
+      "Nxde 舞台",
+      "Queencard 舞台"
+    ]
+  },
+  {
+    "id": "gidle-7",
+    "category": "(G)I-DLE",
+    "prompt": "我最想和 (G)I-DLE 谁做朋友？",
+    "options": [
+      "Yuqi",
+      "Shuhua",
+      "Miyeon",
+      "Minnie"
+    ]
+  },
+  {
+    "id": "gidle-8",
+    "category": "(G)I-DLE",
+    "prompt": "我最被 (G)I-DLE 哪首歌打动？",
+    "options": [
+      "Tomboy",
+      "Nxde",
+      "Queencard",
+      "Super Lady"
+    ]
+  },
+  {
+    "id": "gidle-9",
+    "category": "(G)I-DLE",
+    "prompt": "我认为 (G)I-DLE 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "gidle-10",
+    "category": "(G)I-DLE",
+    "prompt": "我最期待 (G)I-DLE 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "everglow-1",
+    "category": "EVERGLOW",
+    "prompt": "我最爱的 EVERGLOW 成员是？",
+    "options": [
+      "E:U",
+      "Sihyeon",
+      "Mia",
+      "Onda"
+    ]
+  },
+  {
+    "id": "everglow-2",
+    "category": "EVERGLOW",
+    "prompt": "我最喜欢的 EVERGLOW 歌曲是？",
+    "options": [
+      "Bon Bon Chocolat",
+      "Adios",
+      "Dun Dun",
+      "La Di Da"
+    ]
+  },
+  {
+    "id": "everglow-3",
+    "category": "EVERGLOW",
+    "prompt": "我心中 EVERGLOW 最有气场的成员是？",
+    "options": [
+      "Sihyeon",
+      "Mia",
+      "Onda",
+      "Aisha"
+    ]
+  },
+  {
+    "id": "everglow-4",
+    "category": "EVERGLOW",
+    "prompt": "我最爱的 EVERGLOW 专辑是？",
+    "options": [
+      "Arrival of EVERGLOW",
+      "HUSH",
+      "-77.82X-78.29",
+      "Return of the Girl"
+    ]
+  },
+  {
+    "id": "everglow-5",
+    "category": "EVERGLOW",
+    "prompt": "我最想听 EVERGLOW 谁唱主歌？",
+    "options": [
+      "Mia",
+      "Onda",
+      "Aisha",
+      "Yiren"
+    ]
+  },
+  {
+    "id": "everglow-6",
+    "category": "EVERGLOW",
+    "prompt": "我认为 EVERGLOW 最有记忆点的舞台是？",
+    "options": [
+      "Adios 舞台",
+      "Dun Dun 舞台",
+      "La Di Da 舞台",
+      "First 舞台"
+    ]
+  },
+  {
+    "id": "everglow-7",
+    "category": "EVERGLOW",
+    "prompt": "我最想和 EVERGLOW 谁做朋友？",
+    "options": [
+      "Onda",
+      "Aisha",
+      "Yiren",
+      "E:U"
+    ]
+  },
+  {
+    "id": "everglow-8",
+    "category": "EVERGLOW",
+    "prompt": "我最被 EVERGLOW 哪首歌打动？",
+    "options": [
+      "Dun Dun",
+      "La Di Da",
+      "First",
+      "Pirate"
+    ]
+  },
+  {
+    "id": "everglow-9",
+    "category": "EVERGLOW",
+    "prompt": "我认为 EVERGLOW 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "everglow-10",
+    "category": "EVERGLOW",
+    "prompt": "我最期待 EVERGLOW 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "riize-1",
+    "category": "RIIZE",
+    "prompt": "我最爱的 RIIZE 成员是？",
+    "options": [
+      "Shotaro",
+      "Eunseok",
+      "Sungchan",
+      "Wonbin"
+    ]
+  },
+  {
+    "id": "riize-2",
+    "category": "RIIZE",
+    "prompt": "我最喜欢的 RIIZE 歌曲是？",
+    "options": [
+      "Get A Guitar",
+      "Memories",
+      "Love 119",
+      "Talk Saxy"
+    ]
+  },
+  {
+    "id": "riize-3",
+    "category": "RIIZE",
+    "prompt": "我心中 RIIZE 最有气场的成员是？",
+    "options": [
+      "Eunseok",
+      "Sungchan",
+      "Wonbin",
+      "Sohee"
+    ]
+  },
+  {
+    "id": "riize-4",
+    "category": "RIIZE",
+    "prompt": "我最爱的 RIIZE 专辑是？",
+    "options": [
+      "Get A Guitar",
+      "RIIZING",
+      "RIIZING : Epilogue",
+      "ODYSSEY"
+    ]
+  },
+  {
+    "id": "riize-5",
+    "category": "RIIZE",
+    "prompt": "我最想听 RIIZE 谁唱主歌？",
+    "options": [
+      "Sungchan",
+      "Wonbin",
+      "Sohee",
+      "Anton"
+    ]
+  },
+  {
+    "id": "riize-6",
+    "category": "RIIZE",
+    "prompt": "我认为 RIIZE 最有记忆点的舞台是？",
+    "options": [
+      "Memories 舞台",
+      "Love 119 舞台",
+      "Talk Saxy 舞台",
+      "Impossible 舞台"
+    ]
+  },
+  {
+    "id": "riize-7",
+    "category": "RIIZE",
+    "prompt": "我最想和 RIIZE 谁做朋友？",
+    "options": [
+      "Wonbin",
+      "Sohee",
+      "Anton",
+      "Shotaro"
+    ]
+  },
+  {
+    "id": "riize-8",
+    "category": "RIIZE",
+    "prompt": "我最被 RIIZE 哪首歌打动？",
+    "options": [
+      "Love 119",
+      "Talk Saxy",
+      "Impossible",
+      "Boom Boom Bass"
+    ]
+  },
+  {
+    "id": "riize-9",
+    "category": "RIIZE",
+    "prompt": "我认为 RIIZE 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "riize-10",
+    "category": "RIIZE",
+    "prompt": "我最期待 RIIZE 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "boynextdoor-1",
+    "category": "BOYNEXTDOOR",
+    "prompt": "我最爱的 BOYNEXTDOOR 成员是？",
+    "options": [
+      "Sungho",
+      "Riwoo",
+      "Jaehyun",
+      "Taesan"
+    ]
+  },
+  {
+    "id": "boynextdoor-2",
+    "category": "BOYNEXTDOOR",
+    "prompt": "我最喜欢的 BOYNEXTDOOR 歌曲是？",
+    "options": [
+      "But Sometimes",
+      "Serenade",
+      "Earth, Wind & Fire",
+      "Nice Guy"
+    ]
+  },
+  {
+    "id": "boynextdoor-3",
+    "category": "BOYNEXTDOOR",
+    "prompt": "我心中 BOYNEXTDOOR 最有气场的成员是？",
+    "options": [
+      "Riwoo",
+      "Jaehyun",
+      "Taesan",
+      "Leehan"
+    ]
+  },
+  {
+    "id": "boynextdoor-4",
+    "category": "BOYNEXTDOOR",
+    "prompt": "我最爱的 BOYNEXTDOOR 专辑是？",
+    "options": [
+      "WHO!",
+      "HOW?",
+      "19.99",
+      "WHY.."
+    ]
+  },
+  {
+    "id": "boynextdoor-5",
+    "category": "BOYNEXTDOOR",
+    "prompt": "我最想听 BOYNEXTDOOR 谁唱主歌？",
+    "options": [
+      "Jaehyun",
+      "Taesan",
+      "Leehan",
+      "Woonhak"
+    ]
+  },
+  {
+    "id": "boynextdoor-6",
+    "category": "BOYNEXTDOOR",
+    "prompt": "我认为 BOYNEXTDOOR 最有记忆点的舞台是？",
+    "options": [
+      "Serenade 舞台",
+      "Earth, Wind & Fire 舞台",
+      "Nice Guy 舞台",
+      "IF I SAY, I LOVE YOU 舞台"
+    ]
+  },
+  {
+    "id": "boynextdoor-7",
+    "category": "BOYNEXTDOOR",
+    "prompt": "我最想和 BOYNEXTDOOR 谁做朋友？",
+    "options": [
+      "Taesan",
+      "Leehan",
+      "Woonhak",
+      "Sungho"
+    ]
+  },
+  {
+    "id": "boynextdoor-8",
+    "category": "BOYNEXTDOOR",
+    "prompt": "我最被 BOYNEXTDOOR 哪首歌打动？",
+    "options": [
+      "Earth, Wind & Fire",
+      "Nice Guy",
+      "IF I SAY, I LOVE YOU",
+      "One and Only"
+    ]
+  },
+  {
+    "id": "boynextdoor-9",
+    "category": "BOYNEXTDOOR",
+    "prompt": "我认为 BOYNEXTDOOR 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "boynextdoor-10",
+    "category": "BOYNEXTDOOR",
+    "prompt": "我最期待 BOYNEXTDOOR 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "apink-1",
+    "category": "Apink",
+    "prompt": "我最爱的 Apink 成员是？",
+    "options": [
+      "Chorong",
+      "Bomi",
+      "Eunji",
+      "Namjoo"
+    ]
+  },
+  {
+    "id": "apink-2",
+    "category": "Apink",
+    "prompt": "我最喜欢的 Apink 歌曲是？",
+    "options": [
+      "NoNoNo",
+      "Mr. Chu",
+      "LUV",
+      "I'm so sick"
+    ]
+  },
+  {
+    "id": "apink-3",
+    "category": "Apink",
+    "prompt": "我心中 Apink 最有气场的成员是？",
+    "options": [
+      "Bomi",
+      "Eunji",
+      "Namjoo",
+      "Hayoung"
+    ]
+  },
+  {
+    "id": "apink-4",
+    "category": "Apink",
+    "prompt": "我最爱的 Apink 专辑是？",
+    "options": [
+      "Une Annee",
+      "Pink MEMORY",
+      "PERCENT",
+      "SELF"
+    ]
+  },
+  {
+    "id": "apink-5",
+    "category": "Apink",
+    "prompt": "我最想听 Apink 谁唱主歌？",
+    "options": [
+      "Eunji",
+      "Namjoo",
+      "Hayoung",
+      "Chorong"
+    ]
+  },
+  {
+    "id": "apink-6",
+    "category": "Apink",
+    "prompt": "我认为 Apink 最有记忆点的舞台是？",
+    "options": [
+      "Mr. Chu 舞台",
+      "LUV 舞台",
+      "I'm so sick 舞台",
+      "%% 舞台"
+    ]
+  },
+  {
+    "id": "apink-7",
+    "category": "Apink",
+    "prompt": "我最想和 Apink 谁做朋友？",
+    "options": [
+      "Namjoo",
+      "Hayoung",
+      "Chorong",
+      "Bomi"
+    ]
+  },
+  {
+    "id": "apink-8",
+    "category": "Apink",
+    "prompt": "我最被 Apink 哪首歌打动？",
+    "options": [
+      "LUV",
+      "I'm so sick",
+      "%%",
+      "Dumhdurum"
+    ]
+  },
+  {
+    "id": "apink-9",
+    "category": "Apink",
+    "prompt": "我认为 Apink 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "apink-10",
+    "category": "Apink",
+    "prompt": "我最期待 Apink 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "fromis9-1",
+    "category": "fromis_9",
+    "prompt": "我最爱的 fromis_9 成员是？",
+    "options": [
+      "Saerom",
+      "Hayoung",
+      "Jiwon",
+      "Jisun"
+    ]
+  },
+  {
+    "id": "fromis9-2",
+    "category": "fromis_9",
+    "prompt": "我最喜欢的 fromis_9 歌曲是？",
+    "options": [
+      "To Heart",
+      "LOVE BOMB",
+      "FUN!",
+      "WE GO"
+    ]
+  },
+  {
+    "id": "fromis9-3",
+    "category": "fromis_9",
+    "prompt": "我心中 fromis_9 最有气场的成员是？",
+    "options": [
+      "Hayoung",
+      "Jiwon",
+      "Jisun",
+      "Seoyeon"
+    ]
+  },
+  {
+    "id": "fromis9-4",
+    "category": "fromis_9",
+    "prompt": "我最爱的 fromis_9 专辑是？",
+    "options": [
+      "To. Heart",
+      "My Little Society",
+      "Midnight Guest",
+      "Unlock My World"
+    ]
+  },
+  {
+    "id": "fromis9-5",
+    "category": "fromis_9",
+    "prompt": "我最想听 fromis_9 谁唱主歌？",
+    "options": [
+      "Jiwon",
+      "Jisun",
+      "Seoyeon",
+      "Chaeyoung"
+    ]
+  },
+  {
+    "id": "fromis9-6",
+    "category": "fromis_9",
+    "prompt": "我认为 fromis_9 最有记忆点的舞台是？",
+    "options": [
+      "LOVE BOMB 舞台",
+      "FUN! 舞台",
+      "WE GO 舞台",
+      "DM 舞台"
+    ]
+  },
+  {
+    "id": "fromis9-7",
+    "category": "fromis_9",
+    "prompt": "我最想和 fromis_9 谁做朋友？",
+    "options": [
+      "Jisun",
+      "Seoyeon",
+      "Chaeyoung",
+      "Nagyung"
+    ]
+  },
+  {
+    "id": "fromis9-8",
+    "category": "fromis_9",
+    "prompt": "我最被 fromis_9 哪首歌打动？",
+    "options": [
+      "FUN!",
+      "WE GO",
+      "DM",
+      "Stay This Way"
+    ]
+  },
+  {
+    "id": "fromis9-9",
+    "category": "fromis_9",
+    "prompt": "我认为 fromis_9 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "fromis9-10",
+    "category": "fromis_9",
+    "prompt": "我最期待 fromis_9 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "babymonster-1",
+    "category": "BABYMONSTER",
+    "prompt": "我最爱的 BABYMONSTER 成员是？",
+    "options": [
+      "Ruka",
+      "Pharita",
+      "Asa",
+      "Ahyeon"
+    ]
+  },
+  {
+    "id": "babymonster-2",
+    "category": "BABYMONSTER",
+    "prompt": "我最喜欢的 BABYMONSTER 歌曲是？",
+    "options": [
+      "BATTER UP",
+      "Stuck In The Middle",
+      "SHEESH",
+      "LIKE THAT"
+    ]
+  },
+  {
+    "id": "babymonster-3",
+    "category": "BABYMONSTER",
+    "prompt": "我心中 BABYMONSTER 最有气场的成员是？",
+    "options": [
+      "Pharita",
+      "Asa",
+      "Ahyeon",
+      "Rami"
+    ]
+  },
+  {
+    "id": "babymonster-4",
+    "category": "BABYMONSTER",
+    "prompt": "我最爱的 BABYMONSTER 专辑是？",
+    "options": [
+      "BATTER UP",
+      "BABYMONS7ER",
+      "DRIP",
+      "We Go Up"
+    ]
+  },
+  {
+    "id": "babymonster-5",
+    "category": "BABYMONSTER",
+    "prompt": "我最想听 BABYMONSTER 谁唱主歌？",
+    "options": [
+      "Asa",
+      "Ahyeon",
+      "Rami",
+      "Rora"
+    ]
+  },
+  {
+    "id": "babymonster-6",
+    "category": "BABYMONSTER",
+    "prompt": "我认为 BABYMONSTER 最有记忆点的舞台是？",
+    "options": [
+      "Stuck In The Middle 舞台",
+      "SHEESH 舞台",
+      "LIKE THAT 舞台",
+      "CLIK CLAK 舞台"
+    ]
+  },
+  {
+    "id": "babymonster-7",
+    "category": "BABYMONSTER",
+    "prompt": "我最想和 BABYMONSTER 谁做朋友？",
+    "options": [
+      "Ahyeon",
+      "Rami",
+      "Rora",
+      "Chiquita"
+    ]
+  },
+  {
+    "id": "babymonster-8",
+    "category": "BABYMONSTER",
+    "prompt": "我最被 BABYMONSTER 哪首歌打动？",
+    "options": [
+      "SHEESH",
+      "LIKE THAT",
+      "CLIK CLAK",
+      "HOT SAUCE"
+    ]
+  },
+  {
+    "id": "babymonster-9",
+    "category": "BABYMONSTER",
+    "prompt": "我认为 BABYMONSTER 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "babymonster-10",
+    "category": "BABYMONSTER",
+    "prompt": "我最期待 BABYMONSTER 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "zerobaseone-1",
+    "category": "ZEROBASEONE",
+    "prompt": "我最爱的 ZEROBASEONE 成员是？",
+    "options": [
+      "Sung Hanbin",
+      "Zhang Hao",
+      "Kim Jiwoong",
+      "Seok Matthew"
+    ]
+  },
+  {
+    "id": "zerobaseone-2",
+    "category": "ZEROBASEONE",
+    "prompt": "我最喜欢的 ZEROBASEONE 歌曲是？",
+    "options": [
+      "In Bloom",
+      "CRUSH",
+      "MELTING POINT",
+      "SWEAT"
+    ]
+  },
+  {
+    "id": "zerobaseone-3",
+    "category": "ZEROBASEONE",
+    "prompt": "我心中 ZEROBASEONE 最有气场的成员是？",
+    "options": [
+      "Zhang Hao",
+      "Kim Jiwoong",
+      "Seok Matthew",
+      "Kim Taerae"
+    ]
+  },
+  {
+    "id": "zerobaseone-4",
+    "category": "ZEROBASEONE",
+    "prompt": "我最爱的 ZEROBASEONE 专辑是？",
+    "options": [
+      "YOUTH IN THE SHADE",
+      "MELTING POINT",
+      "You had me at HELLO",
+      "BLUE PARADISE"
+    ]
+  },
+  {
+    "id": "zerobaseone-5",
+    "category": "ZEROBASEONE",
+    "prompt": "我最想听 ZEROBASEONE 谁唱主歌？",
+    "options": [
+      "Kim Jiwoong",
+      "Seok Matthew",
+      "Kim Taerae",
+      "Ricky"
+    ]
+  },
+  {
+    "id": "zerobaseone-6",
+    "category": "ZEROBASEONE",
+    "prompt": "我认为 ZEROBASEONE 最有记忆点的舞台是？",
+    "options": [
+      "CRUSH 舞台",
+      "MELTING POINT 舞台",
+      "SWEAT 舞台",
+      "GOOD SO BAD 舞台"
+    ]
+  },
+  {
+    "id": "zerobaseone-7",
+    "category": "ZEROBASEONE",
+    "prompt": "我最想和 ZEROBASEONE 谁做朋友？",
+    "options": [
+      "Seok Matthew",
+      "Kim Taerae",
+      "Ricky",
+      "Kim Gyuvin"
+    ]
+  },
+  {
+    "id": "zerobaseone-8",
+    "category": "ZEROBASEONE",
+    "prompt": "我最被 ZEROBASEONE 哪首歌打动？",
+    "options": [
+      "MELTING POINT",
+      "SWEAT",
+      "GOOD SO BAD",
+      "Doctor! Doctor!"
+    ]
+  },
+  {
+    "id": "zerobaseone-9",
+    "category": "ZEROBASEONE",
+    "prompt": "我认为 ZEROBASEONE 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "zerobaseone-10",
+    "category": "ZEROBASEONE",
+    "prompt": "我最期待 ZEROBASEONE 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "nmixx-1",
+    "category": "NMIXX",
+    "prompt": "我最爱的 NMIXX 成员是？",
+    "options": [
+      "Lily",
+      "Haewon",
+      "Sullyoon",
+      "Bae"
+    ]
+  },
+  {
+    "id": "nmixx-2",
+    "category": "NMIXX",
+    "prompt": "我最喜欢的 NMIXX 歌曲是？",
+    "options": [
+      "O.O",
+      "DICE",
+      "Love Me Like This",
+      "Dash"
+    ]
+  },
+  {
+    "id": "nmixx-3",
+    "category": "NMIXX",
+    "prompt": "我心中 NMIXX 最有气场的成员是？",
+    "options": [
+      "Haewon",
+      "Sullyoon",
+      "Bae",
+      "Jiwoo"
+    ]
+  },
+  {
+    "id": "nmixx-4",
+    "category": "NMIXX",
+    "prompt": "我最爱的 NMIXX 专辑是？",
+    "options": [
+      "AD MARE",
+      "ENTWURF",
+      "expérgo",
+      "Fe3O4: BREAK"
+    ]
+  },
+  {
+    "id": "nmixx-5",
+    "category": "NMIXX",
+    "prompt": "我最想听 NMIXX 谁唱主歌？",
+    "options": [
+      "Sullyoon",
+      "Bae",
+      "Jiwoo",
+      "Kyujin"
+    ]
+  },
+  {
+    "id": "nmixx-6",
+    "category": "NMIXX",
+    "prompt": "我认为 NMIXX 最有记忆点的舞台是？",
+    "options": [
+      "DICE 舞台",
+      "Love Me Like This 舞台",
+      "Dash 舞台",
+      "See that? 舞台"
+    ]
+  },
+  {
+    "id": "nmixx-7",
+    "category": "NMIXX",
+    "prompt": "我最想和 NMIXX 谁做朋友？",
+    "options": [
+      "Bae",
+      "Jiwoo",
+      "Kyujin",
+      "Lily"
+    ]
+  },
+  {
+    "id": "nmixx-8",
+    "category": "NMIXX",
+    "prompt": "我最被 NMIXX 哪首歌打动？",
+    "options": [
+      "Love Me Like This",
+      "Dash",
+      "See that?",
+      "Know About Me"
+    ]
+  },
+  {
+    "id": "nmixx-9",
+    "category": "NMIXX",
+    "prompt": "我认为 NMIXX 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "nmixx-10",
+    "category": "NMIXX",
+    "prompt": "我最期待 NMIXX 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "treasure-1",
+    "category": "TREASURE",
+    "prompt": "我最爱的 TREASURE 成员是？",
+    "options": [
+      "Choi Hyunsuk",
+      "Jihoon",
+      "Yoshi",
+      "Junkyu"
+    ]
+  },
+  {
+    "id": "treasure-2",
+    "category": "TREASURE",
+    "prompt": "我最喜欢的 TREASURE 歌曲是？",
+    "options": [
+      "BOY",
+      "I LOVE YOU",
+      "JIKJIN",
+      "HELLO"
+    ]
+  },
+  {
+    "id": "treasure-3",
+    "category": "TREASURE",
+    "prompt": "我心中 TREASURE 最有气场的成员是？",
+    "options": [
+      "Jihoon",
+      "Yoshi",
+      "Junkyu",
+      "Yoon Jaehyuk"
+    ]
+  },
+  {
+    "id": "treasure-4",
+    "category": "TREASURE",
+    "prompt": "我最爱的 TREASURE 专辑是？",
+    "options": [
+      "THE FIRST STEP: TREASURE EFFECT",
+      "THE SECOND STEP: CHAPTER ONE",
+      "THE SECOND STEP: CHAPTER TWO",
+      "REBOOT"
+    ]
+  },
+  {
+    "id": "treasure-5",
+    "category": "TREASURE",
+    "prompt": "我最想听 TREASURE 谁唱主歌？",
+    "options": [
+      "Yoshi",
+      "Junkyu",
+      "Yoon Jaehyuk",
+      "Asahi"
+    ]
+  },
+  {
+    "id": "treasure-6",
+    "category": "TREASURE",
+    "prompt": "我认为 TREASURE 最有记忆点的舞台是？",
+    "options": [
+      "I LOVE YOU 舞台",
+      "JIKJIN 舞台",
+      "HELLO 舞台",
+      "BONA BONA 舞台"
+    ]
+  },
+  {
+    "id": "treasure-7",
+    "category": "TREASURE",
+    "prompt": "我最想和 TREASURE 谁做朋友？",
+    "options": [
+      "Junkyu",
+      "Yoon Jaehyuk",
+      "Asahi",
+      "Doyoung"
+    ]
+  },
+  {
+    "id": "treasure-8",
+    "category": "TREASURE",
+    "prompt": "我最被 TREASURE 哪首歌打动？",
+    "options": [
+      "JIKJIN",
+      "HELLO",
+      "BONA BONA",
+      "KING KONG"
+    ]
+  },
+  {
+    "id": "treasure-9",
+    "category": "TREASURE",
+    "prompt": "我认为 TREASURE 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "treasure-10",
+    "category": "TREASURE",
+    "prompt": "我最期待 TREASURE 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "illit-1",
+    "category": "ILLIT",
+    "prompt": "我最爱的 ILLIT 成员是？",
+    "options": [
+      "Yunah",
+      "Minju",
+      "Moka",
+      "Wonhee"
+    ]
+  },
+  {
+    "id": "illit-2",
+    "category": "ILLIT",
+    "prompt": "我最喜欢的 ILLIT 歌曲是？",
+    "options": [
+      "Magnetic",
+      "Lucky Girl Syndrome",
+      "Cherish (My Love)",
+      "Tick-Tack"
+    ]
+  },
+  {
+    "id": "illit-3",
+    "category": "ILLIT",
+    "prompt": "我心中 ILLIT 最有气场的成员是？",
+    "options": [
+      "Minju",
+      "Moka",
+      "Wonhee",
+      "Iroha"
+    ]
+  },
+  {
+    "id": "illit-4",
+    "category": "ILLIT",
+    "prompt": "我最爱的 ILLIT 专辑是？",
+    "options": [
+      "SUPER REAL ME",
+      "I'LL LIKE YOU",
+      "bomb",
+      "Tick-Tack"
+    ]
+  },
+  {
+    "id": "illit-5",
+    "category": "ILLIT",
+    "prompt": "我最想听 ILLIT 谁唱主歌？",
+    "options": [
+      "Moka",
+      "Wonhee",
+      "Iroha",
+      "Yunah"
+    ]
+  },
+  {
+    "id": "illit-6",
+    "category": "ILLIT",
+    "prompt": "我认为 ILLIT 最有记忆点的舞台是？",
+    "options": [
+      "Lucky Girl Syndrome 舞台",
+      "Cherish (My Love) 舞台",
+      "Tick-Tack 舞台",
+      "Billyeoon Goyangi (Do the Dance) 舞台"
+    ]
+  },
+  {
+    "id": "illit-7",
+    "category": "ILLIT",
+    "prompt": "我最想和 ILLIT 谁做朋友？",
+    "options": [
+      "Wonhee",
+      "Iroha",
+      "Yunah",
+      "Minju"
+    ]
+  },
+  {
+    "id": "illit-8",
+    "category": "ILLIT",
+    "prompt": "我最被 ILLIT 哪首歌打动？",
+    "options": [
+      "Cherish (My Love)",
+      "Tick-Tack",
+      "Billyeoon Goyangi (Do the Dance)",
+      "jellyous"
+    ]
+  },
+  {
+    "id": "illit-9",
+    "category": "ILLIT",
+    "prompt": "我认为 ILLIT 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "illit-10",
+    "category": "ILLIT",
+    "prompt": "我最期待 ILLIT 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "kissoflife-1",
+    "category": "KISS OF LIFE",
+    "prompt": "我最爱的 KISS OF LIFE 成员是？",
+    "options": [
+      "Julie",
+      "Natty",
+      "Belle",
+      "Haneul"
+    ]
+  },
+  {
+    "id": "kissoflife-2",
+    "category": "KISS OF LIFE",
+    "prompt": "我最喜欢的 KISS OF LIFE 歌曲是？",
+    "options": [
+      "Shhh",
+      "Ugly Heart",
+      "Midas Touch",
+      "Sticky"
+    ]
+  },
+  {
+    "id": "kissoflife-3",
+    "category": "KISS OF LIFE",
+    "prompt": "我心中 KISS OF LIFE 最有气场的成员是？",
+    "options": [
+      "Julie",
+      "Natty",
+      "Belle",
+      "Haneul"
+    ]
+  },
+  {
+    "id": "kissoflife-4",
+    "category": "KISS OF LIFE",
+    "prompt": "我最爱的 KISS OF LIFE 专辑是？",
+    "options": [
+      "Kiss of Life",
+      "Born to be XX",
+      "Lose Yourself",
+      "Midas Touch"
+    ]
+  },
+  {
+    "id": "kissoflife-5",
+    "category": "KISS OF LIFE",
+    "prompt": "我最想听 KISS OF LIFE 谁唱主歌？",
+    "options": [
+      "Julie",
+      "Natty",
+      "Belle",
+      "Haneul"
+    ]
+  },
+  {
+    "id": "kissoflife-6",
+    "category": "KISS OF LIFE",
+    "prompt": "我认为 KISS OF LIFE 最有记忆点的舞台是？",
+    "options": [
+      "Ugly Heart 舞台",
+      "Midas Touch 舞台",
+      "Sticky 舞台",
+      "Igloo 舞台"
+    ]
+  },
+  {
+    "id": "kissoflife-7",
+    "category": "KISS OF LIFE",
+    "prompt": "我最想和 KISS OF LIFE 谁做朋友？",
+    "options": [
+      "Julie",
+      "Natty",
+      "Belle",
+      "Haneul"
+    ]
+  },
+  {
+    "id": "kissoflife-8",
+    "category": "KISS OF LIFE",
+    "prompt": "我最被 KISS OF LIFE 哪首歌打动？",
+    "options": [
+      "Midas Touch",
+      "Sticky",
+      "Igloo",
+      "k bye"
+    ]
+  },
+  {
+    "id": "kissoflife-9",
+    "category": "KISS OF LIFE",
+    "prompt": "我认为 KISS OF LIFE 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "kissoflife-10",
+    "category": "KISS OF LIFE",
+    "prompt": "我最期待 KISS OF LIFE 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "tws-1",
+    "category": "TWS",
+    "prompt": "我最爱的 TWS 成员是？",
+    "options": [
+      "Shinyu",
+      "Dohoon",
+      "Youngjae",
+      "Hanjin"
+    ]
+  },
+  {
+    "id": "tws-2",
+    "category": "TWS",
+    "prompt": "我最喜欢的 TWS 歌曲是？",
+    "options": [
+      "Plot Twist",
+      "hey! hey!",
+      "If I'm S",
+      "Last Festival"
+    ]
+  },
+  {
+    "id": "tws-3",
+    "category": "TWS",
+    "prompt": "我心中 TWS 最有气场的成员是？",
+    "options": [
+      "Dohoon",
+      "Youngjae",
+      "Hanjin",
+      "Jihoon"
+    ]
+  },
+  {
+    "id": "tws-4",
+    "category": "TWS",
+    "prompt": "我最爱的 TWS 专辑是？",
+    "options": [
+      "Sparkling Blue",
+      "SUMMER BEAT!",
+      "TRY WITH US",
+      "play hard"
+    ]
+  },
+  {
+    "id": "tws-5",
+    "category": "TWS",
+    "prompt": "我最想听 TWS 谁唱主歌？",
+    "options": [
+      "Youngjae",
+      "Hanjin",
+      "Jihoon",
+      "Kyungmin"
+    ]
+  },
+  {
+    "id": "tws-6",
+    "category": "TWS",
+    "prompt": "我认为 TWS 最有记忆点的舞台是？",
+    "options": [
+      "hey! hey! 舞台",
+      "If I'm S 舞台",
+      "Last Festival 舞台",
+      "Countdown 舞台"
+    ]
+  },
+  {
+    "id": "tws-7",
+    "category": "TWS",
+    "prompt": "我最想和 TWS 谁做朋友？",
+    "options": [
+      "Hanjin",
+      "Jihoon",
+      "Kyungmin",
+      "Shinyu"
+    ]
+  },
+  {
+    "id": "tws-8",
+    "category": "TWS",
+    "prompt": "我最被 TWS 哪首歌打动？",
+    "options": [
+      "If I'm S",
+      "Last Festival",
+      "Countdown",
+      "BLAST"
+    ]
+  },
+  {
+    "id": "tws-9",
+    "category": "TWS",
+    "prompt": "我认为 TWS 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "tws-10",
+    "category": "TWS",
+    "prompt": "我最期待 TWS 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "stayc-1",
+    "category": "STAYC",
+    "prompt": "我最爱的 STAYC 成员是？",
+    "options": [
+      "Sumin",
+      "Sieun",
+      "Isa",
+      "Seeun"
+    ]
+  },
+  {
+    "id": "stayc-2",
+    "category": "STAYC",
+    "prompt": "我最喜欢的 STAYC 歌曲是？",
+    "options": [
+      "SO BAD",
+      "ASAP",
+      "STEREOTYPE",
+      "RUN2U"
+    ]
+  },
+  {
+    "id": "stayc-3",
+    "category": "STAYC",
+    "prompt": "我心中 STAYC 最有气场的成员是？",
+    "options": [
+      "Sieun",
+      "Isa",
+      "Seeun",
+      "Yoon"
+    ]
+  },
+  {
+    "id": "stayc-4",
+    "category": "STAYC",
+    "prompt": "我最爱的 STAYC 专辑是？",
+    "options": [
+      "Star To A Young Culture",
+      "STEREOTYPE",
+      "YOUNG-LUV.COM",
+      "Metamorphic"
+    ]
+  },
+  {
+    "id": "stayc-5",
+    "category": "STAYC",
+    "prompt": "我最想听 STAYC 谁唱主歌？",
+    "options": [
+      "Isa",
+      "Seeun",
+      "Yoon",
+      "J"
+    ]
+  },
+  {
+    "id": "stayc-6",
+    "category": "STAYC",
+    "prompt": "我认为 STAYC 最有记忆点的舞台是？",
+    "options": [
+      "ASAP 舞台",
+      "STEREOTYPE 舞台",
+      "RUN2U 舞台",
+      "Beautiful Monster 舞台"
+    ]
+  },
+  {
+    "id": "stayc-7",
+    "category": "STAYC",
+    "prompt": "我最想和 STAYC 谁做朋友？",
+    "options": [
+      "Seeun",
+      "Yoon",
+      "J",
+      "Sumin"
+    ]
+  },
+  {
+    "id": "stayc-8",
+    "category": "STAYC",
+    "prompt": "我最被 STAYC 哪首歌打动？",
+    "options": [
+      "STEREOTYPE",
+      "RUN2U",
+      "Beautiful Monster",
+      "Teddy Bear"
+    ]
+  },
+  {
+    "id": "stayc-9",
+    "category": "STAYC",
+    "prompt": "我认为 STAYC 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "stayc-10",
+    "category": "STAYC",
+    "prompt": "我最期待 STAYC 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  }
 ]
 
 export default questionBank

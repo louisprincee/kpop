@@ -751,6 +751,75 @@ input, textarea, select {
   font-size: 0.9rem;
 }
 
+.result-capture {
+  padding: 8px 4px 18px;
+}
+
+.host-board {
+  margin-top: 22px;
+  padding: 18px;
+  border-radius: 20px;
+  background: #f7f8ff;
+  border: 1px solid rgba(111, 124, 168, 0.12);
+}
+
+.host-board-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.host-board-head h3,
+.host-review > h4 {
+  margin: 0 0 12px;
+  color: #1a1d26;
+}
+
+.host-board-head span,
+.empty-board {
+  color: #687186;
+  font-size: 0.88rem;
+}
+
+.player-result-list {
+  display: grid;
+  gap: 8px;
+}
+
+.player-result-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(111, 124, 168, 0.12);
+  background: #fff;
+  color: #1d2434;
+  font-weight: 700;
+}
+
+.player-result-row.active {
+  border-color: rgba(92, 106, 221, 0.45);
+  background: #f4f6ff;
+}
+
+.form-grid label:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+.ghost-button:hover,
+.secondary-button:hover {
+  transform: translateY(-1px);
+}
+
+.primary-button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
 @media (max-width: 900px) {
   .form-grid,
   .mode-grid,

@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { toPng } from 'html-to-image'
 import questionBank from './data/questionBank'
 
 const NICKNAME_KEY = 'kpop-nickname-v2'
@@ -75,6 +76,24 @@ const getShareUrl = (roomName, hostName) => {
   return url.toString()
 }
 
+const toAnswerList = (answers, length) => {
+  if (Array.isArray(answers)) {
+    return Array.from({ length }, (_, index) => (answers[index] === undefined ? null : answers[index]))
+  }
+  if (answers && typeof answers === 'object') {
+    return Array.from({ length }, (_, index) => {
+      const value = answers[index] ?? answers[String(index)]
+      return value === undefined ? null : value
+    })
+  }
+  return Array.from({ length }, () => null)
+}
+
+const optionText = (question, index) => {
+  if (!Number.isInteger(index) || !question?.options?.[index]) return '未作答'
+  return question.options[index]
+}
+
 function App() {
   const invite = useMemo(() => readInvite(), [])
   const [screen, setScreen] = useState('home')
@@ -100,6 +119,9 @@ function App() {
   const [roomInfo, setRoomInfo] = useState(null)
   const [toast, setToast] = useState(null)
   const [busy, setBusy] = useState(false)
+  const [selectedRecord, setSelectedRecord] = useState(null)
+  const [sharing, setSharing] = useState(false)
+  const captureRef = useRef(null)
 
   const currentQuestion = questions[currentIndex] || null
   const selectedAnswer = selectedAnswers[currentIndex]
@@ -117,18 +139,33 @@ function App() {
   }, [nicknameInput])
 
   useEffect(() => {
-    if (!roomName || screen !== 'result') return
+    if (!roomName || (screen !== 'result' && screen !== 'host-share')) return undefined
+
+    let alive = true
     const loadBoard = async () => {
       try {
-        const res = await fetch(buildApiUrl(`/api/leaderboard?room=${encodeURIComponent(roomName)}`))
-        if (!res.ok) return
+        const path = screen === 'host-share'
+          ? `/api/room/${encodeURIComponent(roomName)}/results`
+          : `/api/leaderboard?room=${encodeURIComponent(roomName)}`
+        const res = await fetch(buildApiUrl(path))
+        if (!res.ok || !alive) return
         const data = await res.json()
-        setLeaderboard(Array.isArray(data) ? data : [])
+        if (screen === 'host-share') {
+          setLeaderboard(Array.isArray(data.records) ? data.records : [])
+        } else {
+          setLeaderboard(Array.isArray(data) ? data : [])
+        }
       } catch {
-        setLeaderboard([])
+        if (alive) setLeaderboard([])
       }
     }
+
     loadBoard()
+    const timer = screen === 'host-share' ? window.setInterval(loadBoard, 4000) : null
+    return () => {
+      alive = false
+      if (timer) window.clearInterval(timer)
+    }
   }, [roomName, screen])
 
   useEffect(() => {
@@ -188,6 +225,7 @@ function App() {
     setIsEditingQuestion(false)
     setDraftQuestion(null)
     setLeaderboard([])
+    setSelectedRecord(null)
   }
 
   const handleSelect = (optionIndex) => {
@@ -341,7 +379,7 @@ function App() {
       if (!res.ok) throw new Error('Room not found')
 
       const data = await res.json()
-      if (data.hostName !== trimmedHost) throw new Error('房主昵称不匹配')
+      if (data.hostName.trim().toLowerCase() !== trimmedHost.toLowerCase()) throw new Error('房主昵称不匹配')
 
       const loaded = normalizeQuestions(data.questions || [], true)
       if (!loaded.length) throw new Error('房间题目为空')
@@ -368,6 +406,10 @@ function App() {
       return total + (chosen === question.correctIndex ? 1 : 0)
     }, 0)
 
+    const packedAnswers = questions.map((_, index) => (
+      Number.isInteger(answers[index]) ? answers[index] : null
+    ))
+
     setScore(finalScore)
     setScreen('result')
 
@@ -381,7 +423,7 @@ function App() {
           playerName,
           score: finalScore,
           total: questions.length,
-          answers,
+          answers: packedAnswers,
         }),
       })
       setStatusText(`${playerName} 已完成 ${roomName} 房间测验`)
@@ -415,14 +457,29 @@ function App() {
   }
 
   const handleShareResult = async () => {
-    const summary = `${playerName} 在 Kpop Challenge 中拿到 ${score}/${totalQuestions} 分，房间：${roomName || '-'}。`
-    try {
-      if (navigator.clipboard) await navigator.clipboard.writeText(summary)
-      setShareNotice('结果已复制到剪贴板')
-    } catch {
-      setShareNotice('复制失败，可手动复制结果')
+    if (!captureRef.current) {
+      showToast('还没有可分享的答题记录。', 'error')
+      return
     }
-    window.setTimeout(() => setShareNotice(''), 1800)
+
+    setSharing(true)
+    try {
+      const dataUrl = await toPng(captureRef.current, {
+        pixelRatio: 2,
+        cacheBust: true,
+        backgroundColor: '#f7f8ff',
+      })
+      const link = document.createElement('a')
+      link.download = `kpop-challenge-${playerName || 'result'}.png`
+      link.href = dataUrl
+      link.click()
+      setShareNotice('完整答题长图已保存')
+    } catch {
+      setShareNotice('图片生成失败，请再试一次')
+    } finally {
+      setSharing(false)
+      window.setTimeout(() => setShareNotice(''), 2200)
+    }
   }
 
   const handleShareRoom = async () => {
@@ -460,8 +517,12 @@ function App() {
           </div>
         ) : (
           <div className="score-chip">
-            <span>{screen === 'host-share' ? '房间状态' : '已设标准答案'}</span>
-            <strong>{screen === 'host-share' ? '完成' : `${answeredCount}/${totalQuestions || 20}`}</strong>
+            <span>{screen === 'host-share' ? '已交卷' : '已设标准答案'}</span>
+            <strong>
+              {screen === 'host-share'
+                ? `${leaderboard.length}人`
+                : `${answeredCount}/${totalQuestions || 20}`}
+            </strong>
           </div>
         )}
       </div>
@@ -662,7 +723,7 @@ function App() {
             <div className="panel result-panel">
               <p className="panel-tag">房间已生成</p>
               <h2>把这间房发给朋友</h2>
-              <p className="result-message">你的 20 道标准答案已经保存。朋友答完后会按你选的选项计分。</p>
+              <p className="result-message">标准答案已保存。朋友交卷后，你可以在下方查看每个人的完整答题记录。</p>
 
               <div className="share-card">
                 <div>
@@ -680,6 +741,49 @@ function App() {
                 <button className="secondary-button" onClick={goHome}>返回首页</button>
               </div>
 
+              <div className="host-board">
+                <div className="host-board-head">
+                  <h3>答题结果</h3>
+                  <span>每 4 秒自动刷新</span>
+                </div>
+                {leaderboard.length === 0 ? (
+                  <p className="empty-board">还没有朋友交卷，把房间名发给他们即可。</p>
+                ) : (
+                  <div className="player-result-list">
+                    {leaderboard.map((entry) => (
+                      <button
+                        key={`${entry.playerName}-${entry.createdAt}`}
+                        className={['player-result-row', selectedRecord?.playerName === entry.playerName ? 'active' : ''].filter(Boolean).join(' ')}
+                        onClick={() => setSelectedRecord(entry)}
+                      >
+                        <span>{entry.playerName}</span>
+                        <strong>{entry.score}/{entry.total || totalQuestions}</strong>
+                      </button>
+                    ))}
+                  </div>
+                )}
+
+                {selectedRecord && (
+                  <div className="review-list host-review">
+                    <h4>{selectedRecord.playerName} 的答题详情</h4>
+                    {questions.map((question, index) => {
+                      const answers = toAnswerList(selectedRecord.answers, questions.length)
+                      const userChoice = answers[index]
+                      const isCorrect = userChoice === question.correctIndex
+                      return (
+                        <div key={`${question.id || question.category}-${index}`} className={`review-item ${isCorrect ? 'correct' : 'wrong'}`}>
+                          <h4>{question.prompt}</h4>
+                          <div className="review-meta">
+                            <span>TA 的答案：{optionText(question, userChoice)}</span>
+                            <span>你的标准答案：{optionText(question, question.correctIndex)}</span>
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
+
               {shareNotice && <div className="share-notice">{shareNotice}</div>}
               {statusText && <div className="status-box">{statusText}</div>}
             </div>
@@ -687,37 +791,39 @@ function App() {
 
           {screen === 'result' && (
             <div className="panel result-panel">
-              <p className="panel-tag">测试结束</p>
-              <h2>{playerName} 的最终结果</h2>
-              <div className="result-score">
-                <span>{score}</span>
-                <small>/{totalQuestions}</small>
-              </div>
+              <div className="result-capture" ref={captureRef}>
+                <p className="panel-tag">测试结束</p>
+                <h2>{playerName} 的最终结果</h2>
+                <div className="result-score">
+                  <span>{score}</span>
+                  <small>/{totalQuestions}</small>
+                </div>
 
-              <p className="result-message">
-                {score === totalQuestions
-                  ? '完美分数，说明你真的非常懂这位 K-pop 审美。'
-                  : score >= Math.ceil(totalQuestions * 0.7)
-                    ? '表现很强，和对方的口味很接近。'
-                    : score >= Math.ceil(totalQuestions * 0.4)
-                      ? '还不错，继续用心一点，很快就能更懂彼此。'
-                      : '这轮属于热身阶段，下一轮你会更有感觉。'}
-              </p>
+                <p className="result-message">
+                  {score === totalQuestions
+                    ? '完美分数，说明你真的非常懂这位 K-pop 审美。'
+                    : score >= Math.ceil(totalQuestions * 0.7)
+                      ? '表现很强，和对方的口味很接近。'
+                      : score >= Math.ceil(totalQuestions * 0.4)
+                        ? '还不错，继续用心一点，很快就能更懂彼此。'
+                        : '这轮属于热身阶段，下一轮你会更有感觉。'}
+                </p>
 
-              <div className="review-list">
-                {questions.map((question, index) => {
-                  const userChoice = selectedAnswers[index]
-                  const isCorrect = userChoice === question.correctIndex
-                  return (
-                    <div key={`${question.id || question.category}-${index}`} className={`review-item ${isCorrect ? 'correct' : 'wrong'}`}>
-                      <h4>{question.prompt}</h4>
-                      <div className="review-meta">
-                        <span>你的答案：{userChoice !== undefined ? question.options[userChoice] : '未作答'}</span>
-                        <span>出题人答案：{question.options[question.correctIndex] || '未设置'}</span>
+                <div className="review-list">
+                  {questions.map((question, index) => {
+                    const userChoice = selectedAnswers[index]
+                    const isCorrect = userChoice === question.correctIndex
+                    return (
+                      <div key={`${question.id || question.category}-${index}`} className={`review-item ${isCorrect ? 'correct' : 'wrong'}`}>
+                        <h4>{index + 1}. {question.prompt}</h4>
+                        <div className="review-meta">
+                          <span>你的答案：{optionText(question, userChoice)}</span>
+                          <span>出题人答案：{optionText(question, question.correctIndex)}</span>
+                        </div>
                       </div>
-                    </div>
-                  )
-                })}
+                    )
+                  })}
+                </div>
               </div>
 
               {leaderboard.length > 0 && (
@@ -725,8 +831,8 @@ function App() {
                   <h3>房间排行</h3>
                   <ol>
                     {leaderboard.map((entry, index) => (
-                      <li key={`${entry.player_name}-${index}`}>
-                        <span>{index + 1}. {entry.player_name}</span>
+                      <li key={`${entry.player_name || entry.playerName}-${index}`}>
+                        <span>{index + 1}. {entry.player_name || entry.playerName}</span>
                         <strong>{entry.score}/{entry.total || totalQuestions}</strong>
                       </li>
                     ))}
@@ -735,7 +841,9 @@ function App() {
               )}
 
               <div className="result-actions">
-                <button className="primary-button" onClick={handleShareResult}>分享结果</button>
+                <button className="primary-button" onClick={handleShareResult} disabled={sharing}>
+                  {sharing ? '生成长图中...' : '保存答题长图'}
+                </button>
                 <button className="secondary-button" onClick={goHome}>返回首页</button>
               </div>
 
