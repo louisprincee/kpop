@@ -628,8 +628,10 @@ function App() {
       <div className="topbar-actions">
         <div className="login-box">
           <span>{playerName || '未登录'}</span>
-          <button onClick={goHome}>返回首页</button>
-          <button onClick={logout}>切换账号</button>
+          <div className="login-box-actions">
+            <button onClick={goHome}>返回首页</button>
+            <button onClick={logout}>切换账号</button>
+          </div>
         </div>
         {screen === 'play' || screen === 'result' ? (
           <div className="score-chip">
