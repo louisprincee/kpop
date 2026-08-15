@@ -137,6 +137,11 @@ input, textarea, select {
   gap: 12px;
 }
 
+.view-results-btn {
+  width: 100%;
+  margin-top: 12px;
+}
+
 .topbar,
 .layout {
   position: relative;

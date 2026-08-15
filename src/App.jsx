@@ -10,6 +10,7 @@ const API_BASE = import.meta.env.VITE_API_BASE || (
 )
 
 const LETTERS = ['A', 'B', 'C', 'D']
+const QUIZ_SIZE = 10
 
 const buildApiUrl = (path) => {
   if (!API_BASE) return path
@@ -53,18 +54,18 @@ const normalizeQuestion = (question, index = 0, keepAnswer = false) => {
   }
 }
 
-const normalizeQuestions = (items = [], keepAnswer = false) => {
+const normalizeQuestions = (items = [], keepAnswer = false, limit = null) => {
   if (!Array.isArray(items)) return []
-  return items
+  const normalized = items
     .map((question, index) => normalizeQuestion(question, index, keepAnswer))
     .filter((question) => Array.isArray(question.options) && question.options.length === 4)
-    .slice(0, 20)
+  return limit ? normalized.slice(0, limit) : normalized
 }
 
 const getStarterQuestions = () => {
   if (!questionBank?.length) return []
   const shuffled = [...questionBank].sort(() => Math.random() - 0.5)
-  return normalizeQuestions(shuffled, false)
+  return normalizeQuestions(shuffled, false, QUIZ_SIZE)
 }
 
 const getShareUrl = (roomName, hostName) => {
@@ -211,6 +212,17 @@ function App() {
     if (invite.host) setHostName(invite.host)
     setStatusText('')
     setScreen('join')
+  }
+
+  const startLookup = () => {
+    const name = requireNickname()
+    if (!name) return
+    setPlayerName(name)
+    if (invite.room) setRoomName(invite.room)
+    if (invite.host) setHostName(invite.host)
+    setStatusText('')
+    setSelectedRecord(null)
+    setScreen('lookup')
   }
 
   const goHome = () => {
@@ -391,7 +403,69 @@ function App() {
       setSelectedAnswers({})
       setScore(0)
       setScreen('play')
-      setStatusText(`已进入 ${trimmedRoom}，按出题人设好的 20 题作答。`)
+      setStatusText(`已进入 ${trimmedRoom}，按出题人设好的题目作答。`)
+    } catch (error) {
+      console.error(error)
+      showToast('没有找到这个房间，或房主昵称输入不正确。', 'error')
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  const lookupResults = async () => {
+    const trimmedPlayer = (nicknameInput.trim() || playerName.trim())
+    const trimmedRoom = roomName.trim()
+    const trimmedHost = hostName.trim()
+
+    if (!trimmedPlayer || !trimmedRoom || !trimmedHost) {
+      showToast('昵称、房间名和房主名字都需要填写。', 'error')
+      return
+    }
+
+    setBusy(true)
+    try {
+      const res = await fetch(buildApiUrl(`/api/room/${encodeURIComponent(trimmedRoom)}/results`))
+      if (!res.ok) throw new Error('Room not found')
+
+      const data = await res.json()
+      if (String(data.hostName || '').trim().toLowerCase() !== trimmedHost.toLowerCase()) {
+        throw new Error('房主昵称不匹配')
+      }
+
+      const loaded = normalizeQuestions(data.questions || [], true)
+      if (!loaded.length) throw new Error('房间题目为空')
+
+      const records = Array.isArray(data.records) ? data.records : []
+      setPlayerName(trimmedPlayer)
+      setRoomName(trimmedRoom)
+      setHostName(data.hostName)
+      setRoomInfo({ roomName: trimmedRoom, hostName: data.hostName })
+      setQuestions(loaded)
+      setLeaderboard(records)
+
+      const isHost = trimmedPlayer.toLowerCase() === String(data.hostName).trim().toLowerCase()
+      if (isHost) {
+        setSelectedRecord(null)
+        setScreen('host-share')
+        setStatusText('正在查看这个房间里所有人的答题结果。')
+        return
+      }
+
+      const mine = records.find((entry) => String(entry.playerName || '').trim().toLowerCase() === trimmedPlayer.toLowerCase())
+      if (!mine) {
+        showToast('还没有你的交卷记录，确认昵称是否和答题时一致。', 'error')
+        return
+      }
+
+      const packed = toAnswerList(mine.answers, loaded.length)
+      const mapped = {}
+      packed.forEach((value, index) => {
+        if (Number.isInteger(value)) mapped[index] = value
+      })
+      setSelectedAnswers(mapped)
+      setScore(Number(mine.score) || 0)
+      setScreen('result')
+      setStatusText(`${trimmedPlayer} 在 ${trimmedRoom} 的答题记录`)
     } catch (error) {
       console.error(error)
       showToast('没有找到这个房间，或房主昵称输入不正确。', 'error')
@@ -521,7 +595,7 @@ function App() {
             <strong>
               {screen === 'host-share'
                 ? `${leaderboard.length}人`
-                : `${answeredCount}/${totalQuestions || 20}`}
+                : `${answeredCount}/${totalQuestions || QUIZ_SIZE}`}
             </strong>
           </div>
         )}
@@ -623,7 +697,7 @@ function App() {
             <div className="brand-mark">K</div>
             <p className="eyebrow">K-POP 默契挑战</p>
             <h1>Kpop Challenge</h1>
-            <p className="login-copy">先写下你的昵称，再选择“我来出题”或“我来答题”。</p>
+            <p className="login-copy">先写下你的昵称，再选出题、答题或查看结果。</p>
 
             <div className="login-form stacked">
               <input
@@ -637,6 +711,7 @@ function App() {
               <button className="primary-button" onClick={startHost}>我来出题</button>
               <button className="secondary-button" onClick={startJoin}>我来答题</button>
             </div>
+            <button className="ghost-button view-results-btn" onClick={startLookup}>查看结果</button>
 
             <div className="rules-box">
               <h3>玩法说明</h3>
@@ -717,13 +792,49 @@ function App() {
             </div>
           )}
 
+          {screen === 'lookup' && (
+            <div className="panel create-room-panel">
+              <div className="panel-header">
+                <div>
+                  <p className="panel-tag">查看结果</p>
+                  <h2>用房间信息找回成绩</h2>
+                </div>
+              </div>
+
+              <div className="form-grid">
+                <label>
+                  你的昵称
+                  <input value={nicknameInput} onChange={(e) => setNicknameInput(e.target.value)} />
+                </label>
+                <label>
+                  房间名
+                  <input value={roomName} onChange={(e) => setRoomName(e.target.value)} />
+                </label>
+                <label>
+                  房主昵称
+                  <input value={hostName} onChange={(e) => setHostName(e.target.value)} />
+                </label>
+              </div>
+
+              <div className="action-row host-actions">
+                <button className="primary-button" onClick={lookupResults} disabled={busy}>
+                  {busy ? '查询中...' : '查看结果'}
+                </button>
+              </div>
+
+              <div className="status-box">
+                房主输入自己的昵称，可以看到所有人的答题详情；答题人输入当时用的昵称，可以找回自己的成绩和长图。
+              </div>
+            </div>
+          )}
+
           {(screen === 'host-play' || screen === 'play') && renderQuiz()}
 
           {screen === 'host-share' && roomInfo && (
             <div className="panel result-panel">
-              <p className="panel-tag">房间已生成</p>
-              <h2>把这间房发给朋友</h2>
-              <p className="result-message">标准答案已保存。朋友交卷后，你可以在下方查看每个人的完整答题记录。</p>
+              <p className="panel-tag">房间结果</p>
+              <h2>查看这间房的答题情况</h2>
+              <p className="result-message">朋友交卷后会出现在下方。点名字就能看到每一题的对比。</p>
 
               <div className="share-card">
                 <div>

@@ -110,6 +110,61 @@ export const questionBank = [
     ]
   },
   {
+    "id": "blackpink-11",
+    "category": "BLACKPINK",
+    "prompt": "我最想循环的 BLACKPINK 歌曲是？",
+    "options": [
+      "How You Like That",
+      "Lovesick Girls",
+      "Pink Venom",
+      "Shut Down"
+    ]
+  },
+  {
+    "id": "blackpink-12",
+    "category": "BLACKPINK",
+    "prompt": "我认为 BLACKPINK 最适合当开场的是？",
+    "options": [
+      "Lovesick Girls",
+      "Pink Venom",
+      "Shut Down",
+      "Boombayah"
+    ]
+  },
+  {
+    "id": "blackpink-13",
+    "category": "BLACKPINK",
+    "prompt": "我最想看 BLACKPINK 谁的直拍？",
+    "options": [
+      "Jisoo",
+      "Jennie",
+      "Rosé",
+      "Lisa"
+    ]
+  },
+  {
+    "id": "blackpink-14",
+    "category": "BLACKPINK",
+    "prompt": "我最喜欢 BLACKPINK 哪个视觉时期？",
+    "options": [
+      "Square Up 时期",
+      "Kill This Love 时期",
+      "The Album 时期",
+      "Born Pink 时期"
+    ]
+  },
+  {
+    "id": "blackpink-15",
+    "category": "BLACKPINK",
+    "prompt": "我最想和 BLACKPINK 谁一起看演唱会？",
+    "options": [
+      "Jisoo",
+      "Jennie",
+      "Rosé",
+      "Lisa"
+    ]
+  },
+  {
     "id": "bts-1",
     "category": "BTS",
     "prompt": "我最爱的 BTS 成员是？",
@@ -217,6 +272,61 @@ export const questionBank = [
       "演唱会",
       "个人作品",
       "海外舞台"
+    ]
+  },
+  {
+    "id": "bts-11",
+    "category": "BTS",
+    "prompt": "我最想循环的 BTS 歌曲是？",
+    "options": [
+      "Boy With Luv",
+      "Dynamite",
+      "Butter",
+      "Life Goes On"
+    ]
+  },
+  {
+    "id": "bts-12",
+    "category": "BTS",
+    "prompt": "我认为 BTS 最适合当开场的是？",
+    "options": [
+      "Dynamite",
+      "Butter",
+      "Life Goes On",
+      "Spring Day"
+    ]
+  },
+  {
+    "id": "bts-13",
+    "category": "BTS",
+    "prompt": "我最想看 BTS 谁的直拍？",
+    "options": [
+      "Jimin",
+      "V",
+      "Jungkook",
+      "RM"
+    ]
+  },
+  {
+    "id": "bts-14",
+    "category": "BTS",
+    "prompt": "我最喜欢 BTS 哪个视觉时期？",
+    "options": [
+      "Wings 时期",
+      "Love Yourself: Tear 时期",
+      "Map of the Soul: 7 时期",
+      "BE 时期"
+    ]
+  },
+  {
+    "id": "bts-15",
+    "category": "BTS",
+    "prompt": "我最想和 BTS 谁一起看演唱会？",
+    "options": [
+      "V",
+      "Jungkook",
+      "RM",
+      "Jin"
     ]
   },
   {
@@ -330,6 +440,61 @@ export const questionBank = [
     ]
   },
   {
+    "id": "twice-11",
+    "category": "TWICE",
+    "prompt": "我最想循环的 TWICE 歌曲是？",
+    "options": [
+      "What is Love?",
+      "FANCY",
+      "Feel Special",
+      "I CAN'T STOP ME"
+    ]
+  },
+  {
+    "id": "twice-12",
+    "category": "TWICE",
+    "prompt": "我认为 TWICE 最适合当开场的是？",
+    "options": [
+      "FANCY",
+      "Feel Special",
+      "I CAN'T STOP ME",
+      "Cheer Up"
+    ]
+  },
+  {
+    "id": "twice-13",
+    "category": "TWICE",
+    "prompt": "我最想看 TWICE 谁的直拍？",
+    "options": [
+      "Jihyo",
+      "Mina",
+      "Dahyun",
+      "Chaeyoung"
+    ]
+  },
+  {
+    "id": "twice-14",
+    "category": "TWICE",
+    "prompt": "我最喜欢 TWICE 哪个视觉时期？",
+    "options": [
+      "Twicetagram 时期",
+      "Feel Special 时期",
+      "Eyes Wide Open 时期",
+      "Formula of Love: O+T=<3 时期"
+    ]
+  },
+  {
+    "id": "twice-15",
+    "category": "TWICE",
+    "prompt": "我最想和 TWICE 谁一起看演唱会？",
+    "options": [
+      "Mina",
+      "Dahyun",
+      "Chaeyoung",
+      "Tzuyu"
+    ]
+  },
+  {
     "id": "seventeen-1",
     "category": "SEVENTEEN",
     "prompt": "我最爱的 SEVENTEEN 成员是？",
@@ -437,6 +602,61 @@ export const questionBank = [
       "演唱会",
       "个人作品",
       "海外舞台"
+    ]
+  },
+  {
+    "id": "seventeen-11",
+    "category": "SEVENTEEN",
+    "prompt": "我最想循环的 SEVENTEEN 歌曲是？",
+    "options": [
+      "God's Menu",
+      "Hot",
+      "Super",
+      "God of Music"
+    ]
+  },
+  {
+    "id": "seventeen-12",
+    "category": "SEVENTEEN",
+    "prompt": "我认为 SEVENTEEN 最适合当开场的是？",
+    "options": [
+      "Hot",
+      "Super",
+      "God of Music",
+      "Don't Wanna Cry"
+    ]
+  },
+  {
+    "id": "seventeen-13",
+    "category": "SEVENTEEN",
+    "prompt": "我最想看 SEVENTEEN 谁的直拍？",
+    "options": [
+      "Hoshi",
+      "Wonwoo",
+      "Woozi",
+      "DK"
+    ]
+  },
+  {
+    "id": "seventeen-14",
+    "category": "SEVENTEEN",
+    "prompt": "我最喜欢 SEVENTEEN 哪个视觉时期？",
+    "options": [
+      "You Make My Day 时期",
+      "An Ode 时期",
+      "Attacca 时期",
+      "FML 时期"
+    ]
+  },
+  {
+    "id": "seventeen-15",
+    "category": "SEVENTEEN",
+    "prompt": "我最想和 SEVENTEEN 谁一起看演唱会？",
+    "options": [
+      "Wonwoo",
+      "Woozi",
+      "DK",
+      "Mingyu"
     ]
   },
   {
@@ -550,6 +770,61 @@ export const questionBank = [
     ]
   },
   {
+    "id": "aespa-11",
+    "category": "aespa",
+    "prompt": "我最想循环的 aespa 歌曲是？",
+    "options": [
+      "Spicy",
+      "Drama",
+      "Supernova",
+      "Whiplash"
+    ]
+  },
+  {
+    "id": "aespa-12",
+    "category": "aespa",
+    "prompt": "我认为 aespa 最适合当开场的是？",
+    "options": [
+      "Drama",
+      "Supernova",
+      "Whiplash",
+      "Black Mamba"
+    ]
+  },
+  {
+    "id": "aespa-13",
+    "category": "aespa",
+    "prompt": "我最想看 aespa 谁的直拍？",
+    "options": [
+      "Karina",
+      "Giselle",
+      "Winter",
+      "Ningning"
+    ]
+  },
+  {
+    "id": "aespa-14",
+    "category": "aespa",
+    "prompt": "我最喜欢 aespa 哪个视觉时期？",
+    "options": [
+      "Savage 时期",
+      "Girls 时期",
+      "My World 时期",
+      "Armageddon 时期"
+    ]
+  },
+  {
+    "id": "aespa-15",
+    "category": "aespa",
+    "prompt": "我最想和 aespa 谁一起看演唱会？",
+    "options": [
+      "Karina",
+      "Giselle",
+      "Winter",
+      "Ningning"
+    ]
+  },
+  {
     "id": "ive-1",
     "category": "IVE",
     "prompt": "我最爱的 IVE 成员是？",
@@ -657,6 +932,61 @@ export const questionBank = [
       "演唱会",
       "个人作品",
       "海外舞台"
+    ]
+  },
+  {
+    "id": "ive-11",
+    "category": "IVE",
+    "prompt": "我最想循环的 IVE 歌曲是？",
+    "options": [
+      "I AM",
+      "Either Way",
+      "HEYA",
+      "Accendio"
+    ]
+  },
+  {
+    "id": "ive-12",
+    "category": "IVE",
+    "prompt": "我认为 IVE 最适合当开场的是？",
+    "options": [
+      "Either Way",
+      "HEYA",
+      "Accendio",
+      "ELEVEN"
+    ]
+  },
+  {
+    "id": "ive-13",
+    "category": "IVE",
+    "prompt": "我最想看 IVE 谁的直拍？",
+    "options": [
+      "Liz",
+      "Leeseo",
+      "Yujin",
+      "Gaeul"
+    ]
+  },
+  {
+    "id": "ive-14",
+    "category": "IVE",
+    "prompt": "我最喜欢 IVE 哪个视觉时期？",
+    "options": [
+      "I've IVE 时期",
+      "I've Mine 时期",
+      "IVE SWITCH 时期",
+      "IVE EMPATHY 时期"
+    ]
+  },
+  {
+    "id": "ive-15",
+    "category": "IVE",
+    "prompt": "我最想和 IVE 谁一起看演唱会？",
+    "options": [
+      "Leeseo",
+      "Yujin",
+      "Gaeul",
+      "Rei"
     ]
   },
   {
@@ -770,6 +1100,61 @@ export const questionBank = [
     ]
   },
   {
+    "id": "newjeans-11",
+    "category": "NewJeans",
+    "prompt": "我最想循环的 NewJeans 歌曲是？",
+    "options": [
+      "OMG",
+      "Super Shy",
+      "How Sweet",
+      "Right Now"
+    ]
+  },
+  {
+    "id": "newjeans-12",
+    "category": "NewJeans",
+    "prompt": "我认为 NewJeans 最适合当开场的是？",
+    "options": [
+      "Super Shy",
+      "How Sweet",
+      "Right Now",
+      "Attention"
+    ]
+  },
+  {
+    "id": "newjeans-13",
+    "category": "NewJeans",
+    "prompt": "我最想看 NewJeans 谁的直拍？",
+    "options": [
+      "Hyein",
+      "Minji",
+      "Hanni",
+      "Danielle"
+    ]
+  },
+  {
+    "id": "newjeans-14",
+    "category": "NewJeans",
+    "prompt": "我最喜欢 NewJeans 哪个视觉时期？",
+    "options": [
+      "New Jeans 时期",
+      "Get Up 时期",
+      "How Sweet 时期",
+      "Supernatural 时期"
+    ]
+  },
+  {
+    "id": "newjeans-15",
+    "category": "NewJeans",
+    "prompt": "我最想和 NewJeans 谁一起看演唱会？",
+    "options": [
+      "Minji",
+      "Hanni",
+      "Danielle",
+      "Haerin"
+    ]
+  },
+  {
     "id": "straykids-1",
     "category": "Stray Kids",
     "prompt": "我最爱的 Stray Kids 成员是？",
@@ -877,6 +1262,61 @@ export const questionBank = [
       "演唱会",
       "个人作品",
       "海外舞台"
+    ]
+  },
+  {
+    "id": "straykids-11",
+    "category": "Stray Kids",
+    "prompt": "我最想循环的 Stray Kids 歌曲是？",
+    "options": [
+      "MANIAC",
+      "CASE 143",
+      "S-Class",
+      "Chk Chk Boom"
+    ]
+  },
+  {
+    "id": "straykids-12",
+    "category": "Stray Kids",
+    "prompt": "我认为 Stray Kids 最适合当开场的是？",
+    "options": [
+      "CASE 143",
+      "S-Class",
+      "Chk Chk Boom",
+      "MIROH"
+    ]
+  },
+  {
+    "id": "straykids-13",
+    "category": "Stray Kids",
+    "prompt": "我最想看 Stray Kids 谁的直拍？",
+    "options": [
+      "HAN",
+      "Felix",
+      "Seungmin",
+      "I.N"
+    ]
+  },
+  {
+    "id": "straykids-14",
+    "category": "Stray Kids",
+    "prompt": "我最喜欢 Stray Kids 哪个视觉时期？",
+    "options": [
+      "GO生 时期",
+      "NOEASY 时期",
+      "ODDINARY 时期",
+      "★★★★★ 5-STAR 时期"
+    ]
+  },
+  {
+    "id": "straykids-15",
+    "category": "Stray Kids",
+    "prompt": "我最想和 Stray Kids 谁一起看演唱会？",
+    "options": [
+      "Felix",
+      "Seungmin",
+      "I.N",
+      "Bang Chan"
     ]
   },
   {
@@ -990,6 +1430,61 @@ export const questionBank = [
     ]
   },
   {
+    "id": "exo-11",
+    "category": "EXO",
+    "prompt": "我最想循环的 EXO 歌曲是？",
+    "options": [
+      "Tempo",
+      "Ko Ko Bop",
+      "Obsession",
+      "Cream Soda"
+    ]
+  },
+  {
+    "id": "exo-12",
+    "category": "EXO",
+    "prompt": "我认为 EXO 最适合当开场的是？",
+    "options": [
+      "Ko Ko Bop",
+      "Obsession",
+      "Cream Soda",
+      "Growl"
+    ]
+  },
+  {
+    "id": "exo-13",
+    "category": "EXO",
+    "prompt": "我最想看 EXO 谁的直拍？",
+    "options": [
+      "Chen",
+      "Chanyeol",
+      "D.O.",
+      "Kai"
+    ]
+  },
+  {
+    "id": "exo-14",
+    "category": "EXO",
+    "prompt": "我最喜欢 EXO 哪个视觉时期？",
+    "options": [
+      "XOXO 时期",
+      "EXODUS 时期",
+      "THE WAR 时期",
+      "EXIST 时期"
+    ]
+  },
+  {
+    "id": "exo-15",
+    "category": "EXO",
+    "prompt": "我最想和 EXO 谁一起看演唱会？",
+    "options": [
+      "Chanyeol",
+      "D.O.",
+      "Kai",
+      "Sehun"
+    ]
+  },
+  {
     "id": "redvelvet-1",
     "category": "Red Velvet",
     "prompt": "我最爱的 Red Velvet 成员是？",
@@ -1097,6 +1592,61 @@ export const questionBank = [
       "演唱会",
       "个人作品",
       "海外舞台"
+    ]
+  },
+  {
+    "id": "redvelvet-11",
+    "category": "Red Velvet",
+    "prompt": "我最想循环的 Red Velvet 歌曲是？",
+    "options": [
+      "Psycho",
+      "Queendom",
+      "Feel My Rhythm",
+      "Cosmic"
+    ]
+  },
+  {
+    "id": "redvelvet-12",
+    "category": "Red Velvet",
+    "prompt": "我认为 Red Velvet 最适合当开场的是？",
+    "options": [
+      "Queendom",
+      "Feel My Rhythm",
+      "Cosmic",
+      "Red Flavor"
+    ]
+  },
+  {
+    "id": "redvelvet-13",
+    "category": "Red Velvet",
+    "prompt": "我最想看 Red Velvet 谁的直拍？",
+    "options": [
+      "Yeri",
+      "Irene",
+      "Seulgi",
+      "Wendy"
+    ]
+  },
+  {
+    "id": "redvelvet-14",
+    "category": "Red Velvet",
+    "prompt": "我最喜欢 Red Velvet 哪个视觉时期？",
+    "options": [
+      "The Red 时期",
+      "Perfect Velvet 时期",
+      "The ReVe Festival 时期",
+      "Cosmic 时期"
+    ]
+  },
+  {
+    "id": "redvelvet-15",
+    "category": "Red Velvet",
+    "prompt": "我最想和 Red Velvet 谁一起看演唱会？",
+    "options": [
+      "Irene",
+      "Seulgi",
+      "Wendy",
+      "Joy"
     ]
   },
   {
@@ -1210,6 +1760,61 @@ export const questionBank = [
     ]
   },
   {
+    "id": "-11",
+    "category": "少女时代",
+    "prompt": "我最想循环的 少女时代 歌曲是？",
+    "options": [
+      "Oh!",
+      "The Boys",
+      "I Got a Boy",
+      "Forever 1"
+    ]
+  },
+  {
+    "id": "-12",
+    "category": "少女时代",
+    "prompt": "我认为 少女时代 最适合当开场的是？",
+    "options": [
+      "The Boys",
+      "I Got a Boy",
+      "Forever 1",
+      "Into the New World"
+    ]
+  },
+  {
+    "id": "-13",
+    "category": "少女时代",
+    "prompt": "我最想看 少女时代 谁的直拍？",
+    "options": [
+      "Yuri",
+      "Sooyoung",
+      "Yoona",
+      "Seohyun"
+    ]
+  },
+  {
+    "id": "-14",
+    "category": "少女时代",
+    "prompt": "我最喜欢 少女时代 哪个视觉时期？",
+    "options": [
+      "Gee 时期",
+      "The Boys 时期",
+      "I Got a Boy 时期",
+      "Holiday Night 时期"
+    ]
+  },
+  {
+    "id": "-15",
+    "category": "少女时代",
+    "prompt": "我最想和 少女时代 谁一起看演唱会？",
+    "options": [
+      "Sooyoung",
+      "Yoona",
+      "Seohyun",
+      "Taeyeon"
+    ]
+  },
+  {
     "id": "iu-1",
     "category": "IU",
     "prompt": "我最喜欢的 IU 歌曲是？",
@@ -1317,6 +1922,61 @@ export const questionBank = [
       "Love Wins All",
       "Good Day",
       "Through the Night"
+    ]
+  },
+  {
+    "id": "iu-11",
+    "category": "IU",
+    "prompt": "我最想当开场的 IU 歌曲是？",
+    "options": [
+      "Love Wins All",
+      "Good Day",
+      "Through the Night",
+      "Palette"
+    ]
+  },
+  {
+    "id": "iu-12",
+    "category": "IU",
+    "prompt": "我最爱 IU 哪个专辑时期？",
+    "options": [
+      "Last Fantasy 时期",
+      "Modern Times 时期",
+      "Palette 时期",
+      "Lilac 时期"
+    ]
+  },
+  {
+    "id": "iu-13",
+    "category": "IU",
+    "prompt": "我最想反复看的 IU 舞台是？",
+    "options": [
+      "出道舞台",
+      "回归舞台",
+      "演唱会直拍",
+      "音乐放送"
+    ]
+  },
+  {
+    "id": "iu-14",
+    "category": "IU",
+    "prompt": "我认为 IU 最打动我的是？",
+    "options": [
+      "舞蹈",
+      "声乐",
+      "造型",
+      "互动"
+    ]
+  },
+  {
+    "id": "iu-15",
+    "category": "IU",
+    "prompt": "我下一次最想听 IU 唱的是？",
+    "options": [
+      "Good Day",
+      "Through the Night",
+      "Palette",
+      "Blueming"
     ]
   },
   {
@@ -1430,6 +2090,61 @@ export const questionBank = [
     ]
   },
   {
+    "id": "enhypen-11",
+    "category": "ENHYPEN",
+    "prompt": "我最想循环的 ENHYPEN 歌曲是？",
+    "options": [
+      "Polaroid Love",
+      "Bite Me",
+      "Sweet Venom",
+      "No Doubt"
+    ]
+  },
+  {
+    "id": "enhypen-12",
+    "category": "ENHYPEN",
+    "prompt": "我认为 ENHYPEN 最适合当开场的是？",
+    "options": [
+      "Bite Me",
+      "Sweet Venom",
+      "No Doubt",
+      "Given-Taken"
+    ]
+  },
+  {
+    "id": "enhypen-13",
+    "category": "ENHYPEN",
+    "prompt": "我最想看 ENHYPEN 谁的直拍？",
+    "options": [
+      "Sunoo",
+      "Jungwon",
+      "Ni-ki",
+      "Heeseung"
+    ]
+  },
+  {
+    "id": "enhypen-14",
+    "category": "ENHYPEN",
+    "prompt": "我最喜欢 ENHYPEN 哪个视觉时期？",
+    "options": [
+      "BORDER : DAY ONE 时期",
+      "DIMENSION : DILEMMA 时期",
+      "MANIFESTO : DAY 1 时期",
+      "ROMANCE : UNTOLD 时期"
+    ]
+  },
+  {
+    "id": "enhypen-15",
+    "category": "ENHYPEN",
+    "prompt": "我最想和 ENHYPEN 谁一起看演唱会？",
+    "options": [
+      "Jungwon",
+      "Ni-ki",
+      "Heeseung",
+      "Jay"
+    ]
+  },
+  {
     "id": "txt-1",
     "category": "TXT",
     "prompt": "我最爱的 TXT 成员是？",
@@ -1537,6 +2252,61 @@ export const questionBank = [
       "演唱会",
       "个人作品",
       "海外舞台"
+    ]
+  },
+  {
+    "id": "txt-11",
+    "category": "TXT",
+    "prompt": "我最想循环的 TXT 歌曲是？",
+    "options": [
+      "Good Boy Gone Bad",
+      "Sugar Rush Ride",
+      "Chasing That Feeling",
+      "Over The Moon"
+    ]
+  },
+  {
+    "id": "txt-12",
+    "category": "TXT",
+    "prompt": "我认为 TXT 最适合当开场的是？",
+    "options": [
+      "Sugar Rush Ride",
+      "Chasing That Feeling",
+      "Over The Moon",
+      "CROWN"
+    ]
+  },
+  {
+    "id": "txt-13",
+    "category": "TXT",
+    "prompt": "我最想看 TXT 谁的直拍？",
+    "options": [
+      "Huening Kai",
+      "Yeonjun",
+      "Soobin",
+      "Beomgyu"
+    ]
+  },
+  {
+    "id": "txt-14",
+    "category": "TXT",
+    "prompt": "我最喜欢 TXT 哪个视觉时期？",
+    "options": [
+      "The Dream Chapter: MAGIC 时期",
+      "The Chaos Chapter: FREEZE 时期",
+      "minisode 2: Thursday's Child 时期",
+      "The Name Chapter: TEMPTATION 时期"
+    ]
+  },
+  {
+    "id": "txt-15",
+    "category": "TXT",
+    "prompt": "我最想和 TXT 谁一起看演唱会？",
+    "options": [
+      "Yeonjun",
+      "Soobin",
+      "Beomgyu",
+      "Taehyun"
     ]
   },
   {
@@ -1650,6 +2420,61 @@ export const questionBank = [
     ]
   },
   {
+    "id": "shinee-11",
+    "category": "SHINee",
+    "prompt": "我最想循环的 SHINee 歌曲是？",
+    "options": [
+      "Dream Girl",
+      "View",
+      "Everybody",
+      "Don't Call Me"
+    ]
+  },
+  {
+    "id": "shinee-12",
+    "category": "SHINee",
+    "prompt": "我认为 SHINee 最适合当开场的是？",
+    "options": [
+      "View",
+      "Everybody",
+      "Don't Call Me",
+      "Replay"
+    ]
+  },
+  {
+    "id": "shinee-13",
+    "category": "SHINee",
+    "prompt": "我最想看 SHINee 谁的直拍？",
+    "options": [
+      "Taemin",
+      "Onew",
+      "Jonghyun",
+      "Key"
+    ]
+  },
+  {
+    "id": "shinee-14",
+    "category": "SHINee",
+    "prompt": "我最喜欢 SHINee 哪个视觉时期？",
+    "options": [
+      "The SHINee World 时期",
+      "Odd 时期",
+      "The Story of Light 时期",
+      "HARD 时期"
+    ]
+  },
+  {
+    "id": "shinee-15",
+    "category": "SHINee",
+    "prompt": "我最想和 SHINee 谁一起看演唱会？",
+    "options": [
+      "Onew",
+      "Jonghyun",
+      "Key",
+      "Minho"
+    ]
+  },
+  {
     "id": "nct127-1",
     "category": "NCT 127",
     "prompt": "我最爱的 NCT 127 成员是？",
@@ -1757,6 +2582,61 @@ export const questionBank = [
       "演唱会",
       "个人作品",
       "海外舞台"
+    ]
+  },
+  {
+    "id": "nct127-11",
+    "category": "NCT 127",
+    "prompt": "我最想循环的 NCT 127 歌曲是？",
+    "options": [
+      "Sticker",
+      "2 Baddies",
+      "Fact Check",
+      "Walk"
+    ]
+  },
+  {
+    "id": "nct127-12",
+    "category": "NCT 127",
+    "prompt": "我认为 NCT 127 最适合当开场的是？",
+    "options": [
+      "2 Baddies",
+      "Fact Check",
+      "Walk",
+      "Cherry Bomb"
+    ]
+  },
+  {
+    "id": "nct127-13",
+    "category": "NCT 127",
+    "prompt": "我最想看 NCT 127 谁的直拍？",
+    "options": [
+      "Jaehyun",
+      "Jungwoo",
+      "Mark",
+      "Haechan"
+    ]
+  },
+  {
+    "id": "nct127-14",
+    "category": "NCT 127",
+    "prompt": "我最喜欢 NCT 127 哪个视觉时期？",
+    "options": [
+      "Regular-Irregular 时期",
+      "Neo Zone 时期",
+      "Sticker 时期",
+      "Fact Check 时期"
+    ]
+  },
+  {
+    "id": "nct127-15",
+    "category": "NCT 127",
+    "prompt": "我最想和 NCT 127 谁一起看演唱会？",
+    "options": [
+      "Jungwoo",
+      "Mark",
+      "Haechan",
+      "Johnny"
     ]
   },
   {
@@ -1870,6 +2750,61 @@ export const questionBank = [
     ]
   },
   {
+    "id": "nctdream-11",
+    "category": "NCT DREAM",
+    "prompt": "我最想循环的 NCT DREAM 歌曲是？",
+    "options": [
+      "Hot Sauce",
+      "Hello Future",
+      "Candy",
+      "Smoothie"
+    ]
+  },
+  {
+    "id": "nctdream-12",
+    "category": "NCT DREAM",
+    "prompt": "我认为 NCT DREAM 最适合当开场的是？",
+    "options": [
+      "Hello Future",
+      "Candy",
+      "Smoothie",
+      "Chewing Gum"
+    ]
+  },
+  {
+    "id": "nctdream-13",
+    "category": "NCT DREAM",
+    "prompt": "我最想看 NCT DREAM 谁的直拍？",
+    "options": [
+      "Jaemin",
+      "Chenle",
+      "Jisung",
+      "Mark"
+    ]
+  },
+  {
+    "id": "nctdream-14",
+    "category": "NCT DREAM",
+    "prompt": "我最喜欢 NCT DREAM 哪个视觉时期？",
+    "options": [
+      "Hot Sauce 时期",
+      "Glitch Mode 时期",
+      "ISTJ 时期",
+      "DREAMSCAPE 时期"
+    ]
+  },
+  {
+    "id": "nctdream-15",
+    "category": "NCT DREAM",
+    "prompt": "我最想和 NCT DREAM 谁一起看演唱会？",
+    "options": [
+      "Chenle",
+      "Jisung",
+      "Mark",
+      "Renjun"
+    ]
+  },
+  {
     "id": "astro-1",
     "category": "ASTRO",
     "prompt": "我最爱的 ASTRO 成员是？",
@@ -1977,6 +2912,61 @@ export const questionBank = [
       "演唱会",
       "个人作品",
       "海外舞台"
+    ]
+  },
+  {
+    "id": "astro-11",
+    "category": "ASTRO",
+    "prompt": "我最想循环的 ASTRO 歌曲是？",
+    "options": [
+      "Crazy Sexy Cool",
+      "All Night",
+      "Blue Flame",
+      "After Midnight"
+    ]
+  },
+  {
+    "id": "astro-12",
+    "category": "ASTRO",
+    "prompt": "我认为 ASTRO 最适合当开场的是？",
+    "options": [
+      "All Night",
+      "Blue Flame",
+      "After Midnight",
+      "Hide & Seek"
+    ]
+  },
+  {
+    "id": "astro-13",
+    "category": "ASTRO",
+    "prompt": "我最想看 ASTRO 谁的直拍？",
+    "options": [
+      "Rocky",
+      "Sanha",
+      "MJ",
+      "Jinjin"
+    ]
+  },
+  {
+    "id": "astro-14",
+    "category": "ASTRO",
+    "prompt": "我最喜欢 ASTRO 哪个视觉时期？",
+    "options": [
+      "Spring Up 时期",
+      "All Light 时期",
+      "Blue Flame 时期",
+      "Switch On 时期"
+    ]
+  },
+  {
+    "id": "astro-15",
+    "category": "ASTRO",
+    "prompt": "我最想和 ASTRO 谁一起看演唱会？",
+    "options": [
+      "Sanha",
+      "MJ",
+      "Jinjin",
+      "Cha Eunwoo"
     ]
   },
   {
@@ -2090,6 +3080,61 @@ export const questionBank = [
     ]
   },
   {
+    "id": "lesserafim-11",
+    "category": "LE SSERAFIM",
+    "prompt": "我最想循环的 LE SSERAFIM 歌曲是？",
+    "options": [
+      "EASY",
+      "Smart",
+      "CRAZY",
+      "HOT"
+    ]
+  },
+  {
+    "id": "lesserafim-12",
+    "category": "LE SSERAFIM",
+    "prompt": "我认为 LE SSERAFIM 最适合当开场的是？",
+    "options": [
+      "Smart",
+      "CRAZY",
+      "HOT",
+      "FEARLESS"
+    ]
+  },
+  {
+    "id": "lesserafim-13",
+    "category": "LE SSERAFIM",
+    "prompt": "我最想看 LE SSERAFIM 谁的直拍？",
+    "options": [
+      "Eunchae",
+      "Chaewon",
+      "Sakura",
+      "Yunjin"
+    ]
+  },
+  {
+    "id": "lesserafim-14",
+    "category": "LE SSERAFIM",
+    "prompt": "我最喜欢 LE SSERAFIM 哪个视觉时期？",
+    "options": [
+      "FEARLESS 时期",
+      "ANTIFRAGILE 时期",
+      "UNFORGIVEN 时期",
+      "EASY 时期"
+    ]
+  },
+  {
+    "id": "lesserafim-15",
+    "category": "LE SSERAFIM",
+    "prompt": "我最想和 LE SSERAFIM 谁一起看演唱会？",
+    "options": [
+      "Chaewon",
+      "Sakura",
+      "Yunjin",
+      "Kazuha"
+    ]
+  },
+  {
     "id": "got7-1",
     "category": "GOT7",
     "prompt": "我最爱的 GOT7 成员是？",
@@ -2197,6 +3242,61 @@ export const questionBank = [
       "演唱会",
       "个人作品",
       "海外舞台"
+    ]
+  },
+  {
+    "id": "got7-11",
+    "category": "GOT7",
+    "prompt": "我最想循环的 GOT7 歌曲是？",
+    "options": [
+      "Never Ever",
+      "Lullaby",
+      "You Calling My Name",
+      "NANANA"
+    ]
+  },
+  {
+    "id": "got7-12",
+    "category": "GOT7",
+    "prompt": "我认为 GOT7 最适合当开场的是？",
+    "options": [
+      "Lullaby",
+      "You Calling My Name",
+      "NANANA",
+      "Just Right"
+    ]
+  },
+  {
+    "id": "got7-13",
+    "category": "GOT7",
+    "prompt": "我最想看 GOT7 谁的直拍？",
+    "options": [
+      "Youngjae",
+      "BamBam",
+      "Yugyeom",
+      "JB"
+    ]
+  },
+  {
+    "id": "got7-14",
+    "category": "GOT7",
+    "prompt": "我最喜欢 GOT7 哪个视觉时期？",
+    "options": [
+      "Got It? 时期",
+      "Flight Log: Turbulence 时期",
+      "Eyes On You 时期",
+      "Dye 时期"
+    ]
+  },
+  {
+    "id": "got7-15",
+    "category": "GOT7",
+    "prompt": "我最想和 GOT7 谁一起看演唱会？",
+    "options": [
+      "BamBam",
+      "Yugyeom",
+      "JB",
+      "Mark"
     ]
   },
   {
@@ -2310,6 +3410,61 @@ export const questionBank = [
     ]
   },
   {
+    "id": "monstax-11",
+    "category": "MONSTA X",
+    "prompt": "我最想循环的 MONSTA X 歌曲是？",
+    "options": [
+      "Shoot Out",
+      "Alligator",
+      "Love Killa",
+      "Beautiful Liar"
+    ]
+  },
+  {
+    "id": "monstax-12",
+    "category": "MONSTA X",
+    "prompt": "我认为 MONSTA X 最适合当开场的是？",
+    "options": [
+      "Alligator",
+      "Love Killa",
+      "Beautiful Liar",
+      "Trespass"
+    ]
+  },
+  {
+    "id": "monstax-13",
+    "category": "MONSTA X",
+    "prompt": "我最想看 MONSTA X 谁的直拍？",
+    "options": [
+      "Jooheon",
+      "I.M",
+      "Shownu",
+      "Minhyuk"
+    ]
+  },
+  {
+    "id": "monstax-14",
+    "category": "MONSTA X",
+    "prompt": "我最喜欢 MONSTA X 哪个视觉时期？",
+    "options": [
+      "The Clan Pt. 2.5 时期",
+      "Take.1 Are You There? 时期",
+      "Fatal Love 时期",
+      "REASON 时期"
+    ]
+  },
+  {
+    "id": "monstax-15",
+    "category": "MONSTA X",
+    "prompt": "我最想和 MONSTA X 谁一起看演唱会？",
+    "options": [
+      "I.M",
+      "Shownu",
+      "Minhyuk",
+      "Kihyun"
+    ]
+  },
+  {
     "id": "theboyz-1",
     "category": "THE BOYZ",
     "prompt": "我最爱的 THE BOYZ 成员是？",
@@ -2417,6 +3572,61 @@ export const questionBank = [
       "演唱会",
       "个人作品",
       "海外舞台"
+    ]
+  },
+  {
+    "id": "theboyz-11",
+    "category": "THE BOYZ",
+    "prompt": "我最想循环的 THE BOYZ 歌曲是？",
+    "options": [
+      "The Stealer",
+      "Maverick",
+      "ROAR",
+      "TRIGGER"
+    ]
+  },
+  {
+    "id": "theboyz-12",
+    "category": "THE BOYZ",
+    "prompt": "我认为 THE BOYZ 最适合当开场的是？",
+    "options": [
+      "Maverick",
+      "ROAR",
+      "TRIGGER",
+      "Boy"
+    ]
+  },
+  {
+    "id": "theboyz-13",
+    "category": "THE BOYZ",
+    "prompt": "我最想看 THE BOYZ 谁的直拍？",
+    "options": [
+      "Juyeon",
+      "Kevin",
+      "New",
+      "Q"
+    ]
+  },
+  {
+    "id": "theboyz-14",
+    "category": "THE BOYZ",
+    "prompt": "我最喜欢 THE BOYZ 哪个视觉时期？",
+    "options": [
+      "The Start 时期",
+      "Reveal 时期",
+      "THRILL-ING 时期",
+      "PHANTASY 时期"
+    ]
+  },
+  {
+    "id": "theboyz-15",
+    "category": "THE BOYZ",
+    "prompt": "我最想和 THE BOYZ 谁一起看演唱会？",
+    "options": [
+      "Kevin",
+      "New",
+      "Q",
+      "Ju Haknyeon"
     ]
   },
   {
@@ -2530,6 +3740,61 @@ export const questionBank = [
     ]
   },
   {
+    "id": "ateez-11",
+    "category": "ATEEZ",
+    "prompt": "我最想循环的 ATEEZ 歌曲是？",
+    "options": [
+      "Fireworks (I'm The One)",
+      "Guerrilla",
+      "BOUNCY",
+      "WORK"
+    ]
+  },
+  {
+    "id": "ateez-12",
+    "category": "ATEEZ",
+    "prompt": "我认为 ATEEZ 最适合当开场的是？",
+    "options": [
+      "Guerrilla",
+      "BOUNCY",
+      "WORK",
+      "Pirate King"
+    ]
+  },
+  {
+    "id": "ateez-13",
+    "category": "ATEEZ",
+    "prompt": "我最想看 ATEEZ 谁的直拍？",
+    "options": [
+      "San",
+      "Mingi",
+      "Wooyoung",
+      "Jongho"
+    ]
+  },
+  {
+    "id": "ateez-14",
+    "category": "ATEEZ",
+    "prompt": "我最喜欢 ATEEZ 哪个视觉时期？",
+    "options": [
+      "Treasure EP.1 时期",
+      "ZERO : FEVER Part.1 时期",
+      "THE WORLD EP.FIN : WILL 时期",
+      "GOLDEN HOUR : Part.1 时期"
+    ]
+  },
+  {
+    "id": "ateez-15",
+    "category": "ATEEZ",
+    "prompt": "我最想和 ATEEZ 谁一起看演唱会？",
+    "options": [
+      "Mingi",
+      "Wooyoung",
+      "Jongho",
+      "Hongjoong"
+    ]
+  },
+  {
     "id": "itzy-1",
     "category": "ITZY",
     "prompt": "我最爱的 ITZY 成员是？",
@@ -2637,6 +3902,61 @@ export const questionBank = [
       "演唱会",
       "个人作品",
       "海外舞台"
+    ]
+  },
+  {
+    "id": "itzy-11",
+    "category": "ITZY",
+    "prompt": "我最想循环的 ITZY 歌曲是？",
+    "options": [
+      "In the morning",
+      "LOCO",
+      "SNEAKERS",
+      "CAKE"
+    ]
+  },
+  {
+    "id": "itzy-12",
+    "category": "ITZY",
+    "prompt": "我认为 ITZY 最适合当开场的是？",
+    "options": [
+      "LOCO",
+      "SNEAKERS",
+      "CAKE",
+      "DALLA DALLA"
+    ]
+  },
+  {
+    "id": "itzy-13",
+    "category": "ITZY",
+    "prompt": "我最想看 ITZY 谁的直拍？",
+    "options": [
+      "Yuna",
+      "Yeji",
+      "Lia",
+      "Ryujin"
+    ]
+  },
+  {
+    "id": "itzy-14",
+    "category": "ITZY",
+    "prompt": "我最喜欢 ITZY 哪个视觉时期？",
+    "options": [
+      "IT'z ICY 时期",
+      "GUESS WHO 时期",
+      "CHECKMATE 时期",
+      "KILL MY DOUBT 时期"
+    ]
+  },
+  {
+    "id": "itzy-15",
+    "category": "ITZY",
+    "prompt": "我最想和 ITZY 谁一起看演唱会？",
+    "options": [
+      "Yeji",
+      "Lia",
+      "Ryujin",
+      "Chaeryeong"
     ]
   },
   {
@@ -2750,6 +4070,61 @@ export const questionBank = [
     ]
   },
   {
+    "id": "gidle-11",
+    "category": "(G)I-DLE",
+    "prompt": "我最想循环的 (G)I-DLE 歌曲是？",
+    "options": [
+      "Nxde",
+      "Queencard",
+      "Super Lady",
+      "Klaxon"
+    ]
+  },
+  {
+    "id": "gidle-12",
+    "category": "(G)I-DLE",
+    "prompt": "我认为 (G)I-DLE 最适合当开场的是？",
+    "options": [
+      "Queencard",
+      "Super Lady",
+      "Klaxon",
+      "LATATA"
+    ]
+  },
+  {
+    "id": "gidle-13",
+    "category": "(G)I-DLE",
+    "prompt": "我最想看 (G)I-DLE 谁的直拍？",
+    "options": [
+      "Shuhua",
+      "Miyeon",
+      "Minnie",
+      "Soyeon"
+    ]
+  },
+  {
+    "id": "gidle-14",
+    "category": "(G)I-DLE",
+    "prompt": "我最喜欢 (G)I-DLE 哪个视觉时期？",
+    "options": [
+      "I am 时期",
+      "I Trust 时期",
+      "I Never Die 时期",
+      "2 时期"
+    ]
+  },
+  {
+    "id": "gidle-15",
+    "category": "(G)I-DLE",
+    "prompt": "我最想和 (G)I-DLE 谁一起看演唱会？",
+    "options": [
+      "Miyeon",
+      "Minnie",
+      "Soyeon",
+      "Yuqi"
+    ]
+  },
+  {
     "id": "everglow-1",
     "category": "EVERGLOW",
     "prompt": "我最爱的 EVERGLOW 成员是？",
@@ -2857,6 +4232,61 @@ export const questionBank = [
       "演唱会",
       "个人作品",
       "海外舞台"
+    ]
+  },
+  {
+    "id": "everglow-11",
+    "category": "EVERGLOW",
+    "prompt": "我最想循环的 EVERGLOW 歌曲是？",
+    "options": [
+      "La Di Da",
+      "First",
+      "Pirate",
+      "SLAY"
+    ]
+  },
+  {
+    "id": "everglow-12",
+    "category": "EVERGLOW",
+    "prompt": "我认为 EVERGLOW 最适合当开场的是？",
+    "options": [
+      "First",
+      "Pirate",
+      "SLAY",
+      "Bon Bon Chocolat"
+    ]
+  },
+  {
+    "id": "everglow-13",
+    "category": "EVERGLOW",
+    "prompt": "我最想看 EVERGLOW 谁的直拍？",
+    "options": [
+      "Aisha",
+      "Yiren",
+      "E:U",
+      "Sihyeon"
+    ]
+  },
+  {
+    "id": "everglow-14",
+    "category": "EVERGLOW",
+    "prompt": "我最喜欢 EVERGLOW 哪个视觉时期？",
+    "options": [
+      "Arrival of EVERGLOW 时期",
+      "HUSH 时期",
+      "-77.82X-78.29 时期",
+      "Return of the Girl 时期"
+    ]
+  },
+  {
+    "id": "everglow-15",
+    "category": "EVERGLOW",
+    "prompt": "我最想和 EVERGLOW 谁一起看演唱会？",
+    "options": [
+      "Yiren",
+      "E:U",
+      "Sihyeon",
+      "Mia"
     ]
   },
   {
@@ -2970,6 +4400,61 @@ export const questionBank = [
     ]
   },
   {
+    "id": "riize-11",
+    "category": "RIIZE",
+    "prompt": "我最想循环的 RIIZE 歌曲是？",
+    "options": [
+      "Talk Saxy",
+      "Impossible",
+      "Boom Boom Bass",
+      "Lucky"
+    ]
+  },
+  {
+    "id": "riize-12",
+    "category": "RIIZE",
+    "prompt": "我认为 RIIZE 最适合当开场的是？",
+    "options": [
+      "Impossible",
+      "Boom Boom Bass",
+      "Lucky",
+      "Get A Guitar"
+    ]
+  },
+  {
+    "id": "riize-13",
+    "category": "RIIZE",
+    "prompt": "我最想看 RIIZE 谁的直拍？",
+    "options": [
+      "Sohee",
+      "Anton",
+      "Shotaro",
+      "Eunseok"
+    ]
+  },
+  {
+    "id": "riize-14",
+    "category": "RIIZE",
+    "prompt": "我最喜欢 RIIZE 哪个视觉时期？",
+    "options": [
+      "Get A Guitar 时期",
+      "RIIZING 时期",
+      "RIIZING : Epilogue 时期",
+      "ODYSSEY 时期"
+    ]
+  },
+  {
+    "id": "riize-15",
+    "category": "RIIZE",
+    "prompt": "我最想和 RIIZE 谁一起看演唱会？",
+    "options": [
+      "Anton",
+      "Shotaro",
+      "Eunseok",
+      "Sungchan"
+    ]
+  },
+  {
     "id": "boynextdoor-1",
     "category": "BOYNEXTDOOR",
     "prompt": "我最爱的 BOYNEXTDOOR 成员是？",
@@ -3077,6 +4562,61 @@ export const questionBank = [
       "演唱会",
       "个人作品",
       "海外舞台"
+    ]
+  },
+  {
+    "id": "boynextdoor-11",
+    "category": "BOYNEXTDOOR",
+    "prompt": "我最想循环的 BOYNEXTDOOR 歌曲是？",
+    "options": [
+      "Nice Guy",
+      "IF I SAY, I LOVE YOU",
+      "One and Only",
+      "But Sometimes"
+    ]
+  },
+  {
+    "id": "boynextdoor-12",
+    "category": "BOYNEXTDOOR",
+    "prompt": "我认为 BOYNEXTDOOR 最适合当开场的是？",
+    "options": [
+      "IF I SAY, I LOVE YOU",
+      "One and Only",
+      "But Sometimes",
+      "Serenade"
+    ]
+  },
+  {
+    "id": "boynextdoor-13",
+    "category": "BOYNEXTDOOR",
+    "prompt": "我最想看 BOYNEXTDOOR 谁的直拍？",
+    "options": [
+      "Leehan",
+      "Woonhak",
+      "Sungho",
+      "Riwoo"
+    ]
+  },
+  {
+    "id": "boynextdoor-14",
+    "category": "BOYNEXTDOOR",
+    "prompt": "我最喜欢 BOYNEXTDOOR 哪个视觉时期？",
+    "options": [
+      "WHO! 时期",
+      "HOW? 时期",
+      "19.99 时期",
+      "WHY.. 时期"
+    ]
+  },
+  {
+    "id": "boynextdoor-15",
+    "category": "BOYNEXTDOOR",
+    "prompt": "我最想和 BOYNEXTDOOR 谁一起看演唱会？",
+    "options": [
+      "Woonhak",
+      "Sungho",
+      "Riwoo",
+      "Jaehyun"
     ]
   },
   {
@@ -3190,6 +4730,61 @@ export const questionBank = [
     ]
   },
   {
+    "id": "apink-11",
+    "category": "Apink",
+    "prompt": "我最想循环的 Apink 歌曲是？",
+    "options": [
+      "I'm so sick",
+      "%%",
+      "Dumhdurum",
+      "Dilemma"
+    ]
+  },
+  {
+    "id": "apink-12",
+    "category": "Apink",
+    "prompt": "我认为 Apink 最适合当开场的是？",
+    "options": [
+      "%%",
+      "Dumhdurum",
+      "Dilemma",
+      "NoNoNo"
+    ]
+  },
+  {
+    "id": "apink-13",
+    "category": "Apink",
+    "prompt": "我最想看 Apink 谁的直拍？",
+    "options": [
+      "Hayoung",
+      "Chorong",
+      "Bomi",
+      "Eunji"
+    ]
+  },
+  {
+    "id": "apink-14",
+    "category": "Apink",
+    "prompt": "我最喜欢 Apink 哪个视觉时期？",
+    "options": [
+      "Une Annee 时期",
+      "Pink MEMORY 时期",
+      "PERCENT 时期",
+      "SELF 时期"
+    ]
+  },
+  {
+    "id": "apink-15",
+    "category": "Apink",
+    "prompt": "我最想和 Apink 谁一起看演唱会？",
+    "options": [
+      "Chorong",
+      "Bomi",
+      "Eunji",
+      "Namjoo"
+    ]
+  },
+  {
     "id": "fromis9-1",
     "category": "fromis_9",
     "prompt": "我最爱的 fromis_9 成员是？",
@@ -3297,6 +4892,61 @@ export const questionBank = [
       "演唱会",
       "个人作品",
       "海外舞台"
+    ]
+  },
+  {
+    "id": "fromis9-11",
+    "category": "fromis_9",
+    "prompt": "我最想循环的 fromis_9 歌曲是？",
+    "options": [
+      "WE GO",
+      "DM",
+      "Stay This Way",
+      "Supersonic"
+    ]
+  },
+  {
+    "id": "fromis9-12",
+    "category": "fromis_9",
+    "prompt": "我认为 fromis_9 最适合当开场的是？",
+    "options": [
+      "DM",
+      "Stay This Way",
+      "Supersonic",
+      "To Heart"
+    ]
+  },
+  {
+    "id": "fromis9-13",
+    "category": "fromis_9",
+    "prompt": "我最想看 fromis_9 谁的直拍？",
+    "options": [
+      "Seoyeon",
+      "Chaeyoung",
+      "Nagyung",
+      "Jiheon"
+    ]
+  },
+  {
+    "id": "fromis9-14",
+    "category": "fromis_9",
+    "prompt": "我最喜欢 fromis_9 哪个视觉时期？",
+    "options": [
+      "To. Heart 时期",
+      "My Little Society 时期",
+      "Midnight Guest 时期",
+      "Unlock My World 时期"
+    ]
+  },
+  {
+    "id": "fromis9-15",
+    "category": "fromis_9",
+    "prompt": "我最想和 fromis_9 谁一起看演唱会？",
+    "options": [
+      "Chaeyoung",
+      "Nagyung",
+      "Jiheon",
+      "Saerom"
     ]
   },
   {
@@ -3410,6 +5060,61 @@ export const questionBank = [
     ]
   },
   {
+    "id": "babymonster-11",
+    "category": "BABYMONSTER",
+    "prompt": "我最想循环的 BABYMONSTER 歌曲是？",
+    "options": [
+      "LIKE THAT",
+      "CLIK CLAK",
+      "HOT SAUCE",
+      "WE GO UP"
+    ]
+  },
+  {
+    "id": "babymonster-12",
+    "category": "BABYMONSTER",
+    "prompt": "我认为 BABYMONSTER 最适合当开场的是？",
+    "options": [
+      "CLIK CLAK",
+      "HOT SAUCE",
+      "WE GO UP",
+      "BATTER UP"
+    ]
+  },
+  {
+    "id": "babymonster-13",
+    "category": "BABYMONSTER",
+    "prompt": "我最想看 BABYMONSTER 谁的直拍？",
+    "options": [
+      "Rami",
+      "Rora",
+      "Chiquita",
+      "Ruka"
+    ]
+  },
+  {
+    "id": "babymonster-14",
+    "category": "BABYMONSTER",
+    "prompt": "我最喜欢 BABYMONSTER 哪个视觉时期？",
+    "options": [
+      "BATTER UP 时期",
+      "BABYMONS7ER 时期",
+      "DRIP 时期",
+      "We Go Up 时期"
+    ]
+  },
+  {
+    "id": "babymonster-15",
+    "category": "BABYMONSTER",
+    "prompt": "我最想和 BABYMONSTER 谁一起看演唱会？",
+    "options": [
+      "Rora",
+      "Chiquita",
+      "Ruka",
+      "Pharita"
+    ]
+  },
+  {
     "id": "zerobaseone-1",
     "category": "ZEROBASEONE",
     "prompt": "我最爱的 ZEROBASEONE 成员是？",
@@ -3517,6 +5222,61 @@ export const questionBank = [
       "演唱会",
       "个人作品",
       "海外舞台"
+    ]
+  },
+  {
+    "id": "zerobaseone-11",
+    "category": "ZEROBASEONE",
+    "prompt": "我最想循环的 ZEROBASEONE 歌曲是？",
+    "options": [
+      "SWEAT",
+      "GOOD SO BAD",
+      "Doctor! Doctor!",
+      "BLUE"
+    ]
+  },
+  {
+    "id": "zerobaseone-12",
+    "category": "ZEROBASEONE",
+    "prompt": "我认为 ZEROBASEONE 最适合当开场的是？",
+    "options": [
+      "GOOD SO BAD",
+      "Doctor! Doctor!",
+      "BLUE",
+      "In Bloom"
+    ]
+  },
+  {
+    "id": "zerobaseone-13",
+    "category": "ZEROBASEONE",
+    "prompt": "我最想看 ZEROBASEONE 谁的直拍？",
+    "options": [
+      "Kim Taerae",
+      "Ricky",
+      "Kim Gyuvin",
+      "Park Gunwook"
+    ]
+  },
+  {
+    "id": "zerobaseone-14",
+    "category": "ZEROBASEONE",
+    "prompt": "我最喜欢 ZEROBASEONE 哪个视觉时期？",
+    "options": [
+      "YOUTH IN THE SHADE 时期",
+      "MELTING POINT 时期",
+      "You had me at HELLO 时期",
+      "BLUE PARADISE 时期"
+    ]
+  },
+  {
+    "id": "zerobaseone-15",
+    "category": "ZEROBASEONE",
+    "prompt": "我最想和 ZEROBASEONE 谁一起看演唱会？",
+    "options": [
+      "Ricky",
+      "Kim Gyuvin",
+      "Park Gunwook",
+      "Han Yujin"
     ]
   },
   {
@@ -3630,6 +5390,61 @@ export const questionBank = [
     ]
   },
   {
+    "id": "nmixx-11",
+    "category": "NMIXX",
+    "prompt": "我最想循环的 NMIXX 歌曲是？",
+    "options": [
+      "Dash",
+      "See that?",
+      "Know About Me",
+      "High Horse"
+    ]
+  },
+  {
+    "id": "nmixx-12",
+    "category": "NMIXX",
+    "prompt": "我认为 NMIXX 最适合当开场的是？",
+    "options": [
+      "See that?",
+      "Know About Me",
+      "High Horse",
+      "O.O"
+    ]
+  },
+  {
+    "id": "nmixx-13",
+    "category": "NMIXX",
+    "prompt": "我最想看 NMIXX 谁的直拍？",
+    "options": [
+      "Jiwoo",
+      "Kyujin",
+      "Lily",
+      "Haewon"
+    ]
+  },
+  {
+    "id": "nmixx-14",
+    "category": "NMIXX",
+    "prompt": "我最喜欢 NMIXX 哪个视觉时期？",
+    "options": [
+      "AD MARE 时期",
+      "ENTWURF 时期",
+      "expérgo 时期",
+      "Fe3O4: BREAK 时期"
+    ]
+  },
+  {
+    "id": "nmixx-15",
+    "category": "NMIXX",
+    "prompt": "我最想和 NMIXX 谁一起看演唱会？",
+    "options": [
+      "Kyujin",
+      "Lily",
+      "Haewon",
+      "Sullyoon"
+    ]
+  },
+  {
     "id": "treasure-1",
     "category": "TREASURE",
     "prompt": "我最爱的 TREASURE 成员是？",
@@ -3737,6 +5552,61 @@ export const questionBank = [
       "演唱会",
       "个人作品",
       "海外舞台"
+    ]
+  },
+  {
+    "id": "treasure-11",
+    "category": "TREASURE",
+    "prompt": "我最想循环的 TREASURE 歌曲是？",
+    "options": [
+      "HELLO",
+      "BONA BONA",
+      "KING KONG",
+      "LAST NIGHT"
+    ]
+  },
+  {
+    "id": "treasure-12",
+    "category": "TREASURE",
+    "prompt": "我认为 TREASURE 最适合当开场的是？",
+    "options": [
+      "BONA BONA",
+      "KING KONG",
+      "LAST NIGHT",
+      "BOY"
+    ]
+  },
+  {
+    "id": "treasure-13",
+    "category": "TREASURE",
+    "prompt": "我最想看 TREASURE 谁的直拍？",
+    "options": [
+      "Yoon Jaehyuk",
+      "Asahi",
+      "Doyoung",
+      "Haruto"
+    ]
+  },
+  {
+    "id": "treasure-14",
+    "category": "TREASURE",
+    "prompt": "我最喜欢 TREASURE 哪个视觉时期？",
+    "options": [
+      "THE FIRST STEP: TREASURE EFFECT 时期",
+      "THE SECOND STEP: CHAPTER ONE 时期",
+      "THE SECOND STEP: CHAPTER TWO 时期",
+      "REBOOT 时期"
+    ]
+  },
+  {
+    "id": "treasure-15",
+    "category": "TREASURE",
+    "prompt": "我最想和 TREASURE 谁一起看演唱会？",
+    "options": [
+      "Asahi",
+      "Doyoung",
+      "Haruto",
+      "Park Jeongwoo"
     ]
   },
   {
@@ -3850,6 +5720,61 @@ export const questionBank = [
     ]
   },
   {
+    "id": "illit-11",
+    "category": "ILLIT",
+    "prompt": "我最想循环的 ILLIT 歌曲是？",
+    "options": [
+      "Tick-Tack",
+      "Billyeoon Goyangi (Do the Dance)",
+      "jellyous",
+      "Magnetic"
+    ]
+  },
+  {
+    "id": "illit-12",
+    "category": "ILLIT",
+    "prompt": "我认为 ILLIT 最适合当开场的是？",
+    "options": [
+      "Billyeoon Goyangi (Do the Dance)",
+      "jellyous",
+      "Magnetic",
+      "Lucky Girl Syndrome"
+    ]
+  },
+  {
+    "id": "illit-13",
+    "category": "ILLIT",
+    "prompt": "我最想看 ILLIT 谁的直拍？",
+    "options": [
+      "Iroha",
+      "Yunah",
+      "Minju",
+      "Moka"
+    ]
+  },
+  {
+    "id": "illit-14",
+    "category": "ILLIT",
+    "prompt": "我最喜欢 ILLIT 哪个视觉时期？",
+    "options": [
+      "SUPER REAL ME 时期",
+      "I'LL LIKE YOU 时期",
+      "bomb 时期",
+      "Tick-Tack 时期"
+    ]
+  },
+  {
+    "id": "illit-15",
+    "category": "ILLIT",
+    "prompt": "我最想和 ILLIT 谁一起看演唱会？",
+    "options": [
+      "Yunah",
+      "Minju",
+      "Moka",
+      "Wonhee"
+    ]
+  },
+  {
     "id": "kissoflife-1",
     "category": "KISS OF LIFE",
     "prompt": "我最爱的 KISS OF LIFE 成员是？",
@@ -3957,6 +5882,61 @@ export const questionBank = [
       "演唱会",
       "个人作品",
       "海外舞台"
+    ]
+  },
+  {
+    "id": "kissoflife-11",
+    "category": "KISS OF LIFE",
+    "prompt": "我最想循环的 KISS OF LIFE 歌曲是？",
+    "options": [
+      "Sticky",
+      "Igloo",
+      "k bye",
+      "Shhh"
+    ]
+  },
+  {
+    "id": "kissoflife-12",
+    "category": "KISS OF LIFE",
+    "prompt": "我认为 KISS OF LIFE 最适合当开场的是？",
+    "options": [
+      "Igloo",
+      "k bye",
+      "Shhh",
+      "Ugly Heart"
+    ]
+  },
+  {
+    "id": "kissoflife-13",
+    "category": "KISS OF LIFE",
+    "prompt": "我最想看 KISS OF LIFE 谁的直拍？",
+    "options": [
+      "Julie",
+      "Natty",
+      "Belle",
+      "Haneul"
+    ]
+  },
+  {
+    "id": "kissoflife-14",
+    "category": "KISS OF LIFE",
+    "prompt": "我最喜欢 KISS OF LIFE 哪个视觉时期？",
+    "options": [
+      "Kiss of Life 时期",
+      "Born to be XX 时期",
+      "Lose Yourself 时期",
+      "Midas Touch 时期"
+    ]
+  },
+  {
+    "id": "kissoflife-15",
+    "category": "KISS OF LIFE",
+    "prompt": "我最想和 KISS OF LIFE 谁一起看演唱会？",
+    "options": [
+      "Julie",
+      "Natty",
+      "Belle",
+      "Haneul"
     ]
   },
   {
@@ -4070,6 +6050,61 @@ export const questionBank = [
     ]
   },
   {
+    "id": "tws-11",
+    "category": "TWS",
+    "prompt": "我最想循环的 TWS 歌曲是？",
+    "options": [
+      "Last Festival",
+      "Countdown",
+      "BLAST",
+      "Plot Twist"
+    ]
+  },
+  {
+    "id": "tws-12",
+    "category": "TWS",
+    "prompt": "我认为 TWS 最适合当开场的是？",
+    "options": [
+      "Countdown",
+      "BLAST",
+      "Plot Twist",
+      "hey! hey!"
+    ]
+  },
+  {
+    "id": "tws-13",
+    "category": "TWS",
+    "prompt": "我最想看 TWS 谁的直拍？",
+    "options": [
+      "Jihoon",
+      "Kyungmin",
+      "Shinyu",
+      "Dohoon"
+    ]
+  },
+  {
+    "id": "tws-14",
+    "category": "TWS",
+    "prompt": "我最喜欢 TWS 哪个视觉时期？",
+    "options": [
+      "Sparkling Blue 时期",
+      "SUMMER BEAT! 时期",
+      "TRY WITH US 时期",
+      "play hard 时期"
+    ]
+  },
+  {
+    "id": "tws-15",
+    "category": "TWS",
+    "prompt": "我最想和 TWS 谁一起看演唱会？",
+    "options": [
+      "Kyungmin",
+      "Shinyu",
+      "Dohoon",
+      "Youngjae"
+    ]
+  },
+  {
     "id": "stayc-1",
     "category": "STAYC",
     "prompt": "我最爱的 STAYC 成员是？",
@@ -4177,6 +6212,2371 @@ export const questionBank = [
       "演唱会",
       "个人作品",
       "海外舞台"
+    ]
+  },
+  {
+    "id": "stayc-11",
+    "category": "STAYC",
+    "prompt": "我最想循环的 STAYC 歌曲是？",
+    "options": [
+      "RUN2U",
+      "Beautiful Monster",
+      "Teddy Bear",
+      "Bubble"
+    ]
+  },
+  {
+    "id": "stayc-12",
+    "category": "STAYC",
+    "prompt": "我认为 STAYC 最适合当开场的是？",
+    "options": [
+      "Beautiful Monster",
+      "Teddy Bear",
+      "Bubble",
+      "SO BAD"
+    ]
+  },
+  {
+    "id": "stayc-13",
+    "category": "STAYC",
+    "prompt": "我最想看 STAYC 谁的直拍？",
+    "options": [
+      "Yoon",
+      "J",
+      "Sumin",
+      "Sieun"
+    ]
+  },
+  {
+    "id": "stayc-14",
+    "category": "STAYC",
+    "prompt": "我最喜欢 STAYC 哪个视觉时期？",
+    "options": [
+      "Star To A Young Culture 时期",
+      "STEREOTYPE 时期",
+      "YOUNG-LUV.COM 时期",
+      "Metamorphic 时期"
+    ]
+  },
+  {
+    "id": "stayc-15",
+    "category": "STAYC",
+    "prompt": "我最想和 STAYC 谁一起看演唱会？",
+    "options": [
+      "J",
+      "Sumin",
+      "Sieun",
+      "Isa"
+    ]
+  },
+  {
+    "id": "wayv-1",
+    "category": "WayV",
+    "prompt": "我最爱的 WayV 成员是？",
+    "options": [
+      "Kun",
+      "Ten",
+      "Winwin",
+      "Xiaojun"
+    ]
+  },
+  {
+    "id": "wayv-2",
+    "category": "WayV",
+    "prompt": "我最喜欢的 WayV 歌曲是？",
+    "options": [
+      "Regular",
+      "Take Off",
+      "Kick Back",
+      "Love Talk"
+    ]
+  },
+  {
+    "id": "wayv-3",
+    "category": "WayV",
+    "prompt": "我心中 WayV 最有气场的成员是？",
+    "options": [
+      "Ten",
+      "Winwin",
+      "Xiaojun",
+      "Hendery"
+    ]
+  },
+  {
+    "id": "wayv-4",
+    "category": "WayV",
+    "prompt": "我最爱的 WayV 专辑是？",
+    "options": [
+      "Take Over The Moon",
+      "Kick Back",
+      "Phantom",
+      "Give Me That"
+    ]
+  },
+  {
+    "id": "wayv-5",
+    "category": "WayV",
+    "prompt": "我最想听 WayV 谁唱主歌？",
+    "options": [
+      "Winwin",
+      "Xiaojun",
+      "Hendery",
+      "Yangyang"
+    ]
+  },
+  {
+    "id": "wayv-6",
+    "category": "WayV",
+    "prompt": "我认为 WayV 最有记忆点的舞台是？",
+    "options": [
+      "Take Off 舞台",
+      "Kick Back 舞台",
+      "Love Talk 舞台",
+      "Phantom 舞台"
+    ]
+  },
+  {
+    "id": "wayv-7",
+    "category": "WayV",
+    "prompt": "我最想和 WayV 谁做朋友？",
+    "options": [
+      "Xiaojun",
+      "Hendery",
+      "Yangyang",
+      "Kun"
+    ]
+  },
+  {
+    "id": "wayv-8",
+    "category": "WayV",
+    "prompt": "我最被 WayV 哪首歌打动？",
+    "options": [
+      "Kick Back",
+      "Love Talk",
+      "Phantom",
+      "On My Youth"
+    ]
+  },
+  {
+    "id": "wayv-9",
+    "category": "WayV",
+    "prompt": "我认为 WayV 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "wayv-10",
+    "category": "WayV",
+    "prompt": "我最期待 WayV 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "wayv-11",
+    "category": "WayV",
+    "prompt": "我最想循环的 WayV 歌曲是？",
+    "options": [
+      "Love Talk",
+      "Phantom",
+      "On My Youth",
+      "Give Me That"
+    ]
+  },
+  {
+    "id": "wayv-12",
+    "category": "WayV",
+    "prompt": "我认为 WayV 最适合当开场的是？",
+    "options": [
+      "Phantom",
+      "On My Youth",
+      "Give Me That",
+      "Regular"
+    ]
+  },
+  {
+    "id": "wayv-13",
+    "category": "WayV",
+    "prompt": "我最想看 WayV 谁的直拍？",
+    "options": [
+      "Hendery",
+      "Yangyang",
+      "Kun",
+      "Ten"
+    ]
+  },
+  {
+    "id": "wayv-14",
+    "category": "WayV",
+    "prompt": "我最喜欢 WayV 哪个视觉时期？",
+    "options": [
+      "Take Over The Moon 时期",
+      "Kick Back 时期",
+      "Phantom 时期",
+      "Give Me That 时期"
+    ]
+  },
+  {
+    "id": "wayv-15",
+    "category": "WayV",
+    "prompt": "我最想和 WayV 谁一起看演唱会？",
+    "options": [
+      "Yangyang",
+      "Kun",
+      "Ten",
+      "Winwin"
+    ]
+  },
+  {
+    "id": "plave-1",
+    "category": "PLAVE",
+    "prompt": "我最爱的 PLAVE 成员是？",
+    "options": [
+      "Yejun",
+      "Noah",
+      "Bamby",
+      "Eunho"
+    ]
+  },
+  {
+    "id": "plave-2",
+    "category": "PLAVE",
+    "prompt": "我最喜欢的 PLAVE 歌曲是？",
+    "options": [
+      "Wait For You",
+      "Why?",
+      "Way 4 Luv",
+      "Pump Up The Volume!"
+    ]
+  },
+  {
+    "id": "plave-3",
+    "category": "PLAVE",
+    "prompt": "我心中 PLAVE 最有气场的成员是？",
+    "options": [
+      "Noah",
+      "Bamby",
+      "Eunho",
+      "Hamin"
+    ]
+  },
+  {
+    "id": "plave-4",
+    "category": "PLAVE",
+    "prompt": "我最爱的 PLAVE 专辑是？",
+    "options": [
+      "Asterum",
+      "Asterum : 134-1",
+      "Caligo Pt.1",
+      "Pump Up The Volume!"
+    ]
+  },
+  {
+    "id": "plave-5",
+    "category": "PLAVE",
+    "prompt": "我最想听 PLAVE 谁唱主歌？",
+    "options": [
+      "Bamby",
+      "Eunho",
+      "Hamin",
+      "Yejun"
+    ]
+  },
+  {
+    "id": "plave-6",
+    "category": "PLAVE",
+    "prompt": "我认为 PLAVE 最有记忆点的舞台是？",
+    "options": [
+      "Why? 舞台",
+      "Way 4 Luv 舞台",
+      "Pump Up The Volume! 舞台",
+      "Mega Vice 舞台"
+    ]
+  },
+  {
+    "id": "plave-7",
+    "category": "PLAVE",
+    "prompt": "我最想和 PLAVE 谁做朋友？",
+    "options": [
+      "Eunho",
+      "Hamin",
+      "Yejun",
+      "Noah"
+    ]
+  },
+  {
+    "id": "plave-8",
+    "category": "PLAVE",
+    "prompt": "我最被 PLAVE 哪首歌打动？",
+    "options": [
+      "Way 4 Luv",
+      "Pump Up The Volume!",
+      "Mega Vice",
+      "Dash"
+    ]
+  },
+  {
+    "id": "plave-9",
+    "category": "PLAVE",
+    "prompt": "我认为 PLAVE 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "plave-10",
+    "category": "PLAVE",
+    "prompt": "我最期待 PLAVE 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "plave-11",
+    "category": "PLAVE",
+    "prompt": "我最想循环的 PLAVE 歌曲是？",
+    "options": [
+      "Pump Up The Volume!",
+      "Mega Vice",
+      "Dash",
+      "From"
+    ]
+  },
+  {
+    "id": "plave-12",
+    "category": "PLAVE",
+    "prompt": "我认为 PLAVE 最适合当开场的是？",
+    "options": [
+      "Mega Vice",
+      "Dash",
+      "From",
+      "Wait For You"
+    ]
+  },
+  {
+    "id": "plave-13",
+    "category": "PLAVE",
+    "prompt": "我最想看 PLAVE 谁的直拍？",
+    "options": [
+      "Hamin",
+      "Yejun",
+      "Noah",
+      "Bamby"
+    ]
+  },
+  {
+    "id": "plave-14",
+    "category": "PLAVE",
+    "prompt": "我最喜欢 PLAVE 哪个视觉时期？",
+    "options": [
+      "Asterum 时期",
+      "Asterum : 134-1 时期",
+      "Caligo Pt.1 时期",
+      "Pump Up The Volume! 时期"
+    ]
+  },
+  {
+    "id": "plave-15",
+    "category": "PLAVE",
+    "prompt": "我最想和 PLAVE 谁一起看演唱会？",
+    "options": [
+      "Yejun",
+      "Noah",
+      "Bamby",
+      "Eunho"
+    ]
+  },
+  {
+    "id": "meovv-1",
+    "category": "MEOVV",
+    "prompt": "我最爱的 MEOVV 成员是？",
+    "options": [
+      "Sooin",
+      "Gawon",
+      "Anna",
+      "Narin"
+    ]
+  },
+  {
+    "id": "meovv-2",
+    "category": "MEOVV",
+    "prompt": "我最喜欢的 MEOVV 歌曲是？",
+    "options": [
+      "MEOW",
+      "HANDS UP",
+      "DROP TOP",
+      "TOXIC"
+    ]
+  },
+  {
+    "id": "meovv-3",
+    "category": "MEOVV",
+    "prompt": "我心中 MEOVV 最有气场的成员是？",
+    "options": [
+      "Gawon",
+      "Anna",
+      "Narin",
+      "Ella"
+    ]
+  },
+  {
+    "id": "meovv-4",
+    "category": "MEOVV",
+    "prompt": "我最爱的 MEOVV 专辑是？",
+    "options": [
+      "MEOW",
+      "HANDS UP",
+      "MY EYES OPEN VVIDE",
+      "DROP TOP"
+    ]
+  },
+  {
+    "id": "meovv-5",
+    "category": "MEOVV",
+    "prompt": "我最想听 MEOVV 谁唱主歌？",
+    "options": [
+      "Anna",
+      "Narin",
+      "Ella",
+      "Sooin"
+    ]
+  },
+  {
+    "id": "meovv-6",
+    "category": "MEOVV",
+    "prompt": "我认为 MEOVV 最有记忆点的舞台是？",
+    "options": [
+      "MEOW 舞台",
+      "HANDS UP 舞台",
+      "DROP TOP 舞台",
+      "TOXIC 舞台"
+    ]
+  },
+  {
+    "id": "meovv-7",
+    "category": "MEOVV",
+    "prompt": "我最想和 MEOVV 谁做朋友？",
+    "options": [
+      "Narin",
+      "Ella",
+      "Sooin",
+      "Gawon"
+    ]
+  },
+  {
+    "id": "meovv-8",
+    "category": "MEOVV",
+    "prompt": "我最被 MEOVV 哪首歌打动？",
+    "options": [
+      "MEOW",
+      "HANDS UP",
+      "DROP TOP",
+      "TOXIC"
+    ]
+  },
+  {
+    "id": "meovv-9",
+    "category": "MEOVV",
+    "prompt": "我认为 MEOVV 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "meovv-10",
+    "category": "MEOVV",
+    "prompt": "我最期待 MEOVV 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "meovv-11",
+    "category": "MEOVV",
+    "prompt": "我最想循环的 MEOVV 歌曲是？",
+    "options": [
+      "MEOW",
+      "HANDS UP",
+      "DROP TOP",
+      "TOXIC"
+    ]
+  },
+  {
+    "id": "meovv-12",
+    "category": "MEOVV",
+    "prompt": "我认为 MEOVV 最适合当开场的是？",
+    "options": [
+      "MEOW",
+      "HANDS UP",
+      "DROP TOP",
+      "TOXIC"
+    ]
+  },
+  {
+    "id": "meovv-13",
+    "category": "MEOVV",
+    "prompt": "我最想看 MEOVV 谁的直拍？",
+    "options": [
+      "Ella",
+      "Sooin",
+      "Gawon",
+      "Anna"
+    ]
+  },
+  {
+    "id": "meovv-14",
+    "category": "MEOVV",
+    "prompt": "我最喜欢 MEOVV 哪个视觉时期？",
+    "options": [
+      "MEOW 时期",
+      "HANDS UP 时期",
+      "MY EYES OPEN VVIDE 时期",
+      "DROP TOP 时期"
+    ]
+  },
+  {
+    "id": "meovv-15",
+    "category": "MEOVV",
+    "prompt": "我最想和 MEOVV 谁一起看演唱会？",
+    "options": [
+      "Sooin",
+      "Gawon",
+      "Anna",
+      "Narin"
+    ]
+  },
+  {
+    "id": "p1harmony-1",
+    "category": "P1Harmony",
+    "prompt": "我最爱的 P1Harmony 成员是？",
+    "options": [
+      "Keeho",
+      "Theo",
+      "Jiung",
+      "Intak"
+    ]
+  },
+  {
+    "id": "p1harmony-2",
+    "category": "P1Harmony",
+    "prompt": "我最喜欢的 P1Harmony 歌曲是？",
+    "options": [
+      "Siren",
+      "+82",
+      "Do It Like This",
+      "Jump"
+    ]
+  },
+  {
+    "id": "p1harmony-3",
+    "category": "P1Harmony",
+    "prompt": "我心中 P1Harmony 最有气场的成员是？",
+    "options": [
+      "Theo",
+      "Jiung",
+      "Intak",
+      "Soul"
+    ]
+  },
+  {
+    "id": "p1harmony-4",
+    "category": "P1Harmony",
+    "prompt": "我最爱的 P1Harmony 专辑是？",
+    "options": [
+      "DISHARMONY : STAND OUT",
+      "DISHARMONY : BREAK OUT",
+      "HARMONY : SET IN",
+      "Killin' It"
+    ]
+  },
+  {
+    "id": "p1harmony-5",
+    "category": "P1Harmony",
+    "prompt": "我最想听 P1Harmony 谁唱主歌？",
+    "options": [
+      "Jiung",
+      "Intak",
+      "Soul",
+      "Jongseob"
+    ]
+  },
+  {
+    "id": "p1harmony-6",
+    "category": "P1Harmony",
+    "prompt": "我认为 P1Harmony 最有记忆点的舞台是？",
+    "options": [
+      "+82 舞台",
+      "Do It Like This 舞台",
+      "Jump 舞台",
+      "Sad Song 舞台"
+    ]
+  },
+  {
+    "id": "p1harmony-7",
+    "category": "P1Harmony",
+    "prompt": "我最想和 P1Harmony 谁做朋友？",
+    "options": [
+      "Intak",
+      "Soul",
+      "Jongseob",
+      "Keeho"
+    ]
+  },
+  {
+    "id": "p1harmony-8",
+    "category": "P1Harmony",
+    "prompt": "我最被 P1Harmony 哪首歌打动？",
+    "options": [
+      "Do It Like This",
+      "Jump",
+      "Sad Song",
+      "Pretty Boy"
+    ]
+  },
+  {
+    "id": "p1harmony-9",
+    "category": "P1Harmony",
+    "prompt": "我认为 P1Harmony 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "p1harmony-10",
+    "category": "P1Harmony",
+    "prompt": "我最期待 P1Harmony 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "p1harmony-11",
+    "category": "P1Harmony",
+    "prompt": "我最想循环的 P1Harmony 歌曲是？",
+    "options": [
+      "Jump",
+      "Sad Song",
+      "Pretty Boy",
+      "DUH!"
+    ]
+  },
+  {
+    "id": "p1harmony-12",
+    "category": "P1Harmony",
+    "prompt": "我认为 P1Harmony 最适合当开场的是？",
+    "options": [
+      "Sad Song",
+      "Pretty Boy",
+      "DUH!",
+      "Siren"
+    ]
+  },
+  {
+    "id": "p1harmony-13",
+    "category": "P1Harmony",
+    "prompt": "我最想看 P1Harmony 谁的直拍？",
+    "options": [
+      "Soul",
+      "Jongseob",
+      "Keeho",
+      "Theo"
+    ]
+  },
+  {
+    "id": "p1harmony-14",
+    "category": "P1Harmony",
+    "prompt": "我最喜欢 P1Harmony 哪个视觉时期？",
+    "options": [
+      "DISHARMONY : STAND OUT 时期",
+      "DISHARMONY : BREAK OUT 时期",
+      "HARMONY : SET IN 时期",
+      "Killin' It 时期"
+    ]
+  },
+  {
+    "id": "p1harmony-15",
+    "category": "P1Harmony",
+    "prompt": "我最想和 P1Harmony 谁一起看演唱会？",
+    "options": [
+      "Jongseob",
+      "Keeho",
+      "Theo",
+      "Jiung"
+    ]
+  },
+  {
+    "id": "xdinaryheroes-1",
+    "category": "Xdinary Heroes",
+    "prompt": "我最爱的 Xdinary Heroes 成员是？",
+    "options": [
+      "Gunil",
+      "Jungsu",
+      "Gaon",
+      "O.de"
+    ]
+  },
+  {
+    "id": "xdinaryheroes-2",
+    "category": "Xdinary Heroes",
+    "prompt": "我最喜欢的 Xdinary Heroes 歌曲是？",
+    "options": [
+      "Happy Death Day",
+      "Test Me",
+      "Freakin' Bad",
+      "Tight"
+    ]
+  },
+  {
+    "id": "xdinaryheroes-3",
+    "category": "Xdinary Heroes",
+    "prompt": "我心中 Xdinary Heroes 最有气场的成员是？",
+    "options": [
+      "Jungsu",
+      "Gaon",
+      "O.de",
+      "Jun Han"
+    ]
+  },
+  {
+    "id": "xdinaryheroes-4",
+    "category": "Xdinary Heroes",
+    "prompt": "我最爱的 Xdinary Heroes 专辑是？",
+    "options": [
+      "Hello, world!",
+      "Overload",
+      "Troubleshooting",
+      "LIVE and FALL"
+    ]
+  },
+  {
+    "id": "xdinaryheroes-5",
+    "category": "Xdinary Heroes",
+    "prompt": "我最想听 Xdinary Heroes 谁唱主歌？",
+    "options": [
+      "Gaon",
+      "O.de",
+      "Jun Han",
+      "Jooyeon"
+    ]
+  },
+  {
+    "id": "xdinaryheroes-6",
+    "category": "Xdinary Heroes",
+    "prompt": "我认为 Xdinary Heroes 最有记忆点的舞台是？",
+    "options": [
+      "Test Me 舞台",
+      "Freakin' Bad 舞台",
+      "Tight 舞台",
+      "Sweat 舞台"
+    ]
+  },
+  {
+    "id": "xdinaryheroes-7",
+    "category": "Xdinary Heroes",
+    "prompt": "我最想和 Xdinary Heroes 谁做朋友？",
+    "options": [
+      "O.de",
+      "Jun Han",
+      "Jooyeon",
+      "Gunil"
+    ]
+  },
+  {
+    "id": "xdinaryheroes-8",
+    "category": "Xdinary Heroes",
+    "prompt": "我最被 Xdinary Heroes 哪首歌打动？",
+    "options": [
+      "Freakin' Bad",
+      "Tight",
+      "Sweat",
+      "Night Before the End"
+    ]
+  },
+  {
+    "id": "xdinaryheroes-9",
+    "category": "Xdinary Heroes",
+    "prompt": "我认为 Xdinary Heroes 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "xdinaryheroes-10",
+    "category": "Xdinary Heroes",
+    "prompt": "我最期待 Xdinary Heroes 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "xdinaryheroes-11",
+    "category": "Xdinary Heroes",
+    "prompt": "我最想循环的 Xdinary Heroes 歌曲是？",
+    "options": [
+      "Tight",
+      "Sweat",
+      "Night Before the End",
+      "Little Things"
+    ]
+  },
+  {
+    "id": "xdinaryheroes-12",
+    "category": "Xdinary Heroes",
+    "prompt": "我认为 Xdinary Heroes 最适合当开场的是？",
+    "options": [
+      "Sweat",
+      "Night Before the End",
+      "Little Things",
+      "Happy Death Day"
+    ]
+  },
+  {
+    "id": "xdinaryheroes-13",
+    "category": "Xdinary Heroes",
+    "prompt": "我最想看 Xdinary Heroes 谁的直拍？",
+    "options": [
+      "Jun Han",
+      "Jooyeon",
+      "Gunil",
+      "Jungsu"
+    ]
+  },
+  {
+    "id": "xdinaryheroes-14",
+    "category": "Xdinary Heroes",
+    "prompt": "我最喜欢 Xdinary Heroes 哪个视觉时期？",
+    "options": [
+      "Hello, world! 时期",
+      "Overload 时期",
+      "Troubleshooting 时期",
+      "LIVE and FALL 时期"
+    ]
+  },
+  {
+    "id": "xdinaryheroes-15",
+    "category": "Xdinary Heroes",
+    "prompt": "我最想和 Xdinary Heroes 谁一起看演唱会？",
+    "options": [
+      "Jooyeon",
+      "Gunil",
+      "Jungsu",
+      "Gaon"
+    ]
+  },
+  {
+    "id": "day6-1",
+    "category": "DAY6",
+    "prompt": "我最爱的 DAY6 成员是？",
+    "options": [
+      "Sungjin",
+      "Young K",
+      "Wonpil",
+      "Dowoon"
+    ]
+  },
+  {
+    "id": "day6-2",
+    "category": "DAY6",
+    "prompt": "我最喜欢的 DAY6 歌曲是？",
+    "options": [
+      "You Were Beautiful",
+      "I Like You",
+      "Time of Our Life",
+      "Zombie"
+    ]
+  },
+  {
+    "id": "day6-3",
+    "category": "DAY6",
+    "prompt": "我心中 DAY6 最有气场的成员是？",
+    "options": [
+      "Sungjin",
+      "Young K",
+      "Wonpil",
+      "Dowoon"
+    ]
+  },
+  {
+    "id": "day6-4",
+    "category": "DAY6",
+    "prompt": "我最爱的 DAY6 专辑是？",
+    "options": [
+      "Sunrise",
+      "Moonrise",
+      "The Book of Us : Gravity",
+      "Fourever"
+    ]
+  },
+  {
+    "id": "day6-5",
+    "category": "DAY6",
+    "prompt": "我最想听 DAY6 谁唱主歌？",
+    "options": [
+      "Sungjin",
+      "Young K",
+      "Wonpil",
+      "Dowoon"
+    ]
+  },
+  {
+    "id": "day6-6",
+    "category": "DAY6",
+    "prompt": "我认为 DAY6 最有记忆点的舞台是？",
+    "options": [
+      "I Like You 舞台",
+      "Time of Our Life 舞台",
+      "Zombie 舞台",
+      "Welcome to the Show 舞台"
+    ]
+  },
+  {
+    "id": "day6-7",
+    "category": "DAY6",
+    "prompt": "我最想和 DAY6 谁做朋友？",
+    "options": [
+      "Sungjin",
+      "Young K",
+      "Wonpil",
+      "Dowoon"
+    ]
+  },
+  {
+    "id": "day6-8",
+    "category": "DAY6",
+    "prompt": "我最被 DAY6 哪首歌打动？",
+    "options": [
+      "Time of Our Life",
+      "Zombie",
+      "Welcome to the Show",
+      "HAPPY"
+    ]
+  },
+  {
+    "id": "day6-9",
+    "category": "DAY6",
+    "prompt": "我认为 DAY6 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "day6-10",
+    "category": "DAY6",
+    "prompt": "我最期待 DAY6 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "day6-11",
+    "category": "DAY6",
+    "prompt": "我最想循环的 DAY6 歌曲是？",
+    "options": [
+      "Zombie",
+      "Welcome to the Show",
+      "HAPPY",
+      "Maybe Tomorrow"
+    ]
+  },
+  {
+    "id": "day6-12",
+    "category": "DAY6",
+    "prompt": "我认为 DAY6 最适合当开场的是？",
+    "options": [
+      "Welcome to the Show",
+      "HAPPY",
+      "Maybe Tomorrow",
+      "You Were Beautiful"
+    ]
+  },
+  {
+    "id": "day6-13",
+    "category": "DAY6",
+    "prompt": "我最想看 DAY6 谁的直拍？",
+    "options": [
+      "Sungjin",
+      "Young K",
+      "Wonpil",
+      "Dowoon"
+    ]
+  },
+  {
+    "id": "day6-14",
+    "category": "DAY6",
+    "prompt": "我最喜欢 DAY6 哪个视觉时期？",
+    "options": [
+      "Sunrise 时期",
+      "Moonrise 时期",
+      "The Book of Us : Gravity 时期",
+      "Fourever 时期"
+    ]
+  },
+  {
+    "id": "day6-15",
+    "category": "DAY6",
+    "prompt": "我最想和 DAY6 谁一起看演唱会？",
+    "options": [
+      "Sungjin",
+      "Young K",
+      "Wonpil",
+      "Dowoon"
+    ]
+  },
+  {
+    "id": "mamamoo-1",
+    "category": "MAMAMOO",
+    "prompt": "我最爱的 MAMAMOO 成员是？",
+    "options": [
+      "Solar",
+      "Moonbyul",
+      "Wheein",
+      "Hwasa"
+    ]
+  },
+  {
+    "id": "mamamoo-2",
+    "category": "MAMAMOO",
+    "prompt": "我最喜欢的 MAMAMOO 歌曲是？",
+    "options": [
+      "You're the Best",
+      "Starry Night",
+      "HIP",
+      "gogobebe"
+    ]
+  },
+  {
+    "id": "mamamoo-3",
+    "category": "MAMAMOO",
+    "prompt": "我心中 MAMAMOO 最有气场的成员是？",
+    "options": [
+      "Solar",
+      "Moonbyul",
+      "Wheein",
+      "Hwasa"
+    ]
+  },
+  {
+    "id": "mamamoo-4",
+    "category": "MAMAMOO",
+    "prompt": "我最爱的 MAMAMOO 专辑是？",
+    "options": [
+      "Melting",
+      "Red Moon",
+      "Reality in BLACK",
+      "MIC ON"
+    ]
+  },
+  {
+    "id": "mamamoo-5",
+    "category": "MAMAMOO",
+    "prompt": "我最想听 MAMAMOO 谁唱主歌？",
+    "options": [
+      "Solar",
+      "Moonbyul",
+      "Wheein",
+      "Hwasa"
+    ]
+  },
+  {
+    "id": "mamamoo-6",
+    "category": "MAMAMOO",
+    "prompt": "我认为 MAMAMOO 最有记忆点的舞台是？",
+    "options": [
+      "Starry Night 舞台",
+      "HIP 舞台",
+      "gogobebe 舞台",
+      "Décalcomanie 舞台"
+    ]
+  },
+  {
+    "id": "mamamoo-7",
+    "category": "MAMAMOO",
+    "prompt": "我最想和 MAMAMOO 谁做朋友？",
+    "options": [
+      "Solar",
+      "Moonbyul",
+      "Wheein",
+      "Hwasa"
+    ]
+  },
+  {
+    "id": "mamamoo-8",
+    "category": "MAMAMOO",
+    "prompt": "我最被 MAMAMOO 哪首歌打动？",
+    "options": [
+      "HIP",
+      "gogobebe",
+      "Décalcomanie",
+      "Where Are We Now"
+    ]
+  },
+  {
+    "id": "mamamoo-9",
+    "category": "MAMAMOO",
+    "prompt": "我认为 MAMAMOO 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "mamamoo-10",
+    "category": "MAMAMOO",
+    "prompt": "我最期待 MAMAMOO 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "mamamoo-11",
+    "category": "MAMAMOO",
+    "prompt": "我最想循环的 MAMAMOO 歌曲是？",
+    "options": [
+      "gogobebe",
+      "Décalcomanie",
+      "Where Are We Now",
+      "I MISS YOU"
+    ]
+  },
+  {
+    "id": "mamamoo-12",
+    "category": "MAMAMOO",
+    "prompt": "我认为 MAMAMOO 最适合当开场的是？",
+    "options": [
+      "Décalcomanie",
+      "Where Are We Now",
+      "I MISS YOU",
+      "You're the Best"
+    ]
+  },
+  {
+    "id": "mamamoo-13",
+    "category": "MAMAMOO",
+    "prompt": "我最想看 MAMAMOO 谁的直拍？",
+    "options": [
+      "Solar",
+      "Moonbyul",
+      "Wheein",
+      "Hwasa"
+    ]
+  },
+  {
+    "id": "mamamoo-14",
+    "category": "MAMAMOO",
+    "prompt": "我最喜欢 MAMAMOO 哪个视觉时期？",
+    "options": [
+      "Melting 时期",
+      "Red Moon 时期",
+      "Reality in BLACK 时期",
+      "MIC ON 时期"
+    ]
+  },
+  {
+    "id": "mamamoo-15",
+    "category": "MAMAMOO",
+    "prompt": "我最想和 MAMAMOO 谁一起看演唱会？",
+    "options": [
+      "Solar",
+      "Moonbyul",
+      "Wheein",
+      "Hwasa"
+    ]
+  },
+  {
+    "id": "ohmygirl-1",
+    "category": "Oh My Girl",
+    "prompt": "我最爱的 Oh My Girl 成员是？",
+    "options": [
+      "Hyojung",
+      "Mimi",
+      "YooA",
+      "Seunghee"
+    ]
+  },
+  {
+    "id": "ohmygirl-2",
+    "category": "Oh My Girl",
+    "prompt": "我最喜欢的 Oh My Girl 歌曲是？",
+    "options": [
+      "Closer",
+      "Secret Garden",
+      "Nonstop",
+      "Dolphin"
+    ]
+  },
+  {
+    "id": "ohmygirl-3",
+    "category": "Oh My Girl",
+    "prompt": "我心中 Oh My Girl 最有气场的成员是？",
+    "options": [
+      "Mimi",
+      "YooA",
+      "Seunghee",
+      "Yubin"
+    ]
+  },
+  {
+    "id": "ohmygirl-4",
+    "category": "Oh My Girl",
+    "prompt": "我最爱的 Oh My Girl 专辑是？",
+    "options": [
+      "WINDY DAY",
+      "Remember Me",
+      "NONSTOP",
+      "Real Love"
+    ]
+  },
+  {
+    "id": "ohmygirl-5",
+    "category": "Oh My Girl",
+    "prompt": "我最想听 Oh My Girl 谁唱主歌？",
+    "options": [
+      "YooA",
+      "Seunghee",
+      "Yubin",
+      "Arin"
+    ]
+  },
+  {
+    "id": "ohmygirl-6",
+    "category": "Oh My Girl",
+    "prompt": "我认为 Oh My Girl 最有记忆点的舞台是？",
+    "options": [
+      "Secret Garden 舞台",
+      "Nonstop 舞台",
+      "Dolphin 舞台",
+      "Dun Dun Dance 舞台"
+    ]
+  },
+  {
+    "id": "ohmygirl-7",
+    "category": "Oh My Girl",
+    "prompt": "我最想和 Oh My Girl 谁做朋友？",
+    "options": [
+      "Seunghee",
+      "Yubin",
+      "Arin",
+      "Hyojung"
+    ]
+  },
+  {
+    "id": "ohmygirl-8",
+    "category": "Oh My Girl",
+    "prompt": "我最被 Oh My Girl 哪首歌打动？",
+    "options": [
+      "Nonstop",
+      "Dolphin",
+      "Dun Dun Dance",
+      "Real Love"
+    ]
+  },
+  {
+    "id": "ohmygirl-9",
+    "category": "Oh My Girl",
+    "prompt": "我认为 Oh My Girl 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "ohmygirl-10",
+    "category": "Oh My Girl",
+    "prompt": "我最期待 Oh My Girl 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "ohmygirl-11",
+    "category": "Oh My Girl",
+    "prompt": "我最想循环的 Oh My Girl 歌曲是？",
+    "options": [
+      "Dolphin",
+      "Dun Dun Dance",
+      "Real Love",
+      "Classified"
+    ]
+  },
+  {
+    "id": "ohmygirl-12",
+    "category": "Oh My Girl",
+    "prompt": "我认为 Oh My Girl 最适合当开场的是？",
+    "options": [
+      "Dun Dun Dance",
+      "Real Love",
+      "Classified",
+      "Closer"
+    ]
+  },
+  {
+    "id": "ohmygirl-13",
+    "category": "Oh My Girl",
+    "prompt": "我最想看 Oh My Girl 谁的直拍？",
+    "options": [
+      "Yubin",
+      "Arin",
+      "Hyojung",
+      "Mimi"
+    ]
+  },
+  {
+    "id": "ohmygirl-14",
+    "category": "Oh My Girl",
+    "prompt": "我最喜欢 Oh My Girl 哪个视觉时期？",
+    "options": [
+      "WINDY DAY 时期",
+      "Remember Me 时期",
+      "NONSTOP 时期",
+      "Real Love 时期"
+    ]
+  },
+  {
+    "id": "ohmygirl-15",
+    "category": "Oh My Girl",
+    "prompt": "我最想和 Oh My Girl 谁一起看演唱会？",
+    "options": [
+      "Arin",
+      "Hyojung",
+      "Mimi",
+      "YooA"
+    ]
+  },
+  {
+    "id": "gfriend-1",
+    "category": "GFRIEND",
+    "prompt": "我最爱的 GFRIEND 成员是？",
+    "options": [
+      "Sowon",
+      "Yerin",
+      "Eunha",
+      "Yuju"
+    ]
+  },
+  {
+    "id": "gfriend-2",
+    "category": "GFRIEND",
+    "prompt": "我最喜欢的 GFRIEND 歌曲是？",
+    "options": [
+      "Me Gustas Tu",
+      "Rough",
+      "Navillera",
+      "Time for the Moon Night"
+    ]
+  },
+  {
+    "id": "gfriend-3",
+    "category": "GFRIEND",
+    "prompt": "我心中 GFRIEND 最有气场的成员是？",
+    "options": [
+      "Yerin",
+      "Eunha",
+      "Yuju",
+      "SinB"
+    ]
+  },
+  {
+    "id": "gfriend-4",
+    "category": "GFRIEND",
+    "prompt": "我最爱的 GFRIEND 专辑是？",
+    "options": [
+      "LOL",
+      "The Awakening",
+      "Time for the Moon Night",
+      "回:Walpurgis Night"
+    ]
+  },
+  {
+    "id": "gfriend-5",
+    "category": "GFRIEND",
+    "prompt": "我最想听 GFRIEND 谁唱主歌？",
+    "options": [
+      "Eunha",
+      "Yuju",
+      "SinB",
+      "Umji"
+    ]
+  },
+  {
+    "id": "gfriend-6",
+    "category": "GFRIEND",
+    "prompt": "我认为 GFRIEND 最有记忆点的舞台是？",
+    "options": [
+      "Rough 舞台",
+      "Navillera 舞台",
+      "Time for the Moon Night 舞台",
+      "Sunrise 舞台"
+    ]
+  },
+  {
+    "id": "gfriend-7",
+    "category": "GFRIEND",
+    "prompt": "我最想和 GFRIEND 谁做朋友？",
+    "options": [
+      "Yuju",
+      "SinB",
+      "Umji",
+      "Sowon"
+    ]
+  },
+  {
+    "id": "gfriend-8",
+    "category": "GFRIEND",
+    "prompt": "我最被 GFRIEND 哪首歌打动？",
+    "options": [
+      "Navillera",
+      "Time for the Moon Night",
+      "Sunrise",
+      "MAGO"
+    ]
+  },
+  {
+    "id": "gfriend-9",
+    "category": "GFRIEND",
+    "prompt": "我认为 GFRIEND 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "gfriend-10",
+    "category": "GFRIEND",
+    "prompt": "我最期待 GFRIEND 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "gfriend-11",
+    "category": "GFRIEND",
+    "prompt": "我最想循环的 GFRIEND 歌曲是？",
+    "options": [
+      "Time for the Moon Night",
+      "Sunrise",
+      "MAGO",
+      "Apple"
+    ]
+  },
+  {
+    "id": "gfriend-12",
+    "category": "GFRIEND",
+    "prompt": "我认为 GFRIEND 最适合当开场的是？",
+    "options": [
+      "Sunrise",
+      "MAGO",
+      "Apple",
+      "Me Gustas Tu"
+    ]
+  },
+  {
+    "id": "gfriend-13",
+    "category": "GFRIEND",
+    "prompt": "我最想看 GFRIEND 谁的直拍？",
+    "options": [
+      "SinB",
+      "Umji",
+      "Sowon",
+      "Yerin"
+    ]
+  },
+  {
+    "id": "gfriend-14",
+    "category": "GFRIEND",
+    "prompt": "我最喜欢 GFRIEND 哪个视觉时期？",
+    "options": [
+      "LOL 时期",
+      "The Awakening 时期",
+      "Time for the Moon Night 时期",
+      "回:Walpurgis Night 时期"
+    ]
+  },
+  {
+    "id": "gfriend-15",
+    "category": "GFRIEND",
+    "prompt": "我最想和 GFRIEND 谁一起看演唱会？",
+    "options": [
+      "Umji",
+      "Sowon",
+      "Yerin",
+      "Eunha"
+    ]
+  },
+  {
+    "id": "2ne1-1",
+    "category": "2NE1",
+    "prompt": "我最爱的 2NE1 成员是？",
+    "options": [
+      "CL",
+      "Park Bom",
+      "Dara",
+      "Minzy"
+    ]
+  },
+  {
+    "id": "2ne1-2",
+    "category": "2NE1",
+    "prompt": "我最喜欢的 2NE1 歌曲是？",
+    "options": [
+      "Fire",
+      "I Am The Best",
+      "Lonely",
+      "Ugly"
+    ]
+  },
+  {
+    "id": "2ne1-3",
+    "category": "2NE1",
+    "prompt": "我心中 2NE1 最有气场的成员是？",
+    "options": [
+      "CL",
+      "Park Bom",
+      "Dara",
+      "Minzy"
+    ]
+  },
+  {
+    "id": "2ne1-4",
+    "category": "2NE1",
+    "prompt": "我最爱的 2NE1 专辑是？",
+    "options": [
+      "To Anyone",
+      "2NE1 2nd Mini Album",
+      "Crush",
+      "NOLZA"
+    ]
+  },
+  {
+    "id": "2ne1-5",
+    "category": "2NE1",
+    "prompt": "我最想听 2NE1 谁唱主歌？",
+    "options": [
+      "CL",
+      "Park Bom",
+      "Dara",
+      "Minzy"
+    ]
+  },
+  {
+    "id": "2ne1-6",
+    "category": "2NE1",
+    "prompt": "我认为 2NE1 最有记忆点的舞台是？",
+    "options": [
+      "I Am The Best 舞台",
+      "Lonely 舞台",
+      "Ugly 舞台",
+      "Come Back Home 舞台"
+    ]
+  },
+  {
+    "id": "2ne1-7",
+    "category": "2NE1",
+    "prompt": "我最想和 2NE1 谁做朋友？",
+    "options": [
+      "CL",
+      "Park Bom",
+      "Dara",
+      "Minzy"
+    ]
+  },
+  {
+    "id": "2ne1-8",
+    "category": "2NE1",
+    "prompt": "我最被 2NE1 哪首歌打动？",
+    "options": [
+      "Lonely",
+      "Ugly",
+      "Come Back Home",
+      "Gotta Be You"
+    ]
+  },
+  {
+    "id": "2ne1-9",
+    "category": "2NE1",
+    "prompt": "我认为 2NE1 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "2ne1-10",
+    "category": "2NE1",
+    "prompt": "我最期待 2NE1 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "2ne1-11",
+    "category": "2NE1",
+    "prompt": "我最想循环的 2NE1 歌曲是？",
+    "options": [
+      "Ugly",
+      "Come Back Home",
+      "Gotta Be You",
+      "I Don't Care"
+    ]
+  },
+  {
+    "id": "2ne1-12",
+    "category": "2NE1",
+    "prompt": "我认为 2NE1 最适合当开场的是？",
+    "options": [
+      "Come Back Home",
+      "Gotta Be You",
+      "I Don't Care",
+      "Fire"
+    ]
+  },
+  {
+    "id": "2ne1-13",
+    "category": "2NE1",
+    "prompt": "我最想看 2NE1 谁的直拍？",
+    "options": [
+      "CL",
+      "Park Bom",
+      "Dara",
+      "Minzy"
+    ]
+  },
+  {
+    "id": "2ne1-14",
+    "category": "2NE1",
+    "prompt": "我最喜欢 2NE1 哪个视觉时期？",
+    "options": [
+      "To Anyone 时期",
+      "2NE1 2nd Mini Album 时期",
+      "Crush 时期",
+      "NOLZA 时期"
+    ]
+  },
+  {
+    "id": "2ne1-15",
+    "category": "2NE1",
+    "prompt": "我最想和 2NE1 谁一起看演唱会？",
+    "options": [
+      "CL",
+      "Park Bom",
+      "Dara",
+      "Minzy"
+    ]
+  },
+  {
+    "id": "bigbang-1",
+    "category": "BIGBANG",
+    "prompt": "我最爱的 BIGBANG 成员是？",
+    "options": [
+      "G-Dragon",
+      "T.O.P",
+      "Taeyang",
+      "Daesung"
+    ]
+  },
+  {
+    "id": "bigbang-2",
+    "category": "BIGBANG",
+    "prompt": "我最喜欢的 BIGBANG 歌曲是？",
+    "options": [
+      "Haru Haru",
+      "Fantastic Baby",
+      "Bang Bang Bang",
+      "Loser"
+    ]
+  },
+  {
+    "id": "bigbang-3",
+    "category": "BIGBANG",
+    "prompt": "我心中 BIGBANG 最有气场的成员是？",
+    "options": [
+      "G-Dragon",
+      "T.O.P",
+      "Taeyang",
+      "Daesung"
+    ]
+  },
+  {
+    "id": "bigbang-4",
+    "category": "BIGBANG",
+    "prompt": "我最爱的 BIGBANG 专辑是？",
+    "options": [
+      "MADE",
+      "ALIVE",
+      "Remember",
+      "Tonight"
+    ]
+  },
+  {
+    "id": "bigbang-5",
+    "category": "BIGBANG",
+    "prompt": "我最想听 BIGBANG 谁唱主歌？",
+    "options": [
+      "G-Dragon",
+      "T.O.P",
+      "Taeyang",
+      "Daesung"
+    ]
+  },
+  {
+    "id": "bigbang-6",
+    "category": "BIGBANG",
+    "prompt": "我认为 BIGBANG 最有记忆点的舞台是？",
+    "options": [
+      "Fantastic Baby 舞台",
+      "Bang Bang Bang 舞台",
+      "Loser 舞台",
+      "If You 舞台"
+    ]
+  },
+  {
+    "id": "bigbang-7",
+    "category": "BIGBANG",
+    "prompt": "我最想和 BIGBANG 谁做朋友？",
+    "options": [
+      "G-Dragon",
+      "T.O.P",
+      "Taeyang",
+      "Daesung"
+    ]
+  },
+  {
+    "id": "bigbang-8",
+    "category": "BIGBANG",
+    "prompt": "我最被 BIGBANG 哪首歌打动？",
+    "options": [
+      "Bang Bang Bang",
+      "Loser",
+      "If You",
+      "FXXK IT"
+    ]
+  },
+  {
+    "id": "bigbang-9",
+    "category": "BIGBANG",
+    "prompt": "我认为 BIGBANG 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "bigbang-10",
+    "category": "BIGBANG",
+    "prompt": "我最期待 BIGBANG 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "bigbang-11",
+    "category": "BIGBANG",
+    "prompt": "我最想循环的 BIGBANG 歌曲是？",
+    "options": [
+      "Loser",
+      "If You",
+      "FXXK IT",
+      "Still Life"
+    ]
+  },
+  {
+    "id": "bigbang-12",
+    "category": "BIGBANG",
+    "prompt": "我认为 BIGBANG 最适合当开场的是？",
+    "options": [
+      "If You",
+      "FXXK IT",
+      "Still Life",
+      "Haru Haru"
+    ]
+  },
+  {
+    "id": "bigbang-13",
+    "category": "BIGBANG",
+    "prompt": "我最想看 BIGBANG 谁的直拍？",
+    "options": [
+      "G-Dragon",
+      "T.O.P",
+      "Taeyang",
+      "Daesung"
+    ]
+  },
+  {
+    "id": "bigbang-14",
+    "category": "BIGBANG",
+    "prompt": "我最喜欢 BIGBANG 哪个视觉时期？",
+    "options": [
+      "MADE 时期",
+      "ALIVE 时期",
+      "Remember 时期",
+      "Tonight 时期"
+    ]
+  },
+  {
+    "id": "bigbang-15",
+    "category": "BIGBANG",
+    "prompt": "我最想和 BIGBANG 谁一起看演唱会？",
+    "options": [
+      "G-Dragon",
+      "T.O.P",
+      "Taeyang",
+      "Daesung"
+    ]
+  },
+  {
+    "id": "ikon-1",
+    "category": "iKON",
+    "prompt": "我最爱的 iKON 成员是？",
+    "options": [
+      "Kim Jinhwan",
+      "Koo Junhoe",
+      "Song Yunhyeong",
+      "Bobby"
+    ]
+  },
+  {
+    "id": "ikon-2",
+    "category": "iKON",
+    "prompt": "我最喜欢的 iKON 歌曲是？",
+    "options": [
+      "LOVE SCENARIO",
+      "Killing Me",
+      "RHYTHM TA",
+      "Airplane"
+    ]
+  },
+  {
+    "id": "ikon-3",
+    "category": "iKON",
+    "prompt": "我心中 iKON 最有气场的成员是？",
+    "options": [
+      "Koo Junhoe",
+      "Song Yunhyeong",
+      "Bobby",
+      "Kim Donghyuk"
+    ]
+  },
+  {
+    "id": "ikon-4",
+    "category": "iKON",
+    "prompt": "我最爱的 iKON 专辑是？",
+    "options": [
+      "Welcome Back",
+      "Return",
+      "I DECIDE",
+      "FLASHBACK"
+    ]
+  },
+  {
+    "id": "ikon-5",
+    "category": "iKON",
+    "prompt": "我最想听 iKON 谁唱主歌？",
+    "options": [
+      "Song Yunhyeong",
+      "Bobby",
+      "Kim Donghyuk",
+      "Jung Chanwoo"
+    ]
+  },
+  {
+    "id": "ikon-6",
+    "category": "iKON",
+    "prompt": "我认为 iKON 最有记忆点的舞台是？",
+    "options": [
+      "Killing Me 舞台",
+      "RHYTHM TA 舞台",
+      "Airplane 舞台",
+      "DUMB & DUMBER 舞台"
+    ]
+  },
+  {
+    "id": "ikon-7",
+    "category": "iKON",
+    "prompt": "我最想和 iKON 谁做朋友？",
+    "options": [
+      "Bobby",
+      "Kim Donghyuk",
+      "Jung Chanwoo",
+      "Kim Jinhwan"
+    ]
+  },
+  {
+    "id": "ikon-8",
+    "category": "iKON",
+    "prompt": "我最被 iKON 哪首歌打动？",
+    "options": [
+      "RHYTHM TA",
+      "Airplane",
+      "DUMB & DUMBER",
+      "B-DAY"
+    ]
+  },
+  {
+    "id": "ikon-9",
+    "category": "iKON",
+    "prompt": "我认为 iKON 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "ikon-10",
+    "category": "iKON",
+    "prompt": "我最期待 iKON 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "ikon-11",
+    "category": "iKON",
+    "prompt": "我最想循环的 iKON 歌曲是？",
+    "options": [
+      "Airplane",
+      "DUMB & DUMBER",
+      "B-DAY",
+      "Goodbye Road"
+    ]
+  },
+  {
+    "id": "ikon-12",
+    "category": "iKON",
+    "prompt": "我认为 iKON 最适合当开场的是？",
+    "options": [
+      "DUMB & DUMBER",
+      "B-DAY",
+      "Goodbye Road",
+      "LOVE SCENARIO"
+    ]
+  },
+  {
+    "id": "ikon-13",
+    "category": "iKON",
+    "prompt": "我最想看 iKON 谁的直拍？",
+    "options": [
+      "Kim Donghyuk",
+      "Jung Chanwoo",
+      "Kim Jinhwan",
+      "Koo Junhoe"
+    ]
+  },
+  {
+    "id": "ikon-14",
+    "category": "iKON",
+    "prompt": "我最喜欢 iKON 哪个视觉时期？",
+    "options": [
+      "Welcome Back 时期",
+      "Return 时期",
+      "I DECIDE 时期",
+      "FLASHBACK 时期"
+    ]
+  },
+  {
+    "id": "ikon-15",
+    "category": "iKON",
+    "prompt": "我最想和 iKON 谁一起看演唱会？",
+    "options": [
+      "Jung Chanwoo",
+      "Kim Jinhwan",
+      "Koo Junhoe",
+      "Song Yunhyeong"
+    ]
+  },
+  {
+    "id": "winner-1",
+    "category": "WINNER",
+    "prompt": "我最爱的 WINNER 成员是？",
+    "options": [
+      "Yoon",
+      "Jinwoo",
+      "Seunghoon",
+      "Mino"
+    ]
+  },
+  {
+    "id": "winner-2",
+    "category": "WINNER",
+    "prompt": "我最喜欢的 WINNER 歌曲是？",
+    "options": [
+      "EMPTY",
+      "REALLY REALLY",
+      "Love Me Love Me",
+      "AH YEAH"
+    ]
+  },
+  {
+    "id": "winner-3",
+    "category": "WINNER",
+    "prompt": "我心中 WINNER 最有气场的成员是？",
+    "options": [
+      "Yoon",
+      "Jinwoo",
+      "Seunghoon",
+      "Mino"
+    ]
+  },
+  {
+    "id": "winner-4",
+    "category": "WINNER",
+    "prompt": "我最爱的 WINNER 专辑是？",
+    "options": [
+      "EXIT : E",
+      "FATE NUMBER FOR",
+      "EVERYD4Y",
+      "HOLIDAY"
+    ]
+  },
+  {
+    "id": "winner-5",
+    "category": "WINNER",
+    "prompt": "我最想听 WINNER 谁唱主歌？",
+    "options": [
+      "Yoon",
+      "Jinwoo",
+      "Seunghoon",
+      "Mino"
+    ]
+  },
+  {
+    "id": "winner-6",
+    "category": "WINNER",
+    "prompt": "我认为 WINNER 最有记忆点的舞台是？",
+    "options": [
+      "REALLY REALLY 舞台",
+      "Love Me Love Me 舞台",
+      "AH YEAH 舞台",
+      "I LOVE U 舞台"
+    ]
+  },
+  {
+    "id": "winner-7",
+    "category": "WINNER",
+    "prompt": "我最想和 WINNER 谁做朋友？",
+    "options": [
+      "Yoon",
+      "Jinwoo",
+      "Seunghoon",
+      "Mino"
+    ]
+  },
+  {
+    "id": "winner-8",
+    "category": "WINNER",
+    "prompt": "我最被 WINNER 哪首歌打动？",
+    "options": [
+      "Love Me Love Me",
+      "AH YEAH",
+      "I LOVE U",
+      "MILLIONS"
+    ]
+  },
+  {
+    "id": "winner-9",
+    "category": "WINNER",
+    "prompt": "我认为 WINNER 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "winner-10",
+    "category": "WINNER",
+    "prompt": "我最期待 WINNER 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "winner-11",
+    "category": "WINNER",
+    "prompt": "我最想循环的 WINNER 歌曲是？",
+    "options": [
+      "AH YEAH",
+      "I LOVE U",
+      "MILLIONS",
+      "EMPTY"
+    ]
+  },
+  {
+    "id": "winner-12",
+    "category": "WINNER",
+    "prompt": "我认为 WINNER 最适合当开场的是？",
+    "options": [
+      "I LOVE U",
+      "MILLIONS",
+      "EMPTY",
+      "REALLY REALLY"
+    ]
+  },
+  {
+    "id": "winner-13",
+    "category": "WINNER",
+    "prompt": "我最想看 WINNER 谁的直拍？",
+    "options": [
+      "Yoon",
+      "Jinwoo",
+      "Seunghoon",
+      "Mino"
+    ]
+  },
+  {
+    "id": "winner-14",
+    "category": "WINNER",
+    "prompt": "我最喜欢 WINNER 哪个视觉时期？",
+    "options": [
+      "EXIT : E 时期",
+      "FATE NUMBER FOR 时期",
+      "EVERYD4Y 时期",
+      "HOLIDAY 时期"
+    ]
+  },
+  {
+    "id": "winner-15",
+    "category": "WINNER",
+    "prompt": "我最想和 WINNER 谁一起看演唱会？",
+    "options": [
+      "Yoon",
+      "Jinwoo",
+      "Seunghoon",
+      "Mino"
+    ]
+  },
+  {
+    "id": "niziu-1",
+    "category": "NiziU",
+    "prompt": "我最爱的 NiziU 成员是？",
+    "options": [
+      "Mako",
+      "Rio",
+      "Maya",
+      "Riku"
+    ]
+  },
+  {
+    "id": "niziu-2",
+    "category": "NiziU",
+    "prompt": "我最喜欢的 NiziU 歌曲是？",
+    "options": [
+      "Make you happy",
+      "Step and a step",
+      "Super Summer",
+      "CLAP CLAP"
+    ]
+  },
+  {
+    "id": "niziu-3",
+    "category": "NiziU",
+    "prompt": "我心中 NiziU 最有气场的成员是？",
+    "options": [
+      "Rio",
+      "Maya",
+      "Riku",
+      "Ayaka"
+    ]
+  },
+  {
+    "id": "niziu-4",
+    "category": "NiziU",
+    "prompt": "我最爱的 NiziU 专辑是？",
+    "options": [
+      "U",
+      "COCONUT",
+      "AWAKE",
+      "Press Play"
+    ]
+  },
+  {
+    "id": "niziu-5",
+    "category": "NiziU",
+    "prompt": "我最想听 NiziU 谁唱主歌？",
+    "options": [
+      "Maya",
+      "Riku",
+      "Ayaka",
+      "Mayuka"
+    ]
+  },
+  {
+    "id": "niziu-6",
+    "category": "NiziU",
+    "prompt": "我认为 NiziU 最有记忆点的舞台是？",
+    "options": [
+      "Step and a step 舞台",
+      "Super Summer 舞台",
+      "CLAP CLAP 舞台",
+      "HEARTRIS 舞台"
+    ]
+  },
+  {
+    "id": "niziu-7",
+    "category": "NiziU",
+    "prompt": "我最想和 NiziU 谁做朋友？",
+    "options": [
+      "Riku",
+      "Ayaka",
+      "Mayuka",
+      "Rima"
+    ]
+  },
+  {
+    "id": "niziu-8",
+    "category": "NiziU",
+    "prompt": "我最被 NiziU 哪首歌打动？",
+    "options": [
+      "Super Summer",
+      "CLAP CLAP",
+      "HEARTRIS",
+      "AWAKE"
+    ]
+  },
+  {
+    "id": "niziu-9",
+    "category": "NiziU",
+    "prompt": "我认为 NiziU 最特别的是？",
+    "options": [
+      "舞台完成度",
+      "歌曲质感",
+      "成员化学",
+      "整体风格"
+    ]
+  },
+  {
+    "id": "niziu-10",
+    "category": "NiziU",
+    "prompt": "我最期待 NiziU 的是？",
+    "options": [
+      "新回归",
+      "演唱会",
+      "个人作品",
+      "海外舞台"
+    ]
+  },
+  {
+    "id": "niziu-11",
+    "category": "NiziU",
+    "prompt": "我最想循环的 NiziU 歌曲是？",
+    "options": [
+      "CLAP CLAP",
+      "HEARTRIS",
+      "AWAKE",
+      "SWEET NONFICTION"
+    ]
+  },
+  {
+    "id": "niziu-12",
+    "category": "NiziU",
+    "prompt": "我认为 NiziU 最适合当开场的是？",
+    "options": [
+      "HEARTRIS",
+      "AWAKE",
+      "SWEET NONFICTION",
+      "Make you happy"
+    ]
+  },
+  {
+    "id": "niziu-13",
+    "category": "NiziU",
+    "prompt": "我最想看 NiziU 谁的直拍？",
+    "options": [
+      "Ayaka",
+      "Mayuka",
+      "Rima",
+      "Miihi"
+    ]
+  },
+  {
+    "id": "niziu-14",
+    "category": "NiziU",
+    "prompt": "我最喜欢 NiziU 哪个视觉时期？",
+    "options": [
+      "U 时期",
+      "COCONUT 时期",
+      "AWAKE 时期",
+      "Press Play 时期"
+    ]
+  },
+  {
+    "id": "niziu-15",
+    "category": "NiziU",
+    "prompt": "我最想和 NiziU 谁一起看演唱会？",
+    "options": [
+      "Mayuka",
+      "Rima",
+      "Miihi",
+      "Nina"
     ]
   }
 ]
