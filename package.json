@@ -10,7 +10,7 @@
     "server": "node server/index.js",
     "start": "node server/index.js",
     "dev:all": "concurrently \"npm run dev\" \"npm run server\"",
-    "deploy": "vite build && gh-pages -d dist"
+    "deploy": "vite build --base /kpop/ && gh-pages -d dist"
   },
   "dependencies": {
     "better-sqlite3": "^11.7.0",

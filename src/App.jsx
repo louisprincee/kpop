@@ -195,6 +195,31 @@ function App() {
     setSelectedAnswers((prev) => ({ ...prev, [currentIndex]: optionIndex }))
   }
 
+  const swapCurrentQuestion = () => {
+    if (screen !== 'host-play' || !currentQuestion) return
+    const usedIds = new Set(questions.map((question) => question.id))
+    const pool = questionBank
+      .map((question, index) => normalizeQuestion(question, index, false))
+      .filter((question) => question.options.length === 4 && !usedIds.has(question.id))
+
+    if (!pool.length) {
+      showToast('题库里暂时没有更多可换的题目。', 'error')
+      return
+    }
+
+    const nextQuestion = pool[Math.floor(Math.random() * pool.length)]
+    setQuestions((prev) => prev.map((question, index) => (
+      index === currentIndex ? nextQuestion : question
+    )))
+    setSelectedAnswers((prev) => {
+      const next = { ...prev }
+      delete next[currentIndex]
+      return next
+    })
+    setIsEditingQuestion(false)
+    setDraftQuestion(null)
+  }
+
   const startEditing = () => {
     if (!currentQuestion) return
     setDraftQuestion({
@@ -455,6 +480,9 @@ function App() {
                 : '题目由出题人定好，选完后点下一题继续。'}
             </p>
           </div>
+          {screen === 'host-play' && (
+            <button className="ghost-button" onClick={swapCurrentQuestion}>换一题</button>
+          )}
         </div>
 
         <div className="progress-wrap">
@@ -552,10 +580,10 @@ function App() {
             <div className="rules-box">
               <h3>玩法说明</h3>
               <ul>
-                <li>出题人先选出每题的标准答案，再生成房间发给朋友</li>
-                <li>朋友输入房间名和房主昵称后，按这 20 题作答</li>
-                <li>答完后统一计分，不会一题一揭答案</li>
-                <li>出题时可以直接编辑题目和选项</li>
+                <li>出题人选出每题的标准答案，生成房间发给朋友</li>
+                <li>答题人输入房间名和房主昵称后进行作答</li>
+                <li>答题完毕后揭晓答案和分数</li>
+                <li>出题时可以自由编辑题目和选项</li>
               </ul>
             </div>
           </div>
