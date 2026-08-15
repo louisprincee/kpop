@@ -81,16 +81,22 @@ app.set('trust proxy', 1);
 
 // Rate limiting
 const rateLimitStore = new Map();
-const rateLimit = (maxRequests = 100, windowMs = 60000) => (req, res, next) => {
-  const ip = req.ip || req.connection.remoteAddress;
+const rateLimit = (maxRequests = 100, windowMs = 60000, bucket = 'global') => (req, res, next) => {
+  const ip = req.ip || req.connection.remoteAddress || 'unknown';
+  const key = `${bucket}:${ip}`;
   const now = Date.now();
-  const limit = rateLimitStore.get(ip) || { count: 0, resetTime: now + windowMs };
+  const limit = rateLimitStore.get(key) || { count: 0, resetTime: now + windowMs };
   if (now > limit.resetTime) {
     limit.count = 0;
     limit.resetTime = now + windowMs;
   }
   limit.count++;
-  rateLimitStore.set(ip, limit);
+  rateLimitStore.set(key, limit);
+  if (rateLimitStore.size > 8000) {
+    for (const [storedKey, value] of rateLimitStore) {
+      if (now > value.resetTime) rateLimitStore.delete(storedKey);
+    }
+  }
   if (limit.count > maxRequests) {
     return res.status(429).json({ error: '请求过于频繁，请稍后再试。' });
   }
@@ -116,7 +122,7 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json({ limit: '1mb' }));
-app.use(rateLimit(100, 60000));
+app.use(rateLimit(100, 60000, 'global'));
 
 const distPath = path.join(__dirname, '..', 'dist');
 const hasDist = fs.existsSync(distPath);
@@ -188,7 +194,7 @@ app.get('/api/health', asyncRoute(async (_req, res) => {
   res.json({ ok: true, message: 'K-pop quiz backend is running.', db: 'supabase' });
 }));
 
-app.post('/api/auth', asyncRoute(async (req, res) => {
+app.post('/api/auth', rateLimit(15, 60000, 'auth'), asyncRoute(async (req, res) => {
   const nickname = String(req.body?.nickname || '').trim();
   const password = String(req.body?.password || '');
 
@@ -264,16 +270,15 @@ app.get('/api/me', asyncRoute(async (req, res) => {
 
 app.get('/api/leaderboard', asyncRoute(async (req, res) => {
   const roomName = (req.query.room || '').trim();
-  const rows = roomName
-    ? await query(
-      'SELECT player_name, score, total, answers, created_at FROM records WHERE room_name = $1 ORDER BY score DESC, created_at ASC LIMIT 50',
-      [roomName]
-    )
-    : await query(
-      'SELECT room_name, player_name, score, total, answers, created_at FROM records ORDER BY score DESC, created_at ASC LIMIT 50'
-    );
+  if (!roomName) {
+    return res.status(400).json({ error: 'Room is required.' });
+  }
+  const rows = await query(
+    'SELECT player_name, score, total, created_at FROM records WHERE room_name = $1 ORDER BY score DESC, created_at ASC LIMIT 50',
+    [roomName]
+  );
 
-  res.json(rows.map((row) => ({ ...row, answers: parseAnswers(row.answers) })));
+  res.json(rows);
 }));
 
 app.get('/api/room/:roomName/results', asyncRoute(async (req, res) => {
@@ -307,31 +312,50 @@ app.post('/api/records', asyncRoute(async (req, res) => {
   const user = await requireUser(req, res);
   if (!user) return;
 
-  const { roomName, score, total, answers } = req.body || {};
+  const { roomName, answers } = req.body || {};
   const playerName = user.nickname;
+  const trimmedRoom = String(roomName || '').trim();
 
-  if (!roomName || Number.isNaN(Number(score)) || Number.isNaN(Number(total))) {
+  if (!trimmedRoom) {
     return res.status(400).json({ error: 'Missing required fields.' });
   }
+
+  const room = await queryOne('SELECT host_name, questions FROM rooms WHERE room_name = $1', [trimmedRoom]);
+  if (!room) {
+    return res.status(404).json({ error: 'Room not found.' });
+  }
+  if (room.host_name === playerName) {
+    return res.status(403).json({ error: '房主不能用同一个昵称答题。', code: 'HOST_NICKNAME' });
+  }
+
+  const already = await queryOne(
+    'SELECT id FROM records WHERE room_name = $1 AND player_name = $2',
+    [trimmedRoom, playerName]
+  );
+  if (already) {
+    return res.status(409).json({ error: '已经交过卷了。', code: 'ALREADY_PLAYED' });
+  }
+
+  const questions = parseQuestions(room.questions);
+  const packed = Array.isArray(answers) ? answers : [];
+  const total = questions.length;
+  const score = questions.reduce((sum, question, index) => (
+    sum + (packed[index] === question.correctIndex ? 1 : 0)
+  ), 0);
 
   const row = await queryOne(`
     INSERT INTO records (room_name, player_name, score, total, answers, created_at)
     VALUES ($1, $2, $3, $4, $5, NOW())
-    ON CONFLICT (room_name, player_name) DO UPDATE SET
-      score = EXCLUDED.score,
-      total = EXCLUDED.total,
-      answers = EXCLUDED.answers,
-      created_at = NOW()
     RETURNING id
   `, [
-    String(roomName).trim(),
+    trimmedRoom,
     String(playerName).trim(),
-    Number(score),
-    Number(total),
-    JSON.stringify(answers || []),
+    score,
+    total,
+    JSON.stringify(packed),
   ]);
 
-  res.status(201).json({ id: row?.id });
+  res.status(201).json({ id: row?.id, score, total });
 }));
 
 app.get('/api/room/:roomName', asyncRoute(async (req, res) => {

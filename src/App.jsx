@@ -45,7 +45,7 @@ const apiFetch = (path, options = {}) => {
   if (token) headers.Authorization = `Bearer ${token}`
   
   const controller = new AbortController()
-  const timeoutId = setTimeout(() => controller.abort(), 8000)
+  const timeoutId = setTimeout(() => controller.abort(), 25000)
   
   return fetch(buildApiUrl(path), { ...options, headers, signal: controller.signal })
     .finally(() => clearTimeout(timeoutId))
