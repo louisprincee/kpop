@@ -37,8 +37,7 @@ npm run deploy
 ## 关键文件
 
 - `src/App.jsx`：主页面与房间 / 答题逻辑
-- `src/data/questions.js`：基础题库
-- `src/data/expandedQuestions.js`：扩展题库
+- `src/data/questionBank.js`：统一题库（当前唯一数据源）
 - `src/styles.css`：视觉样式
 - `server/index.js`：数据库与接口
 

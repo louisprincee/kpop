@@ -3,10 +3,14 @@ import questionBank from './data/questionBank'
 
 const STORAGE_KEY = 'kpop-quiz-state-v1'
 const PLAYER_KEY = 'kpop-player-name-v1'
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:4000'
+const API_BASE = import.meta.env.VITE_API_BASE || (import.meta.env.DEV ? 'http://localhost:4000' : '')
+
+const buildApiUrl = (path) => {
+  if (!API_BASE) return path
+  return `${API_BASE.replace(/\/$/, '')}${path}`
+}
 
 const getStarterQuestions = () => {
-  // 从所有题库中随机选取20道题
   if (!questionBank || questionBank.length === 0) return []
   const shuffled = [...questionBank].sort(() => Math.random() - 0.5)
   return shuffled.slice(0, 20).map((question, index) => ({
@@ -31,16 +35,7 @@ function App() {
     }
   })
   const [mode, setMode] = useState('entry')
-  const [questions, setQuestions] = useState(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY)
-      if (!saved) return getStarterQuestions()
-      const parsed = JSON.parse(saved)
-      return Array.isArray(parsed) && parsed.length ? parsed : getStarterQuestions()
-    } catch {
-      return getStarterQuestions()
-    }
-  })
+  const [questions, setQuestions] = useState(() => getStarterQuestions())
   const [roomName, setRoomName] = useState('')
   const [hostName, setHostName] = useState('')
   const [leaderboard, setLeaderboard] = useState([])
@@ -58,6 +53,10 @@ function App() {
   const selectedAnswer = selectedAnswers[currentIndex]
 
   useEffect(() => {
+    if (!questions.length) {
+      setQuestions(getStarterQuestions())
+      return
+    }
     localStorage.setItem(STORAGE_KEY, JSON.stringify(questions))
   }, [questions])
 
@@ -69,7 +68,7 @@ function App() {
     if (!roomName) return
     const loadBoard = async () => {
       try {
-        const res = await fetch(`${API_BASE}/api/leaderboard?room=${encodeURIComponent(roomName)}`)
+        const res = await fetch(buildApiUrl(`/api/leaderboard?room=${encodeURIComponent(roomName)}`))
         if (!res.ok) return
         const data = await res.json()
         setLeaderboard(Array.isArray(data) ? data : [])
@@ -87,7 +86,6 @@ function App() {
   }, [currentIndex, currentQuestion])
 
   const totalQuestions = questions.length
-  const groupNames = [...new Set(questions.map((q) => q.category))]
 
   const progress = useMemo(() => {
     if (!questions.length) return 0
@@ -98,7 +96,7 @@ function App() {
   const saveResultToBackend = async (finalScore) => {
     if (!roomName || !playerName) return
     try {
-      await fetch(`${API_BASE}/api/records`, {
+      await fetch(buildApiUrl('/api/records'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -245,13 +243,13 @@ function App() {
     }
 
     try {
-      const res = await fetch(`${API_BASE}/api/room`, {
+      const res = await fetch(buildApiUrl('/api/room'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           roomName: trimmedRoom,
           hostName: trimmedPlayer,
-          questions,
+          questions: questions.length ? questions : getStarterQuestions(),
         }),
       })
 
@@ -281,7 +279,7 @@ function App() {
     }
 
     try {
-      const res = await fetch(`${API_BASE}/api/room/${encodeURIComponent(trimmedRoom)}`)
+      const res = await fetch(buildApiUrl(`/api/room/${encodeURIComponent(trimmedRoom)}`))
       if (!res.ok) {
         throw new Error('Room not found')
       }
@@ -434,9 +432,8 @@ function App() {
 
               <div className="question-list-edit">
                 {questions.map((question, index) => (
-                  <div key={question.id || `${question.category}-${index}`} className="mini-question-card">
+                  <div key={question.id || `question-${index}`} className="mini-question-card">
                     <div className="mini-card-head">
-                      <span>{question.category}</span>
                       <button type="button" onClick={() => {
                         setCurrentIndex(index)
                         setMode('host-play')
@@ -487,7 +484,7 @@ function App() {
                 <div className="panel-header">
                   <div>
                     <p className="panel-tag">题库</p>
-                    <h2>{currentQuestion?.category || '题目'}</h2>
+                    <h2>题目</h2>
                   </div>
                   <button className="ghost-button" onClick={shuffleQuestion}>换一题</button>
                 </div>
@@ -574,28 +571,9 @@ function App() {
               </section>
 
               <aside className="panel sidebar-panel">
-                <div className="panel-header compact">
-                  <div>
-                    <p className="panel-tag">团名单</p>
-                    <h2>按团分组</h2>
-                  </div>
-                </div>
-
-                <div className="group-list">
-                  {groupNames.map((groupName) => (
-                    <button
-                      key={groupName}
-                      className={`group-pill ${currentQuestion?.category === groupName ? 'active' : ''}`}
-                      onClick={() => setCurrentIndex(questions.findIndex((question) => question.category === groupName))}
-                    >
-                      {groupName}
-                    </button>
-                  ))}
-                </div>
-
                 <div className="mini-summary">
                   <p>当前题目</p>
-                  <strong>{currentQuestion?.category || '暂无'}</strong>
+                  <strong>随机题库</strong>
                   <span>共 {totalQuestions} 道题</span>
                 </div>
 
@@ -643,7 +621,6 @@ function App() {
                   const isCorrect = userChoice === question.correctIndex
                   return (
                     <div key={`${question.id || question.category}-${index}`} className={`review-item ${isCorrect ? 'correct' : 'wrong'}`}>
-                      <p className="review-tag">{question.category}</p>
                       <h4>{question.prompt}</h4>
                       <div className="review-meta">
                         <span>你的答案：{userChoice !== undefined ? question.options[userChoice] : '未作答'}</span>

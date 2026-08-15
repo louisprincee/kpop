@@ -11,6 +11,13 @@ const db = new Database(dbPath);
 app.use(cors());
 app.use(express.json({ limit: '1mb' }));
 
+const distPath = path.join(__dirname, '..', 'dist');
+const hasDist = require('fs').existsSync(distPath);
+
+if (hasDist) {
+  app.use(express.static(distPath));
+}
+
 const initDb = () => {
   db.exec(`
     CREATE TABLE IF NOT EXISTS records (
@@ -99,6 +106,12 @@ app.post('/api/room', (req, res) => {
 
   res.status(200).json({ ok: true, roomName });
 });
+
+if (hasDist) {
+  app.get(/^\/(?!api).*/, (req, res) => {
+    res.sendFile(path.join(distPath, 'index.html'));
+  });
+}
 
 app.listen(port, () => {
   console.log(`K-pop quiz backend listening on http://localhost:${port}`);
