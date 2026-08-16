@@ -817,25 +817,29 @@ function App() {
     ))
 
     setScore(finalScore)
-    setScreen('result')
+    setBusy(true)
 
-    if (!roomName || !playerName) return
-    try {
-      const res = await apiFetch('/api/records', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          roomName,
-          score: finalScore,
-          total: questions.length,
-          answers: packedAnswers,
-        }),
-      })
-      if (!res.ok) throw new Error('sync failed')
-      setStatusText(`${playerName} 已完成 ${roomName} 房间测验`)
-    } catch {
-      setStatusText('分数已算出，但排行榜暂时没有同步成功。')
+    if (roomName && playerName) {
+      try {
+        const res = await apiFetch('/api/records', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            roomName,
+            score: finalScore,
+            total: questions.length,
+            answers: packedAnswers,
+          }),
+        })
+        if (!res.ok && res.status !== 409) throw new Error('sync failed')
+        setStatusText(`${playerName} 已完成 ${roomName} 房间测验`)
+      } catch {
+        setStatusText('分数已算出，但排行榜暂时没有同步成功。')
+      }
     }
+
+    setScreen('result')
+    setBusy(false)
   }
 
   const goBack = () => {
@@ -921,7 +925,7 @@ function App() {
         </div>
         {screen === 'result' ? (
           <div className="score-chip">
-            <span>当前分数</span>
+            <span>分数</span>
             <strong>{score}</strong>
           </div>
         ) : screen === 'host-play' || screen === 'host-share' ? (
