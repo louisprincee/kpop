@@ -21,10 +21,22 @@ if (!databaseUrl) {
 const pool = new Pool({
   connectionString: databaseUrl,
   max: 5,
+  idleTimeoutMillis: 15000,
+  connectionTimeoutMillis: 15000,
+  keepAlive: true,
   ssl: /supabase\.(co|com)/i.test(databaseUrl)
     ? { rejectUnauthorized: false }
     : undefined,
 });
+
+pool.on('error', (err) => {
+  console.error('Postgres pool error:', err.message);
+});
+
+const isRetryableDbError = (err) => {
+  const msg = String(err && err.message || '');
+  return /terminat|ECONNRESET|ETIMEDOUT|not queryable|Connection|ssl|timeout|went away/i.test(msg);
+};
 
 const hashPassword = (password, salt = crypto.randomBytes(16).toString('hex')) => {
   const hash = crypto.scryptSync(String(password), salt, 32).toString('hex');
@@ -45,8 +57,14 @@ const verifyPassword = (password, salt, hash) => {
 const newToken = () => crypto.randomBytes(24).toString('hex');
 
 const query = async (sql, params = []) => {
-  const result = await pool.query(sql, params);
-  return result.rows;
+  try {
+    const result = await pool.query(sql, params);
+    return result.rows;
+  } catch (error) {
+    if (!isRetryableDbError(error)) throw error;
+    const result = await pool.query(sql, params);
+    return result.rows;
+  }
 };
 
 const queryOne = async (sql, params = []) => {
@@ -408,14 +426,22 @@ app.post('/api/room', asyncRoute(async (req, res) => {
     }
   }
 
+  const packedQuestions = questions.map((question, index) => ({
+    id: question.id || `q-${index + 1}`,
+    category: String(question.category || 'K-pop').slice(0, 80),
+    prompt: String(question.prompt || '').slice(0, 500),
+    options: (Array.isArray(question.options) ? question.options : []).slice(0, 4).map((option) => String(option || '').slice(0, 100)),
+    correctIndex: Number.isInteger(question.correctIndex) ? question.correctIndex : null,
+  }));
+
   await query(`
     INSERT INTO rooms (room_name, host_name, questions, updated_at)
     VALUES ($1, $2, $3, NOW())
     ON CONFLICT (room_name) DO UPDATE SET
       questions = EXCLUDED.questions,
       updated_at = NOW()
-    WHERE host_name = $2
-  `, [trimmedRoom, String(hostName).trim(), JSON.stringify(questions)]);
+    WHERE rooms.host_name = EXCLUDED.host_name
+  `, [trimmedRoom, String(hostName).trim(), JSON.stringify(packedQuestions)]);
 
   res.status(200).json({ ok: true, roomName: trimmedRoom });
 }));

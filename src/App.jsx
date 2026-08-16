@@ -699,6 +699,10 @@ function App() {
           showToast('房间已有人交卷，无法修改题目。', 'error')
         } else if (data.code === 'ROOM_TAKEN') {
           showToast('房间名已被占用。', 'error')
+        } else if (res.status === 401) {
+          showToast('登录已过期，请切换账号重新登录。', 'error')
+        } else if (res.status >= 500) {
+          showToast('服务器暂时忙，请再点一次生成房间。', 'error')
         } else {
           showToast(data.error || '创建房间失败', 'error')
         }
@@ -915,7 +919,7 @@ function App() {
             <button onClick={logout}>切换账号</button>
           </div>
         </div>
-        {screen === 'play' || screen === 'result' ? (
+        {screen === 'result' ? (
           <div className="score-chip">
             <span>当前分数</span>
             <strong>{score}</strong>
