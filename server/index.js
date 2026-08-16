@@ -226,7 +226,7 @@ app.post('/api/auth', rateLimit(15, 60000, 'auth'), asyncRoute(async (req, res) 
   const existing = await queryOne('SELECT * FROM users WHERE nickname = $1', [nickname]);
   if (existing) {
     if (!verifyPassword(password, existing.password_salt, existing.password_hash)) {
-      return res.status(401).json({ error: '用户名或密码错误。', code: 'AUTH_FAILED' });
+      return res.status(401).json({ error: '密码错误或者昵称已经被人使用咯。', code: 'AUTH_FAILED' });
     }
     const token = newToken();
     const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);

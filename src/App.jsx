@@ -451,7 +451,7 @@ function App() {
       const data = await res.json().catch(() => ({}))
       if (!res.ok) {
         if (data.code === 'AUTH_FAILED') {
-          showToast('用户名或密码错误。', 'error')
+          showToast('密码错误或者昵称已经被人使用咯。', 'error')
         } else if (data.code === 'NICKNAME_INVALID') {
           showToast('昵称长度需要1-20个字符。', 'error')
         } else if (data.code === 'PASSWORD_INVALID') {
